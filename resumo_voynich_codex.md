@@ -1585,3 +1585,345 @@ A Rota 46 testará se o bit a/o ancora no **objeto visual** (M5 — atributo) ou
 - Alvo: seção astronômica f67–f73 (única mista A+B); fólio f69r (49 rótulos, B puro) como controle
 
 Design completo: `voynich-codex-project/docs/research/rota_46_design_ancoragem_borda.md`.
+
+## 69. Rotas 46–47: M5 refutado — bit a/o é assinatura de escriba
+
+A Rota 46 (estratificação por tipo de estrela) revelou colinearidade objeto↔Currier: todos os tipos finos de estrela são 100% Currier B. No único estrato misto, A e B convergem na proporção a/o (p=0.44, NS). A Rota 47 fez o teste decisivo usando seções com mistura real A/B.
+
+Saídas:
+- `voynich-codex-project/scripts/analyze_section_scribe.py`;
+- `voynich-codex-project/docs/research/rota_47_seccao_vs_escriba_ao.md`;
+- `voynich-codex-project/data/derived/section_scribe_ao_zl3b.csv`;
+- `voynich-codex-project/data/derived/section_scribe_intra_ao_zl3b.csv`.
+
+### Teste decisivo: mesma seção, escribas diferentes
+
+| Seção | n | Currier A | Currier B | V(Currier×ao) |
+|-------|---|-----------|-----------|---------------|
+| Herbal | 178 | 40% a / 60% o | 91% a / 9% o | **0.5068** (p=2.7e-12) |
+| Pharmaceutical | 78 | 29% a / 71% o | 91% a / 9% o | **0.5627** (p=5e-7) |
+| Astronomical | 239 | A≈0 | B=dominante | 0.0461 (sem contraste) |
+
+**Dentro das mesmas seções (herbal, pharmaceutical), A e B divergem maximamente no bit a/o.** O sinal Currier×ao (V=0.45) NÃO é artefato de seção — é assinatura de escriba. M5 (atributo-do-objeto) está refutado para o bit a/o. M3 (dialeto/escriba) confirmado.
+
+### Achado textual complementar (análise de 102 linhas EVA)
+
+- **-l (al/ol) precede `<END>` e `daiin` 5× cada; -r (ar/or) nunca fecha linha** → Rota 43 confirmada no nível da linha individual
+- **qo- é exclusivo de prosa** — nunca aparece em rótulos (Lc/Lf/Ln/Ls)
+- **ok/ot tem papel dual**: standalone/inicial em rótulos (nominal), interno em prosa (morfológico)
+- **f99r.30**: cadeia de 6 formas ok/ot consecutivas alternando qo-/bare — paradigma morfológico, não lista de objetos
+
+## 70. Modelo estrutural emergente (síntese das Rotas 43–47)
+
+O sufixo das formas `ok/ot` codifica três camadas **ortogonais**:
+
+```
+[qo-] + operador(ok/ot) + VOGAL(a/o) + CONSOANTE(r/l) [+ sufixo_de_fechamento(-y/-dy/-aiin)]
+```
+
+| Camada | Elemento | Preditor | Função |
+|--------|----------|----------|--------|
+| Registro | `qo-` prefixo | locus_kind (P/L) | qo-=prosa; ausente=rótulo ou prosa curta |
+| Clase | `ok-` vs `ot-` | locus+Currier (V≈0.11) | distinção de tipo de entrada (~50/50 nos dois dialetos) |
+| **Dialeto** | **vogal a/o** | **Currier (V=0.45)** | **A=vogal-o; B=vogal-a (p≪1e-6)** |
+| **Sintaxe** | **consoante r/l** | **posição na linha** | **-l=fechamento/terminal; -r=continuação** |
+
+**Interpretação consolidada:**
+
+> O Voynichese usa um sistema de notação em camadas onde o operador (ok/ot) marca a CLASSE do item e o sufixo composto (vogal+consoante) combina um **parâmetro de escriba** (quem escreve) com um **parâmetro posicional** (onde está na frase). O prefixo qo- marca o registro discursivo. Nenhum dos quatro elementos é uma tradução semântica direta — são marcadores funcionais de um sistema formal.
+
+### Rota 48 — próximo ataque
+
+Testar se o bit a/o é uma regra **ortográfica do sistema** (o mesmo escriba usa sempre a mesma vogal) ou um hábito **motor individual** (variação intra-mão):
+
+- 48-A: V(mão × ao) dentro de Currier B (mãos H1–H5 se disponíveis)
+- 48-B: stationariedade do bit a/o ao longo de um fólio (teste de runs)
+- 48-C: generalização além de ok/ot — o padrão vale para outras famílias?
+
+## 71. Rotas 48–50: ok/ot confirmado; modelo de 4 camadas completo
+
+**Rota 48**: bit a/o é regra ortográfica do SISTEMA (V entre mãos B = 0.13), estacionário dentro de fólios (todos p>0.22), e generaliza para TODAS as 11 famílias testadas (ch, d, sh, qok, yk, yt…). ok vs ot: V(Currier×ok/ot)=0.11, V(locus×ok/ot)=0.06.
+
+**Rota 49**: ok/ot é nulo limpo em grafotaxia (V(ok/ot × r/l)=0.05, p=0.20), contexto anterior (cosine p=0.50), e 20 pares mínimos co-ocorrem livremente → NOT complementaridade.
+
+**Rota 50** usou subtipos finos de locus (Ls, Lf, L0, Pb, Lt) e encontrou o maior V para ok/ot: **V=0.1290**. Padrão consistente:
+
+| Subtipo | ok% | ot% | ot/ok |
+|---------|-----|-----|-------|
+| Pb (blocked) | 77% | 22% | **0.29** |
+| L0 (ring flow) | 64% | 35% | 0.55 |
+| P0 (paragraph) | 51% | 48% | 0.93 |
+| Lf (label) | 38% | 61% | 1.62 |
+| Ls (symbol label) | 38% | 61% | 1.60 |
+| Lt | 14% | 85% | **6.0** |
+
+**Hipótese visual confirmada em f67r2**: ot- (otar, ytokar, otolor) estão TODOS nos labels de luas (Ls); ok- estão TODOS em texto-fluxo (L0, Pb, P0). Separação perfeita no fólio mais estruturado.
+
+> ok = modo de texto/discurso (fluxo); ot = modo de rótulo/nomeação (figura isolada)
+
+É **preferência suave**, não regra categórica — P0 está 50/50. Mas o sinal direcional é consistente em todos os subtipos.
+
+### Modelo estrutural final (Rotas 43–50)
+
+```
+[qo-] + OPERADOR(ok=fluxo/ot=label) + VOGAL(a=B/o=A) + CONSOANTE(l=fecha/r=continua) [+-y/-dy/-aiin]
+```
+
+| Camada | Elemento | Preditor | Efeito | Força |
+|--------|----------|----------|--------|-------|
+| Registro | qo- | locus P vs L | qo-=prosa; ausente=rótulo/prosa curta | forte |
+| **Operador** | ok vs ot | locus_subtype | ok=fluxo; ot=label (preferência suave) | fraco (V=0.13) |
+| **Dialeto** | vogal a/o | Currier | A=vogal-o; B=vogal-a | forte (V=0.45) |
+| **Sintaxe** | consoante r/l | posição na linha | -l=fechamento; -r=continuação | moderado (Rota 43) |
+
+Todos os 4 elementos identificados. Nenhum é semântica direta.
+
+Saídas: `docs/research/rota_50_ok_ot_registro.md`.
+
+### Rota 51 — próxima frente
+
+- R51-A: Bootstrap dos subtipos Ls e Lf para IC 95% do efeito ok/ot
+- R51-B: Markov serial k/t dentro de linhas (runs test de k→k vs k→t)
+- R51-C: yt- como variante de ot- (mesmo perfil de subtipos?)
+
+## 72. Rotas 52–53: o NÚCLEO ch/sh segue CONTEÚDO — primeiro candidato lexical
+
+A Rota 51 (mais bootstrap de ok/ot) foi **despriorizada**: o operador já estava
+mapeado como o elemento mais fraco do modelo (V≤0.13), e atacar o NÚCLEO abriu uma
+frente muito mais promissora. Toda a CASCA do token (qo- + ok/ot + a/o + r/l) provou
+ser marcação funcional não-lexical. Faltava o miolo: o banco **ch vs sh**.
+
+**Pergunta falsificável:** a escolha ch/sh é prevista pelo ESCRIBA (Currier) ou pelo
+CONTEÚDO (seção)? Teste-de-tornassol prescrito pelo cryptanalyst:
+- Currier > seção → convenção de mão → conteúdo não está no núcleo
+- seção > Currier → **primeiro candidato a carga lexical**
+
+**Rota 52** (descoberta, subconjunto de 786 formas exatas): V(seção)=0.1294 >
+V(Currier)=0.0861. Sinal aponta para conteúdo. Doc: `docs/research/rota_52_nucleo_ch_sh.md`.
+
+**Rota 53** (confirmação em TODO o corpus + controle de confundidor): novo script
+`scripts/analyze_nucleus.py` lê o ZL3b cru, mapeia Currier por `$L=` e seção por
+fólio, e classifica cada token com ch XOR sh (14 594 tokens). Resultado **mais forte**:
+
+| Preditor de ch/sh | V de Cramér | n |
+|-------------------|-------------|---|
+| **Seção (conteúdo)** | **0.1415** | 14 594 |
+| Currier (escriba) | 0.0619 | 13 574 |
+| **Seção \| Currier=B** | **0.1571** | 8 738 |
+| Seção \| Currier=A | 0.0480 | 4 836 |
+
+Permutação (500 embaralhamentos): **p ≈ 0.002**. O sinal de seção **sobrevive ao
+controle** dentro de um único escriba (B): não é artefato da correlação seção↔Currier.
+
+**ch/sh por seção (corpus completo):**
+
+| seção | n | %ch | %sh |
+|-------|---|-----|-----|
+| herbal | 4 874 | 74% | 25% |
+| recipes | 4 184 | 74% | 25% |
+| **balneológico** | **2 520** | **57%** | **42%** |
+| pharmaceutical | 1 333 | 70% | 29% |
+| astronômico | 987 | 76% | 23% |
+| cosmológico | 696 | 66% | 33% |
+
+**Achados:**
+1. O **balneológico** (ninfas/água/corpo) é a seção mais carregada de **sh** (42% vs
+   ~25% de base); herbal/astronômico (plantas/estrelas) pendem para **ch**. (Nota: o
+   perfil de "receitas" do subconjunto-786 da Rota 52 NÃO se confirma no corpus pleno —
+   era artefato do subconjunto ok/ot; o sinal robusto é o balneológico.)
+2. **Assimetria A/B decisiva**: o sinal de seção vive em B (V=0.157) e some em A
+   (V=0.048). A é quase só herbal — sem variância de conteúdo para mostrar. Se ch/sh
+   fosse hábito motor do escriba, A e B teriam o mesmo perfil dentro de cada seção;
+   o efeito é de **conteúdo**, não de mão.
+
+> **O núcleo ch/sh é o PRIMEIRO elemento do token que responde ao conteúdo do
+> manuscrito, não ao escriba.** É o primeiro candidato a carga lexical do projeto.
+
+**Ressalvas:** V≈0.14 é efeito moderado — é estrutura de conteúdo, não um lexema
+isolado. "Segue conteúdo" ≠ "tem semântica conhecida": continua sendo estrutura, não
+tradução. Banco-gallows (cth/ckh/cph/cfh) ficam fora do teste binário por construção.
+
+Guardrails: `rota52_core_glyph_signal_not_decipherment`,
+`rota53_nucleus_content_signal_not_decipherment`.
+Saídas: `scripts/analyze_nucleus.py`, `tests/test_nucleus.py` (8 testes),
+`data/derived/nucleus_chsh_{context,by_section,summary}_zl3b.csv`,
+`docs/research/rota_53_nucleo_controle_currier.md`.
+
+### Modelo estrutural atualizado (Rotas 43–53)
+
+```
+[qo-] + OPERADOR(ok/ot) + [ NÚCLEO(ch/sh ← CONTEÚDO) ] + VOGAL(a/o ← escriba) + CONSOANTE(r/l ← posição)
+```
+
+| Camada | Elemento | Preditor | Segue | Força |
+|--------|----------|----------|-------|-------|
+| Registro | qo- | locus P vs L | discurso | forte |
+| Operador | ok/ot | locus_subtype | registro (fluxo/label) | fraco (V=0.13) |
+| **Núcleo** | **ch/sh** | **seção** | **CONTEÚDO** | **moderado (V=0.14, p≈0.002)** |
+| Dialeto | vogal a/o | Currier | escriba | forte (V=0.45) |
+| Sintaxe | consoante r/l | posição na linha | posição | moderado |
+
+**Primeira separação clara CONTEÚDO vs FORMA no token.** Quatro camadas são marcação
+funcional (quem/onde/registro); o núcleo é a única que varia com o ASSUNTO.
+
+## 73. Rota 54: estresse do sinal ch/sh — refina e TEMPERA a Rota 53
+
+Três ataques falsificáveis ao sinal de conteúdo, com o **cryptanalyst pré-registrando
+predições CEGO aos números** (antes de o statistician rodar). Script:
+`scripts/analyze_nucleus_context.py`; testes: `tests/test_nucleus_context.py`
+(suíte total 343). Reproduz o total da Rota 53 (n=14 594).
+
+| Sub-ataque | Predição (cega) | Resultado | Veredito |
+|------------|-----------------|-----------|----------|
+| **A** rótulo vs texto | sh nos rótulos (ninfas) | sh%(L)=33%, n=24 < sh%(P)=42.5%; V=0.018, p=0.42 | **refutado/nulo** |
+| **B** núcleo ⟂ operador | independência (V≈0) | V=0.1145, p=0.002; em B V=0.099 | **refuta parcial** |
+| **C** ambiente ch vs sh | mesmo conjunto sucessor | top-3 igual (e,o,y), ΔH=0.38 bits | **misto** |
+
+**R54-A:** o excesso de sh do balneológico vive na PROSA (texto P, 42.5% sh), não nos
+rótulos de ninfa (L, n=24, 33% sh). Refuta "ch/sh nomeia referente"; rebaixa o sinal de
+conteúdo de nível-rótulo para **frequência topical no texto corrido**.
+
+**R54-B:** ok/ot-tokens preferem fortemente ch (sh: ok=18%, ot=14%), tokens SEM operador
+são 31% sh. V(operador×ch/sh)=0.11, p=0.002, **sobrevive em Currier B** (V=0.099). O
+modelo previa ortogonalidade; há **acoplamento fraco mas real** — o vocabulário sh é
+majoritariamente o vocabulário sem operador. As camadas núcleo e operador **interagem**.
+
+**R54-C:** H(próximo|ch)=2.32 bits, H(próximo|sh)=1.94 bits. O **inventário de sucessores
+é idêntico** (e,o,y,d,a,c — mesma ordem), mas sh é mais concentrado em `-e` (ΔH=0.38).
+Não são variantes livres: **ch e sh são dois valores de um único slot**, sobre gramática
+compartilhada.
+
+**Síntese — modelo refinado:** ch/sh segue sendo o melhor sinal de conteúdo, mas a
+história de "camada lexical ortogonal" da Rota 53 não se sustenta limpa:
+1. a correlação com seção é frequência topical na PROSA, não nomeação;
+2. o núcleo **interage** com o operador (não ortogonal);
+3. ch/sh são dois valores de um slot (gramática comum), não variantes livres.
+
+> Descrição corrente: ch/sh é uma distinção **sublexical** (1 slot, 2 valores) cuja
+> frequência é condicionada por DUAS forças — operador (ok/ot→ch) e tópico (prosa
+> balneológica→sh). Estrutura integrada e enviesada por tópico, **não** marcador
+> semântico isolado. O harness (pré-registro cego) foi decisivo: produziu números que
+> COMPLICAM o achado em vez de confirmá-lo — mais confiável que um passe único.
+
+Guardrail: `rota54_nucleus_context_not_decipherment`. Doc: `docs/research/rota_54_nucleo_contexto.md`.
+Saídas: `data/derived/nucleus_{context_balneo,operator,next_glyph,context_summary}_zl3b.csv`.
+
+## 74. Rota 55: teste de par mínimo — ch/sh é LÉXICO, não conteúdo (fecha o fio R52–R53)
+
+**Teste decisivo.** Esqueleto = token com o banco trocado por `#` (`chol`/`shol`→`#ol`).
+Par mínimo = esqueleto que ocorre com ch E sh. Dentro de um esqueleto fixo todo vizinho
+in-token é constante; só SEÇÃO, TOKEN ANTERIOR e POSIÇÃO podem variar. Mede-se
+`I(banco ; X | esqueleto)` (informação mútua condicional, bits).
+
+**ADEQUADAMENTE DIMENSIONADO:** 570 esqueletos de par mínimo, 10 855 tokens (74% de todos
+os 14 594 ch/sh). Pares mínimos são abundantes.
+
+| X (dado o esqueleto) | I (bits) | p perm |
+|----------------------|----------|--------|
+| Seção | 0.124 | **1.0** |
+| Char anterior | 0.141 | **1.0** |
+| Posição na linha | 0.054 | — |
+
+**Veredito: `lexically_fixed`.** p=1.0 não é bug: seção é colinear com esqueleto, então
+condicionar na palavra já absorve a info de seção; o resíduo é puro viés de amostra finita
+(o shuffle atinge I≥observado em 100%). Teste sintético confirma que a métrica discrimina
+(quando seção determina o banco, I=H(banco|esq) e p<0.05).
+
+**Evidência descritiva independente:** nos pares mínimos do topo, forma-ch e forma-sh do
+MESMO esqueleto vivem na MESMA seção (~74%): `#ol` chol/shol ambos herbal; `#edy` ambos
+balneológico; `#or` ambos herbal. **O banco não move a seção.**
+
+> **ch/sh é propriedade da PALAVRA (léxico), não marcador de conteúdo produtivo nem
+> alografia.** A correlação de seção da Rota 53 é **frequência de vocabulário topical**
+> (seções usam palavras diferentes, cada palavra com sua tendência ch/sh) — efeito
+> ENTRE-palavras, não DENTRO-da-palavra. Reconcilia R53 (segue seção, mas por vocabulário),
+> R54 (prosa não rótulo; acopla operador — ambos lexicais) e R55 (nada externo governa o banco).
+
+**Implicação estratégica:** o fio "ch/sh = primeira camada de conteúdo" das R52–53 **NÃO
+sobrevive ao teste decisivo**. Todo o token (casca + núcleo) é marcação funcional/lexical;
+**nenhuma camada de conteúdo produtivo foi identificada DENTRO do token.** A pergunta vira:
+onde está o conteúdo, se está? — no nível da PALAVRA INTEIRA, não do token. Resultado
+negativo valioso (pré-registro cego do harness bateu com o prior do cryptanalyst).
+
+Guardrail: `rota55_minpair_not_decipherment`. Doc: `docs/research/rota_55_minpair.md`.
+Script: `scripts/analyze_nucleus_minpair.py`; testes: `tests/test_nucleus_minpair.py`
+(suíte total **356**). Saídas: `data/derived/nucleus_minpair_{skeletons,summary}_zl3b.csv`.
+
+## 75. Rota 56: o conteúdo topical vive na PALAVRA INTEIRA — 1º sinal positivo (fraco)
+
+**Virada.** R43–55 provaram que o TOKEN é todo funcional/lexical (nenhuma camada de
+conteúdo dentro dele). Então o conteúdo, se existe, tem de estar no nível da PALAVRA.
+Mede-se `I(seção ; palavra)` em bits, corrigido por viés contra nulo de permutação.
+Cryptanalyst pré-registrou cego (prior em (b) escriba 50%, (c) sem-sinal 30%, (a) topical 20%).
+
+| Teste (within Currier B) | I_norm |
+|--------------------------|--------|
+| (i) bruto, perm por token | 0.096 |
+| (ii) só prosa (locus P) | 0.095 |
+| (iii) nulo por bloco de fólio | 0.069 |
+| **(iv) ESTRITO: prosa + bloco de fólio** | **0.046 (z≈5.6)** |
+
+- Agrupado: H(seção)=2.335 bits; I_obs=0.896 vs nulo 0.588, p=0.002, I_norm=0.132.
+- **Sobrevive a TODOS os controles** (Currier B, locus-tipo, autocorrelação de fólio) mas
+  **atENUA à metade**: o nulo por bloco de fólio fica ~4× mais largo e absorve ~metade do
+  efeito. Resíduo estrito I_norm=0.046, z≈5.6 — pequeno mas robusto.
+- Locus-tipo NÃO infla (só-prosa ≈ bruto); ~metade do efeito bruto era autocorrelação de
+  fólio; o grosso da associação agrupada é dialeto A/B.
+- Marcadores qo-/ok-/ot- mais planos (0.208) que não-marcadores (0.230) — direção funcional.
+- Vocabulário diagnóstico estável sob restrição a prosa (mesma composição): herbal→kchy,
+  tchy, cthor, dchor, cthy; balneológico→olkedy, olkain, qol, olshedy, olchedy.
+
+**Veredito controlado: `topical_vocabulary`.** PRIMEIRO sinal positivo de conteúdo do
+projeto: a escolha da palavra é fracamente condicionada pelo tópico além do escriba, da
+estrutura de locus e da autocorrelação. Vive onde a dissecção do token previu (R43–55).
+
+**Ressalvas:** efeito PEQUENO (4.6% de H(seção), estrito) — não prova semântica conhecida,
+só que a escolha de palavra é fracamente topical. Compatível tanto com língua real de
+léxico fraco quanto com baixo-conteúdo levemente enviesado. A Rota 57 decide.
+
+> O prior (b)/(c) do cryptanalyst estava parcialmente certo: muito do efeito bruto era
+> escriba/confundidor. O harness (pré-registro + controles flagueados cego) evitou
+> proclamar um "achado de conteúdo" inflado — o sinal real é 1/3 do título bruto.
+
+Guardrail: `rota56_word_content_not_decipherment`. Doc: `docs/research/rota_56_word_content.md`.
+Script: `scripts/analyze_word_content.py`; testes: `tests/test_word_content.py` (suíte **377**).
+Saídas: `data/derived/word_section_{diagnostic,summary}_zl3b.csv`.
+
+## 76. Rota 57: a topicalidade da palavra é PROSA, não nome — texto e imagem desacoplados
+
+A R56 achou sinal topical fraco na palavra, vivendo em loci de PROSA. A R57 decide o que é:
+as palavras diagnósticas NOMEIAM objetos desenhados (referencial) ou são vocabulário de
+prosa que varia por tópico (registro)? Três legs do harness — convergem. Pré-registro cego
+do cryptanalyst: PROSE_REGISTER 0.72, REFERENTIAL 0.08 (já declarado "clinicamente morto").
+
+**Leg 1 (estatística, corpus inteiro):** 75 palavras diagnósticas vs 205 baseline.
+- label_frac diagnóstico = 0.0264 ≈ baseline do corpus 0.0273 (NÃO elevado, razão 0.97×).
+- **0 palavras dominadas-por-rótulo; 0 concentradas-em-fólio.** folio_entropy 0.96 (espalhadas).
+- Veredito: **`prose_register`**. (Ressalva: marginalmente mais rotuladoras que palavras
+  ultra-comuns, perm p=0.026, mas 97% não-rótulo — referencial fraco quase-morto.)
+
+**Leg 2 (visual-annotator, imagens IIIF):** onde o sinal R56 vive (prosa de herbal/balneo),
+o layout é PROSA (f1r=100% prosa). Rótulo-em-objeto existe em farmacêutico (f99r 84% rótulo)
+e astronômico — seções que NÃO são onde o sinal está. Das diagnósticas, só `kchy` aparece em
+rótulo, e num rótulo ASTRONÔMICO, não numa planta. Cobertura honesta: só 1 fólio herbal + 1
+balneológico no set IIIF (cadeia R32 astro) → leg 2 é sugestivo; o leg 1 é a evidência forte.
+
+**Conclusão — texto e imagem desacoplados no nível da palavra:** a topicalidade fraca da R56
+é **variação de registro de prosa**, NÃO nomenclatura que aponta para os desenhos. As
+palavras que distinguem o herbal não nomeiam as plantas. **Descarta o modelo de
+nomenclator/diagrama-rotulado** para o grosso do texto. Resta o dilema afiado: língua de
+prosa real (sobre tópicos) vs sistema de baixo-conteúdo com deriva topical — a R58 decide.
+
+Guardrail: `rota57_word_grounding_not_decipherment`. Doc: `docs/research/rota_57_grounding.md`.
+Script: `scripts/analyze_word_grounding.py`; testes: `tests/test_word_grounding.py` (suíte **393**).
+Saídas: `data/derived/word_grounding_{,summary_}zl3b.csv`.
+
+### Rota 58 — bateria real-língua vs baixo-conteúdo (próxima fase decisiva)
+
+Sobre o corpus inteiro, com baselines de língua natural (proposta do cryptanalyst):
+1. **Entropia condicional de caractere h1/h2** — h2 ≪ línguas naturais → baixo-conteúdo;
+   dentro da faixa latim-abreviado → língua real.
+2. **LAAFU (linha como unidade)** — P(palavra|posição-na-linha) ≫ P(palavra) com preferência
+   início/fim → gerador-por-linha; quase invariante → língua real.
+3. **Repetição adjacente da mesma palavra** (`daiin daiin`) — ≫ qualquer língua natural →
+   baixo-conteúdo; comparável a corpora naturais → língua real.

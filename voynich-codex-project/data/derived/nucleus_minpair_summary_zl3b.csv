@@ -1,0 +1,12 @@
+metric,value
+n_minpair_skeletons,570
+n_minpair_tokens,10855
+frac_of_chsh_in_minpairs,0.7438
+I_section_bits,0.123921
+I_prevchar_bits,0.141074
+I_linepos_bits,0.053722
+perm_p_section,1.0
+perm_p_neighbor,1.0
+underpowered,False
+verdict,lexically_fixed
+guardrail,rota55_minpair_not_decipherment

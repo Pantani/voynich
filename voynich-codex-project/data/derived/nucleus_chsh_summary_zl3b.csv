@@ -1,0 +1,9 @@
+metric,value
+cramerV_section_chsh,0.1415
+cramerV_currier_chsh,0.0619
+cramerV_section_within_B,0.1571
+cramerV_section_within_A,0.048
+perm_p_section,0.001996
+predictor_of_chsh,section
+survives_currier_control,True
+semantic_guardrail,rota53_nucleus_content_signal_not_decipherment

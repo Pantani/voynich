@@ -1,0 +1,8 @@
+section,n_ab,n_a,n_b,cramer_v_currier_ao,semantic_guardrail
+astronomical,239,16,223,0.0461,rota47_section_scribe_ao_predictor_not_decipherment
+herbal,178,109,69,0.5068,rota47_section_scribe_ao_predictor_not_decipherment
+balneological,104,0,104,0.0,rota47_section_scribe_ao_predictor_not_decipherment
+pharmaceutical,78,56,22,0.5627,rota47_section_scribe_ao_predictor_not_decipherment
+cosmological,54,1,53,0.2716,rota47_section_scribe_ao_predictor_not_decipherment
+other,24,0,24,0.0,rota47_section_scribe_ao_predictor_not_decipherment
+recipes,19,4,15,0.4085,rota47_section_scribe_ao_predictor_not_decipherment

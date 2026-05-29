@@ -1,0 +1,17 @@
+metric,value
+corpus_label_frac,0.0273
+diag_mean_label_frac,0.0264
+base_mean_label_frac,0.0146
+diag_mean_folio_entropy,0.9562
+base_mean_folio_entropy,0.9622
+diag_mean_top_folio_share,0.1222
+base_mean_top_folio_share,0.086
+n_diag_label_dominant,0
+n_diag_folio_concentrated,0
+perm_p_label_frac_diff,0.025487
+verdict,prose_register
+guardrail,rota57_word_grounding_not_decipherment
+n_diagnostic_words,75
+n_baseline_words,205
+label_frac_ratio_diag_over_corpus,0.966
+token_coverage,37671

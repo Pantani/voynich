@@ -1,0 +1,7 @@
+metric,value
+cramerV_section_ao,0.2547
+cramerV_currier_ao,0.4409
+predictor_of_ao,scribe
+herbal_v_currier_ao,0.5068
+pharma_v_currier_ao,0.5627
+semantic_guardrail,rota47_section_scribe_ao_predictor_not_decipherment

@@ -1,0 +1,7 @@
+group,n,n_ch,n_sh,pct_ch,pct_sh,semantic_guardrail
+herbal,4874,3614,1260,74.1,25.9,rota53_nucleus_content_signal_not_decipherment
+recipes,4184,3120,1064,74.6,25.4,rota53_nucleus_content_signal_not_decipherment
+balneological,2520,1450,1070,57.5,42.5,rota53_nucleus_content_signal_not_decipherment
+pharmaceutical,1333,942,391,70.7,29.3,rota53_nucleus_content_signal_not_decipherment
+astronomical,987,757,230,76.7,23.3,rota53_nucleus_content_signal_not_decipherment
+cosmological,696,464,232,66.7,33.3,rota53_nucleus_content_signal_not_decipherment
