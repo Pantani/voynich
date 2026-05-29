@@ -1479,3 +1479,109 @@ A melhor leitura atual é:
 A chave parcial provavelmente não será uma tradução lexical, mas uma tabela funcional.
 
 Novo dado (Rota 43): as formas `-ar` têm padrão de fechamento de locus estatisticamente distinto das formas `-al/-ol`. O standalone `ar` parece funcionar como marcador terminal específico da família `-ar`. A sequência `FORM-ar + ar + al` (e variantes) pode codificar pares de valores no mesmo slot.
+
+## 67. Rota 44: distribuição por seção e Currier A/B — novo achado paradigmático
+
+A Rota 44 analisou as 8 formas exatas por seção do manuscrito e pelos regimes Currier A/B, com análise visual complementar das 8 imagens Yale IIIF (visual-annotator).
+
+Saídas:
+
+- `voynich-codex-project/scripts/analyze_section_distribution.py`;
+- `voynich-codex-project/docs/research/rota_44_distribuicao_secoes_currier.md`;
+- `voynich-codex-project/data/derived/section_currier_suffix_zl3b.csv`;
+- `voynich-codex-project/data/derived/section_form_distribution_zl3b.csv`;
+- `voynich-codex-project/data/derived/section_locus_suffix_zl3b.csv`;
+- `voynich-codex-project/data/derived/section_distribution_summary_zl3b.csv`.
+
+### Achado principal — operador e borda são camadas independentes
+
+| Métrica | Cramer's V |
+|---------|-----------|
+| Currier × sufixo (`-ar/-al/-or/-ol`) | **0.1595** |
+| Currier × prefixo (`ok-/ot-`) | **0.0113** |
+| Secção × forma | 0.1480 |
+| Locus × sufixo | 0.0699 |
+
+A borda é **14× mais sensível ao dialeto do que o operador.** O prefixo `ok-/ot-` mantém proporção ~50/50 nos dois Currier, enquanto o sufixo varia fortemente:
+
+- **Currier A**: bordas `-ol/-or` dominantes (76%), `-ar` raro (6%)
+- **Currier B**: bordas `-ar/-al` dominantes (73%), `-ar` é a borda modal (42%)
+
+### Achados visuais (visual-annotator, Rota 44)
+
+Análise direta das 8 imagens IIIF revelou três achados visuais:
+
+1. **`okar + okor` adjacentes em f99r** (topo de catálogo farmacêutico): par mínimo `-ar/-or` confirmado em locus visual idêntico.
+2. **`okal + okol` adjacentes em f67v1** (diagrama cosmológico): par mínimo `-al/-ol` confirmado no mesmo diagrama radial.
+3. **`okol` aparece em TODOS os regimes visuais** (diagrama, catálogo, prosa): é "agnóstico ao gênero da página" — assinatura de elemento gramatical, não de rótulo de conteúdo.
+
+### Achado da seção astronômica
+
+Na seção de estrelas (23% de todas as 786 ocorrências):
+- Estrelas "Light star, 7 points, tail" → `okal` domina
+- Estrelas "dotted, 7 points, tail" → `otar/otal` domina
+
+A forma exata varia com um **atributo pictórico discreto da estrela adjacente** — evidência mais forte até agora de função "índice/atributo", não "nome de objeto".
+
+### Interpretação consolidada
+
+> O operador (`ok-/ot-`) é compartilhado por ambos os dialetos — codifica algo universal ao sistema (talvez o tipo de entrada ou operação). A borda (`-ar/-al/-or/-ol`) varia sistematicamente entre dialetos — codifica algo que mudou entre mãos/épocas/locais (talvez um estado, classe ou contexto). Os pares mínimos confirmados in situ (f67v1 e f99r) provam que `-al/-ol` e `-ar/-or` marcam distinções reais dentro do mesmo contexto visual, não variação aleatória.
+
+Isso é consistente com a hipótese de **nomenclator ou tabela de lookup** onde diferentes escribas usaram diferentes valores de borda para o mesmo referente, mas mantiveram os operadores constantes.
+
+## 68. Rota 45: correção do Currier — eixo a/o é o marcador de dialeto
+
+A Rota 44 usava regex de texto livre para detectar Currier, cobrindo apenas 97/786 loci (12%). A Rota 45 corrigiu usando o código IVTFF `$L=A/B` dos headers do ZL3b, cobrindo 696/786 loci (88.5%).
+
+Saídas:
+- `voynich-codex-project/data/derived/exact_form_context_table_currier_zl3b.csv` (com coluna `currier`);
+- `voynich-codex-project/docs/research/rota_45_currier_eixo_ao.md`.
+
+### Números corrigidos
+
+| | Currier A (n=186) | Currier B (n=510) |
+|---|---|---|
+| `-ol` | 78 (42%) | 50 (10%) |
+| `-al` | 51 (27%) | 204 (40%) |
+| `-or` | 34 (18%) | 30 (6%) |
+| `-ar` | 23 (12%) | 226 (44%) |
+
+Chi²=144.07, **V=0.4550**, p_permutação=0.0000.
+
+### Decomposição em dois bits
+
+| Eixo | V | Currier A | Currier B |
+|------|---|-----------|-----------|
+| **a/o** (vogal) | **0.4409** | 60% `o` (ol,or) | 84% `a` (ar,al) |
+| **r/l** (consoante) | 0.1739 | 69% `l` | 50% `l` / 50% `r` |
+
+**O efeito Currier concentra-se no EIXO a/o (V=0.44), não no r/l (V=0.17).**
+
+- **Currier A = dialeto-o**: prefere vogal `o` nos sufixos
+- **Currier B = dialeto-a**: prefere vogal `a` nos sufixos
+- O eixo r/l é secundário e mais equilibrado
+
+### Correção importante: dotted/plain star era ruído
+
+O sinal "estrela dotted → otar, plain → okal" da Rota 44 NÃO sobreviveu controle de permutação: chi²=3.27, p=0.374. Era artefato de amostragem. O sinal Currier×sufixo, por outro lado, é robusto (p=0.0000).
+
+### Achado visual confirmado (visual-annotator)
+
+Em f67v1, okal e okol habitam a **mesma banda concêntrica** do diagrama solar (anel de estrelas), diferindo apenas em posição angular (~2 setores). Em f99r, okar e okor são entradas sequenciais na mesma fila de rótulos. Ambos os pares são Currier A e provam distinção **intra-dialectal** — não inter-dialectal.
+
+### Interpretação consolidada
+
+> O eixo a/o é o marcador de escriba/dialeto: A usa vogal-o, B usa vogal-a.
+> O eixo r/l marca contexto/posição dentro de cada dialeto.
+> A borda pode ser bidimensional: bit_ao = convenção de escriba; bit_rl = slot de posição.
+
+### Rota 46 — design do teste decisivo
+
+A Rota 46 testará se o bit a/o ancora no **objeto visual** (M5 — atributo) ou no **escriba** (M3 — dialeto) via estratificação:
+
+- Calcular V(Currier × bit_ao) dentro de cada tipo de objeto pictórico (estrelas dotted/plain, etc.)
+- Se V cai para ~0 com objeto fixo → objeto determina a borda (M5 vence)
+- Se V permanece ~0.44 → escriba determina a borda (M3 vence)
+- Alvo: seção astronômica f67–f73 (única mista A+B); fólio f69r (49 rótulos, B puro) como controle
+
+Design completo: `voynich-codex-project/docs/research/rota_46_design_ancoragem_borda.md`.
