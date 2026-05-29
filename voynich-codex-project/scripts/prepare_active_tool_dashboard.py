@@ -324,7 +324,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--docs-dir",
-        default=str(ROOT / "docs"),
+        default=str(ROOT / "docs" / "tools"),
         help="Directory containing the generated HTML documentation tools",
     )
     return parser.parse_args()

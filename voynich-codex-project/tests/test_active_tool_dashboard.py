@@ -42,7 +42,7 @@ def test_remove_obsolete_html_tools_is_idempotent(tmp_path):
 
 
 def test_workspace_docs_contains_only_active_html_tools():
-    docs_dir = Path(__file__).resolve().parents[1] / "docs"
+    docs_dir = Path(__file__).resolve().parents[1] / "docs" / "tools"
 
     html_files = sorted(path.name for path in docs_dir.glob("*.html"))
 
