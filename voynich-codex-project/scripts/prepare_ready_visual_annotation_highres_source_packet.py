@@ -249,7 +249,7 @@ def write_markdown_report(
 def image_src(row: dict[str, str]) -> str:
     local = row.get("local_image_path", "")
     if local:
-        return html.escape("../" + local)
+        return html.escape("../../" + local)
     return html.escape(row.get("yale_iiif_jpg_url", ""))
 
 

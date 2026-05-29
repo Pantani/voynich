@@ -402,7 +402,7 @@ def render_counts(title: str, counts: Counter[str]) -> list[str]:
 def image_src(row: dict[str, str]) -> str:
     local = row.get("local_image_path", "")
     if local:
-        return "../" + local
+        return "../../" + local
     return row.get("yale_iiif_jpg_url", "")
 
 

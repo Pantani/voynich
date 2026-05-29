@@ -97,7 +97,7 @@ def split_pipe(value: str) -> list[str]:
 
 
 def html_image_src(local_image_path: str) -> str:
-    return "../" + local_image_path.lstrip("/") if local_image_path else ""
+    return "../../" + local_image_path.lstrip("/") if local_image_path else ""
 
 
 def score_zone_choice(

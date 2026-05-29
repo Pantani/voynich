@@ -88,7 +88,7 @@ def optional_cv2():
 
 
 def html_image_src(local_image_path: str) -> str:
-    return "../" + local_image_path.lstrip("/") if local_image_path else ""
+    return "../../" + local_image_path.lstrip("/") if local_image_path else ""
 
 
 def clamp_percent(value: float) -> float:

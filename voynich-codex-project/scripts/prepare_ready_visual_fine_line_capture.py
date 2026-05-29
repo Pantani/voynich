@@ -250,7 +250,7 @@ def write_summary_csv(path: Path, rows: list[dict[str, str]]) -> None:
 
 
 def html_image_src(local_image_path: str) -> str:
-    return "../" + local_image_path.lstrip("/") if local_image_path else ""
+    return "../../" + local_image_path.lstrip("/") if local_image_path else ""
 
 
 def rows_for_html(rows: list[dict[str, str]]) -> list[dict[str, str]]:

@@ -80,7 +80,7 @@ def write_summary_csv(path: Path, rows: list[dict[str, str]]) -> None:
 
 
 def html_image_src(local_image_path: str) -> str:
-    return "../" + local_image_path.lstrip("/") if local_image_path else ""
+    return "../../" + local_image_path.lstrip("/") if local_image_path else ""
 
 
 def parse_box(value: str) -> tuple[float, float, float, float] | None:
@@ -247,9 +247,9 @@ def render_html(rows: list[dict[str, str]], zone_choice_csv: str) -> str:
     .image-stage {{ position: relative; display: inline-grid; background: #1c1b19; border-radius: 8px; overflow: hidden; }}
     .image-stage img {{ grid-area: 1 / 1; display: block; width: clamp(520px, calc(100vw - 720px), 980px); max-width: 100%; height: auto; user-select: none; }}
     .overlay {{ grid-area: 1 / 1; position: absolute; inset: 0; pointer-events: none; }}
-    .line-zone-choice {{ position: absolute; left: 8%; right: 8%; height: 0; border-top: 2px solid rgba(143, 63, 51, .86); }}
-    .line-zone-choice::before {{ content: attr(data-label); position: absolute; left: 0; top: -14px; padding: 2px 7px; border-radius: 999px; border: 1px solid rgba(143, 63, 51, .55); background: #fffaf2; color: var(--draft); font-size: 12px; font-weight: 900; white-space: nowrap; }}
-    .line-zone-choice.selected {{ border-top-color: rgba(31, 118, 104, .96); }}
+    .line-zone-choice {{ position: absolute; border: 2px solid rgba(143, 63, 51, .86); background: rgba(143, 63, 51, .08); border-radius: 3px; min-height: 4px; min-width: 4px; }}
+    .line-zone-choice::before {{ content: attr(data-label); position: absolute; left: 0; top: -18px; padding: 2px 7px; border-radius: 999px; border: 1px solid rgba(143, 63, 51, .55); background: #fffaf2; color: var(--draft); font-size: 12px; font-weight: 900; white-space: nowrap; }}
+    .line-zone-choice.selected {{ border-color: rgba(31, 118, 104, .96); background: rgba(31, 118, 104, .12); }}
     .line-zone-choice.selected::before {{ color: var(--accent); border-color: rgba(31, 118, 104, .55); }}
     .side {{ overflow: auto; border-left: 1px solid var(--line); background: var(--panel); padding: 14px; }}
     .plain-box {{ margin-bottom: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff7ea; }}
@@ -400,6 +400,13 @@ function zoneCenterY(zone) {{
   return (parts[1] + parts[3]) / 2;
 }}
 
+function zoneToRect(zone) {{
+  const parts = String(zone || "").split(",").map(Number);
+  if (parts.length !== 4 || parts.some((v) => !Number.isFinite(v))) return null;
+  const [x1, y1, x2, y2] = parts;
+  return {{ left: x1, top: y1, width: Math.max(x2 - x1, 2), height: Math.max(y2 - y1, 2) }};
+}}
+
 function zoneFromLineNumber(item, visualLine) {{
   return lineZoneMap(item)[visualLine] || "";
 }}
@@ -431,8 +438,19 @@ function renderOverlay(item, state) {{
     const marker = document.createElement("span");
     marker.className = "line-zone-choice" + (state.selected_visual_line_number === line ? " selected" : "");
     marker.dataset.label = `linha visual ${{line}}`;
-    const centerY = zoneCenterY(zones[line]);
-    marker.style.top = `${{centerY == null ? ((index + 0.5) / Math.max(numbers.length, 1)) * 100 : centerY}}%`;
+    const rect = zoneToRect(zones[line]);
+    if (rect) {{
+      marker.style.left = `${{rect.left}}%`;
+      marker.style.top = `${{rect.top}}%`;
+      marker.style.width = `${{rect.width}}%`;
+      marker.style.height = `${{rect.height}}%`;
+    }} else {{
+      const fallbackY = ((index + 0.5) / Math.max(numbers.length, 1)) * 100;
+      marker.style.left = "8%";
+      marker.style.width = "84%";
+      marker.style.top = `${{fallbackY}}%`;
+      marker.style.height = "4px";
+    }}
     overlay.appendChild(marker);
   }});
 }}

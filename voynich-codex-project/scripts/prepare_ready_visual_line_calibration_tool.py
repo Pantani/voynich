@@ -302,7 +302,7 @@ def highlight_transcription(text: str, tokens: str) -> str:
 def html_image_src(local_image_path: str) -> str:
     if not local_image_path:
         return ""
-    return "../" + local_image_path.lstrip("/")
+    return "../../" + local_image_path.lstrip("/")
 
 
 def display_path(path: str | Path) -> str:

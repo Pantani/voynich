@@ -18,22 +18,39 @@
     body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
     button, a.button-link { border: 1px solid #c8baaa; border-radius: 7px; background: #fffaf2; color: var(--ink); padding: 8px 11px; font-weight: 800; text-decoration: none; cursor: pointer; }
     button:hover, a.button-link:hover { background: #f1e7d8; }
-    .app { min-height: 100vh; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+    .app { min-height: 100vh; display: grid; grid-template-rows: auto auto minmax(0, 1fr); }
     .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #fbf6ed; }
     h1 { margin: 0; font-size: 20px; }
     p { margin: 0; color: var(--muted); }
     .nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .step-banner { display: flex; align-items: center; gap: 10px; padding: 10px 18px; background: #fef9ec; border-bottom: 2px solid #e8c84a; font-size: 13px; }
+    .step-count { margin-left: auto; font-weight: 900; color: var(--accent, #1f7668); }
     .workspace { min-height: 0; display: grid; grid-template-columns: 320px minmax(0, 1fr) 340px; }
     .queue { overflow: auto; border-right: 1px solid var(--line); background: #efe4d4; padding: 10px; }
-    .queue button { width: 100%; display: grid; gap: 4px; text-align: left; margin-bottom: 7px; }
+    .queue button { width: 100%; display: grid; gap: 4px; text-align: left; margin-bottom: 7px; padding: 10px 11px; }
     .queue button.active { border-color: var(--accent); outline: 3px solid rgba(31, 118, 104, .2); }
-    .score { font-size: 13px; color: var(--accent); font-weight: 900; }
+    .queue-locus { font-size: 15px; font-weight: 900; color: var(--ink); line-height: 1.2; }
+    .queue-snippet { font-size: 11px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
+    .queue-badge-row { display: flex; align-items: center; gap: 6px; }
+    .badge-p0 { font-size: 12px; font-weight: 900; color: #8a3f32; }
+    .badge-p1 { font-size: 12px; font-weight: 900; color: #7a6200; }
+    .score { font-size: 12px; color: var(--accent); font-weight: 900; }
     .main { overflow: auto; padding: 14px; background: #e6ddd0; }
     .target-card { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 14px; display: grid; gap: 12px; }
     .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
     .meta { border: 1px solid #ded2c2; border-radius: 7px; padding: 8px; background: #fffdf8; }
     .meta b { display: block; font-size: 12px; color: var(--muted); }
     .crops { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+
+    /* Image panel */
+    .image-panel-wrap { margin-bottom: 14px; }
+    .panel-label { font-size: 12px; font-weight: 800; color: var(--muted, #6f675f); margin: 0 0 5px; }
+    .mini-stage { position: relative; display: inline-grid; background: #1c1b19; border-radius: 8px; overflow: hidden; }
+    .mini-stage img { grid-area: 1 / 1; display: block; width: clamp(280px, calc(100vw - 680px), 860px); max-width: 100%; height: auto; user-select: none; }
+    .zone-overlay { grid-area: 1 / 1; position: absolute; inset: 0; pointer-events: none; }
+    .zone-highlight { position: absolute; border: 3px solid rgba(31,118,104,.9); background: rgba(31,118,104,.15); border-radius: 4px; }
+    .zone-highlight::before { content: attr(data-label); position: absolute; left: 3px; top: 3px; padding: 1px 7px; border-radius: 4px; background: rgba(31,118,104,.9); color: #fff; font-size: 12px; font-weight: 900; }
+    .zone-fragment { position: absolute; border: 2px dashed rgba(143,63,51,.7); border-radius: 3px; }
 
     .visual-crop-grid { display: grid; gap: 8px; }
     .visual-crop-card { display: grid; gap: 6px; padding: 8px; border: 1px solid var(--line, #d7cabb); border-radius: 8px; background: #fffaf2; }
@@ -49,6 +66,14 @@
     .warning { color: var(--warn); font-weight: 850; }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
     ol { margin: 0; padding-left: 20px; color: var(--muted); }
+
+    /* Big action button */
+    .action-btn-big {
+      display: block; width: 100%; padding: 13px; font-size: 15px; font-weight: 900;
+      background: var(--accent, #1f7668); color: #fff; border: none; border-radius: 8px;
+      text-align: center; text-decoration: none; margin-top: 12px; cursor: pointer;
+    }
+    .action-btn-big:hover { background: #185f52; color: #fff; }
   </style>
 </head>
 <body>
@@ -66,6 +91,11 @@
       <a class="button-link" href="rota_42c_calibrador_linhas_baseline_r32.html">Abrir R42C</a>
     </nav>
   </header>
+  <div class="step-banner">
+    <span>&#128269;</span>
+    <span><strong>Confira a zona destacada.</strong> Ela corresponde ao texto? Então abra a R42L para confirmar.</span>
+    <span class="step-count" id="stepCount"></span>
+  </div>
   <main class="workspace">
     <aside class="queue" id="queue" aria-label="Fila priorizada"></aside>
     <section class="main" aria-label="Item selecionado">
@@ -74,7 +104,7 @@
     <aside class="side" aria-label="Explicacao da rota 42K">
       <section class="plain-box">
         <h2>Como usar</h2>
-        <p>Comece pelo primeiro item. Olhe os recortes, depois abra a R42L para confirmar a linha sugerida antes de aplicar qualquer coisa na R42F.</p>
+        <p>Comece pelo primeiro item. Olhe a zona destacada no folio e os recortes, depois abra a R42L para confirmar a linha sugerida antes de aplicar qualquer coisa na R42F.</p>
       </section>
       <section class="plain-box">
         <h3>Resumo auditavel</h3>
@@ -93,7 +123,7 @@
   </main>
 </div>
 <script>
-const QUEUE_ROWS = [{"route42k_id": "R42K-001", "route42f_id": "R42F-008", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.35,@Pb", "transcription_text": "chol.[g:d]iin.okol", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-002", "route42f_id": "R42F-009", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.73,+P0", "transcription_text": "sshey.sy,shees.qeykeey.ykchey.ykchey.qokeochy.oaiin.okol.ar.olar", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-003", "route42f_id": "R42F-010", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.3,&L0", "transcription_text": "okal.ary", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-004", "route42f_id": "R42F-011", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.5,&L0", "transcription_text": "okol.aldy", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-005", "route42f_id": "R42F-001", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.2,@Lf", "transcription_text": "okar,y", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-006", "route42f_id": "R42F-002", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.8,@Lf", "transcription_text": "okor", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-007", "route42f_id": "R42F-012", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.21,=Pt", "transcription_text": "otol.daiiin<$>", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-008", "route42f_id": "R42F-013", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.24,+P0", "transcription_text": "cho.?o.kaiin.shoaiin.okol.daiin.far.cthol.daiin.ctholdar", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-009", "route42f_id": "R42F-003", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.12,+P0", "transcription_text": "qokeo.qokeol.chockhy.otol.daiin.oty<->oto{ck}ey.da.chor,aiin", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-010", "route42f_id": "R42F-004", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.13,+P0", "transcription_text": "okoraiin.okol.shocthy<->qokor.oloiram<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-011", "route42f_id": "R42F-005", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.21,@P0", "transcription_text": "doror.okeeody.opar.okor.eosaiin.otoraiin.shey.ols,aiiin.qoetal", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-012", "route42f_id": "R42F-006", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.24,+P0", "transcription_text": "shokeeey.cholshey.okol.qokey.okeodal,oldy<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-013", "route42f_id": "R42F-007", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.33,+P0", "transcription_text": "dol.okeeol.okeor.okal.okaiin.ckheol.okolaiin.okolaiin.cheoldy", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}];
+const QUEUE_ROWS = [{"route42k_id": "R42K-001", "route42f_id": "R42F-008", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.35,@Pb", "transcription_text": "chol.[g:d]iin.okol", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-002", "route42f_id": "R42F-009", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.73,+P0", "transcription_text": "sshey.sy,shees.qeykeey.ykchey.ykchey.qokeochy.oaiin.okol.ar.olar", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-003", "route42f_id": "R42F-010", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.3,&L0", "transcription_text": "okal.ary", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-004", "route42f_id": "R42F-011", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.5,&L0", "transcription_text": "okol.aldy", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-005", "route42f_id": "R42F-001", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.2,@Lf", "transcription_text": "okar,y", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-006", "route42f_id": "R42F-002", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.8,@Lf", "transcription_text": "okor", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-007", "route42f_id": "R42F-012", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.21,=Pt", "transcription_text": "otol.daiiin<$>", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-008", "route42f_id": "R42F-013", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.24,+P0", "transcription_text": "cho.?o.kaiin.shoaiin.okol.daiin.far.cthol.daiin.ctholdar", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-009", "route42f_id": "R42F-003", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.12,+P0", "transcription_text": "qokeo.qokeol.chockhy.otol.daiin.oty<->oto{ck}ey.da.chor,aiin", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-010", "route42f_id": "R42F-004", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.13,+P0", "transcription_text": "okoraiin.okol.shocthy<->qokor.oloiram<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-011", "route42f_id": "R42F-005", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.21,@P0", "transcription_text": "doror.okeeody.opar.okor.eosaiin.otoraiin.shey.ols,aiiin.qoetal", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-012", "route42f_id": "R42F-006", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.24,+P0", "transcription_text": "shokeeey.cholshey.okol.qokey.okeodal,oldy<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-013", "route42f_id": "R42F-007", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.33,+P0", "transcription_text": "dol.okeeol.okeor.okal.okaiin.ckheol.okolaiin.okolaiin.cheoldy", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}];
 let currentIndex = 0;
 
 const cropImageCache = new Map();
@@ -179,8 +209,46 @@ function paintCropPreviews(root = document) {
   }
 }
 
+function renderFolioImage(row) {
+  const img = document.getElementById('folioImage');
+  const overlay = document.getElementById('zoneOverlay');
+  if (!img || !overlay) return;
+  img.src = row.image_src || '';
+  overlay.innerHTML = '';
+  // Best zone (green)
+  const best = row.best_line_zone_box_pct || '';
+  if (best) {
+    const [x1, y1, x2, y2] = best.split(',').map(Number);
+    if ([x1, y1, x2, y2].every(isFinite)) {
+      const el = document.createElement('span');
+      el.className = 'zone-highlight';
+      el.dataset.label = `linha visual ${row.best_visual_line_number || '?'}`;
+      el.style.cssText = `left:${x1}%;top:${y1}%;width:${x2 - x1}%;height:${y2 - y1}%`;
+      overlay.appendChild(el);
+    }
+  }
+  // Fragment boxes (red dashed)
+  const frags = (row.top_fragment_crop_boxes || '').split('|');
+  frags.forEach(frag => {
+    const parts = frag.split(',').map(Number);
+    if (parts.length === 4 && parts.every(isFinite)) {
+      const [fx1, fy1, fx2, fy2] = parts;
+      const el = document.createElement('span');
+      el.className = 'zone-fragment';
+      el.style.cssText = `left:${fx1}%;top:${fy1}%;width:${fx2 - fx1}%;height:${fy2 - fy1}%`;
+      overlay.appendChild(el);
+    }
+  });
+}
+
 function activeRow() {
   return QUEUE_ROWS[currentIndex] || null;
+}
+
+function priorityBadge(level) {
+  if (level === 'P0') return '<span class="badge-p0">&#128308; P0</span>';
+  if (level === 'P1') return '<span class="badge-p1">&#128993; P1</span>';
+  return `<span>${level}</span>`;
 }
 
 function renderQueue() {
@@ -190,10 +258,16 @@ function renderQueue() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = index === currentIndex ? "active" : "";
+    const snippet = row.transcription_text.length > 32
+      ? row.transcription_text.slice(0, 32) + "…"
+      : row.transcription_text;
     button.innerHTML = `
-      <strong>${row.route42k_id} / ${row.target_locus}</strong>
-      <span class="score">score ${row.review_priority_score} / ${row.review_bucket}</span>
-      <small>${row.folio} / candidatos ${row.candidate_count} / fragmentos ${row.fragment_candidate_count}</small>
+      <div class="queue-badge-row">
+        ${priorityBadge(row.priority_level)}
+        <span class="score">score ${row.review_priority_score}</span>
+      </div>
+      <span class="queue-locus">${row.target_locus}</span>
+      <span class="queue-snippet">${snippet}</span>
     `;
     button.addEventListener("click", () => {
       currentIndex = index;
@@ -210,7 +284,7 @@ function cropCards(row) {
   }
   return row.crop_boxes.map((box, index) => `
     <article class="visual-crop-card">
-      <span class="visual-crop-label">fragmento sugerido ${index + 1}</span>
+      <span class="visual-crop-label">Fragmento ${index + 1} — onde está o texto</span>
       <canvas class="visual-crop-canvas" data-crop-preview data-image-src="${row.image_src}" data-box-pct="${box}" aria-label="fragmento sugerido ${index + 1}"></canvas>
       <span class="visual-crop-note">linha visual sugerida ${row.best_visual_line_number}</span>
     </article>
@@ -224,10 +298,18 @@ function renderTarget() {
     card.innerHTML = '<p class="warning">Nenhum item pendente.</p>';
     return;
   }
+  const r42lHref = "rota_42l_confirmacao_linhas_sugeridas_r32.html";
   card.innerHTML = `
     <div>
       <h2>${row.route42k_id} / ${row.target_locus}</h2>
       <p>${row.human_next_step}</p>
+    </div>
+    <div class="image-panel-wrap">
+      <p class="panel-label">&#128205; Zona sugerida na imagem</p>
+      <div class="mini-stage" id="miniStage">
+        <img id="folioImage" alt="Fólio ${row.folio}" />
+        <div class="zone-overlay" id="zoneOverlay"></div>
+      </div>
     </div>
     <div class="meta-grid">
       <div class="meta"><b>score</b>${row.review_priority_score} / ${row.review_bucket}</div>
@@ -239,13 +321,21 @@ function renderTarget() {
     </div>
     <div class="meta"><b>texto de referencia tecnico</b><span class="mono">${row.transcription_text}</span></div>
     <div class="crops">${cropCards(row)}</div>
+    <a class="action-btn-big" href="${r42lHref}">Abrir R42L &#8594;</a>
   `;
+  renderFolioImage(row);
   paintCropPreviews(card);
+}
+
+function updateStepCount() {
+  const el = document.getElementById("stepCount");
+  if (el) el.textContent = `${currentIndex + 1} / ${QUEUE_ROWS.length}`;
 }
 
 function renderAll() {
   renderQueue();
   renderTarget();
+  updateStepCount();
 }
 
 renderAll();

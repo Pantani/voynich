@@ -86,7 +86,7 @@ def resolve_project_path(path_value: str) -> Path:
 
 
 def html_image_src(local_image_path: str) -> str:
-    return "../" + local_image_path.lstrip("/") if local_image_path else ""
+    return "../../" + local_image_path.lstrip("/") if local_image_path else ""
 
 
 def optional_cv2():
