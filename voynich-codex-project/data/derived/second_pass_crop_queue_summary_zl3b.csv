@@ -1,0 +1,14 @@
+metric,item,n
+priority_bucket,P1_core_missing_tokens,4
+priority_bucket,P3_tighten_existing_region,3
+priority_bucket,P0_operator_missing_tokens,2
+priority_bucket,P2_other_missing_tokens,2
+second_pass_focus,locate_missing_group_tokens,8
+second_pass_focus,tighten_existing_matched_tokens,3
+crop_strategy,rescan_source_image_before_new_crop,4
+crop_strategy,search_single_missing_token_then_redraw_crop,4
+crop_strategy,tighten_current_svg_region,3
+prefix_family,standalone,5
+prefix_family,ch,3
+prefix_family,ot,2
+prefix_family,d,1

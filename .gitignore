@@ -1,0 +1,36 @@
+# macOS and editor state
+.DS_Store
+.idea/
+.vscode/
+
+# Local assistant/tooling context
+.claude/
+AGENTS.md
+CLAUDE.md
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Notebook and build artifacts
+.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+
+# Downloaded manuscript images are reproducible from manifests.
+voynich-codex-project/images/raw/
+
+# Temporary local files
+*.tmp
+*.bak
+*.swp

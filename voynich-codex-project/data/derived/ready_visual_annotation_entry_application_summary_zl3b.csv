@@ -1,0 +1,9 @@
+metric,item,n
+validation_status,valid_manual_annotation,8
+apply_status,applied_manual_annotation_to_derived_package,8
+package_action,updated_derived_package_row,8
+manual_entry_valid,yes,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

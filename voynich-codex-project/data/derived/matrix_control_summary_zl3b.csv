@@ -1,0 +1,5 @@
+control,chi_square,degrees_of_freedom,cramers_v,shuffle_iterations,shuffle_p_value_upper_bound
+locus_vs_suffix,153.340367,9,0.078015,500,0.001996
+prefix_vs_suffix,712.684057,36,0.168190,500,0.001996
+line_position_vs_suffix,240.745804,9,0.097753,500,0.001996
+locus_vs_suffix_given_prefix,93.418446,9,0.060893,0,

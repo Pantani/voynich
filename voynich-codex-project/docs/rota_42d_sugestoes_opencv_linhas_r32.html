@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rota 42D - sugestoes OpenCV para linhas</title>
+  <style>
+    body { margin: 0; background: #f6f0e7; color: #201a16; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+    main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+    h1 { margin: 0 0 6px; font-size: 26px; }
+    p { color: #665d55; }
+    a { color: #17625c; font-weight: 700; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+    .button-link { border: 1px solid #c8baaa; border-radius: 7px; background: #fffaf2; color: #201a16; padding: 8px 11px; font-weight: 800; text-decoration: none; }
+    .notice { margin: 16px 0; padding: 12px; border: 1px solid #cdbdaa; border-radius: 8px; background: #fffaf2; }
+    .auto-summary { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    .auto-summary span { border: 1px solid #c8baaa; border-radius: 999px; background: #eef6f2; color: #164f47; padding: 6px 10px; font-weight: 800; }
+    table { width: 100%; border-collapse: collapse; background: #fffdf8; border: 1px solid #d6cab8; }
+    th, td { padding: 8px; border-bottom: 1px solid #e3d8c8; text-align: left; vertical-align: top; }
+    th { background: #eee4d5; font-size: 12px; text-transform: uppercase; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
+
+    .visual-crop-grid { display: grid; gap: 8px; }
+    .visual-crop-card { display: grid; gap: 6px; padding: 8px; border: 1px solid var(--line, #d7cabb); border-radius: 8px; background: #fffaf2; }
+    .visual-crop-card.is-target { border-color: rgba(31, 118, 104, 0.58); background: #eef6f2; }
+    .visual-crop-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--ink, #241f1a); font-size: 12px; font-weight: 900; line-height: 1.2; }
+    .visual-crop-note { color: var(--muted, #6f675f); font-size: 12px; line-height: 1.28; }
+    .visual-crop-canvas { display: block; width: 100%; min-height: 72px; height: auto; border: 1px solid rgba(55, 45, 35, 0.18); border-radius: 7px; background: #ece3d7; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-canvas { background: #f7e8e3; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-note::after { content: " Imagem nao carregou."; color: #8f3f33; font-weight: 800; }
+    .suggestion-crop { min-width: 220px; padding: 6px; }
+    .suggestion-crop .visual-crop-canvas { min-height: 52px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Rota 42D</h1>
+  <p>Esta tela nao e palavra encontrada. Ela mostra quando uma linha visual OpenCV parece cair dentro da zona de um alvo ZL3b. A R42C pode mesclar a sugestao como rascunho pendente, mas ela nao preenche a R32 e nao vira calibracao sem confirmacao humana.</p>
+  <nav aria-label="Navegacao entre rotas">
+    <a class="button-link" href="rota_42g_ferramentas_ativas_r32.html">Ferramentas ativas</a>
+    <a class="button-link" href="rota_42b_pacote_html_preenchimento_humano_r32.html">Abrir R42B</a>
+    <a class="button-link" href="rota_42c_calibrador_linhas_baseline_r32.html">Abrir R42C</a>
+    <a class="button-link" href="rota_42e_mapa_opencv_linhas_visuais_r32.html">Abrir R42E</a>
+    <a class="button-link" href="rota_42j_fragmentos_visuais_opencv_r32.html">Abrir R42J</a>
+    <a class="button-link" href="rota_42f_escolha_linhas_visuais_sem_zona_r32.html">Abrir R42F</a>
+  </nav>
+  <section class="notice">
+    <strong>Guarda:</strong> <code>opencv_initial_line_suggestion_not_visual_evidence</code><br>
+    <strong>CSV:</strong> <code>/Users/pantani/Desktop/go/src/github.com/Pantani/voynich/voynich-codex-project/data/derived/ready_visual_line_opencv_suggestions_zl3b.csv</code>
+  </section>
+  <section class="notice">
+    <strong>O que o OpenCV resolveu sozinho:</strong>
+    <div class="auto-summary"><span><b>needs_manual_zone</b>: 13</span><span><b>needs_better_scan_or_manual_line</b>: 4</span><span><b>prefill_pending_baseline</b>: 2</span></div>
+    <p>Mesmo quando aparece <code>prefill_pending_baseline</code>, isso e so rascunho operacional. A pessoa ainda confirma a linha na R42C.</p>
+  </section>
+  <table>
+    <thead><tr><th>ID</th><th>Alvo ZL3b</th><th>Linha visual</th><th>Recorte real</th><th>Status</th><th>Baseline sugerida</th><th>Conf.</th><th>Acao OpenCV</th><th>Faixa</th><th>Proximo passo humano</th><th>Notas</th></tr></thead>
+    <tbody><tr><td>R42D-001</td><td>f84r.24,+P0</td><td>linha visual 6</td><td><article class="visual-crop-card suggestion-crop"><span class="visual-crop-label">Recorte real</span><canvas class="visual-crop-canvas" data-crop-preview data-image-src="../images/raw/yale_iiif_r32/f84r_1006226.jpg" data-box-pct="17.00,31.67,80.07,34.46" aria-label="Recorte real"></canvas><span class="visual-crop-note">linha sugerida pelo OpenCV</span></article></td><td>opencv_suggested_needs_human_confirmation</td><td><code>17.00,34.46 80.07,34.46</code></td><td>0.41</td><td>prefill_pending_baseline</td><td>media</td><td>conferir se a linha acompanha o texto e marcar calibrada se estiver certa</td><td>OpenCV pode pre-preencher a baseline como rascunho dentro da zona manual; confirmar na R42C antes de aceitar.</td></tr><tr><td>R42D-002</td><td>f84r.29,+P0</td><td>linha visual 14</td><td><article class="visual-crop-card suggestion-crop"><span class="visual-crop-label">Recorte real</span><canvas class="visual-crop-canvas" data-crop-preview data-image-src="../images/raw/yale_iiif_r32/f84r_1006226.jpg" data-box-pct="14.60,60.39,43.00,62.84" aria-label="Recorte real"></canvas><span class="visual-crop-note">linha sugerida pelo OpenCV</span></article></td><td>opencv_suggested_needs_human_confirmation</td><td><code>14.60,62.84 43.00,62.84</code></td><td>0.45</td><td>prefill_pending_baseline</td><td>media</td><td>conferir se a linha acompanha o texto e marcar calibrada se estiver certa</td><td>OpenCV pode pre-preencher a baseline como rascunho dentro da zona manual; confirmar na R42C antes de aceitar.</td></tr><tr><td>R42D-003</td><td>f99r.2,@Lf</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-004</td><td>f99r.8,@Lf</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-005</td><td>f99v.12,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-006</td><td>f99v.13,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-007</td><td>f99v.21,@P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-008</td><td>f99v.24,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-009</td><td>f99v.33,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-010</td><td>f67r2.35,@Pb</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-011</td><td>f67r2.73,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-012</td><td>f67v1.3,&amp;L0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-013</td><td>f67v1.5,&amp;L0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-014</td><td>f1r.21,=Pt</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-015</td><td>f1r.24,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>opencv_candidates_detected_needs_manual_zone</td><td><code></code></td><td></td><td>needs_manual_zone</td><td>sem_mapeamento</td><td>desenhar uma zona simples para o alvo antes de pedir baseline</td><td>OpenCV encontrou faixas na imagem, mas o alvo ainda nao tem zona manual de bloco.</td></tr><tr><td>R42D-016</td><td>f88v.17,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>no_text_band_detected</td><td><code></code></td><td></td><td>needs_better_scan_or_manual_line</td><td>sem_texto</td><td>calibrar a linha manualmente ou revisar a imagem/filtro</td><td>OpenCV nao encontrou uma faixa de texto confiavel para esta imagem.</td></tr><tr><td>R42D-017</td><td>f88v.18,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>no_text_band_detected</td><td><code></code></td><td></td><td>needs_better_scan_or_manual_line</td><td>sem_texto</td><td>calibrar a linha manualmente ou revisar a imagem/filtro</td><td>OpenCV nao encontrou uma faixa de texto confiavel para esta imagem.</td></tr><tr><td>R42D-018</td><td>f89r2.12,@P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>no_text_band_detected</td><td><code></code></td><td></td><td>needs_better_scan_or_manual_line</td><td>sem_texto</td><td>calibrar a linha manualmente ou revisar a imagem/filtro</td><td>OpenCV nao encontrou uma faixa de texto confiavel para esta imagem.</td></tr><tr><td>R42D-019</td><td>f89r2.28,+P0</td><td>sem linha visual associada</td><td>sem recorte</td><td>no_text_band_detected</td><td><code></code></td><td></td><td>needs_better_scan_or_manual_line</td><td>sem_texto</td><td>calibrar a linha manualmente ou revisar a imagem/filtro</td><td>OpenCV nao encontrou uma faixa de texto confiavel para esta imagem.</td></tr></tbody>
+  </table>
+</main>
+<script>
+const cropImageCache = new Map();
+
+function parseCropBox(value) {
+  const parts = String(value || "").split(",").map(Number);
+  if (parts.length !== 4 || parts.some((part) => !Number.isFinite(part))) return null;
+  const [x1, y1, x2, y2] = parts;
+  if (x2 <= x1 || y2 <= y1) return null;
+  return [Math.max(0, x1), Math.max(0, y1), Math.min(100, x2), Math.min(100, y2)];
+}
+
+function cropBoxFromPoints(pointsText, verticalPad = 3.6, horizontalPad = 2.0) {
+  const points = parsePoints(pointsText || "");
+  if (!points || points.length < 2) return "";
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const centerY = ys.reduce((total, y) => total + y, 0) / ys.length;
+  const x1 = Math.max(0, Math.min(...xs) - horizontalPad);
+  const x2 = Math.min(100, Math.max(...xs) + horizontalPad);
+  const y1 = Math.max(0, centerY - verticalPad);
+  const y2 = Math.min(100, centerY + verticalPad);
+  if (x2 <= x1 || y2 <= y1) return "";
+  return `${x1.toFixed(2)},${y1.toFixed(2)},${x2.toFixed(2)},${y2.toFixed(2)}`;
+}
+
+function loadCropImage(src) {
+  if (!src) return Promise.reject(new Error("sem imagem"));
+  if (cropImageCache.has(src)) return cropImageCache.get(src);
+  const promise = new Promise((resolve, reject) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`falha ao carregar ${src}`));
+    image.src = src;
+  });
+  cropImageCache.set(src, promise);
+  return promise;
+}
+
+async function paintCropCanvas(canvas) {
+  const box = parseCropBox(canvas.dataset.boxPct);
+  const src = canvas.dataset.imageSrc;
+  const card = canvas.closest(".visual-crop-card");
+  if (!box || !src) {
+    if (card) card.dataset.cropStatus = "erro";
+    return;
+  }
+  try {
+    const image = await loadCropImage(src);
+    const [x1, y1, x2, y2] = box;
+    const sx = Math.max(0, Math.floor((x1 / 100) * image.naturalWidth));
+    const sy = Math.max(0, Math.floor((y1 / 100) * image.naturalHeight));
+    const sw = Math.max(1, Math.ceil(((x2 - x1) / 100) * image.naturalWidth));
+    const sh = Math.max(1, Math.ceil(((y2 - y1) / 100) * image.naturalHeight));
+    const targetWidth = Math.max(360, Math.min(1100, sw));
+    const targetHeight = Math.max(58, Math.round(targetWidth * (sh / sw)));
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    canvas.style.aspectRatio = `${targetWidth} / ${targetHeight}`;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(image, sx, sy, sw, sh, 0, 0, targetWidth, targetHeight);
+    ctx.strokeStyle = "rgba(31, 118, 104, 0.88)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, targetWidth - 2, targetHeight - 2);
+    ctx.strokeStyle = "rgba(231, 182, 87, 0.72)";
+    ctx.setLineDash([8, 6]);
+    ctx.beginPath();
+    ctx.moveTo(0, targetHeight / 2);
+    ctx.lineTo(targetWidth, targetHeight / 2);
+    ctx.stroke();
+    if (card) card.dataset.cropStatus = "ok";
+  } catch (_error) {
+    if (card) card.dataset.cropStatus = "erro";
+  }
+}
+
+function paintCropPreviews(root = document) {
+  for (const canvas of root.querySelectorAll("canvas[data-crop-preview]")) {
+    paintCropCanvas(canvas);
+  }
+}
+paintCropPreviews();
+</script>
+</body>
+</html>

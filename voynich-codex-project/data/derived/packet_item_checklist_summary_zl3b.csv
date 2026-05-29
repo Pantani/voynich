@@ -1,0 +1,12 @@
+metric,item,n
+packet_id,R12-001,5
+packet_id,R12-002,3
+packet_id,R12-004,2
+packet_id,R12-003,1
+target_type,missing_group_tokens,8
+target_type,matched_group_tokens,3
+initial_check_status,pending_visual_check,11
+priority_bucket,P1_core_missing_tokens,4
+priority_bucket,P3_tighten_existing_region,3
+priority_bucket,P0_operator_missing_tokens,2
+priority_bucket,P2_other_missing_tokens,2

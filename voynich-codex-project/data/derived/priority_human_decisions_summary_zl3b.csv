@@ -1,0 +1,13 @@
+metric,item,n
+decision_bucket,pending_manual_decision,6
+human_review_state,pending_human_review,6
+priority_level,P1,4
+priority_level,P0,2
+packet_id,R12-001,3
+packet_id,R12-002,2
+packet_id,R12-003,1
+folio,f67r1,3
+folio,f70v2,2
+folio,f68r3,1
+crop_generation_action,no_crop_generation,6
+axis_test_readiness,not_ready,6

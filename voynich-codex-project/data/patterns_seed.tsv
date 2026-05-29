@@ -1,0 +1,9 @@
+pattern	class	hypothesis	examples
+ok-/ot-	operator	rótulo/diagrama/classe	okal, okar, otal, otoldy, otary
+qo-	operator	texto corrido / modo discursivo	qokedy, qokeedy, qokain, qokol
+yk-/yt-	operator	rubrica ou camada diagramática	ykchey, ytokar, ytodal, ykaly
+-dy	border	fechamento ou classe de token	chedy, shedy, qokedy, otoldy
+-y	border	fechamento leve / classe	chey, shey, otary, okaly
+-aiin/-iin	border	bloco recorrente / borda	daiin, aiin, qokaiin, oaiin
+ar/al/or/ol	matrix	quatro estados funcionais	okar/okal/okor/okol; dar/dal
+ch/sh	nucleus	classe de núcleo / switch	chedy/shedy; chol/shol

@@ -1,0 +1,12 @@
+metric,item,n
+readiness_status,ready_for_manual_fill,6
+source_image_status,present,6
+crop_svg_status,present,6
+html_card_check,present,6
+manual_entry_status,blank_manual_entry,6
+priority_level,P1,4
+priority_level,P0,2
+folio,f67r1,3
+folio,f70v2,2
+folio,f68r3,1
+target_type,missing_group_tokens,6

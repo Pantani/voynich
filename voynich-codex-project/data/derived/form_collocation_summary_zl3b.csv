@@ -1,0 +1,6 @@
+metric,value
+chi2_ar_vs_al_standalone,10.54
+ar_group_rate_pct,15.4
+al_group_rate_pct,6.8
+top_bigram_form_form,"(('okar', 'okar'), 5)"
+semantic_guardrail,form_collocation_analysis_not_decipherment

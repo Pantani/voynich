@@ -1,0 +1,11 @@
+metric,item,n
+confirmation_items,pending_human_confirmation,13
+review_bucket,revisao_dificil,5
+review_bucket,revisar_depois,4
+review_bucket,revisar_primeiro,4
+folio,f99v,5
+folio,f1r,2
+folio,f67r2,2
+folio,f67v1,2
+folio,f99r,2
+semantic_guardrail,line_choice_confirmation_not_evidence_or_ocr,13

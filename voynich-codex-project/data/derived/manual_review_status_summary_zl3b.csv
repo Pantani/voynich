@@ -1,0 +1,9 @@
+metric,item,n
+consolidation_outcome,pending_manual_review,11
+coordinate_status,no_manual_coordinates,11
+evidence_status,no_glyph_confirmation,11
+axis_test_eligibility,not_eligible,11
+prefix_family,standalone,5
+prefix_family,ch,3
+prefix_family,ot,2
+prefix_family,d,1

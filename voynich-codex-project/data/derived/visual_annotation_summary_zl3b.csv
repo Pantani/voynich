@@ -1,0 +1,31 @@
+dimension,value,total,ar,ar_share,al,al_share,or,or_share,ol,ol_share
+visual_zone,circular text,23,10,0.4348,6,0.2609,1,0.0435,6,0.2609
+visual_zone,label,19,8,0.4211,4,0.2105,5,0.2632,2,0.1053
+visual_zone,paragraph text,10,3,0.3000,4,0.4000,2,0.2000,1,0.1000
+visual_zone,radial text,4,3,0.7500,0,0.0000,0,0.0000,1,0.2500
+object_nearby,central face medallion and dense star groups,5,1,0.2000,1,0.2000,0,0.0000,3,0.6000
+object_nearby,central face with red/blue rays and surrounding stars,11,6,0.5455,2,0.1818,1,0.0909,2,0.1818
+object_nearby,green pool with nymph figures and dense text,10,3,0.3000,4,0.4000,2,0.2000,1,0.1000
+object_nearby,plant/root drawings and container-like forms,2,0,0.0000,1,0.5000,1,0.5000,0,0.0000
+object_nearby,plant/root drawings and vessels,2,1,0.5000,0,0.0000,1,0.5000,0,0.0000
+object_nearby,pool/tube-like structures and dense paragraph text,1,0,0.0000,0,0.0000,1,1.0000,0,0.0000
+object_nearby,small circular nodes and painted blue/green/red diagram areas,2,2,1.0000,0,0.0000,0,0.0000,0,0.0000
+object_nearby,small moon/planet disks and lower text band,1,1,1.0000,0,0.0000,0,0.0000,0,0.0000
+object_nearby,small moon/planet disks and red outer writing,1,1,1.0000,0,0.0000,0,0.0000,0,0.0000
+object_nearby,small moon/planet disks and sector dividers,2,1,0.5000,1,0.5000,0,0.0000,0,0.0000
+object_nearby,star field and small face medallions,1,0,0.0000,0,0.0000,0,0.0000,1,1.0000
+object_nearby,stars and small moon/sun faces,4,0,0.0000,0,0.0000,2,0.5000,2,0.5000
+object_nearby,zodiac nymph figure with star,6,4,0.6667,2,0.3333,0,0.0000,0,0.0000
+object_nearby,zodiac nymph figures and stars,8,4,0.5000,3,0.3750,0,0.0000,1,0.1250
+annotation_confidence,low,14,4,0.2857,2,0.1429,5,0.3571,3,0.2143
+annotation_confidence,medium,42,20,0.4762,12,0.2857,3,0.0714,7,0.1667
+folio,f67r1,11,6,0.5455,2,0.1818,1,0.0909,2,0.1818
+folio,f67r2,4,3,0.7500,1,0.2500,0,0.0000,0,0.0000
+folio,f67v2,2,2,1.0000,0,0.0000,0,0.0000,0,0.0000
+folio,f68r1,2,0,0.0000,0,0.0000,1,0.5000,1,0.5000
+folio,f68r2,3,0,0.0000,0,0.0000,1,0.3333,2,0.6667
+folio,f68r3,5,1,0.2000,1,0.2000,0,0.0000,3,0.6000
+folio,f70v2,14,8,0.5714,5,0.3571,0,0.0000,1,0.0714
+folio,f84r,11,3,0.2727,4,0.3636,3,0.2727,1,0.0909
+folio,f88v,2,1,0.5000,0,0.0000,1,0.5000,0,0.0000
+folio,f99v,2,0,0.0000,1,0.5000,1,0.5000,0,0.0000

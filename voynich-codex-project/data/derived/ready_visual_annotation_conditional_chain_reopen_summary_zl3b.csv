@@ -1,0 +1,10 @@
+metric,item,n
+reopen_plan_status,ready_to_run_revalidation_chain,8
+planned_chain_action,run_R34_R35_R33_R31,8
+next_action,execute_chain_and_validate_outputs,8
+fill_execution_status,ready_for_revalidation_chain_reopen,8
+chain_release_status,ready_to_reopen_chain,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

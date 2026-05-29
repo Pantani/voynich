@@ -1,0 +1,9 @@
+metric,item,n
+manual_fill_status,human_entry_present_ready_for_gate_rerun,8
+blocking_reason,manual_entry_present,8
+next_action,rerun_r34_then_r35,8
+r35_status,ready_for_controlled_rerun,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

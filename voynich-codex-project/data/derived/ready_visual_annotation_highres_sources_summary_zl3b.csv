@@ -1,0 +1,16 @@
+metric,item,n
+match_status,matched_exact_manifest_label,4
+match_status,matched_collapsed_folio,2
+match_status,matched_composite_manifest_label,2
+download_plan_status,downloaded,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2
+manifest_label,88v and 89r,2
+manifest_label,1r,1
+manifest_label,67r,1
+manifest_label,67v,1
+manifest_label,84r,1
+manifest_label,99r,1
+manifest_label,99v,1

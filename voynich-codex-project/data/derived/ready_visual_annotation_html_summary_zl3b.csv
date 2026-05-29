@@ -1,0 +1,15 @@
+metric,item,n
+html_card_status,ready_for_focused_manual_visual_annotation,8
+r31_validation_status,pending_blank_manual_annotation,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2
+folio,f1r,1
+folio,f67r2,1
+folio,f67v1,1
+folio,f84r,1
+folio,f88v,1
+folio,f89r2,1
+folio,f99r,1
+folio,f99v,1

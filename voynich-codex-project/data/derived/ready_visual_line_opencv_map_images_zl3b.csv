@@ -1,0 +1,9 @@
+image_id,folio_labels,local_image_path,image_src,target_loci,detected_visual_lines,semantic_guardrail
+R42EIMG-001,f84r,images/raw/yale_iiif_r32/f84r_1006226.jpg,../images/raw/yale_iiif_r32/f84r_1006226.jpg,"f84r.24,+P0|f84r.29,+P0",23,opencv_visual_line_map_not_word_evidence
+R42EIMG-002,f99r,images/raw/yale_iiif_r32/f99r_1006246.jpg,../images/raw/yale_iiif_r32/f99r_1006246.jpg,"f99r.2,@Lf|f99r.8,@Lf",6,opencv_visual_line_map_not_word_evidence
+R42EIMG-003,f99v,images/raw/yale_iiif_r32/f99v_1006247.jpg,../images/raw/yale_iiif_r32/f99v_1006247.jpg,"f99v.12,+P0|f99v.13,+P0|f99v.21,@P0|f99v.24,+P0|f99v.33,+P0",15,opencv_visual_line_map_not_word_evidence
+R42EIMG-004,f67r2,images/raw/yale_iiif_r32/f67r2_1006194.jpg,../images/raw/yale_iiif_r32/f67r2_1006194.jpg,"f67r2.35,@Pb|f67r2.73,+P0",3,opencv_visual_line_map_not_word_evidence
+R42EIMG-005,f67v1,images/raw/yale_iiif_r32/f67v1_1006195.jpg,../images/raw/yale_iiif_r32/f67v1_1006195.jpg,"f67v1.3,&L0|f67v1.5,&L0",1,opencv_visual_line_map_not_word_evidence
+R42EIMG-006,f1r,images/raw/yale_iiif_r32/f1r_1006076.jpg,../images/raw/yale_iiif_r32/f1r_1006076.jpg,"f1r.21,=Pt|f1r.24,+P0",4,opencv_visual_line_map_not_word_evidence
+R42EIMG-007,f88v,images/raw/yale_iiif_r32/f88v_1006233.jpg,../images/raw/yale_iiif_r32/f88v_1006233.jpg,"f88v.17,+P0|f88v.18,+P0",0,opencv_visual_line_map_not_word_evidence
+R42EIMG-008,f89r2,images/raw/yale_iiif_r32/f89r2_1006233.jpg,../images/raw/yale_iiif_r32/f89r2_1006233.jpg,"f89r2.12,@P0|f89r2.28,+P0",0,opencv_visual_line_map_not_word_evidence

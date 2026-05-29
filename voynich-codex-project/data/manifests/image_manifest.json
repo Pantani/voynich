@@ -1,0 +1,102 @@
+[
+  {
+    "id": "f1r",
+    "label": "f1r — abertura / herbal inicial",
+    "section": "herbal",
+    "filename": "voynich_f1r.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Voynich_Manuscript_%283%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Voynich_Manuscript_%283%29.jpg/240px-Voynich_Manuscript_%283%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(3).jpg",
+    "notes": "Fólio de abertura útil para observar texto corrido, planta e assinatura apagada atribuída a Jacobi de Tepenecz."
+  },
+  {
+    "id": "f67r1_r2",
+    "label": "f67r1,r2 — diagramas astronômicos; f67r2 foi página-laboratório",
+    "section": "astronomical",
+    "filename": "voynich_f67r1_r2.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Voynich_Manuscript_%28121%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Voynich_Manuscript_%28121%29.jpg/240px-Voynich_Manuscript_%28121%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(121).jpg",
+    "notes": "Contém a página estudada com camadas: anel externo, rótulos, luas, parágrafo inferior e linha vermelha."
+  },
+  {
+    "id": "f67v2_v1",
+    "label": "f67v2,v1 — diagramas astronômicos/cosmológicos",
+    "section": "astronomical/cosmological",
+    "filename": "voynich_f67v2_v1.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Voynich_Manuscript_%28122%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Voynich_Manuscript_%28122%29.jpg/240px-Voynich_Manuscript_%28122%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(122).jpg",
+    "notes": "Útil para testar direção/cardinalidade e padrões de okar/okal/okol/okor."
+  },
+  {
+    "id": "f68r1_r2_r3",
+    "label": "f68r1,r2,r3 — diagramas astronômicos; f68r3 inclui possível grupo das Plêiades",
+    "section": "astronomical",
+    "filename": "voynich_f68r1_r2_r3.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Voynich_Manuscript_%28123%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Voynich_Manuscript_%28123%29.jpg/240px-Voynich_Manuscript_%28123%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(123).jpg",
+    "notes": "F68r3 foi usado no ataque astronômico: doaro/doary, oalcheol, okary/otary, okolchy."
+  },
+  {
+    "id": "f70v2",
+    "label": "f70v2 — zodíaco / rótulos estelares",
+    "section": "zodiacal",
+    "filename": "voynich_f70v2.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Voynich_Manuscript_%28127%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Voynich_Manuscript_%28127%29.jpg/240px-Voynich_Manuscript_%28127%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(127).jpg",
+    "notes": "Útil para rótulos zodiacais com alta concentração de ok-/ot-."
+  },
+  {
+    "id": "f84r",
+    "label": "f84r — seção biológica/banhos",
+    "section": "biological/balneological",
+    "filename": "voynich_f84r.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Voynich_Manuscript_%28153%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Voynich_Manuscript_%28153%29.jpg/240px-Voynich_Manuscript_%28153%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(153).jpg",
+    "notes": "Página de contexto biológico onde algumas famílias de rótulo reaparecem fora da astronomia/farmacêutica."
+  },
+  {
+    "id": "f88v_f89r1_r2",
+    "label": "f88v, f89r1,r2 — farmacêutico; plantas/recipientes/rótulos",
+    "section": "pharmaceutical",
+    "filename": "voynich_f88v_f89r1_r2.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Voynich_Manuscript_%28162%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Voynich_Manuscript_%28162%29.jpg/240px-Voynich_Manuscript_%28162%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(162).jpg",
+    "notes": "Aparecem rótulos farmacêuticos; usado em testes com otoldy, otaly, okolo."
+  },
+  {
+    "id": "f99r",
+    "label": "f99r — farmacêutico",
+    "section": "pharmaceutical",
+    "filename": "voynich_f99r.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Voynich_Manuscript_%28175%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Voynich_Manuscript_%28175%29.jpg/240px-Voynich_Manuscript_%28175%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(175).jpg",
+    "notes": "Inclui rótulos farmacêuticos úteis para famílias otoldy/otaldy/otory/otoky."
+  },
+  {
+    "id": "f99v",
+    "label": "f99v — farmacêutico",
+    "section": "pharmaceutical",
+    "filename": "voynich_f99v.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Voynich_Manuscript_%28176%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Voynich_Manuscript_%28176%29.jpg/240px-Voynich_Manuscript_%28176%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(176).jpg",
+    "notes": "Aparecem otoldy, otory, otoly/otaly em contexto farmacêutico."
+  },
+  {
+    "id": "f116v",
+    "label": "f116v — folha final com escrita marginal/michitonese",
+    "section": "final/marginalia",
+    "filename": "voynich_f116v.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Voynich_Manuscript_%28206%29.jpg",
+    "thumb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Voynich_Manuscript_%28206%29.jpg/240px-Voynich_Manuscript_%28206%29.jpg",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Voynich_Manuscript_(206).jpg",
+    "notes": "Fólio final, útil para comparar escrita Voynich com marginalia latina/michitonese."
+  }
+]

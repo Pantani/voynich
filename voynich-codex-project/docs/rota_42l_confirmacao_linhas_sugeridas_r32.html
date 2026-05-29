@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rota 42L - Confirmar linha sugerida</title>
+  <style>
+    :root {
+      --paper: #f6f0e7;
+      --panel: #fffaf2;
+      --line: #d6c8b8;
+      --ink: #211d19;
+      --muted: #6d645b;
+      --accent: #1f7668;
+      --warn: #8a3f32;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+    button, a.button-link { border: 1px solid #c8baaa; border-radius: 7px; background: #fffaf2; color: var(--ink); padding: 8px 11px; font-weight: 800; text-decoration: none; cursor: pointer; }
+    button:hover, a.button-link:hover { background: #f1e7d8; }
+    button.primary { background: #e8f4ef; border-color: #8bbdb6; color: #164f47; }
+    button.warn { background: #fbebe6; border-color: #d2aaa1; color: var(--warn); }
+    .app { min-height: 100vh; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #fbf6ed; }
+    h1, h2 { margin: 0; }
+    h1 { font-size: 20px; }
+    p { margin: 0; color: var(--muted); }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); background: #f7efe4; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: 310px minmax(0, 1fr) 360px; }
+    .queue { overflow: auto; border-right: 1px solid var(--line); background: #efe4d4; padding: 10px; }
+    .queue button { width: 100%; display: grid; gap: 4px; text-align: left; margin-bottom: 7px; }
+    .queue button.active { border-color: var(--accent); outline: 3px solid rgba(31, 118, 104, .2); }
+    .main { overflow: auto; padding: 14px; background: #e6ddd0; }
+    .target-card { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 14px; display: grid; gap: 12px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+    .meta { border: 1px solid #ded2c2; border-radius: 7px; padding: 8px; background: #fffdf8; }
+    .meta b { display: block; font-size: 12px; color: var(--muted); }
+    .choice-grid, .crop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .choice-card { display: grid; gap: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: #fffaf2; text-align: left; }
+    .choice-card.selected { border-color: var(--accent); outline: 3px solid rgba(31, 118, 104, .18); background: #eef6f2; }
+    .choice-card.suggested { border-color: #8bbdb6; }
+
+    .visual-crop-grid { display: grid; gap: 8px; }
+    .visual-crop-card { display: grid; gap: 6px; padding: 8px; border: 1px solid var(--line, #d7cabb); border-radius: 8px; background: #fffaf2; }
+    .visual-crop-card.is-target { border-color: rgba(31, 118, 104, 0.58); background: #eef6f2; }
+    .visual-crop-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--ink, #241f1a); font-size: 12px; font-weight: 900; line-height: 1.2; }
+    .visual-crop-note { color: var(--muted, #6f675f); font-size: 12px; line-height: 1.28; }
+    .visual-crop-canvas { display: block; width: 100%; min-height: 72px; height: auto; border: 1px solid rgba(55, 45, 35, 0.18); border-radius: 7px; background: #ece3d7; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-canvas { background: #f7e8e3; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-note::after { content: " Imagem nao carregou."; color: #8f3f33; font-weight: 800; }
+    .side { overflow: auto; border-left: 1px solid var(--line); background: var(--panel); padding: 14px; }
+    .plain-box { border: 1px solid var(--line); border-radius: 8px; background: #fff7ea; padding: 12px; margin-bottom: 12px; }
+    .plain-box h3 { margin: 0 0 8px; font-size: 15px; }
+    .warning { color: var(--warn); font-weight: 850; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    textarea { width: 100%; min-height: 180px; white-space: pre; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: #fffef9; }
+    ol { margin: 0; padding-left: 20px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div>
+      <h1>Rota 42L - Confirmar linha sugerida</h1>
+      <p>Use a sugestao da R42K como ponto de partida. Nao aplicar automaticamente.</p>
+    </div>
+    <nav class="nav" aria-label="Navegacao entre rotas">
+      <a class="button-link" href="rota_42g_ferramentas_ativas_r32.html">Ferramentas ativas</a>
+      <a class="button-link" href="rota_42k_fila_priorizada_revisao_visual_r32.html">Abrir R42K</a>
+      <a class="button-link" href="rota_42m_captura_fina_linhas_r32.html">Abrir R42M</a>
+      <a class="button-link" href="rota_42f_escolha_linhas_visuais_sem_zona_r32.html">Abrir R42F</a>
+      <a class="button-link" href="rota_42c_calibrador_linhas_baseline_r32.html">Abrir R42C</a>
+    </nav>
+  </header>
+  <nav class="toolbar" aria-label="Acoes">
+    <button type="button" id="prevItem">Anterior</button>
+    <button type="button" id="nextItem">Proximo</button>
+    <button type="button" class="primary" id="useSuggested">Usar linha sugerida</button>
+    <button type="button" class="warn" id="markUncertain">Marcar duvida</button>
+    <button type="button" id="generateCsv">Gerar CSV</button>
+    <button type="button" id="copyCsv">Copiar CSV</button>
+    <button type="button" id="downloadCsv">Baixar CSV</button>
+  </nav>
+  <main class="workspace">
+    <aside class="queue" id="queue" aria-label="Itens para confirmar"></aside>
+    <section class="main" aria-label="Confirmacao da linha">
+      <article class="target-card" id="targetCard"></article>
+    </section>
+    <aside class="side" aria-label="CSV e instrucoes">
+      <section class="plain-box">
+        <h3>Como usar</h3>
+        <p>Compare a linha sugerida com os fragmentos. Se estiver certa, clique em <b>Usar linha sugerida</b>. Se outra linha parecer melhor, clique nessa linha e gere o CSV.</p>
+      </section>
+      <section class="plain-box">
+        <h3>Resumo</h3>
+        <ol><li><strong>R42L-001</strong> f67r2.35,@Pb - sugerida linha 2</li><li><strong>R42L-002</strong> f67r2.73,+P0 - sugerida linha 2</li><li><strong>R42L-003</strong> f67v1.3,&amp;L0 - sugerida linha 1</li><li><strong>R42L-004</strong> f67v1.5,&amp;L0 - sugerida linha 1</li><li><strong>R42L-005</strong> f99r.2,@Lf - sugerida linha 4</li><li><strong>R42L-006</strong> f99r.8,@Lf - sugerida linha 4</li><li><strong>R42L-007</strong> f1r.21,=Pt - sugerida linha 2</li><li><strong>R42L-008</strong> f1r.24,+P0 - sugerida linha 2</li><li><strong>R42L-009</strong> f99v.12,+P0 - sugerida linha 11</li><li><strong>R42L-010</strong> f99v.13,+P0 - sugerida linha 11</li><li><strong>R42L-011</strong> f99v.21,@P0 - sugerida linha 11</li><li><strong>R42L-012</strong> f99v.24,+P0 - sugerida linha 11</li><li><strong>R42L-013</strong> f99v.33,+P0 - sugerida linha 11</li></ol>
+      </section>
+      <section class="plain-box">
+        <h3>CSV de confirmação</h3>
+        <p class="mono">/Users/pantani/Desktop/go/src/github.com/Pantani/voynich/voynich-codex-project/data/annotations/ready_visual_line_choice_confirmation_zl3b.csv</p>
+        <textarea id="csvDraft" readonly></textarea>
+      </section>
+      <section class="plain-box">
+        <h3>Guarda</h3>
+        <p class="mono">line_choice_confirmation_not_evidence_or_ocr</p>
+        <p class="warning">Nao usar como OCR nem como evidencia. Esta pagina so prepara confirmacao humana.</p>
+      </section>
+    </aside>
+  </main>
+</div>
+<script>
+const CONFIRM_ROWS = [{"route42l_id": "R42L-001", "route42k_id": "R42K-001", "route42f_id": "R42F-008", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.35,@Pb", "transcription_text": "chol.[g:d]iin.okol", "review_bucket": "revisar_primeiro", "review_priority_score": "71", "suggested_visual_line_number": "2", "suggested_zone_box_pct": "67.90,9.71,83.97,14.33", "candidate_visual_lines": "1|2|3", "candidate_visual_line_zones": "1=18.90,1.02,51.43,4.48|2=67.90,9.71,83.97,14.33|3=59.63,73.87,86.90,77.77", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "fragment_crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"], "candidate_options": [{"line_number": "1", "box_pct": "18.90,1.02,51.43,4.48", "is_suggested": false}, {"line_number": "2", "box_pct": "67.90,9.71,83.97,14.33", "is_suggested": true}, {"line_number": "3", "box_pct": "59.63,73.87,86.90,77.77", "is_suggested": false}]}, {"route42l_id": "R42L-002", "route42k_id": "R42K-002", "route42f_id": "R42F-009", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.73,+P0", "transcription_text": "sshey.sy,shees.qeykeey.ykchey.ykchey.qokeochy.oaiin.okol.ar.olar", "review_bucket": "revisar_primeiro", "review_priority_score": "71", "suggested_visual_line_number": "2", "suggested_zone_box_pct": "67.90,9.71,83.97,14.33", "candidate_visual_lines": "1|2|3", "candidate_visual_line_zones": "1=18.90,1.02,51.43,4.48|2=67.90,9.71,83.97,14.33|3=59.63,73.87,86.90,77.77", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "fragment_crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"], "candidate_options": [{"line_number": "1", "box_pct": "18.90,1.02,51.43,4.48", "is_suggested": false}, {"line_number": "2", "box_pct": "67.90,9.71,83.97,14.33", "is_suggested": true}, {"line_number": "3", "box_pct": "59.63,73.87,86.90,77.77", "is_suggested": false}]}, {"route42l_id": "R42L-003", "route42k_id": "R42K-003", "route42f_id": "R42F-010", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.3,&L0", "transcription_text": "okal.ary", "review_bucket": "revisar_primeiro", "review_priority_score": "70", "suggested_visual_line_number": "1", "suggested_zone_box_pct": "69.43,34.68,76.83,38.88", "candidate_visual_lines": "1", "candidate_visual_line_zones": "1=69.43,34.68,76.83,38.88", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "fragment_crop_boxes": ["68.92,35.22,71.17,38.90"], "candidate_options": [{"line_number": "1", "box_pct": "69.43,34.68,76.83,38.88", "is_suggested": true}]}, {"route42l_id": "R42L-004", "route42k_id": "R42K-004", "route42f_id": "R42F-011", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.5,&L0", "transcription_text": "okol.aldy", "review_bucket": "revisar_primeiro", "review_priority_score": "70", "suggested_visual_line_number": "1", "suggested_zone_box_pct": "69.43,34.68,76.83,38.88", "candidate_visual_lines": "1", "candidate_visual_line_zones": "1=69.43,34.68,76.83,38.88", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "fragment_crop_boxes": ["68.92,35.22,71.17,38.90"], "candidate_options": [{"line_number": "1", "box_pct": "69.43,34.68,76.83,38.88", "is_suggested": true}]}, {"route42l_id": "R42L-005", "route42k_id": "R42K-005", "route42f_id": "R42F-001", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.2,@Lf", "transcription_text": "okar,y", "review_bucket": "revisar_depois", "review_priority_score": "66", "suggested_visual_line_number": "4", "suggested_zone_box_pct": "51.70,81.43,65.37,84.69", "candidate_visual_lines": "1|2|3|4|5|6", "candidate_visual_line_zones": "1=3.63,1.72,63.63,5.22|2=42.83,7.27,48.90,10.29|3=52.63,19.23,61.50,22.30|4=51.70,81.43,65.37,84.69|5=28.63,88.08,35.10,91.06|6=1.37,94.88,30.17,98.95", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "fragment_crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"], "candidate_options": [{"line_number": "1", "box_pct": "3.63,1.72,63.63,5.22", "is_suggested": false}, {"line_number": "2", "box_pct": "42.83,7.27,48.90,10.29", "is_suggested": false}, {"line_number": "3", "box_pct": "52.63,19.23,61.50,22.30", "is_suggested": false}, {"line_number": "4", "box_pct": "51.70,81.43,65.37,84.69", "is_suggested": true}, {"line_number": "5", "box_pct": "28.63,88.08,35.10,91.06", "is_suggested": false}, {"line_number": "6", "box_pct": "1.37,94.88,30.17,98.95", "is_suggested": false}]}, {"route42l_id": "R42L-006", "route42k_id": "R42K-006", "route42f_id": "R42F-002", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.8,@Lf", "transcription_text": "okor", "review_bucket": "revisar_depois", "review_priority_score": "66", "suggested_visual_line_number": "4", "suggested_zone_box_pct": "51.70,81.43,65.37,84.69", "candidate_visual_lines": "1|2|3|4|5|6", "candidate_visual_line_zones": "1=3.63,1.72,63.63,5.22|2=42.83,7.27,48.90,10.29|3=52.63,19.23,61.50,22.30|4=51.70,81.43,65.37,84.69|5=28.63,88.08,35.10,91.06|6=1.37,94.88,30.17,98.95", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "fragment_crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"], "candidate_options": [{"line_number": "1", "box_pct": "3.63,1.72,63.63,5.22", "is_suggested": false}, {"line_number": "2", "box_pct": "42.83,7.27,48.90,10.29", "is_suggested": false}, {"line_number": "3", "box_pct": "52.63,19.23,61.50,22.30", "is_suggested": false}, {"line_number": "4", "box_pct": "51.70,81.43,65.37,84.69", "is_suggested": true}, {"line_number": "5", "box_pct": "28.63,88.08,35.10,91.06", "is_suggested": false}, {"line_number": "6", "box_pct": "1.37,94.88,30.17,98.95", "is_suggested": false}]}, {"route42l_id": "R42L-007", "route42k_id": "R42K-007", "route42f_id": "R42F-012", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.21,=Pt", "transcription_text": "otol.daiiin<$>", "review_bucket": "revisar_depois", "review_priority_score": "64", "suggested_visual_line_number": "2", "suggested_zone_box_pct": "25.70,5.01,32.83,8.20", "candidate_visual_lines": "1|2|3|4", "candidate_visual_line_zones": "1=38.10,1.75,52.03,4.52|2=25.70,5.01,32.83,8.20|3=17.30,26.85,25.30,31.09|4=15.83,91.01,25.30,94.78", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "fragment_crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"], "candidate_options": [{"line_number": "1", "box_pct": "38.10,1.75,52.03,4.52", "is_suggested": false}, {"line_number": "2", "box_pct": "25.70,5.01,32.83,8.20", "is_suggested": true}, {"line_number": "3", "box_pct": "17.30,26.85,25.30,31.09", "is_suggested": false}, {"line_number": "4", "box_pct": "15.83,91.01,25.30,94.78", "is_suggested": false}]}, {"route42l_id": "R42L-008", "route42k_id": "R42K-008", "route42f_id": "R42F-013", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.24,+P0", "transcription_text": "cho.?o.kaiin.shoaiin.okol.daiin.far.cthol.daiin.ctholdar", "review_bucket": "revisar_depois", "review_priority_score": "64", "suggested_visual_line_number": "2", "suggested_zone_box_pct": "25.70,5.01,32.83,8.20", "candidate_visual_lines": "1|2|3|4", "candidate_visual_line_zones": "1=38.10,1.75,52.03,4.52|2=25.70,5.01,32.83,8.20|3=17.30,26.85,25.30,31.09|4=15.83,91.01,25.30,94.78", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "fragment_crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"], "candidate_options": [{"line_number": "1", "box_pct": "38.10,1.75,52.03,4.52", "is_suggested": false}, {"line_number": "2", "box_pct": "25.70,5.01,32.83,8.20", "is_suggested": true}, {"line_number": "3", "box_pct": "17.30,26.85,25.30,31.09", "is_suggested": false}, {"line_number": "4", "box_pct": "15.83,91.01,25.30,94.78", "is_suggested": false}]}, {"route42l_id": "R42L-009", "route42k_id": "R42K-009", "route42f_id": "R42F-003", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.12,+P0", "transcription_text": "qokeo.qokeol.chockhy.otol.daiin.oty<->oto{ck}ey.da.chor,aiin", "review_bucket": "revisao_dificil", "review_priority_score": "50", "suggested_visual_line_number": "11", "suggested_zone_box_pct": "22.23,71.36,34.10,75.08", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "candidate_visual_line_zones": "1=14.77,8.45,21.77,11.91|2=13.37,11.33,22.83,14.69|3=12.50,14.57,23.17,18.68|4=14.97,18.91,22.43,22.17|5=15.37,22.85,22.43,25.91|6=15.37,25.03,23.17,29.14|7=15.23,33.82,23.17,36.98|8=15.37,51.05,24.37,54.61|9=15.23,62.27,24.90,66.28|10=17.70,65.25,23.83,68.20|11=22.23,71.36,34.10,75.08|12=17.37,74.09,48.37,79.07|13=46.83,82.12,56.23,85.33|14=16.83,89.10,28.03,92.71|15=79.23,95.57,95.23,99.38", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "fragment_crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"], "candidate_options": [{"line_number": "1", "box_pct": "14.77,8.45,21.77,11.91", "is_suggested": false}, {"line_number": "2", "box_pct": "13.37,11.33,22.83,14.69", "is_suggested": false}, {"line_number": "3", "box_pct": "12.50,14.57,23.17,18.68", "is_suggested": false}, {"line_number": "4", "box_pct": "14.97,18.91,22.43,22.17", "is_suggested": false}, {"line_number": "5", "box_pct": "15.37,22.85,22.43,25.91", "is_suggested": false}, {"line_number": "6", "box_pct": "15.37,25.03,23.17,29.14", "is_suggested": false}, {"line_number": "7", "box_pct": "15.23,33.82,23.17,36.98", "is_suggested": false}, {"line_number": "8", "box_pct": "15.37,51.05,24.37,54.61", "is_suggested": false}, {"line_number": "9", "box_pct": "15.23,62.27,24.90,66.28", "is_suggested": false}, {"line_number": "10", "box_pct": "17.70,65.25,23.83,68.20", "is_suggested": false}, {"line_number": "11", "box_pct": "22.23,71.36,34.10,75.08", "is_suggested": true}, {"line_number": "12", "box_pct": "17.37,74.09,48.37,79.07", "is_suggested": false}, {"line_number": "13", "box_pct": "46.83,82.12,56.23,85.33", "is_suggested": false}, {"line_number": "14", "box_pct": "16.83,89.10,28.03,92.71", "is_suggested": false}, {"line_number": "15", "box_pct": "79.23,95.57,95.23,99.38", "is_suggested": false}]}, {"route42l_id": "R42L-010", "route42k_id": "R42K-010", "route42f_id": "R42F-004", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.13,+P0", "transcription_text": "okoraiin.okol.shocthy<->qokor.oloiram<$>", "review_bucket": "revisao_dificil", "review_priority_score": "50", "suggested_visual_line_number": "11", "suggested_zone_box_pct": "22.23,71.36,34.10,75.08", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "candidate_visual_line_zones": "1=14.77,8.45,21.77,11.91|2=13.37,11.33,22.83,14.69|3=12.50,14.57,23.17,18.68|4=14.97,18.91,22.43,22.17|5=15.37,22.85,22.43,25.91|6=15.37,25.03,23.17,29.14|7=15.23,33.82,23.17,36.98|8=15.37,51.05,24.37,54.61|9=15.23,62.27,24.90,66.28|10=17.70,65.25,23.83,68.20|11=22.23,71.36,34.10,75.08|12=17.37,74.09,48.37,79.07|13=46.83,82.12,56.23,85.33|14=16.83,89.10,28.03,92.71|15=79.23,95.57,95.23,99.38", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "fragment_crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"], "candidate_options": [{"line_number": "1", "box_pct": "14.77,8.45,21.77,11.91", "is_suggested": false}, {"line_number": "2", "box_pct": "13.37,11.33,22.83,14.69", "is_suggested": false}, {"line_number": "3", "box_pct": "12.50,14.57,23.17,18.68", "is_suggested": false}, {"line_number": "4", "box_pct": "14.97,18.91,22.43,22.17", "is_suggested": false}, {"line_number": "5", "box_pct": "15.37,22.85,22.43,25.91", "is_suggested": false}, {"line_number": "6", "box_pct": "15.37,25.03,23.17,29.14", "is_suggested": false}, {"line_number": "7", "box_pct": "15.23,33.82,23.17,36.98", "is_suggested": false}, {"line_number": "8", "box_pct": "15.37,51.05,24.37,54.61", "is_suggested": false}, {"line_number": "9", "box_pct": "15.23,62.27,24.90,66.28", "is_suggested": false}, {"line_number": "10", "box_pct": "17.70,65.25,23.83,68.20", "is_suggested": false}, {"line_number": "11", "box_pct": "22.23,71.36,34.10,75.08", "is_suggested": true}, {"line_number": "12", "box_pct": "17.37,74.09,48.37,79.07", "is_suggested": false}, {"line_number": "13", "box_pct": "46.83,82.12,56.23,85.33", "is_suggested": false}, {"line_number": "14", "box_pct": "16.83,89.10,28.03,92.71", "is_suggested": false}, {"line_number": "15", "box_pct": "79.23,95.57,95.23,99.38", "is_suggested": false}]}, {"route42l_id": "R42L-011", "route42k_id": "R42K-011", "route42f_id": "R42F-005", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.21,@P0", "transcription_text": "doror.okeeody.opar.okor.eosaiin.otoraiin.shey.ols,aiiin.qoetal", "review_bucket": "revisao_dificil", "review_priority_score": "50", "suggested_visual_line_number": "11", "suggested_zone_box_pct": "22.23,71.36,34.10,75.08", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "candidate_visual_line_zones": "1=14.77,8.45,21.77,11.91|2=13.37,11.33,22.83,14.69|3=12.50,14.57,23.17,18.68|4=14.97,18.91,22.43,22.17|5=15.37,22.85,22.43,25.91|6=15.37,25.03,23.17,29.14|7=15.23,33.82,23.17,36.98|8=15.37,51.05,24.37,54.61|9=15.23,62.27,24.90,66.28|10=17.70,65.25,23.83,68.20|11=22.23,71.36,34.10,75.08|12=17.37,74.09,48.37,79.07|13=46.83,82.12,56.23,85.33|14=16.83,89.10,28.03,92.71|15=79.23,95.57,95.23,99.38", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "fragment_crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"], "candidate_options": [{"line_number": "1", "box_pct": "14.77,8.45,21.77,11.91", "is_suggested": false}, {"line_number": "2", "box_pct": "13.37,11.33,22.83,14.69", "is_suggested": false}, {"line_number": "3", "box_pct": "12.50,14.57,23.17,18.68", "is_suggested": false}, {"line_number": "4", "box_pct": "14.97,18.91,22.43,22.17", "is_suggested": false}, {"line_number": "5", "box_pct": "15.37,22.85,22.43,25.91", "is_suggested": false}, {"line_number": "6", "box_pct": "15.37,25.03,23.17,29.14", "is_suggested": false}, {"line_number": "7", "box_pct": "15.23,33.82,23.17,36.98", "is_suggested": false}, {"line_number": "8", "box_pct": "15.37,51.05,24.37,54.61", "is_suggested": false}, {"line_number": "9", "box_pct": "15.23,62.27,24.90,66.28", "is_suggested": false}, {"line_number": "10", "box_pct": "17.70,65.25,23.83,68.20", "is_suggested": false}, {"line_number": "11", "box_pct": "22.23,71.36,34.10,75.08", "is_suggested": true}, {"line_number": "12", "box_pct": "17.37,74.09,48.37,79.07", "is_suggested": false}, {"line_number": "13", "box_pct": "46.83,82.12,56.23,85.33", "is_suggested": false}, {"line_number": "14", "box_pct": "16.83,89.10,28.03,92.71", "is_suggested": false}, {"line_number": "15", "box_pct": "79.23,95.57,95.23,99.38", "is_suggested": false}]}, {"route42l_id": "R42L-012", "route42k_id": "R42K-012", "route42f_id": "R42F-006", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.24,+P0", "transcription_text": "shokeeey.cholshey.okol.qokey.okeodal,oldy<$>", "review_bucket": "revisao_dificil", "review_priority_score": "50", "suggested_visual_line_number": "11", "suggested_zone_box_pct": "22.23,71.36,34.10,75.08", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "candidate_visual_line_zones": "1=14.77,8.45,21.77,11.91|2=13.37,11.33,22.83,14.69|3=12.50,14.57,23.17,18.68|4=14.97,18.91,22.43,22.17|5=15.37,22.85,22.43,25.91|6=15.37,25.03,23.17,29.14|7=15.23,33.82,23.17,36.98|8=15.37,51.05,24.37,54.61|9=15.23,62.27,24.90,66.28|10=17.70,65.25,23.83,68.20|11=22.23,71.36,34.10,75.08|12=17.37,74.09,48.37,79.07|13=46.83,82.12,56.23,85.33|14=16.83,89.10,28.03,92.71|15=79.23,95.57,95.23,99.38", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "fragment_crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"], "candidate_options": [{"line_number": "1", "box_pct": "14.77,8.45,21.77,11.91", "is_suggested": false}, {"line_number": "2", "box_pct": "13.37,11.33,22.83,14.69", "is_suggested": false}, {"line_number": "3", "box_pct": "12.50,14.57,23.17,18.68", "is_suggested": false}, {"line_number": "4", "box_pct": "14.97,18.91,22.43,22.17", "is_suggested": false}, {"line_number": "5", "box_pct": "15.37,22.85,22.43,25.91", "is_suggested": false}, {"line_number": "6", "box_pct": "15.37,25.03,23.17,29.14", "is_suggested": false}, {"line_number": "7", "box_pct": "15.23,33.82,23.17,36.98", "is_suggested": false}, {"line_number": "8", "box_pct": "15.37,51.05,24.37,54.61", "is_suggested": false}, {"line_number": "9", "box_pct": "15.23,62.27,24.90,66.28", "is_suggested": false}, {"line_number": "10", "box_pct": "17.70,65.25,23.83,68.20", "is_suggested": false}, {"line_number": "11", "box_pct": "22.23,71.36,34.10,75.08", "is_suggested": true}, {"line_number": "12", "box_pct": "17.37,74.09,48.37,79.07", "is_suggested": false}, {"line_number": "13", "box_pct": "46.83,82.12,56.23,85.33", "is_suggested": false}, {"line_number": "14", "box_pct": "16.83,89.10,28.03,92.71", "is_suggested": false}, {"line_number": "15", "box_pct": "79.23,95.57,95.23,99.38", "is_suggested": false}]}, {"route42l_id": "R42L-013", "route42k_id": "R42K-013", "route42f_id": "R42F-007", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.33,+P0", "transcription_text": "dol.okeeol.okeor.okal.okaiin.ckheol.okolaiin.okolaiin.cheoldy", "review_bucket": "revisao_dificil", "review_priority_score": "50", "suggested_visual_line_number": "11", "suggested_zone_box_pct": "22.23,71.36,34.10,75.08", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "candidate_visual_line_zones": "1=14.77,8.45,21.77,11.91|2=13.37,11.33,22.83,14.69|3=12.50,14.57,23.17,18.68|4=14.97,18.91,22.43,22.17|5=15.37,22.85,22.43,25.91|6=15.37,25.03,23.17,29.14|7=15.23,33.82,23.17,36.98|8=15.37,51.05,24.37,54.61|9=15.23,62.27,24.90,66.28|10=17.70,65.25,23.83,68.20|11=22.23,71.36,34.10,75.08|12=17.37,74.09,48.37,79.07|13=46.83,82.12,56.23,85.33|14=16.83,89.10,28.03,92.71|15=79.23,95.57,95.23,99.38", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "selected_visual_line_number": "", "selected_zone_box_pct": "", "confirmation_status": "pending_human_confirmation", "manual_notes": "", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "fragment_crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"], "candidate_options": [{"line_number": "1", "box_pct": "14.77,8.45,21.77,11.91", "is_suggested": false}, {"line_number": "2", "box_pct": "13.37,11.33,22.83,14.69", "is_suggested": false}, {"line_number": "3", "box_pct": "12.50,14.57,23.17,18.68", "is_suggested": false}, {"line_number": "4", "box_pct": "14.97,18.91,22.43,22.17", "is_suggested": false}, {"line_number": "5", "box_pct": "15.37,22.85,22.43,25.91", "is_suggested": false}, {"line_number": "6", "box_pct": "15.37,25.03,23.17,29.14", "is_suggested": false}, {"line_number": "7", "box_pct": "15.23,33.82,23.17,36.98", "is_suggested": false}, {"line_number": "8", "box_pct": "15.37,51.05,24.37,54.61", "is_suggested": false}, {"line_number": "9", "box_pct": "15.23,62.27,24.90,66.28", "is_suggested": false}, {"line_number": "10", "box_pct": "17.70,65.25,23.83,68.20", "is_suggested": false}, {"line_number": "11", "box_pct": "22.23,71.36,34.10,75.08", "is_suggested": true}, {"line_number": "12", "box_pct": "17.37,74.09,48.37,79.07", "is_suggested": false}, {"line_number": "13", "box_pct": "46.83,82.12,56.23,85.33", "is_suggested": false}, {"line_number": "14", "box_pct": "16.83,89.10,28.03,92.71", "is_suggested": false}, {"line_number": "15", "box_pct": "79.23,95.57,95.23,99.38", "is_suggested": false}]}];
+let currentIndex = 0;
+const draftById = new Map();
+
+const cropImageCache = new Map();
+
+function parseCropBox(value) {
+  const parts = String(value || "").split(",").map(Number);
+  if (parts.length !== 4 || parts.some((part) => !Number.isFinite(part))) return null;
+  const [x1, y1, x2, y2] = parts;
+  if (x2 <= x1 || y2 <= y1) return null;
+  return [Math.max(0, x1), Math.max(0, y1), Math.min(100, x2), Math.min(100, y2)];
+}
+
+function cropBoxFromPoints(pointsText, verticalPad = 3.6, horizontalPad = 2.0) {
+  const points = parsePoints(pointsText || "");
+  if (!points || points.length < 2) return "";
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const centerY = ys.reduce((total, y) => total + y, 0) / ys.length;
+  const x1 = Math.max(0, Math.min(...xs) - horizontalPad);
+  const x2 = Math.min(100, Math.max(...xs) + horizontalPad);
+  const y1 = Math.max(0, centerY - verticalPad);
+  const y2 = Math.min(100, centerY + verticalPad);
+  if (x2 <= x1 || y2 <= y1) return "";
+  return `${x1.toFixed(2)},${y1.toFixed(2)},${x2.toFixed(2)},${y2.toFixed(2)}`;
+}
+
+function loadCropImage(src) {
+  if (!src) return Promise.reject(new Error("sem imagem"));
+  if (cropImageCache.has(src)) return cropImageCache.get(src);
+  const promise = new Promise((resolve, reject) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`falha ao carregar ${src}`));
+    image.src = src;
+  });
+  cropImageCache.set(src, promise);
+  return promise;
+}
+
+async function paintCropCanvas(canvas) {
+  const box = parseCropBox(canvas.dataset.boxPct);
+  const src = canvas.dataset.imageSrc;
+  const card = canvas.closest(".visual-crop-card");
+  if (!box || !src) {
+    if (card) card.dataset.cropStatus = "erro";
+    return;
+  }
+  try {
+    const image = await loadCropImage(src);
+    const [x1, y1, x2, y2] = box;
+    const sx = Math.max(0, Math.floor((x1 / 100) * image.naturalWidth));
+    const sy = Math.max(0, Math.floor((y1 / 100) * image.naturalHeight));
+    const sw = Math.max(1, Math.ceil(((x2 - x1) / 100) * image.naturalWidth));
+    const sh = Math.max(1, Math.ceil(((y2 - y1) / 100) * image.naturalHeight));
+    const targetWidth = Math.max(360, Math.min(1100, sw));
+    const targetHeight = Math.max(58, Math.round(targetWidth * (sh / sw)));
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    canvas.style.aspectRatio = `${targetWidth} / ${targetHeight}`;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(image, sx, sy, sw, sh, 0, 0, targetWidth, targetHeight);
+    ctx.strokeStyle = "rgba(31, 118, 104, 0.88)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, targetWidth - 2, targetHeight - 2);
+    ctx.strokeStyle = "rgba(231, 182, 87, 0.72)";
+    ctx.setLineDash([8, 6]);
+    ctx.beginPath();
+    ctx.moveTo(0, targetHeight / 2);
+    ctx.lineTo(targetWidth, targetHeight / 2);
+    ctx.stroke();
+    if (card) card.dataset.cropStatus = "ok";
+  } catch (_error) {
+    if (card) card.dataset.cropStatus = "erro";
+  }
+}
+
+function paintCropPreviews(root = document) {
+  for (const canvas of root.querySelectorAll("canvas[data-crop-preview]")) {
+    paintCropCanvas(canvas);
+  }
+}
+
+const CSV_FIELDS = ["route42l_id", "route42k_id", "route42f_id", "route42b_id", "route32_id", "folio", "target_locus", "transcription_text", "review_bucket", "review_priority_score", "suggested_visual_line_number", "suggested_zone_box_pct", "candidate_visual_lines", "candidate_visual_line_zones", "top_fragment_crop_boxes", "selected_visual_line_number", "selected_zone_box_pct", "confirmation_status", "manual_notes", "local_image_path", "semantic_guardrail"];
+
+function activeRow() {
+  return CONFIRM_ROWS[currentIndex] || null;
+}
+
+function csvEscape(value) {
+  const text = String(value ?? "");
+  if (/[",\n]/.test(text)) return `"${text.replaceAll('"', '""')}"`;
+  return text;
+}
+
+function rowDraft(row) {
+  return draftById.get(row.route42l_id) || row;
+}
+
+function setDecision(row, lineNumber, boxPct, status) {
+  draftById.set(row.route42l_id, {
+    ...rowDraft(row),
+    selected_visual_line_number: lineNumber || "",
+    selected_zone_box_pct: boxPct || "",
+    confirmation_status: status,
+  });
+  renderAll();
+}
+
+function renderQueue() {
+  const queue = document.getElementById("queue");
+  queue.innerHTML = "";
+  CONFIRM_ROWS.forEach((row, index) => {
+    const draft = rowDraft(row);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = index === currentIndex ? "active" : "";
+    button.innerHTML = `
+      <strong>${row.route42l_id} / ${row.target_locus}</strong>
+      <small>sugerida linha ${row.suggested_visual_line_number} / ${draft.confirmation_status}</small>
+    `;
+    button.addEventListener("click", () => {
+      currentIndex = index;
+      renderAll();
+    });
+    queue.appendChild(button);
+  });
+  if (!CONFIRM_ROWS.length) queue.innerHTML = "<p>Nenhum item para confirmar.</p>";
+}
+
+function cropCanvas(label, box, row, className = "") {
+  if (!box) return "";
+  return `
+    <article class="visual-crop-card ${className}">
+      <span class="visual-crop-label">${label}</span>
+      <canvas class="visual-crop-canvas" data-crop-preview data-image-src="${row.image_src}" data-box-pct="${box}" aria-label="${label}"></canvas>
+      <span class="visual-crop-note">${box}</span>
+    </article>
+  `;
+}
+
+function renderCandidateOptions(row, draft) {
+  if (!row.candidate_options.length) return '<p class="warning">Sem opcoes de linha.</p>';
+  return row.candidate_options.map((option) => {
+    const selected = draft.selected_visual_line_number === option.line_number;
+    const classes = ["choice-card"];
+    if (selected) classes.push("selected");
+    if (option.is_suggested) classes.push("suggested");
+    return `
+      <button type="button" class="${classes.join(" ")}" data-line="${option.line_number}" data-box="${option.box_pct}">
+        <strong>linha visual ${option.line_number}${option.is_suggested ? " - sugerida" : ""}</strong>
+        ${cropCanvas("recorte da linha " + option.line_number, option.box_pct, row)}
+      </button>
+    `;
+  }).join("");
+}
+
+function renderTarget() {
+  const card = document.getElementById("targetCard");
+  const row = activeRow();
+  if (!row) {
+    card.innerHTML = '<p class="warning">Nenhum item para confirmar.</p>';
+    return;
+  }
+  const draft = rowDraft(row);
+  const fragmentCards = row.fragment_crop_boxes.map((box, index) =>
+    cropCanvas("fragmento R42J " + (index + 1), box, row, "is-target")
+  ).join("") || '<p class="warning">Sem fragmentos R42J para este item.</p>';
+  card.innerHTML = `
+    <div>
+      <h2>${row.route42l_id} / ${row.target_locus}</h2>
+      <p>${row.route42f_id} / ${row.review_bucket} / score ${row.review_priority_score}</p>
+    </div>
+    <div class="meta-grid">
+      <div class="meta"><b>linha sugerida</b>${row.suggested_visual_line_number || "sem sugestao"}</div>
+      <div class="meta"><b>status</b>${draft.confirmation_status}</div>
+      <div class="meta"><b>linha selecionada</b>${draft.selected_visual_line_number || "nenhuma"}</div>
+      <div class="meta"><b>folio</b>${row.folio}</div>
+    </div>
+    <div class="meta"><b>texto tecnico de referencia</b><span class="mono">${row.transcription_text}</span></div>
+    <h3>Fragmentos da R42J</h3>
+    <div class="crop-grid">${fragmentCards}</div>
+    <h3>Escolha uma linha candidata</h3>
+    <div class="choice-grid" id="choiceGrid">${renderCandidateOptions(row, draft)}</div>
+  `;
+  for (const button of card.querySelectorAll(".choice-card")) {
+    button.addEventListener("click", () => {
+      setDecision(row, button.dataset.line || "", button.dataset.box || "", "line_selected_pending_apply");
+    });
+  }
+  paintCropPreviews(card);
+}
+
+function generateCsv() {
+  const lines = [CSV_FIELDS.join(",")];
+  for (const row of CONFIRM_ROWS) {
+    const draft = rowDraft(row);
+    lines.push(CSV_FIELDS.map((field) => csvEscape(draft[field] ?? "")).join(","));
+  }
+  document.getElementById("csvDraft").value = lines.join("\n");
+}
+
+function renderAll() {
+  renderQueue();
+  renderTarget();
+  generateCsv();
+}
+
+document.getElementById("prevItem").addEventListener("click", () => {
+  currentIndex = Math.max(0, currentIndex - 1);
+  renderAll();
+});
+document.getElementById("nextItem").addEventListener("click", () => {
+  currentIndex = Math.min(CONFIRM_ROWS.length - 1, currentIndex + 1);
+  renderAll();
+});
+document.getElementById("useSuggested").addEventListener("click", () => {
+  const row = activeRow();
+  if (row) setDecision(row, row.suggested_visual_line_number, row.suggested_zone_box_pct, "line_selected_pending_apply");
+});
+document.getElementById("markUncertain").addEventListener("click", () => {
+  const row = activeRow();
+  if (row) setDecision(row, "", "", "uncertain_needs_manual_review");
+});
+document.getElementById("generateCsv").addEventListener("click", generateCsv);
+document.getElementById("copyCsv").addEventListener("click", async () => {
+  generateCsv();
+  await navigator.clipboard.writeText(document.getElementById("csvDraft").value);
+});
+document.getElementById("downloadCsv").addEventListener("click", () => {
+  generateCsv();
+  const blob = new Blob([document.getElementById("csvDraft").value], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "ready_visual_line_choice_confirmation_zl3b.csv";
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+renderAll();
+</script>
+</body>
+</html>

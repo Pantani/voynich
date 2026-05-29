@@ -1,0 +1,8 @@
+metric,item,n
+zone_status,pending_zone_choice,13
+folio,f99v,5
+folio,f1r,2
+folio,f67r2,2
+folio,f67v1,2
+folio,f99r,2
+semantic_guardrail,line_zone_choice_not_visual_evidence,13

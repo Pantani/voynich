@@ -1,0 +1,14 @@
+metric,item,n
+fine_capture_items,items,13
+fine_capture_status,fine_capture_ready_needs_human_confirmation,13
+confidence_band,media,11
+confidence_band,baixa,2
+review_bucket,revisao_dificil,5
+review_bucket,revisar_depois,4
+review_bucket,revisar_primeiro,4
+folio,f99v,5
+folio,f1r,2
+folio,f67r2,2
+folio,f67v1,2
+folio,f99r,2
+semantic_guardrail,fine_line_capture_not_ocr_or_evidence,13

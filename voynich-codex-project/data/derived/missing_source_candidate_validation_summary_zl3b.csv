@@ -1,0 +1,8 @@
+metric,item,n
+source_validation_status,pending_blank_source_candidate,18
+apply_status,skipped_blank_source_candidate,18
+candidate_source_valid,no,18
+priority_level,P1,18
+locus_kind,P,17
+locus_kind,C,1
+manifest_action,no_manifest_change,18

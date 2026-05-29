@@ -1,0 +1,103 @@
+dimension,axis,value,total,a,o,a_share,o_share,r,l,r_share,l_share,chi_square_for_dimension_axis,degrees_of_freedom,cramers_v
+locus_kind,ao,C,594,392,202,0.6599,0.3401,,,,,149.948978,3,0.133624
+locus_kind,ao,L,251,163,88,0.6494,0.3506,,,,,149.948978,3,0.133624
+locus_kind,ao,P,7489,3339,4150,0.4459,0.5541,,,,,149.948978,3,0.133624
+locus_kind,ao,R,64,45,19,0.7031,0.2969,,,,,149.948978,3,0.133624
+locus_kind,rl,C,594,,,,,307,287,0.5168,0.4832,12.453123,3,0.038508
+locus_kind,rl,L,251,,,,,132,119,0.5259,0.4741,12.453123,3,0.038508
+locus_kind,rl,P,7489,,,,,3416,4073,0.4561,0.5439,12.453123,3,0.038508
+locus_kind,rl,R,64,,,,,31,33,0.4844,0.5156,12.453123,3,0.038508
+prefix,ao,(blank),1639,687,952,0.4192,0.5808,,,,,570.909352,12,0.260733
+prefix,ao,ch,1625,557,1068,0.3428,0.6572,,,,,570.909352,12,0.260733
+prefix,ao,d,974,641,333,0.6581,0.3419,,,,,570.909352,12,0.260733
+prefix,ao,o,453,243,210,0.5364,0.4636,,,,,570.909352,12,0.260733
+prefix,ao,od,56,44,12,0.7857,0.2143,,,,,570.909352,12,0.260733
+prefix,ao,ok,677,396,281,0.5849,0.4151,,,,,570.909352,12,0.260733
+prefix,ao,ot,668,405,263,0.6063,0.3937,,,,,570.909352,12,0.260733
+prefix,ao,qo,598,218,380,0.3645,0.6355,,,,,570.909352,12,0.260733
+prefix,ao,qok,648,394,254,0.6080,0.3920,,,,,570.909352,12,0.260733
+prefix,ao,sh,688,188,500,0.2733,0.7267,,,,,570.909352,12,0.260733
+prefix,ao,y,125,42,83,0.3360,0.6640,,,,,570.909352,12,0.260733
+prefix,ao,yk,135,65,70,0.4815,0.5185,,,,,570.909352,12,0.260733
+prefix,ao,yt,112,59,53,0.5268,0.4732,,,,,570.909352,12,0.260733
+prefix,rl,(blank),1639,,,,,808,831,0.4930,0.5070,116.681667,12,0.117873
+prefix,rl,ch,1625,,,,,722,903,0.4443,0.5557,116.681667,12,0.117873
+prefix,rl,d,974,,,,,495,479,0.5082,0.4918,116.681667,12,0.117873
+prefix,rl,o,453,,,,,258,195,0.5695,0.4305,116.681667,12,0.117873
+prefix,rl,od,56,,,,,33,23,0.5893,0.4107,116.681667,12,0.117873
+prefix,rl,ok,677,,,,,285,392,0.4210,0.5790,116.681667,12,0.117873
+prefix,rl,ot,668,,,,,313,355,0.4686,0.5314,116.681667,12,0.117873
+prefix,rl,qo,598,,,,,228,370,0.3813,0.6187,116.681667,12,0.117873
+prefix,rl,qok,648,,,,,260,388,0.4012,0.5988,116.681667,12,0.117873
+prefix,rl,sh,688,,,,,263,425,0.3823,0.6177,116.681667,12,0.117873
+prefix,rl,y,125,,,,,75,50,0.6000,0.4000,116.681667,12,0.117873
+prefix,rl,yk,135,,,,,75,60,0.5556,0.4444,116.681667,12,0.117873
+prefix,rl,yt,112,,,,,71,41,0.6339,0.3661,116.681667,12,0.117873
+line_position,ao,end,583,358,225,0.6141,0.3859,,,,,154.326391,3,0.135560
+line_position,ao,middle,6820,3221,3599,0.4723,0.5277,,,,,154.326391,3,0.135560
+line_position,ao,single,183,113,70,0.6175,0.3825,,,,,154.326391,3,0.135560
+line_position,ao,start,812,247,565,0.3042,0.6958,,,,,154.326391,3,0.135560
+line_position,rl,end,583,,,,,249,334,0.4271,0.5729,33.877543,3,0.063514
+line_position,rl,middle,6820,,,,,3098,3722,0.4543,0.5457,33.877543,3,0.063514
+line_position,rl,single,183,,,,,87,96,0.4754,0.5246,33.877543,3,0.063514
+line_position,rl,start,812,,,,,452,360,0.5567,0.4433,33.877543,3,0.063514
+visual_zone,ao,circular text,23,16,7,0.6957,0.3043,,,,,0.337752,3,0.077661
+visual_zone,ao,label,19,12,7,0.6316,0.3684,,,,,0.337752,3,0.077661
+visual_zone,ao,paragraph text,10,7,3,0.7000,0.3000,,,,,0.337752,3,0.077661
+visual_zone,ao,radial text,4,3,1,0.7500,0.2500,,,,,0.337752,3,0.077661
+visual_zone,rl,circular text,23,,,,,11,12,0.4783,0.5217,2.531226,3,0.212604
+visual_zone,rl,label,19,,,,,13,6,0.6842,0.3158,2.531226,3,0.212604
+visual_zone,rl,paragraph text,10,,,,,5,5,0.5000,0.5000,2.531226,3,0.212604
+visual_zone,rl,radial text,4,,,,,3,1,0.7500,0.2500,2.531226,3,0.212604
+object_nearby,ao,central face medallion and dense star groups,5,2,3,0.4000,0.6000,,,,,22.270494,13,0.630625
+object_nearby,ao,central face with red/blue rays and surrounding stars,11,8,3,0.7273,0.2727,,,,,22.270494,13,0.630625
+object_nearby,ao,green pool with nymph figures and dense text,10,7,3,0.7000,0.3000,,,,,22.270494,13,0.630625
+object_nearby,ao,plant/root drawings and container-like forms,2,1,1,0.5000,0.5000,,,,,22.270494,13,0.630625
+object_nearby,ao,plant/root drawings and vessels,2,1,1,0.5000,0.5000,,,,,22.270494,13,0.630625
+object_nearby,ao,pool/tube-like structures and dense paragraph text,1,0,1,0.0000,1.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,small circular nodes and painted blue/green/red diagram areas,2,2,0,1.0000,0.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,small moon/planet disks and lower text band,1,1,0,1.0000,0.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,small moon/planet disks and red outer writing,1,1,0,1.0000,0.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,small moon/planet disks and sector dividers,2,2,0,1.0000,0.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,star field and small face medallions,1,0,1,0.0000,1.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,stars and small moon/sun faces,4,0,4,0.0000,1.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,zodiac nymph figure with star,6,6,0,1.0000,0.0000,,,,,22.270494,13,0.630625
+object_nearby,ao,zodiac nymph figures and stars,8,7,1,0.8750,0.1250,,,,,22.270494,13,0.630625
+object_nearby,rl,central face medallion and dense star groups,5,,,,,1,4,0.2000,0.8000,10.353283,13,0.429977
+object_nearby,rl,central face with red/blue rays and surrounding stars,11,,,,,7,4,0.6364,0.3636,10.353283,13,0.429977
+object_nearby,rl,green pool with nymph figures and dense text,10,,,,,5,5,0.5000,0.5000,10.353283,13,0.429977
+object_nearby,rl,plant/root drawings and container-like forms,2,,,,,1,1,0.5000,0.5000,10.353283,13,0.429977
+object_nearby,rl,plant/root drawings and vessels,2,,,,,2,0,1.0000,0.0000,10.353283,13,0.429977
+object_nearby,rl,pool/tube-like structures and dense paragraph text,1,,,,,1,0,1.0000,0.0000,10.353283,13,0.429977
+object_nearby,rl,small circular nodes and painted blue/green/red diagram areas,2,,,,,2,0,1.0000,0.0000,10.353283,13,0.429977
+object_nearby,rl,small moon/planet disks and lower text band,1,,,,,1,0,1.0000,0.0000,10.353283,13,0.429977
+object_nearby,rl,small moon/planet disks and red outer writing,1,,,,,1,0,1.0000,0.0000,10.353283,13,0.429977
+object_nearby,rl,small moon/planet disks and sector dividers,2,,,,,1,1,0.5000,0.5000,10.353283,13,0.429977
+object_nearby,rl,star field and small face medallions,1,,,,,0,1,0.0000,1.0000,10.353283,13,0.429977
+object_nearby,rl,stars and small moon/sun faces,4,,,,,2,2,0.5000,0.5000,10.353283,13,0.429977
+object_nearby,rl,zodiac nymph figure with star,6,,,,,4,2,0.6667,0.3333,10.353283,13,0.429977
+object_nearby,rl,zodiac nymph figures and stars,8,,,,,4,4,0.5000,0.5000,10.353283,13,0.429977
+annotation_confidence,ao,low,14,6,8,0.4286,0.5714,,,,,5.348928,1,0.309058
+annotation_confidence,ao,medium,42,32,10,0.7619,0.2381,,,,,5.348928,1,0.309058
+annotation_confidence,rl,low,14,,,,,9,5,0.6429,0.3571,0.388889,1,0.083333
+annotation_confidence,rl,medium,42,,,,,23,19,0.5476,0.4524,0.388889,1,0.083333
+folio,ao,f67r1,11,8,3,0.7273,0.2727,,,,,19.982562,9,0.597354
+folio,ao,f67r2,4,4,0,1.0000,0.0000,,,,,19.982562,9,0.597354
+folio,ao,f67v2,2,2,0,1.0000,0.0000,,,,,19.982562,9,0.597354
+folio,ao,f68r1,2,0,2,0.0000,1.0000,,,,,19.982562,9,0.597354
+folio,ao,f68r2,3,0,3,0.0000,1.0000,,,,,19.982562,9,0.597354
+folio,ao,f68r3,5,2,3,0.4000,0.6000,,,,,19.982562,9,0.597354
+folio,ao,f70v2,14,13,1,0.9286,0.0714,,,,,19.982562,9,0.597354
+folio,ao,f84r,11,7,4,0.6364,0.3636,,,,,19.982562,9,0.597354
+folio,ao,f88v,2,1,1,0.5000,0.5000,,,,,19.982562,9,0.597354
+folio,ao,f99v,2,1,1,0.5000,0.5000,,,,,19.982562,9,0.597354
+folio,rl,f67r1,11,,,,,7,4,0.6364,0.3636,7.334975,9,0.361914
+folio,rl,f67r2,4,,,,,3,1,0.7500,0.2500,7.334975,9,0.361914
+folio,rl,f67v2,2,,,,,2,0,1.0000,0.0000,7.334975,9,0.361914
+folio,rl,f68r1,2,,,,,1,1,0.5000,0.5000,7.334975,9,0.361914
+folio,rl,f68r2,3,,,,,1,2,0.3333,0.6667,7.334975,9,0.361914
+folio,rl,f68r3,5,,,,,1,4,0.2000,0.8000,7.334975,9,0.361914
+folio,rl,f70v2,14,,,,,8,6,0.5714,0.4286,7.334975,9,0.361914
+folio,rl,f84r,11,,,,,6,5,0.5455,0.4545,7.334975,9,0.361914
+folio,rl,f88v,2,,,,,2,0,1.0000,0.0000,7.334975,9,0.361914
+folio,rl,f99v,2,,,,,1,1,0.5000,0.5000,7.334975,9,0.361914

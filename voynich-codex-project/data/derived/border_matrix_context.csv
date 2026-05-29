@@ -1,0 +1,31 @@
+source,folio,locus,locus_kind,locus_code,visual_context,note,token,target_status,prefix,suffix,line_position,token_index,line_token_count,previous_token,next_token,line_tokens
+f67r2_excerpt.eva,f67r2,f67r2.Y.4,rubrica,Y,red/rubrical layer: 4,Outer red ring / sector titles,okar,exact,ok,ar,end,3,3,shr,,soy shr okar
+f67r2_excerpt.eva,f67r2,f67r2.Y.5,rubrica,Y,red/rubrical layer: 5,Outer red ring / sector titles,ykor,broad,yk,or,end,2,2,shekchy,,shekchy ykor
+f67r2_excerpt.eva,f67r2,f67r2.Y.9,rubrica,Y,red/rubrical layer: 9,Outer red ring / sector titles,chkchdar,broad,ch,ar,single,1,1,,,chkchdar
+f67r2_excerpt.eva,f67r2,f67r2.Y.10,rubrica,Y,red/rubrical layer: 10,Outer red ring / sector titles,ykar,broad,yk,ar,start,1,2,,ykaly,ykar ykaly
+f67r2_excerpt.eva,f67r2,f67r2.Y.11,rubrica,Y,red/rubrical layer: 11,Outer red ring / sector titles,okar,exact,ok,ar,end,2,2,lkshykchy,,lkshykchy okar
+f67r2_excerpt.eva,f67r2,f67r2.L.top.2,L,L,label: top.2,Seven labels above moons,okal,exact,ok,al,single,1,1,,,okal
+f67r2_excerpt.eva,f67r2,f67r2.L.top.4,L,L,label: top.4,Seven labels above moons,opchol,broad,o,ol,start,1,2,,dy,opchol dy
+f67r2_excerpt.eva,f67r2,f67r2.L.top.5,L,L,label: top.5,Seven labels above moons,ofar,broad,o,ar,start,1,2,,oeoldain,ofar oeoldain
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.1,L,L,label: bottom.1,Twelve labels below moons,okadar,broad,ok,ar,single,1,1,,,okadar
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.2,L,L,label: bottom.2,Twelve labels below moons,qotoear,broad,qo,ar,single,1,1,,,qotoear
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.3,L,L,label: bottom.3,Twelve labels below moons,dchodar,broad,d,ar,single,1,1,,,dchodar
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.4,L,L,label: bottom.4,Twelve labels below moons,ysaldal,broad,y,al,single,1,1,,,ysaldal
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.5,L,L,label: bottom.5,Twelve labels below moons,ytodal,broad,yt,al,single,1,1,,,ytodal
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.11,L,L,label: bottom.11,Twelve labels below moons,ytokar,broad,yt,ar,single,1,1,,,ytokar
+f67r2_excerpt.eva,f67r2,f67r2.L.bottom.12,L,L,label: bottom.12,Twelve labels below moons,otolor,broad,ot,or,single,1,1,,,otolor
+f67r2_excerpt.eva,f67r2,f67r2.P.red,P,P,paragraph/text line: red,Red middle line in lower paragraph,okal,exact,ok,al,middle,8,10,oaiin,ar,sshey syshees qeykeey ykchey ykchey qokeochy oaiin okal ar ol
+f67r2_excerpt.eva,f67r2,f67r2.P.red,P,P,paragraph/text line: red,Red middle line in lower paragraph,ar,standalone,,ar,middle,9,10,okal,ol,sshey syshees qeykeey ykchey ykchey qokeochy oaiin okal ar ol
+f67r2_excerpt.eva,f67r2,f67r2.P.red,P,P,paragraph/text line: red,Red middle line in lower paragraph,ol,standalone,,ol,end,10,10,ar,,sshey syshees qeykeey ykchey ykchey qokeochy oaiin okal ar ol
+f68r3_excerpt.eva,f68r3,f68r3.R.09_05,R,R,radial text: 09_05,Radial lines,otchal,broad,ot,al,end,5,5,daiin,,dchey qokeey dcheey daiin otchal
+f68r3_excerpt.eva,f68r3,f68r3.R.10_35,R,R,radial text: 10_35,Radial lines,qokol,exact,qok,ol,middle,3,5,ykeoshe,chey,toees ykeoshe qokol chey qokchdy
+f68r3_excerpt.eva,f68r3,f68r3.R.00_05,R,R,radial text: 00_05,Radial lines,dol,broad,d,ol,middle,4,5,qokchdy,okald,tochedy chocphy qokchdy dol okald
+f68r3_excerpt.eva,f68r3,f68r3.R.03_05,R,R,radial text: 03_05,Radial lines,qokol,exact,qok,ol,start,1,5,,chdchol,qokol chdchol qoteey chkhchy okchdy
+f68r3_excerpt.eva,f68r3,f68r3.R.03_05,R,R,radial text: 03_05,Radial lines,chdchol,broad,ch,ol,middle,2,5,qokol,qoteey,qokol chdchol qoteey chkhchy okchdy
+f68r3_excerpt.eva,f68r3,f68r3.X.tail,L,X,star/object label: tail,Star labels,oalcheol,broad,o,ol,single,1,1,,,oalcheol
+f68r3_excerpt.eva,f68r3,f68r3.X.outer_10,L,X,star/object label: outer_10,Star labels,dchol,broad,d,ol,start,1,2,,dal,dchol dal
+f68r3_excerpt.eva,f68r3,f68r3.X.outer_10,L,X,star/object label: outer_10,Star labels,dal,exact,d,al,end,2,2,dchol,,dchol dal
+f68r3_excerpt.eva,f68r3,f68r3.C.inner,C,C,circular text: inner,Inner ring around moon,okol,exact,ok,ol,middle,3,10,chokchy,cheol,otchody chokchy okol cheol dar cho keol dolaiin okeol oly
+f68r3_excerpt.eva,f68r3,f68r3.C.inner,C,C,circular text: inner,Inner ring around moon,cheol,broad,ch,ol,middle,4,10,okol,dar,otchody chokchy okol cheol dar cho keol dolaiin okeol oly
+f68r3_excerpt.eva,f68r3,f68r3.C.inner,C,C,circular text: inner,Inner ring around moon,dar,exact,d,ar,middle,5,10,cheol,cho,otchody chokchy okol cheol dar cho keol dolaiin okeol oly
+f68r3_excerpt.eva,f68r3,f68r3.C.inner,C,C,circular text: inner,Inner ring around moon,okeol,broad,ok,ol,middle,9,10,dolaiin,oly,otchody chokchy okol cheol dar cho keol dolaiin okeol oly

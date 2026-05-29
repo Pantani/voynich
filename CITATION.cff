@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+title: "Voynich Codex Project"
+authors:
+  - family-names: "Pantani"
+version: "0.1.0"
+date-released: "2026-05-29"
+license: "MIT"
+repository-code: "https://github.com/Pantani/voynich"
+abstract: "Route-based computational research toolkit for conservative structural analysis of the Voynich Manuscript."

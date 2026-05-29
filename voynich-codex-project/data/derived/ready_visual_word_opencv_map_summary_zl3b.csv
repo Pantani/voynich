@@ -1,0 +1,11 @@
+metric,item,n
+opencv_available,yes,1
+visual_fragment_count,opencv_visual_fragments,77
+folio,f84r,42
+folio,f67r2,16
+folio,f99v,8
+folio,f99r,7
+folio,f1r,3
+folio,f67v1,1
+word_map_status,opencv_visual_fragment_detected,77
+semantic_guardrail,opencv_visual_fragment_map_not_ocr_or_word_evidence,77

@@ -1,0 +1,13 @@
+metric,item,n
+queue_items,pending_zone_choice_ranked,13
+review_bucket,revisao_dificil,5
+review_bucket,revisar_depois,4
+review_bucket,revisar_primeiro,4
+folio,f99v,5
+folio,f1r,2
+folio,f67r2,2
+folio,f67v1,2
+folio,f99r,2
+priority_level,P1,8
+priority_level,P0,5
+semantic_guardrail,visual_review_priority_not_evidence_or_ocr,13

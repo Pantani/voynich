@@ -1,0 +1,9 @@
+metric,item,n
+r37_status,ready_for_revalidation_chain,8
+chain_action,run_r34_r35_r33_r31_in_order,8
+next_action,rerun_chain_and_review_r31_valid_annotations,8
+r36_manual_fill_status,human_entry_present_ready_for_gate_rerun,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

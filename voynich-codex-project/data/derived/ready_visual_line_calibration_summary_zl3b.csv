@@ -1,0 +1,15 @@
+metric,item,n
+folio,f99v,5
+folio,f1r,2
+folio,f67r2,2
+folio,f67v1,2
+folio,f84r,2
+folio,f88v,2
+folio,f89r2,2
+folio,f99r,2
+calibration_status,pending_calibration,19
+baseline_points,missing_baseline_points,17
+baseline_points,with_baseline_points,2
+priority_level,P1,14
+priority_level,P0,5
+semantic_guardrail,line_calibration_tool_not_visual_evidence,19

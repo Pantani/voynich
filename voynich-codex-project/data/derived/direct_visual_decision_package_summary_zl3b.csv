@@ -1,0 +1,11 @@
+metric,item,n
+priority_level,P1,4
+priority_level,P0,2
+folio,f67r1,3
+folio,f70v2,2
+folio,f68r3,1
+packet_id,R12-001,3
+packet_id,R12-002,2
+packet_id,R12-003,1
+target_type,missing_group_tokens,6
+decision_package_status,ready_for_manual_visual_decision,6

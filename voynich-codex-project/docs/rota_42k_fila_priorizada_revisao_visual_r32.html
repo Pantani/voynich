@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rota 42K - Fila priorizada de revisao visual</title>
+  <style>
+    :root {
+      --paper: #f6f0e7;
+      --panel: #fffaf2;
+      --line: #d6c8b8;
+      --ink: #211d19;
+      --muted: #6d645b;
+      --accent: #1f7668;
+      --warn: #8a3f32;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+    button, a.button-link { border: 1px solid #c8baaa; border-radius: 7px; background: #fffaf2; color: var(--ink); padding: 8px 11px; font-weight: 800; text-decoration: none; cursor: pointer; }
+    button:hover, a.button-link:hover { background: #f1e7d8; }
+    .app { min-height: 100vh; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #fbf6ed; }
+    h1 { margin: 0; font-size: 20px; }
+    p { margin: 0; color: var(--muted); }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: 320px minmax(0, 1fr) 340px; }
+    .queue { overflow: auto; border-right: 1px solid var(--line); background: #efe4d4; padding: 10px; }
+    .queue button { width: 100%; display: grid; gap: 4px; text-align: left; margin-bottom: 7px; }
+    .queue button.active { border-color: var(--accent); outline: 3px solid rgba(31, 118, 104, .2); }
+    .score { font-size: 13px; color: var(--accent); font-weight: 900; }
+    .main { overflow: auto; padding: 14px; background: #e6ddd0; }
+    .target-card { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); padding: 14px; display: grid; gap: 12px; }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+    .meta { border: 1px solid #ded2c2; border-radius: 7px; padding: 8px; background: #fffdf8; }
+    .meta b { display: block; font-size: 12px; color: var(--muted); }
+    .crops { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+
+    .visual-crop-grid { display: grid; gap: 8px; }
+    .visual-crop-card { display: grid; gap: 6px; padding: 8px; border: 1px solid var(--line, #d7cabb); border-radius: 8px; background: #fffaf2; }
+    .visual-crop-card.is-target { border-color: rgba(31, 118, 104, 0.58); background: #eef6f2; }
+    .visual-crop-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--ink, #241f1a); font-size: 12px; font-weight: 900; line-height: 1.2; }
+    .visual-crop-note { color: var(--muted, #6f675f); font-size: 12px; line-height: 1.28; }
+    .visual-crop-canvas { display: block; width: 100%; min-height: 72px; height: auto; border: 1px solid rgba(55, 45, 35, 0.18); border-radius: 7px; background: #ece3d7; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-canvas { background: #f7e8e3; }
+    .visual-crop-card[data-crop-status="erro"] .visual-crop-note::after { content: " Imagem nao carregou."; color: #8f3f33; font-weight: 800; }
+    .side { overflow: auto; border-left: 1px solid var(--line); background: var(--panel); padding: 14px; }
+    .plain-box { border: 1px solid var(--line); border-radius: 8px; background: #fff7ea; padding: 12px; margin-bottom: 12px; }
+    .plain-box h2, .plain-box h3 { margin: 0 0 8px; font-size: 15px; }
+    .warning { color: var(--warn); font-weight: 850; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    ol { margin: 0; padding-left: 20px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div>
+      <h1>Rota 42K - Fila priorizada</h1>
+      <p>Ordem pratica para revisar as escolhas pendentes. Nao e OCR, traducao ou evidencia de palavra.</p>
+    </div>
+    <nav class="nav" aria-label="Navegacao entre rotas">
+      <a class="button-link" href="rota_42g_ferramentas_ativas_r32.html">Ferramentas ativas</a>
+      <a class="button-link" href="rota_42l_confirmacao_linhas_sugeridas_r32.html">Abrir R42L</a>
+      <a class="button-link" href="rota_42f_escolha_linhas_visuais_sem_zona_r32.html">Abrir R42F</a>
+      <a class="button-link" href="rota_42j_fragmentos_visuais_opencv_r32.html">Abrir R42J</a>
+      <a class="button-link" href="rota_42c_calibrador_linhas_baseline_r32.html">Abrir R42C</a>
+    </nav>
+  </header>
+  <main class="workspace">
+    <aside class="queue" id="queue" aria-label="Fila priorizada"></aside>
+    <section class="main" aria-label="Item selecionado">
+      <article class="target-card" id="targetCard"></article>
+    </section>
+    <aside class="side" aria-label="Explicacao da rota 42K">
+      <section class="plain-box">
+        <h2>Como usar</h2>
+        <p>Comece pelo primeiro item. Olhe os recortes, depois abra a R42L para confirmar a linha sugerida antes de aplicar qualquer coisa na R42F.</p>
+      </section>
+      <section class="plain-box">
+        <h3>Resumo auditavel</h3>
+        <ol><li><strong>R42K-001</strong> f67r2.35,@Pb - score 71 - revisar_primeiro</li><li><strong>R42K-002</strong> f67r2.73,+P0 - score 71 - revisar_primeiro</li><li><strong>R42K-003</strong> f67v1.3,&amp;L0 - score 70 - revisar_primeiro</li><li><strong>R42K-004</strong> f67v1.5,&amp;L0 - score 70 - revisar_primeiro</li><li><strong>R42K-005</strong> f99r.2,@Lf - score 66 - revisar_depois</li><li><strong>R42K-006</strong> f99r.8,@Lf - score 66 - revisar_depois</li><li><strong>R42K-007</strong> f1r.21,=Pt - score 64 - revisar_depois</li><li><strong>R42K-008</strong> f1r.24,+P0 - score 64 - revisar_depois</li><li><strong>R42K-009</strong> f99v.12,+P0 - score 50 - revisao_dificil</li><li><strong>R42K-010</strong> f99v.13,+P0 - score 50 - revisao_dificil</li><li><strong>R42K-011</strong> f99v.21,@P0 - score 50 - revisao_dificil</li><li><strong>R42K-012</strong> f99v.24,+P0 - score 50 - revisao_dificil</li><li><strong>R42K-013</strong> f99v.33,+P0 - score 50 - revisao_dificil</li></ol>
+      </section>
+      <section class="plain-box">
+        <h3>CSV</h3>
+        <p class="mono">/Users/pantani/Desktop/go/src/github.com/Pantani/voynich/voynich-codex-project/data/derived/ready_visual_review_priority_queue_zl3b.csv</p>
+      </section>
+      <section class="plain-box">
+        <h3>Guarda</h3>
+        <p class="mono">visual_review_priority_not_evidence_or_ocr</p>
+        <p class="warning">Nao usar como OCR nem como evidencia. Use apenas para escolher a proxima revisao humana.</p>
+      </section>
+    </aside>
+  </main>
+</div>
+<script>
+const QUEUE_ROWS = [{"route42k_id": "R42K-001", "route42f_id": "R42F-008", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.35,@Pb", "transcription_text": "chol.[g:d]iin.okol", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-002", "route42f_id": "R42F-009", "route42b_id": "R42B-004", "route32_id": "R32-003", "folio": "f67r2", "target_locus": "f67r2.73,+P0", "transcription_text": "sshey.sy,shees.qeykeey.ykchey.ykchey.qokeochy.oaiin.okol.ar.olar", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "3", "candidate_visual_lines": "1|2|3", "fragment_candidate_count": "16", "best_visual_line_number": "2", "best_line_fragment_count": "4", "best_line_avg_confidence": "0.75", "review_priority_score": "71", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67r2_1006194.jpg", "best_line_zone_box_pct": "67.90,9.71,83.97,14.33", "top_fragment_ids": "R42J-063|R42J-062|R42J-060|R42J-058", "top_fragment_crop_boxes": "77.34,8.46,82.60,14.98|71.97,8.46,76.48,14.82|69.96,8.46,72.82,14.15|67.91,8.70,70.69,14.55", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67r2_1006194.jpg", "crop_boxes": ["77.34,8.46,82.60,14.98", "71.97,8.46,76.48,14.82", "69.96,8.46,72.82,14.15", "67.91,8.70,70.69,14.55"]}, {"route42k_id": "R42K-003", "route42f_id": "R42F-010", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.3,&L0", "transcription_text": "okal.ary", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-004", "route42f_id": "R42F-011", "route42b_id": "R42B-005", "route32_id": "R32-004", "folio": "f67v1", "target_locus": "f67v1.5,&L0", "transcription_text": "okol.aldy", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "1", "candidate_visual_lines": "1", "fragment_candidate_count": "1", "best_visual_line_number": "1", "best_line_fragment_count": "1", "best_line_avg_confidence": "0.49", "review_priority_score": "70", "review_bucket": "revisar_primeiro", "human_next_step": "abrir R42K, comparar os recortes sugeridos e escolher a linha correspondente na R42F", "local_image_path": "images/raw/yale_iiif_r32/f67v1_1006195.jpg", "best_line_zone_box_pct": "69.43,34.68,76.83,38.88", "top_fragment_ids": "R42J-074", "top_fragment_crop_boxes": "68.92,35.22,71.17,38.90", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f67v1_1006195.jpg", "crop_boxes": ["68.92,35.22,71.17,38.90"]}, {"route42k_id": "R42K-005", "route42f_id": "R42F-001", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.2,@Lf", "transcription_text": "okar,y", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-006", "route42f_id": "R42F-002", "route42b_id": "R42B-002", "route32_id": "R32-008", "folio": "f99r", "target_locus": "f99r.8,@Lf", "transcription_text": "okor", "priority_level": "P1", "image_quality_assist": "high", "target_region_locatable_assist": "yes_region", "candidate_count": "6", "candidate_visual_lines": "1|2|3|4|5|6", "fragment_candidate_count": "7", "best_visual_line_number": "4", "best_line_fragment_count": "3", "best_line_avg_confidence": "0.80", "review_priority_score": "66", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f99r_1006246.jpg", "best_line_zone_box_pct": "51.70,81.43,65.37,84.69", "top_fragment_ids": "R42J-046|R42J-045|R42J-047", "top_fragment_crop_boxes": "59.77,80.15,65.21,85.93|51.18,80.15,55.74,85.93|63.47,81.51,65.84,85.93", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99r_1006246.jpg", "crop_boxes": ["59.77,80.15,65.21,85.93", "51.18,80.15,55.74,85.93", "63.47,81.51,65.84,85.93"]}, {"route42k_id": "R42K-007", "route42f_id": "R42F-012", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.21,=Pt", "transcription_text": "otol.daiiin<$>", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-008", "route42f_id": "R42F-013", "route42b_id": "R42B-006", "route32_id": "R32-002", "folio": "f1r", "target_locus": "f1r.24,+P0", "transcription_text": "cho.?o.kaiin.shoaiin.okol.daiin.far.cthol.daiin.ctholdar", "priority_level": "P1", "image_quality_assist": "medium_faint", "target_region_locatable_assist": "partial", "candidate_count": "4", "candidate_visual_lines": "1|2|3|4", "fragment_candidate_count": "3", "best_visual_line_number": "2", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.59", "review_priority_score": "64", "review_bucket": "revisar_depois", "human_next_step": "usar os fragmentos como lupa e confirmar a linha na R42F", "local_image_path": "images/raw/yale_iiif_r32/f1r_1006076.jpg", "best_line_zone_box_pct": "25.70,5.01,32.83,8.20", "top_fragment_ids": "R42J-076|R42J-075", "top_fragment_crop_boxes": "27.87,5.09,32.16,8.21|26.22,4.88,29.60,7.89", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f1r_1006076.jpg", "crop_boxes": ["27.87,5.09,32.16,8.21", "26.22,4.88,29.60,7.89"]}, {"route42k_id": "R42K-009", "route42f_id": "R42F-003", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.12,+P0", "transcription_text": "qokeo.qokeol.chockhy.otol.daiin.oty<->oto{ck}ey.da.chor,aiin", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-010", "route42f_id": "R42F-004", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.13,+P0", "transcription_text": "okoraiin.okol.shocthy<->qokor.oloiram<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-011", "route42f_id": "R42F-005", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.21,@P0", "transcription_text": "doror.okeeody.opar.okor.eosaiin.otoraiin.shey.ols,aiiin.qoetal", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-012", "route42f_id": "R42F-006", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.24,+P0", "transcription_text": "shokeeey.cholshey.okol.qokey.okeodal,oldy<$>", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}, {"route42k_id": "R42K-013", "route42f_id": "R42F-007", "route42b_id": "R42B-003", "route32_id": "R32-001", "folio": "f99v", "target_locus": "f99v.33,+P0", "transcription_text": "dol.okeeol.okeor.okal.okaiin.ckheol.okolaiin.okolaiin.cheoldy", "priority_level": "P0", "image_quality_assist": "high", "target_region_locatable_assist": "partial", "candidate_count": "15", "candidate_visual_lines": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15", "fragment_candidate_count": "8", "best_visual_line_number": "11", "best_line_fragment_count": "2", "best_line_avg_confidence": "0.62", "review_priority_score": "50", "review_bucket": "revisao_dificil", "human_next_step": "reduzir pela visao geral na R42F antes de confiar nos fragmentos", "local_image_path": "images/raw/yale_iiif_r32/f99v_1006247.jpg", "best_line_zone_box_pct": "22.23,71.36,34.10,75.08", "top_fragment_ids": "R42J-053|R42J-054", "top_fragment_crop_boxes": "21.70,70.10,28.59,76.31|27.59,71.51,33.58,75.10", "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr", "image_src": "../images/raw/yale_iiif_r32/f99v_1006247.jpg", "crop_boxes": ["21.70,70.10,28.59,76.31", "27.59,71.51,33.58,75.10"]}];
+let currentIndex = 0;
+
+const cropImageCache = new Map();
+
+function parseCropBox(value) {
+  const parts = String(value || "").split(",").map(Number);
+  if (parts.length !== 4 || parts.some((part) => !Number.isFinite(part))) return null;
+  const [x1, y1, x2, y2] = parts;
+  if (x2 <= x1 || y2 <= y1) return null;
+  return [Math.max(0, x1), Math.max(0, y1), Math.min(100, x2), Math.min(100, y2)];
+}
+
+function cropBoxFromPoints(pointsText, verticalPad = 3.6, horizontalPad = 2.0) {
+  const points = parsePoints(pointsText || "");
+  if (!points || points.length < 2) return "";
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const centerY = ys.reduce((total, y) => total + y, 0) / ys.length;
+  const x1 = Math.max(0, Math.min(...xs) - horizontalPad);
+  const x2 = Math.min(100, Math.max(...xs) + horizontalPad);
+  const y1 = Math.max(0, centerY - verticalPad);
+  const y2 = Math.min(100, centerY + verticalPad);
+  if (x2 <= x1 || y2 <= y1) return "";
+  return `${x1.toFixed(2)},${y1.toFixed(2)},${x2.toFixed(2)},${y2.toFixed(2)}`;
+}
+
+function loadCropImage(src) {
+  if (!src) return Promise.reject(new Error("sem imagem"));
+  if (cropImageCache.has(src)) return cropImageCache.get(src);
+  const promise = new Promise((resolve, reject) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`falha ao carregar ${src}`));
+    image.src = src;
+  });
+  cropImageCache.set(src, promise);
+  return promise;
+}
+
+async function paintCropCanvas(canvas) {
+  const box = parseCropBox(canvas.dataset.boxPct);
+  const src = canvas.dataset.imageSrc;
+  const card = canvas.closest(".visual-crop-card");
+  if (!box || !src) {
+    if (card) card.dataset.cropStatus = "erro";
+    return;
+  }
+  try {
+    const image = await loadCropImage(src);
+    const [x1, y1, x2, y2] = box;
+    const sx = Math.max(0, Math.floor((x1 / 100) * image.naturalWidth));
+    const sy = Math.max(0, Math.floor((y1 / 100) * image.naturalHeight));
+    const sw = Math.max(1, Math.ceil(((x2 - x1) / 100) * image.naturalWidth));
+    const sh = Math.max(1, Math.ceil(((y2 - y1) / 100) * image.naturalHeight));
+    const targetWidth = Math.max(360, Math.min(1100, sw));
+    const targetHeight = Math.max(58, Math.round(targetWidth * (sh / sw)));
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    canvas.style.aspectRatio = `${targetWidth} / ${targetHeight}`;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(image, sx, sy, sw, sh, 0, 0, targetWidth, targetHeight);
+    ctx.strokeStyle = "rgba(31, 118, 104, 0.88)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, targetWidth - 2, targetHeight - 2);
+    ctx.strokeStyle = "rgba(231, 182, 87, 0.72)";
+    ctx.setLineDash([8, 6]);
+    ctx.beginPath();
+    ctx.moveTo(0, targetHeight / 2);
+    ctx.lineTo(targetWidth, targetHeight / 2);
+    ctx.stroke();
+    if (card) card.dataset.cropStatus = "ok";
+  } catch (_error) {
+    if (card) card.dataset.cropStatus = "erro";
+  }
+}
+
+function paintCropPreviews(root = document) {
+  for (const canvas of root.querySelectorAll("canvas[data-crop-preview]")) {
+    paintCropCanvas(canvas);
+  }
+}
+
+function activeRow() {
+  return QUEUE_ROWS[currentIndex] || null;
+}
+
+function renderQueue() {
+  const queue = document.getElementById("queue");
+  queue.innerHTML = "";
+  QUEUE_ROWS.forEach((row, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = index === currentIndex ? "active" : "";
+    button.innerHTML = `
+      <strong>${row.route42k_id} / ${row.target_locus}</strong>
+      <span class="score">score ${row.review_priority_score} / ${row.review_bucket}</span>
+      <small>${row.folio} / candidatos ${row.candidate_count} / fragmentos ${row.fragment_candidate_count}</small>
+    `;
+    button.addEventListener("click", () => {
+      currentIndex = index;
+      renderAll();
+    });
+    queue.appendChild(button);
+  });
+  if (!QUEUE_ROWS.length) queue.innerHTML = "<p>Nenhum item pendente.</p>";
+}
+
+function cropCards(row) {
+  if (!row.crop_boxes.length) {
+    return '<p class="warning">Sem recorte de fragmento para este alvo. Use a R42F pela linha inteira.</p>';
+  }
+  return row.crop_boxes.map((box, index) => `
+    <article class="visual-crop-card">
+      <span class="visual-crop-label">fragmento sugerido ${index + 1}</span>
+      <canvas class="visual-crop-canvas" data-crop-preview data-image-src="${row.image_src}" data-box-pct="${box}" aria-label="fragmento sugerido ${index + 1}"></canvas>
+      <span class="visual-crop-note">linha visual sugerida ${row.best_visual_line_number}</span>
+    </article>
+  `).join("");
+}
+
+function renderTarget() {
+  const card = document.getElementById("targetCard");
+  const row = activeRow();
+  if (!row) {
+    card.innerHTML = '<p class="warning">Nenhum item pendente.</p>';
+    return;
+  }
+  card.innerHTML = `
+    <div>
+      <h2>${row.route42k_id} / ${row.target_locus}</h2>
+      <p>${row.human_next_step}</p>
+    </div>
+    <div class="meta-grid">
+      <div class="meta"><b>score</b>${row.review_priority_score} / ${row.review_bucket}</div>
+      <div class="meta"><b>candidatos</b>${row.candidate_visual_lines}</div>
+      <div class="meta"><b>linha sugerida para olhar primeiro</b>${row.best_visual_line_number || "sem sugestao"}</div>
+      <div class="meta"><b>fragmentos na fila</b>${row.fragment_candidate_count}</div>
+      <div class="meta"><b>prioridade</b>${row.priority_level || "sem prioridade"}</div>
+      <div class="meta"><b>qualidade</b>${row.image_quality_assist || "sem dado"}</div>
+    </div>
+    <div class="meta"><b>texto de referencia tecnico</b><span class="mono">${row.transcription_text}</span></div>
+    <div class="crops">${cropCards(row)}</div>
+  `;
+  paintCropPreviews(card);
+}
+
+function renderAll() {
+  renderQueue();
+  renderTarget();
+}
+
+renderAll();
+</script>
+</body>
+</html>

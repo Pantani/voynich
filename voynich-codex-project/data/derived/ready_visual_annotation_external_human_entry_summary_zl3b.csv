@@ -1,0 +1,9 @@
+metric,item,n
+external_entry_status,external_human_entry_required,8
+reviewer_action,fill_r32_manual_annotation_status_and_notes,8
+post_entry_action,do_not_modify_derived_outputs,8
+reopen_plan_status,blocked_waiting_human_entry,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

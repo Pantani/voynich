@@ -1,0 +1,12 @@
+metric,item,n
+human_review_state,pending_human_review,11
+evidence_category,no_human_visual_evidence,11
+coordinate_status,no_new_crop_coordinates,11
+crop_generation_action,no_crop_generation,11
+axis_test_readiness,not_ready,11
+packet_id,R12-001,5
+packet_id,R12-002,3
+packet_id,R12-004,2
+packet_id,R12-003,1
+target_type,missing_group_tokens,8
+target_type,matched_group_tokens,3

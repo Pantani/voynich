@@ -1,0 +1,8 @@
+[project]
+name = "voynich-codex-project"
+version = "0.1.0"
+description = "Projeto local para continuar estudos computacionais sobre o Manuscrito Voynich"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["scripts"]

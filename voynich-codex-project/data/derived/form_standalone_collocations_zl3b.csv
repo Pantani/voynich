@@ -1,0 +1,9 @@
+form,n_total,standalone_after_n,standalone_after_pct,ar,al,or,ol,semantic_guardrail
+okal,152,10,6.6,2,1,4,3,form_collocation_analysis_not_decipherment
+okar,133,21,15.8,11,3,1,6,form_collocation_analysis_not_decipherment
+okol,75,5,6.7,1,0,2,2,form_collocation_analysis_not_decipherment
+okor,34,5,14.7,1,0,2,2,form_collocation_analysis_not_decipherment
+otal,129,9,7.0,1,2,2,4,form_collocation_analysis_not_decipherment
+otar,147,22,15.0,12,5,2,3,form_collocation_analysis_not_decipherment
+otol,79,5,6.3,1,2,0,2,form_collocation_analysis_not_decipherment
+otor,37,1,2.7,1,0,0,0,form_collocation_analysis_not_decipherment

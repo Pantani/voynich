@@ -1,0 +1,11 @@
+metric,item,n
+fill_execution_status,ready_for_revalidation_chain_reopen,8
+chain_release_status,ready_to_reopen_chain,8
+next_action,rerun_r34_r35_r33_r31,8
+work_order_status,manual_fill_required,8
+r36_manual_fill_status,human_entry_present_ready_for_gate_rerun,8
+r37_status,ready_for_revalidation_chain,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

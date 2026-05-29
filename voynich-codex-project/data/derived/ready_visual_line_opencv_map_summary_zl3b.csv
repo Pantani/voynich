@@ -1,0 +1,13 @@
+metric,item,n
+image_count,images,8
+visual_line_count,opencv_visual_lines,52
+folio,f1r,1
+folio,f67r2,1
+folio,f67v1,1
+folio,f84r,1
+folio,f88v,1
+folio,f89r2,1
+folio,f99r,1
+folio,f99v,1
+line_map_status,opencv_visual_line_detected,52
+semantic_guardrail,opencv_visual_line_map_not_word_evidence,60

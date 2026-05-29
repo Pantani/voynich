@@ -1,0 +1,11 @@
+metric,item,n
+gate_status,ready_to_rerun_r33_r31,8
+next_action,rerun_r33_then_r31_validation,8
+manual_entry_status,manual_annotation_filled,8
+html_card_check,present,8
+allowed_values_check,present,8
+r33_apply_status,applied_manual_annotation_to_derived_package,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

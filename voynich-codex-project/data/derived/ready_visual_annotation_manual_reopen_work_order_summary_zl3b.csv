@@ -1,0 +1,10 @@
+metric,item,n
+work_order_status,manual_fill_required,8
+chain_reopen_action,do_not_reopen_chain_until_r32_filled,8
+next_action,fill_manual_annotation_status_and_notes_in_r32,8
+r36_manual_fill_status,awaiting_human_visual_entry,8
+r37_status,blocked_no_human_entries,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

@@ -1,0 +1,9 @@
+metric,item,n
+r35_status,ready_for_controlled_rerun,8
+rerun_action,rerun_r33_then_r31_for_explicit_entries,8
+next_action,run_r33_apply_entries_then_r31_validation,8
+r34_gate_status,ready_to_rerun_r33_r31,8
+priority_level,P1,7
+priority_level,P0,1
+locus_kind,P,6
+locus_kind,L,2

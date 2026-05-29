@@ -1,0 +1,1744 @@
+{
+  "created": "2026-05-15",
+  "status": "no final decipherment",
+  "best_hypothesis": "layered formal notation/cipher with locus and border operators",
+  "strong_patterns": [
+    "ok-/ot- operators",
+    "qo- text operator",
+    "ar/al/or/ol matrix",
+    "dy/y/aiin borders",
+    "line as functional unit"
+  ],
+  "weakened_hypotheses": [
+    "simple substitution",
+    "okal=Sun",
+    "labels=direct object names",
+    "pure random noise"
+  ],
+  "latest_experiment": "route 42M refines visual-line captures from R42L fragment unions",
+  "latest_result": {
+    "line_records": 5385,
+    "matrix_candidates": 8398,
+    "simple_token_count": 41005,
+    "route_2_controls": {
+      "locus_vs_suffix": {
+        "chi_square": 153.340367,
+        "degrees_of_freedom": 9,
+        "cramers_v": 0.078015,
+        "shuffle_p_value_upper_bound": 0.001996
+      },
+      "prefix_vs_suffix": {
+        "chi_square": 712.684057,
+        "degrees_of_freedom": 36,
+        "cramers_v": 0.16819,
+        "shuffle_p_value_upper_bound": 0.001996
+      },
+      "line_position_vs_suffix": {
+        "chi_square": 240.745804,
+        "degrees_of_freedom": 9,
+        "cramers_v": 0.097753,
+        "shuffle_p_value_upper_bound": 0.001996
+      },
+      "locus_vs_suffix_given_prefix": {
+        "chi_square": 93.418446,
+        "degrees_of_freedom": 9,
+        "cramers_v": 0.060893
+      }
+    },
+    "route_3_visual_candidates": 160,
+    "route_3_visual_annotations_seed": {
+      "annotations": 56,
+      "folios": [
+        "f67r1",
+        "f67r2",
+        "f67v2",
+        "f68r1",
+        "f68r2",
+        "f68r3",
+        "f70v2",
+        "f84r",
+        "f88v",
+        "f99v"
+      ],
+      "visual_zones": {
+        "circular text": 23,
+        "label": 19,
+        "paragraph text": 10,
+        "radial text": 4
+      },
+      "confidence": {
+        "medium": 42,
+        "low": 14
+      },
+      "visual_zone_suffix_counts": {
+        "circular text": {
+          "ar": 10,
+          "al": 6,
+          "or": 1,
+          "ol": 6
+        },
+        "label": {
+          "ar": 8,
+          "al": 4,
+          "or": 5,
+          "ol": 2
+        },
+        "paragraph text": {
+          "ar": 3,
+          "al": 4,
+          "or": 2,
+          "ol": 1
+        },
+        "radial text": {
+          "ar": 3,
+          "al": 0,
+          "or": 0,
+          "ol": 1
+        }
+      }
+    },
+    "route_4_axis_test": {
+      "context_rows": 8398,
+      "visual_rows": 56,
+      "summary_rows": 102,
+      "textual_axis_results": {
+        "locus_kind": {
+          "ao_cramers_v": 0.133624,
+          "rl_cramers_v": 0.038508
+        },
+        "prefix": {
+          "ao_cramers_v": 0.260733,
+          "rl_cramers_v": 0.117873
+        },
+        "line_position": {
+          "ao_cramers_v": 0.13556,
+          "rl_cramers_v": 0.063514
+        }
+      },
+      "visual_axis_results": {
+        "visual_zone": {
+          "ao_cramers_v": 0.0777,
+          "rl_cramers_v": 0.2126
+        },
+        "object_nearby": {
+          "ao_cramers_v": 0.6306,
+          "rl_cramers_v": 0.43
+        },
+        "folio": {
+          "ao_cramers_v": 0.5974,
+          "rl_cramers_v": 0.3619
+        }
+      },
+      "reading": "The a/o axis carries most textual structure; r/l may still be visual or diagrammatic, but needs same-folio/locus controls."
+    },
+    "route_5_same_context_pairs": {
+      "comparable_groups": 725,
+      "groups_with_direct_visual_annotation": 11,
+      "axis_coverage": {
+        "rl": 327,
+        "ao+rl": 219,
+        "ao": 179
+      },
+      "prefix_family_counts": {
+        "standalone": 217,
+        "ch": 183,
+        "d": 93,
+        "ok": 50,
+        "ot": 49,
+        "sh": 46,
+        "qok": 32,
+        "qo": 29,
+        "o": 19,
+        "yk": 3,
+        "yt": 3,
+        "y": 1
+      },
+      "reading": "The matrix has many local same-folio/locus/prefix-family comparisons; visual confirmation is now the bottleneck before assigning meaning to a/o or r/l."
+    },
+    "route_6_glyph_review_queue": {
+      "review_items": 11,
+      "status_counts": {
+        "needs_exact_glyph_isolation": 11
+      },
+      "folio_counts": {
+        "f67r1": 5,
+        "f70v2": 3,
+        "f84r": 2,
+        "f68r3": 1
+      },
+      "image_files": [
+        "images/raw/commons_f67r1_r2.jpg",
+        "images/raw/commons_f68r1_r2_r3.jpg",
+        "images/raw/commons_f70v2.jpg",
+        "images/raw/commons_f84r.jpg"
+      ],
+      "reading": "The visual evidence is still at layer/folio level. No semantic value should be assigned until glyph-level crops or coordinates are reviewed."
+    },
+    "route_7_review_crops": {
+      "review_crops": 11,
+      "crop_scope_counts": {
+        "rough_region_only": 11
+      },
+      "status_counts": {
+        "needs_exact_glyph_isolation": 11
+      },
+      "output_directory": "images/derived/review_crops",
+      "manifest": "data/annotations/review_crop_manifest_zl3b.csv",
+      "reading": "The review artifacts are reproducible rough SVG viewBox crops. They do not confirm exact glyph positions."
+    },
+    "route_8_crop_review_decisions": {
+      "reviewed_crops": 11,
+      "svg_status_counts": {
+        "svg_ok": 11
+      },
+      "review_decision_counts": {
+        "keep_not_isolated": 11
+      },
+      "coordinate_decision_counts": {
+        "no_glyph_coordinates": 11
+      },
+      "missing_token_status_counts": {
+        "missing_tokens_remain": 8,
+        "no_missing_group_tokens": 3
+      },
+      "reading": "The SVGs are valid as review regions, but no glyph coordinate is confirmed. All items remain not-isolated."
+    },
+    "route_9_manual_svg_review": {
+      "manual_review_items": 11,
+      "initial_status_counts": {
+        "pending_manual_review": 11
+      },
+      "prefix_family_counts": {
+        "standalone": 5,
+        "ch": 3,
+        "ot": 2,
+        "d": 1
+      },
+      "coordinate_fields": "blank by design",
+      "outputs": {
+        "csv": "data/annotations/manual_svg_review_zl3b.csv",
+        "html": "docs/rota_9_revisao_manual.html",
+        "md": "docs/rota_9_revisao_manual.md"
+      },
+      "reading": "The manual review sheet is ready for human-assisted coordinate tightening; no blank coordinate is evidence of glyph confirmation."
+    },
+    "route_10_manual_review_consolidation": {
+      "consolidated_items": 11,
+      "consolidation_outcome_counts": {
+        "pending_manual_review": 11
+      },
+      "coordinate_status_counts": {
+        "no_manual_coordinates": 11
+      },
+      "evidence_status_counts": {
+        "no_glyph_confirmation": 11
+      },
+      "axis_test_eligibility_counts": {
+        "not_eligible": 11
+      },
+      "eligible_for_axis_tests": 0,
+      "outputs": {
+        "csv": "data/derived/manual_svg_review_consolidated_zl3b.csv",
+        "summary_csv": "data/derived/manual_review_status_summary_zl3b.csv",
+        "md": "docs/rota_10_consolidacao_manual.md"
+      },
+      "reading": "The consolidation confirms that the manual sheet has not produced glyph-level evidence yet; no row is eligible for fine visual axis testing."
+    },
+    "route_11_second_pass_crop_queue": {
+      "queue_items": 11,
+      "missing_tokens_to_find": 14,
+      "focus_counts": {
+        "locate_missing_group_tokens": 8,
+        "tighten_existing_matched_tokens": 3
+      },
+      "priority_counts": {
+        "P0_operator_missing_tokens": 2,
+        "P1_core_missing_tokens": 4,
+        "P2_other_missing_tokens": 2,
+        "P3_tighten_existing_region": 3
+      },
+      "strategy_counts": {
+        "rescan_source_image_before_new_crop": 4,
+        "search_single_missing_token_then_redraw_crop": 4,
+        "tighten_current_svg_region": 3
+      },
+      "semantic_guardrail": "no_axis_meaning_from_queue_position",
+      "outputs": {
+        "csv": "data/annotations/second_pass_crop_queue_zl3b.csv",
+        "summary_csv": "data/derived/second_pass_crop_queue_summary_zl3b.csv",
+        "md": "docs/rota_11_segunda_passada_recortes.md"
+      },
+      "reading": "The queue prioritizes operational review work. Queue position must not be interpreted as axis meaning or glyph confirmation."
+    },
+    "route_12_folio_review_packets": {
+      "packets": 4,
+      "packet_items": 11,
+      "missing_tokens_aggregated": 14,
+      "packet_goal_counts": {
+        "review_source_image_first": 3,
+        "search_tokens_then_redraw_crop": 1
+      },
+      "folio_packet_counts": {
+        "f67r1": 1,
+        "f68r3": 1,
+        "f70v2": 1,
+        "f84r": 1
+      },
+      "semantic_guardrail": "folio_packet_is_operational_not_semantic",
+      "outputs": {
+        "packets_csv": "data/annotations/folio_review_packets_zl3b.csv",
+        "items_csv": "data/annotations/folio_review_packet_items_zl3b.csv",
+        "summary_csv": "data/derived/folio_review_packet_summary_zl3b.csv",
+        "md": "docs/rota_12_pacotes_revisao_guiada.md"
+      },
+      "reading": "The review workload is grouped by folio/source image. Packet membership is operational and must not be treated as semantic evidence."
+    },
+    "route_13_packet_item_checklist": {
+      "checklist_items": 11,
+      "target_type_counts": {
+        "missing_group_tokens": 8,
+        "matched_group_tokens": 3
+      },
+      "initial_check_status_counts": {
+        "pending_visual_check": 11
+      },
+      "packet_counts": {
+        "R12-001": 5,
+        "R12-002": 3,
+        "R12-003": 1,
+        "R12-004": 2
+      },
+      "semantic_guardrail": "checklist_item_not_axis_evidence",
+      "outputs": {
+        "csv": "data/annotations/packet_item_checklist_zl3b.csv",
+        "summary_csv": "data/derived/packet_item_checklist_summary_zl3b.csv",
+        "md": "docs/rota_13_checklist_pacotes.md"
+      },
+      "reading": "The checklist is a fillable manual review surface. Blank manual fields do not confirm glyphs, crops, or axis meaning."
+    },
+    "route_14_packet_item_checklist_consolidation": {
+      "consolidated_items": 11,
+      "consolidation_outcome_counts": {
+        "pending_visual_check": 11
+      },
+      "coordinate_status_counts": {
+        "no_new_crop_coordinates": 11
+      },
+      "visual_evidence_status_counts": {
+        "no_new_visual_evidence": 11
+      },
+      "axis_test_eligibility_counts": {
+        "not_eligible": 11
+      },
+      "eligible_after_crop_generation": 0,
+      "semantic_guardrail": "checklist_consolidation_not_axis_evidence",
+      "outputs": {
+        "csv": "data/derived/packet_item_checklist_consolidated_zl3b.csv",
+        "summary_csv": "data/derived/packet_item_checklist_consolidation_summary_zl3b.csv",
+        "md": "docs/rota_14_consolidacao_checklist.md"
+      },
+      "reading": "The checklist remains unfilled. Empty manual fields are pending work, not confirmation or rejection."
+    },
+    "route_15_human_review_instructions": {
+      "instruction_packets": 4,
+      "instruction_items": 11,
+      "instruction_mode_counts": {
+        "open_source_image_before_svg": 3,
+        "search_tokens_then_redraw_crop": 1
+      },
+      "folio_instruction_counts": {
+        "f67r1": 1,
+        "f68r3": 1,
+        "f70v2": 1,
+        "f84r": 1
+      },
+      "semantic_guardrail": "human_instruction_not_visual_evidence",
+      "outputs": {
+        "packets_csv": "data/annotations/human_review_instructions_zl3b.csv",
+        "items_csv": "data/annotations/human_review_instruction_items_zl3b.csv",
+        "summary_csv": "data/derived/human_review_instruction_summary_zl3b.csv",
+        "md": "docs/rota_15_instrucoes_revisao_humana.md"
+      },
+      "reading": "The instructions tell humans what to review and which fields to fill. They do not alter checklist evidence or assign axis meaning."
+    },
+    "route_16_human_review_evidence_consolidation": {
+      "consolidated_items": 11,
+      "human_review_state_counts": {
+        "pending_human_review": 11
+      },
+      "evidence_category_counts": {
+        "no_human_visual_evidence": 11
+      },
+      "coordinate_status_counts": {
+        "no_new_crop_coordinates": 11
+      },
+      "crop_generation_action_counts": {
+        "no_crop_generation": 11
+      },
+      "axis_test_readiness_counts": {
+        "not_ready": 11
+      },
+      "ready_after_new_crop_review": 0,
+      "semantic_guardrail": "human_review_evidence_not_axis_meaning",
+      "outputs": {
+        "csv": "data/derived/human_review_evidence_consolidated_zl3b.csv",
+        "summary_csv": "data/derived/human_review_evidence_summary_zl3b.csv",
+        "md": "docs/rota_16_consolidacao_revisao_humana.md"
+      },
+      "reading": "The human review fields remain unfilled. Every item stays pending and no row is ready for axis testing or crop generation."
+    },
+    "route_17_priority_human_review": {
+      "priority_review_items": 6,
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "packet_counts": {
+        "R12-001": 3,
+        "R12-002": 2,
+        "R12-003": 1
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "review_focus_counts": {
+        "operator_missing_tokens_first": 2,
+        "core_missing_tokens_second": 4
+      },
+      "semantic_guardrail": "priority_review_not_visual_evidence",
+      "outputs": {
+        "csv": "data/annotations/priority_human_review_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/priority_human_review_summary_zl3b.csv",
+        "md": "docs/rota_17_revisao_humana_p0_p1.md"
+      },
+      "reading": "The route creates an executable P0/P1 review batch. It does not fill manual fields or create visual evidence."
+    },
+    "route_18_priority_human_decision_ingestion": {
+      "ingested_items": 6,
+      "decision_bucket_counts": {
+        "pending_manual_decision": 6
+      },
+      "human_review_state_counts": {
+        "pending_human_review": 6
+      },
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "crop_generation_action_counts": {
+        "no_crop_generation": 6
+      },
+      "axis_test_readiness_counts": {
+        "not_ready": 6
+      },
+      "new_crop_candidates": 0,
+      "semantic_guardrail": "priority_decision_not_axis_meaning",
+      "outputs": {
+        "csv": "data/derived/priority_human_decisions_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/priority_human_decisions_summary_zl3b.csv",
+        "md": "docs/rota_18_ingestao_decisoes_p0_p1.md"
+      },
+      "reading": "The P0/P1 checklist decisions remain unfilled. All priority items stay pending and no visual evidence is added."
+    },
+    "route_19_direct_visual_decision_package": {
+      "package_items": 6,
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "decision_package_status_counts": {
+        "ready_for_manual_visual_decision": 6
+      },
+      "semantic_guardrail": "direct_visual_package_not_evidence",
+      "outputs": {
+        "csv": "data/annotations/direct_visual_decision_package_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/direct_visual_decision_package_summary_zl3b.csv",
+        "md": "docs/rota_19_pacote_visual_direto_p0_p1.md",
+        "html": "docs/rota_19_pacote_visual_direto_p0_p1.html"
+      },
+      "reading": "The HTML/CSV package supports manual review by showing source images and SVG references side by side. It does not fill manual fields or create evidence."
+    },
+    "route_20_direct_visual_decision_application": {
+      "application_rows": 6,
+      "application_status_counts": {
+        "skipped_blank_manual_decision": 6
+      },
+      "applied_manual_values": 0,
+      "skipped_blank_manual_decisions": 6,
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "semantic_guardrail": "applied_values_are_manual_not_axis_meaning",
+      "outputs": {
+        "updated_checklist_csv": "data/derived/packet_item_checklist_after_direct_visual_p0_p1_zl3b.csv",
+        "application_log_csv": "data/derived/direct_visual_decision_application_log_zl3b.csv",
+        "summary_csv": "data/derived/direct_visual_decision_application_summary_zl3b.csv",
+        "md": "docs/rota_20_aplicacao_decisoes_pacote_visual.md"
+      },
+      "reading": "The direct visual package remains blank. No manual values were applied, and the original checklist was not overwritten."
+    },
+    "route_21_visual_decision_entry_sheet": {
+      "entry_rows": 6,
+      "entry_status_counts": {
+        "awaiting_manual_entry": 6
+      },
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "allowed_manual_values": {
+        "manual_token_seen": "yes/no/uncertain",
+        "manual_new_crop_needed": "yes/no",
+        "manual_image_insufficient": "yes/no"
+      },
+      "semantic_guardrail": "entry_sheet_not_visual_evidence",
+      "outputs": {
+        "csv": "data/annotations/visual_decision_entry_sheet_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/visual_decision_entry_sheet_summary_zl3b.csv",
+        "md": "docs/rota_21_planilha_preenchimento_visual_p0_p1.md"
+      },
+      "reading": "The entry sheet narrows manual input to controlled fields. It remains blank and does not create visual evidence."
+    },
+    "route_22_visual_decision_entry_validation": {
+      "validation_rows": 6,
+      "validation_status_counts": {
+        "pending_blank_manual_entry": 6
+      },
+      "apply_status_counts": {
+        "skipped_blank_manual_entry": 6
+      },
+      "valid_manual_entries": 0,
+      "pending_blank_manual_entries": 6,
+      "invalid_manual_entries": 0,
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "semantic_guardrail": "validated_values_are_manual_not_axis_meaning",
+      "outputs": {
+        "derived_package_csv": "data/derived/direct_visual_package_after_entry_sheet_p0_p1_zl3b.csv",
+        "validation_log_csv": "data/derived/visual_decision_entry_validation_log_zl3b.csv",
+        "summary_csv": "data/derived/visual_decision_entry_validation_summary_zl3b.csv",
+        "md": "docs/rota_22_validacao_planilha_visual.md"
+      },
+      "reading": "The validator is ready, but the R21 sheet remains blank. No manual values were applied or inferred."
+    },
+    "route_23_guided_visual_entry_html": {
+      "html_cards": 6,
+      "html_card_status_counts": {
+        "ready_for_guided_manual_entry": 6
+      },
+      "validation_status_counts": {
+        "pending_blank_manual_entry": 6
+      },
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "semantic_guardrail": "guided_html_not_visual_evidence",
+      "outputs": {
+        "manifest_csv": "data/derived/guided_visual_entry_html_manifest_zl3b.csv",
+        "summary_csv": "data/derived/guided_visual_entry_html_summary_zl3b.csv",
+        "md": "docs/rota_23_pacote_html_preenchimento_r21.md",
+        "html": "docs/rota_23_pacote_html_preenchimento_r21.html"
+      },
+      "reading": "The guided HTML lowers the manual review friction but does not record decisions. The R21 CSV still needs explicit manual filling."
+    },
+    "route_24_guided_visual_entry_readiness": {
+      "readiness_rows": 6,
+      "readiness_status_counts": {
+        "ready_for_manual_fill": 6
+      },
+      "source_image_status_counts": {
+        "present": 6
+      },
+      "crop_svg_status_counts": {
+        "present": 6
+      },
+      "html_card_check_counts": {
+        "present": 6
+      },
+      "manual_entry_status_counts": {
+        "blank_manual_entry": 6
+      },
+      "priority_level_counts": {
+        "P0": 2,
+        "P1": 4
+      },
+      "folio_counts": {
+        "f67r1": 3,
+        "f70v2": 2,
+        "f68r3": 1
+      },
+      "target_type_counts": {
+        "missing_group_tokens": 6
+      },
+      "semantic_guardrail": "readiness_check_not_visual_evidence",
+      "outputs": {
+        "csv": "data/derived/guided_visual_entry_readiness_zl3b.csv",
+        "summary_csv": "data/derived/guided_visual_entry_readiness_summary_zl3b.csv",
+        "md": "docs/rota_24_prontidao_preenchimento_visual.md"
+      },
+      "reading": "All six guided visual entries have source images, SVGs, HTML cards, and allowed values available. The R21 CSV remains blank and awaits manual visual decisions."
+    },
+    "route_25_manual_r21_fill_gate": {
+      "status": "pending_manual_visual_decision",
+      "entry_sheet": "data/annotations/visual_decision_entry_sheet_p0_p1_zl3b.csv",
+      "guided_html": "docs/rota_23_pacote_html_preenchimento_r21.html",
+      "pending_rows": 6,
+      "filled_rows": 0,
+      "semantic_guardrail": "manual_fill_required_no_inference",
+      "reading": "R21 remains a human visual decision gate. No values were filled by inference."
+    },
+    "route_26_exact_form_context_table": {
+      "exact_form_rows": 786,
+      "prefix_counts": {
+        "ok": 394,
+        "ot": 392
+      },
+      "token_counts": {
+        "okal": 152,
+        "otar": 147,
+        "okar": 133,
+        "otal": 129,
+        "otol": 79,
+        "okol": 75,
+        "otor": 37,
+        "okor": 34
+      },
+      "suffix_counts": {
+        "al": 281,
+        "ar": 280,
+        "ol": 154,
+        "or": 71
+      },
+      "locus_kind_counts": {
+        "P": 664,
+        "C": 69,
+        "L": 45,
+        "R": 8
+      },
+      "line_position_counts": {
+        "middle": 666,
+        "start": 52,
+        "end": 42,
+        "single": 26
+      },
+      "visual_match_status_counts": {
+        "matched_visual_annotation": 23,
+        "no_visual_annotation": 763
+      },
+      "semantic_guardrail": "exact_form_context_not_decipherment",
+      "outputs": {
+        "csv": "data/derived/exact_form_context_table_zl3b.csv",
+        "summary_csv": "data/derived/exact_form_context_summary_zl3b.csv",
+        "md": "docs/rota_26_tabela_contexto_formas_exatas.md"
+      },
+      "reading": "The exact ok/ot form table is nearly balanced by prefix, but visual coverage is sparse. Missing visual annotations remain gaps, not negative evidence."
+    },
+    "route_27_exact_form_visual_gap_queue": {
+      "gap_groups": 195,
+      "priority_level_counts": {
+        "P0": 1,
+        "P1": 25,
+        "P2": 7,
+        "P3": 162
+      },
+      "image_source_status_counts": {
+        "manifest_available": 15,
+        "not_in_manifest": 180
+      },
+      "locus_kind_counts": {
+        "P": 154,
+        "L": 19,
+        "C": 18,
+        "R": 4
+      },
+      "first_p0": {
+        "folio": "f99v",
+        "locus_kind": "P",
+        "gap_rows": 8,
+        "image_source_status": "manifest_available"
+      },
+      "semantic_guardrail": "visual_gap_priority_not_evidence",
+      "outputs": {
+        "csv": "data/derived/exact_form_visual_gap_queue_zl3b.csv",
+        "summary_csv": "data/derived/exact_form_visual_gap_summary_zl3b.csv",
+        "md": "docs/rota_27_fila_lacunas_visuais_formas_exatas.md"
+      },
+      "reading": "The queue prioritizes visual annotation work for exact ok/ot forms. Priority and missing images are operational signals, not visual evidence or axis meaning."
+    },
+    "route_28_exact_form_visual_annotation_package": {
+      "package_items": 26,
+      "priority_level_counts": {
+        "P0": 1,
+        "P1": 25
+      },
+      "image_source_status_counts": {
+        "manifest_available": 8,
+        "not_in_manifest": 18
+      },
+      "workstream_counts": {
+        "annotate_from_manifest_image": 8,
+        "source_image_required": 18
+      },
+      "package_status_counts": {
+        "ready_for_manual_visual_annotation": 8,
+        "blocked_pending_source_image": 18
+      },
+      "locus_kind_counts": {
+        "P": 23,
+        "L": 2,
+        "C": 1
+      },
+      "manual_fields": "blank by design",
+      "semantic_guardrail": "visual_annotation_package_not_evidence",
+      "outputs": {
+        "csv": "data/annotations/exact_form_visual_annotation_package_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/exact_form_visual_annotation_package_summary_zl3b.csv",
+        "md": "docs/rota_28_pacote_anotacao_visual_formas_exatas.md",
+        "html": "docs/rota_28_pacote_anotacao_visual_formas_exatas.html"
+      },
+      "reading": "The package converts P0/P1 gap priority into review work. Ready items still require manual visual annotation; blocked items require source images first."
+    },
+    "route_29_missing_source_image_queue": {
+      "missing_source_items": 18,
+      "source_resolution_status_counts": {
+        "pending_public_source_verification": 18
+      },
+      "priority_level_counts": {
+        "P1": 18
+      },
+      "locus_kind_counts": {
+        "P": 17,
+        "C": 1
+      },
+      "manifest_action_counts": {
+        "do_not_update_manifest_until_url_verified": 18
+      },
+      "candidate_fields": "blank by design",
+      "semantic_guardrail": "missing_source_queue_not_visual_evidence",
+      "outputs": {
+        "csv": "data/annotations/exact_form_missing_source_queue_p0_p1_zl3b.csv",
+        "summary_csv": "data/derived/exact_form_missing_source_summary_zl3b.csv",
+        "md": "docs/rota_29_fila_fontes_imagem_formas_exatas.md",
+        "html": "docs/rota_29_fila_fontes_imagem_formas_exatas.html"
+      },
+      "reading": "The queue creates source lookup work for blocked route 28 items. Search links and blank candidate fields are not verified sources or visual evidence."
+    },
+    "route_30_source_candidate_validation": {
+      "candidate_rows": 18,
+      "source_validation_status_counts": {
+        "pending_blank_source_candidate": 18
+      },
+      "apply_status_counts": {
+        "skipped_blank_source_candidate": 18
+      },
+      "candidate_source_valid_counts": {
+        "no": 18
+      },
+      "manifest_action_counts": {
+        "no_manifest_change": 18
+      },
+      "original_manifest_rows": 10,
+      "derived_manifest_rows": 10,
+      "manifest_rows_appended": 0,
+      "semantic_guardrail": "source_validation_not_visual_evidence",
+      "outputs": {
+        "validation_csv": "data/derived/missing_source_candidate_validation_zl3b.csv",
+        "summary_csv": "data/derived/missing_source_candidate_validation_summary_zl3b.csv",
+        "derived_manifest_csv": "data/derived/commons_image_sources_after_source_validation_zl3b.csv",
+        "md": "docs/rota_30_validacao_fontes_candidatas.md"
+      },
+      "reading": "The validator is ready, but route 29 has no candidate URLs yet. Blank candidate fields remain pending, and the original image manifest is not changed."
+    },
+    "route_31_ready_manual_visual_annotation_validation": {
+      "ready_items": 8,
+      "manual_validation_status_counts": {
+        "pending_blank_manual_annotation": 8
+      },
+      "apply_status_counts": {
+        "skipped_blank_manual_annotation": 8
+      },
+      "manual_annotation_valid_counts": {
+        "no": 8
+      },
+      "priority_level_counts": {
+        "P1": 7,
+        "P0": 1
+      },
+      "locus_kind_counts": {
+        "P": 6,
+        "L": 2
+      },
+      "valid_manual_annotations": 0,
+      "semantic_guardrail": "manual_visual_annotation_not_axis_meaning",
+      "outputs": {
+        "validation_csv": "data/derived/ready_visual_annotation_validation_zl3b.csv",
+        "valid_annotations_csv": "data/derived/ready_manual_visual_annotations_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_validation_summary_zl3b.csv",
+        "md": "docs/rota_31_validacao_anotacoes_visuais_prontas.md"
+      },
+      "reading": "The validator for the eight manifest-backed route 28 items is ready. Manual annotation fields are still blank, so no derived annotation is recorded."
+    },
+    "candidate_status_counts": {
+      "broad": 4077,
+      "exact": 2682,
+      "standalone": 1639
+    },
+    "suffix_counts": {
+      "ar": 2220,
+      "al": 1719,
+      "or": 1666,
+      "ol": 2793
+    },
+    "outputs": [
+      "data/raw/ZL3b-n.txt",
+      "data/derived/border_matrix_context_zl3b.csv",
+      "docs/estudo_matriz_bordas_contexto_zl3b.md",
+      "docs/rota_1_corpus_textual.md",
+      "docs/rota_2_controles_estatisticos.md",
+      "data/derived/matrix_control_summary_zl3b.csv",
+      "data/derived/matrix_exact_pairs_zl3b.csv",
+      "docs/rota_3_anotacao_visual.md",
+      "data/annotations/visual_annotation_candidates_zl3b.csv",
+      "docs/rota_3_primeira_anotacao_visual.md",
+      "data/annotations/visual_annotations_seed_zl3b.csv",
+      "docs/rota_3_cruzamento_visual.md",
+      "data/derived/visual_annotation_summary_zl3b.csv",
+      "scripts/analyze_matrix_axes.py",
+      "docs/rota_4_eixos_matriz.md",
+      "data/derived/matrix_axis_summary_zl3b.csv",
+      "scripts/analyze_same_context_pairs.py",
+      "docs/rota_5_pares_comparaveis.md",
+      "data/derived/same_context_matrix_pairs_zl3b.csv",
+      "scripts/prepare_glyph_review_queue.py",
+      "docs/rota_6_conferencia_glifos.md",
+      "data/annotations/glyph_review_queue_zl3b.csv",
+      "scripts/prepare_review_crops.py",
+      "docs/rota_7_recortes_revisao.md",
+      "data/annotations/review_crop_manifest_zl3b.csv",
+      "images/derived/review_crops",
+      "scripts/review_crop_decisions.py",
+      "docs/rota_8_revisao_recortes.md",
+      "data/annotations/crop_review_decisions_zl3b.csv",
+      "scripts/prepare_manual_svg_review.py",
+      "docs/rota_9_revisao_manual.md",
+      "docs/rota_9_revisao_manual.html",
+      "data/annotations/manual_svg_review_zl3b.csv",
+      "scripts/consolidate_manual_svg_review.py",
+      "docs/rota_10_consolidacao_manual.md",
+      "data/derived/manual_svg_review_consolidated_zl3b.csv",
+      "data/derived/manual_review_status_summary_zl3b.csv",
+      "scripts/prepare_second_pass_crop_queue.py",
+      "docs/rota_11_segunda_passada_recortes.md",
+      "data/annotations/second_pass_crop_queue_zl3b.csv",
+      "data/derived/second_pass_crop_queue_summary_zl3b.csv",
+      "scripts/prepare_folio_review_packets.py",
+      "docs/rota_12_pacotes_revisao_guiada.md",
+      "data/annotations/folio_review_packets_zl3b.csv",
+      "data/annotations/folio_review_packet_items_zl3b.csv",
+      "data/derived/folio_review_packet_summary_zl3b.csv",
+      "scripts/prepare_packet_item_checklist.py",
+      "docs/rota_13_checklist_pacotes.md",
+      "data/annotations/packet_item_checklist_zl3b.csv",
+      "data/derived/packet_item_checklist_summary_zl3b.csv",
+      "scripts/consolidate_packet_item_checklist.py",
+      "docs/rota_14_consolidacao_checklist.md",
+      "data/derived/packet_item_checklist_consolidated_zl3b.csv",
+      "data/derived/packet_item_checklist_consolidation_summary_zl3b.csv",
+      "scripts/prepare_human_review_instructions.py",
+      "docs/rota_15_instrucoes_revisao_humana.md",
+      "data/annotations/human_review_instructions_zl3b.csv",
+      "data/annotations/human_review_instruction_items_zl3b.csv",
+      "data/derived/human_review_instruction_summary_zl3b.csv",
+      "scripts/consolidate_human_review_evidence.py",
+      "docs/rota_16_consolidacao_revisao_humana.md",
+      "data/derived/human_review_evidence_consolidated_zl3b.csv",
+      "data/derived/human_review_evidence_summary_zl3b.csv",
+      "scripts/prepare_priority_human_review.py",
+      "docs/rota_17_revisao_humana_p0_p1.md",
+      "data/annotations/priority_human_review_p0_p1_zl3b.csv",
+      "data/derived/priority_human_review_summary_zl3b.csv",
+      "scripts/ingest_priority_human_decisions.py",
+      "docs/rota_18_ingestao_decisoes_p0_p1.md",
+      "data/derived/priority_human_decisions_p0_p1_zl3b.csv",
+      "data/derived/priority_human_decisions_summary_zl3b.csv",
+      "scripts/prepare_direct_visual_decision_package.py",
+      "docs/rota_19_pacote_visual_direto_p0_p1.md",
+      "docs/rota_19_pacote_visual_direto_p0_p1.html",
+      "data/annotations/direct_visual_decision_package_p0_p1_zl3b.csv",
+      "data/derived/direct_visual_decision_package_summary_zl3b.csv",
+      "scripts/apply_direct_visual_decisions.py",
+      "docs/rota_20_aplicacao_decisoes_pacote_visual.md",
+      "data/derived/packet_item_checklist_after_direct_visual_p0_p1_zl3b.csv",
+      "data/derived/direct_visual_decision_application_log_zl3b.csv",
+      "data/derived/direct_visual_decision_application_summary_zl3b.csv",
+      "scripts/prepare_visual_decision_entry_sheet.py",
+      "docs/rota_21_planilha_preenchimento_visual_p0_p1.md",
+      "data/annotations/visual_decision_entry_sheet_p0_p1_zl3b.csv",
+      "data/derived/visual_decision_entry_sheet_summary_zl3b.csv",
+      "scripts/validate_visual_decision_entry_sheet.py",
+      "docs/rota_22_validacao_planilha_visual.md",
+      "data/derived/direct_visual_package_after_entry_sheet_p0_p1_zl3b.csv",
+      "data/derived/visual_decision_entry_validation_log_zl3b.csv",
+      "data/derived/visual_decision_entry_validation_summary_zl3b.csv",
+      "scripts/prepare_guided_visual_entry_html.py",
+      "docs/rota_23_pacote_html_preenchimento_r21.md",
+      "docs/rota_23_pacote_html_preenchimento_r21.html",
+      "data/derived/guided_visual_entry_html_manifest_zl3b.csv",
+      "data/derived/guided_visual_entry_html_summary_zl3b.csv",
+      "scripts/verify_guided_visual_entry_readiness.py",
+      "docs/rota_24_prontidao_preenchimento_visual.md",
+      "data/derived/guided_visual_entry_readiness_zl3b.csv",
+      "data/derived/guided_visual_entry_readiness_summary_zl3b.csv",
+      "scripts/build_exact_form_context_table.py",
+      "docs/rota_26_tabela_contexto_formas_exatas.md",
+      "data/derived/exact_form_context_table_zl3b.csv",
+      "data/derived/exact_form_context_summary_zl3b.csv",
+      "scripts/prepare_exact_form_visual_gap_queue.py",
+      "docs/rota_27_fila_lacunas_visuais_formas_exatas.md",
+      "data/derived/exact_form_visual_gap_queue_zl3b.csv",
+      "data/derived/exact_form_visual_gap_summary_zl3b.csv",
+      "scripts/prepare_exact_form_visual_annotation_package.py",
+      "docs/rota_28_pacote_anotacao_visual_formas_exatas.md",
+      "docs/rota_28_pacote_anotacao_visual_formas_exatas.html",
+      "data/annotations/exact_form_visual_annotation_package_p0_p1_zl3b.csv",
+      "data/derived/exact_form_visual_annotation_package_summary_zl3b.csv",
+      "scripts/prepare_missing_source_image_queue.py",
+      "docs/rota_29_fila_fontes_imagem_formas_exatas.md",
+      "docs/rota_29_fila_fontes_imagem_formas_exatas.html",
+      "data/annotations/exact_form_missing_source_queue_p0_p1_zl3b.csv",
+      "data/derived/exact_form_missing_source_summary_zl3b.csv",
+      "scripts/validate_missing_source_candidates.py",
+      "docs/rota_30_validacao_fontes_candidatas.md",
+      "data/derived/missing_source_candidate_validation_zl3b.csv",
+      "data/derived/missing_source_candidate_validation_summary_zl3b.csv",
+      "data/derived/commons_image_sources_after_source_validation_zl3b.csv",
+      "scripts/validate_ready_visual_annotations.py",
+      "docs/rota_31_validacao_anotacoes_visuais_prontas.md",
+      "data/derived/ready_visual_annotation_validation_zl3b.csv",
+      "data/derived/ready_manual_visual_annotations_zl3b.csv",
+      "data/derived/ready_visual_annotation_validation_summary_zl3b.csv",
+      "scripts/prepare_ready_visual_annotation_html.py",
+      "docs/rota_32_pacote_html_anotacao_visual_prontos.md",
+      "docs/rota_32_pacote_html_anotacao_visual_prontos.html",
+      "data/annotations/ready_visual_annotation_entry_sheet_zl3b.csv",
+      "data/derived/ready_visual_annotation_html_summary_zl3b.csv",
+      "scripts/apply_ready_visual_annotation_entries.py",
+      "docs/rota_33_aplicacao_entradas_visuais_r32.md",
+      "data/derived/exact_form_visual_annotation_package_after_ready_entries_zl3b.csv",
+      "data/derived/ready_visual_annotation_entry_application_log_zl3b.csv",
+      "data/derived/ready_visual_annotation_entry_application_summary_zl3b.csv",
+      "scripts/verify_ready_visual_annotation_manual_gate.py",
+      "docs/rota_34_gate_manual_anotacao_visual_r32.md",
+      "data/derived/ready_visual_annotation_manual_gate_zl3b.csv",
+      "data/derived/ready_visual_annotation_manual_gate_summary_zl3b.csv",
+      "scripts/plan_ready_visual_annotation_post_gate_rerun.py",
+      "docs/rota_35_plano_reexecucao_pos_gate_r32.md",
+      "data/derived/ready_visual_annotation_post_gate_rerun_plan_zl3b.csv",
+      "data/derived/ready_visual_annotation_post_gate_rerun_summary_zl3b.csv",
+      "scripts/prepare_ready_visual_annotation_manual_fill_protocol.py",
+      "docs/rota_36_protocolo_preenchimento_humano_r32.md",
+      "data/derived/ready_visual_annotation_manual_fill_protocol_zl3b.csv",
+      "data/derived/ready_visual_annotation_manual_fill_protocol_summary_zl3b.csv",
+      "scripts/plan_ready_visual_annotation_revalidation_chain.py",
+      "docs/rota_37_plano_revalidacao_r34_r35_r33_r31.md",
+      "data/derived/ready_visual_annotation_revalidation_chain_plan_zl3b.csv",
+      "data/derived/ready_visual_annotation_revalidation_chain_summary_zl3b.csv",
+      "scripts/prepare_ready_visual_annotation_manual_reopen_work_order.py",
+      "docs/rota_38_ordem_trabalho_preencher_r32_reabrir_cadeia.md",
+      "data/derived/ready_visual_annotation_manual_reopen_work_order_zl3b.csv",
+      "data/derived/ready_visual_annotation_manual_reopen_work_order_summary_zl3b.csv"
+    ],
+    "route_32_ready_visual_annotation_html": {
+      "html_cards": 8,
+      "r31_pending_blank_manual_annotations": 8,
+      "priority_level_counts": {
+        "P1": 7,
+        "P0": 1
+      },
+      "locus_kind_counts": {
+        "P": 6,
+        "L": 2
+      },
+      "manual_fields": "blank by design",
+      "allowed_manual_annotation_status": "annotated/not_visible/uncertain",
+      "semantic_guardrail": "focused_visual_annotation_html_not_evidence",
+      "outputs": {
+        "entry_csv": "data/annotations/ready_visual_annotation_entry_sheet_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_html_summary_zl3b.csv",
+        "md": "docs/rota_32_pacote_html_anotacao_visual_prontos.md",
+        "html": "docs/rota_32_pacote_html_anotacao_visual_prontos.html"
+      },
+      "reading": "The focused HTML package reduces manual review friction for the eight route 28 manifest-backed items. It does not create visual evidence; blank manual fields remain pending until a human fills them."
+    },
+    "route_33_ready_visual_annotation_entry_application": {
+      "entry_rows": 8,
+      "validation_status_counts": {
+        "pending_blank_manual_annotation": 8
+      },
+      "apply_status_counts": {
+        "skipped_blank_manual_annotation": 8
+      },
+      "package_action_counts": {
+        "no_package_change": 8
+      },
+      "manual_entry_valid_counts": {
+        "no": 8
+      },
+      "derived_package_rows": 26,
+      "updated_derived_package_rows": 0,
+      "original_package_mutated": false,
+      "semantic_guardrail": "ready_visual_entry_application_not_visual_evidence",
+      "outputs": {
+        "derived_package_csv": "data/derived/exact_form_visual_annotation_package_after_ready_entries_zl3b.csv",
+        "log_csv": "data/derived/ready_visual_annotation_entry_application_log_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_entry_application_summary_zl3b.csv",
+        "md": "docs/rota_33_aplicacao_entradas_visuais_r32.md"
+      },
+      "reading": "The route 32 application path is ready. Because the manual entry sheet is still blank, no derived package rows are updated and visual annotation evidence remains pending."
+    },
+    "route_34_ready_visual_annotation_manual_gate": {
+      "gate_items": 8,
+      "gate_status_counts": {
+        "blocked_pending_manual_annotation": 8
+      },
+      "next_action_counts": {
+        "fill_r32_entry_sheet_using_html_then_rerun_r33_r31": 8
+      },
+      "manual_entry_status_counts": {
+        "pending_blank_manual_annotation": 8
+      },
+      "html_card_check_counts": {
+        "present": 8
+      },
+      "allowed_values_check_counts": {
+        "present": 8
+      },
+      "ready_to_rerun_r33_r31": 0,
+      "semantic_guardrail": "manual_visual_gate_not_evidence",
+      "outputs": {
+        "gate_csv": "data/derived/ready_visual_annotation_manual_gate_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_manual_gate_summary_zl3b.csv",
+        "md": "docs/rota_34_gate_manual_anotacao_visual_r32.md"
+      },
+      "reading": "The operational package is ready, but the route 32 manual entry sheet remains blank. The next visual-evidence step requires human annotation before rerunning route 33 and route 31."
+    },
+    "route_35_post_gate_rerun_plan": {
+      "post_gate_items": 8,
+      "r35_status_counts": {
+        "blocked_by_manual_gate": 8
+      },
+      "rerun_action_counts": {
+        "skip_r33_r31_rerun_until_manual_entries": 8
+      },
+      "next_action_counts": {
+        "fill_r32_entry_sheet_using_html_then_rerun_r34": 8
+      },
+      "r34_gate_status_counts": {
+        "blocked_pending_manual_annotation": 8
+      },
+      "ready_for_controlled_rerun": 0,
+      "planned_reruns": 0,
+      "semantic_guardrail": "post_gate_rerun_not_visual_evidence",
+      "outputs": {
+        "plan_csv": "data/derived/ready_visual_annotation_post_gate_rerun_plan_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_post_gate_rerun_summary_zl3b.csv",
+        "md": "docs/rota_35_plano_reexecucao_pos_gate_r32.md"
+      },
+      "reading": "The post-gate path confirms there is no responsible route 33/31 rerun while the route 32 manual entry sheet is blank. The next step remains explicit human annotation."
+    },
+    "route_36_manual_fill_protocol": {
+      "manual_fill_items": 8,
+      "manual_fill_status_counts": {
+        "awaiting_human_visual_entry": 8
+      },
+      "blocking_reason_counts": {
+        "manual_entry_required": 8
+      },
+      "next_action_counts": {
+        "open_r32_html_fill_status_and_notes_then_rerun_r34": 8
+      },
+      "r35_status_counts": {
+        "blocked_by_manual_gate": 8
+      },
+      "ready_for_gate_rerun": 0,
+      "invalid_entries": 0,
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "manual_fill_protocol_not_visual_evidence",
+      "outputs": {
+        "protocol_csv": "data/derived/ready_visual_annotation_manual_fill_protocol_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_manual_fill_protocol_summary_zl3b.csv",
+        "md": "docs/rota_36_protocolo_preenchimento_humano_r32.md"
+      },
+      "reading": "The route 36 protocol makes the human fill step explicit and auditable. It does not write visual decisions or change the route 32 entry sheet."
+    },
+    "route_37_revalidation_chain_plan": {
+      "chain_items": 8,
+      "r37_status_counts": {
+        "blocked_no_human_entries": 8
+      },
+      "chain_action_counts": {
+        "skip_r34_r35_r33_r31_until_manual_fill": 8
+      },
+      "next_action_counts": {
+        "fill_r32_entry_sheet_then_rerun_r36": 8
+      },
+      "r36_manual_fill_status_counts": {
+        "awaiting_human_visual_entry": 8
+      },
+      "ready_for_revalidation_chain": 0,
+      "planned_chain_runs": 0,
+      "chain_order": "R34>R35>R33>R31",
+      "semantic_guardrail": "revalidation_chain_not_visual_evidence",
+      "outputs": {
+        "chain_plan_csv": "data/derived/ready_visual_annotation_revalidation_chain_plan_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_revalidation_chain_summary_zl3b.csv",
+        "md": "docs/rota_37_plano_revalidacao_r34_r35_r33_r31.md"
+      },
+      "reading": "The revalidation chain is defined but blocked until route 32 receives explicit human entries. No route 34/35/33/31 chain run is responsible yet."
+    },
+    "route_38_manual_reopen_work_order": {
+      "work_order_items": 8,
+      "work_order_status_counts": {
+        "manual_fill_required": 8
+      },
+      "chain_reopen_action_counts": {
+        "do_not_reopen_chain_until_r32_filled": 8
+      },
+      "next_action_counts": {
+        "fill_manual_annotation_status_and_notes_in_r32": 8
+      },
+      "r36_manual_fill_status_counts": {
+        "awaiting_human_visual_entry": 8
+      },
+      "r37_status_counts": {
+        "blocked_no_human_entries": 8
+      },
+      "ready_to_reopen_chain": 0,
+      "invalid_entries": 0,
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "manual_reopen_work_order_not_visual_evidence",
+      "outputs": {
+        "work_order_csv": "data/derived/ready_visual_annotation_manual_reopen_work_order_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_manual_reopen_work_order_summary_zl3b.csv",
+        "md": "docs/rota_38_ordem_trabalho_preencher_r32_reabrir_cadeia.md"
+      },
+      "reading": "The manual work order isolates the human task required to fill route 32. The revalidation chain remains closed until explicit human values are entered."
+    },
+    "route_39_manual_fill_execution_audit": {
+      "audited_items": 8,
+      "fill_execution_status_counts": {
+        "manual_fill_not_executed": 8
+      },
+      "chain_release_status_counts": {
+        "blocked_no_manual_entry": 8
+      },
+      "next_action_counts": {
+        "human_fill_r32_fields_from_r38_order": 8
+      },
+      "work_order_status_counts": {
+        "manual_fill_required": 8
+      },
+      "r36_manual_fill_status_counts": {
+        "awaiting_human_visual_entry": 8
+      },
+      "r37_status_counts": {
+        "blocked_no_human_entries": 8
+      },
+      "ready_to_reopen_chain": 0,
+      "invalid_or_partial_entries": 0,
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "manual_fill_execution_audit_not_visual_evidence",
+      "outputs": {
+        "audit_csv": "data/derived/ready_visual_annotation_manual_fill_execution_audit_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_manual_fill_execution_audit_summary_zl3b.csv",
+        "md": "docs/rota_39_auditoria_execucao_preenchimento_humano_r32.md"
+      },
+      "reading": "The route 39 audit confirms that manual fill execution has not happened yet. It creates no visual evidence and keeps the R34/R35/R33/R31 chain closed."
+    },
+    "route_40_conditional_chain_reopen_plan": {
+      "planned_items": 8,
+      "reopen_plan_status_counts": {
+        "blocked_waiting_human_entry": 8
+      },
+      "planned_chain_action_counts": {
+        "do_not_run_revalidation_chain": 8
+      },
+      "next_action_counts": {
+        "fill_r32_manual_fields_then_rerun_r36_r37_r39": 8
+      },
+      "fill_execution_status_counts": {
+        "manual_fill_not_executed": 8
+      },
+      "chain_release_status_counts": {
+        "blocked_no_manual_entry": 8
+      },
+      "ready_to_run_revalidation_chain": 0,
+      "invalid_entries": 0,
+      "chain_order": "R34>R35>R33>R31",
+      "semantic_guardrail": "conditional_chain_reopen_plan_not_visual_evidence",
+      "outputs": {
+        "plan_csv": "data/derived/ready_visual_annotation_conditional_chain_reopen_plan_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_conditional_chain_reopen_summary_zl3b.csv",
+        "md": "docs/rota_40_plano_condicional_reabertura_cadeia_r39.md"
+      },
+      "reading": "The route 40 plan keeps the revalidation chain closed because route 39 has no human entries. R34/R35/R33/R31 must not run until route 39 releases ready_to_reopen_chain."
+    },
+    "route_41_external_human_entry_packet": {
+      "packet_items": 8,
+      "external_entry_status_counts": {
+        "external_human_entry_required": 8
+      },
+      "reviewer_action_counts": {
+        "fill_r32_manual_annotation_status_and_notes": 8
+      },
+      "post_entry_action_counts": {
+        "do_not_modify_derived_outputs": 8
+      },
+      "reopen_plan_status_counts": {
+        "blocked_waiting_human_entry": 8
+      },
+      "external_human_entries_present": 0,
+      "invalid_or_partial_entries": 0,
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "external_human_entry_packet_not_visual_evidence",
+      "outputs": {
+        "packet_csv": "data/derived/ready_visual_annotation_external_human_entry_packet_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_external_human_entry_summary_zl3b.csv",
+        "md": "docs/rota_41_pacote_entrada_humana_externa_r32.md"
+      },
+      "reading": "The route 41 packet makes the external human review task executable and auditable. It does not create visual evidence, fill route 32, or reopen the chain."
+    },
+    "route_42_yale_iiif_highres_sources": {
+      "highres_items": 8,
+      "match_status_counts": {
+        "matched_exact_manifest_label": 4,
+        "matched_collapsed_folio": 2,
+        "matched_composite_manifest_label": 2
+      },
+      "download_status_counts": {
+        "downloaded": 8
+      },
+      "missing_yale_manifest_match": 0,
+      "local_image_count": 8,
+      "local_image_dir": "images/raw/yale_iiif_r32",
+      "dimension_range": {
+        "min_width": 2702,
+        "max_width": 9078,
+        "min_height": 3697,
+        "max_height": 3777
+      },
+      "source": {
+        "provider": "Yale University Library / Beinecke Rare Book and Manuscript Library",
+        "manifest": "https://collections.library.yale.edu/manifests/2002046",
+        "catalog": "https://collections.library.yale.edu/catalog/2002046"
+      },
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "highres_source_download_not_visual_evidence",
+      "outputs": {
+        "manifest_json": "data/derived/yale_iiif_manifest_2002046.json",
+        "source_csv": "data/derived/ready_visual_annotation_highres_sources_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_highres_sources_summary_zl3b.csv",
+        "md": "docs/rota_42_fontes_yale_iiif_highres_r32.md",
+        "html": "docs/rota_42_pacote_html_yale_iiif_highres_r32.html",
+        "image_dir": "images/raw/yale_iiif_r32"
+      },
+      "reading": "The route 42 packet improves the visual source quality for human review by using official Yale/Beinecke IIIF images. It does not create visual annotations or reopen the chain."
+    },
+    "route_42a_yale_highres_ai_assist": {
+      "ai_assist_items": 8,
+      "image_quality_counts": {
+        "high": 5,
+        "medium_composite": 2,
+        "medium_faint": 1
+      },
+      "target_region_locatable_counts": {
+        "partial": 4,
+        "partial_composite_page": 2,
+        "yes_region": 2
+      },
+      "exact_token_decisions_by_ai": 0,
+      "chain_status_counts": {
+        "blocked_waiting_human_r32_entry": 8
+      },
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "ai_highres_visual_assist_not_human_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_annotation_highres_ai_assist.py",
+        "test": "tests/test_ready_visual_annotation_highres_ai_assist.py",
+        "assist_csv": "data/derived/ready_visual_annotation_highres_ai_assist_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_highres_ai_assist_summary_zl3b.csv",
+        "md": "docs/rota_42a_analise_assistida_highres_r32.md"
+      },
+      "reading": "The route 42A layer records AI-assisted visibility guidance for the new high-resolution sources. It does not fill route 32, decide manual annotation status, or reopen the validation chain."
+    },
+    "route_42b_highres_human_fill_html": {
+      "fill_html_items": 8,
+      "review_group_counts": {
+        "first_clear_regions": 2,
+        "middle_partial_regions": 3,
+        "faint_source": 1,
+        "last_composite_pages": 2
+      },
+      "first_review_folios": [
+        "f84r",
+        "f99r"
+      ],
+      "target_csv": "data/annotations/ready_visual_annotation_entry_sheet_zl3b.csv",
+      "line_calibration_csv": "data/annotations/ready_visual_line_calibration_zl3b.csv",
+      "line_calibration_status_counts": {
+        "calibrated": 0,
+        "pending": 19
+      },
+      "line_calibration_baseline_points_counts": {
+        "with_pending_opencv_draft_points": 2,
+        "missing_baseline_points": 17
+      },
+      "manual_fields": [
+        "manual_annotation_status",
+        "manual_visual_notes"
+      ],
+      "tool_controls": [
+        "review_queue",
+        "active_item",
+        "quick_guide",
+        "child_simple_question",
+        "token_line_chips",
+        "folio_line_total_reference",
+        "target_line_transcription_preview",
+        "folio_zl3b_locus_entry_source_list",
+        "no_proportional_zl3b_line_position_fallback",
+        "eva_visual_word_cards",
+        "calibrated_baseline_overlay",
+        "probable_visual_zones",
+        "zone_fallback_for_pending_calibration",
+        "open_route_42c_line_calibration",
+        "open_route_42e_opencv_line_map",
+        "line_guide_toggle",
+        "temporary_zone_adjustment",
+        "found_not_found_unsure_buttons",
+        "automatic_note",
+        "collapsed_csv_draft",
+        "next_pending",
+        "zoom",
+        "contrast",
+        "rotation",
+        "view_reset",
+        "draft_csv"
+      ],
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "highres_human_fill_html_not_visual_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_annotation_highres_human_fill_html.py",
+        "test": "tests/test_ready_visual_annotation_highres_human_fill_html.py",
+        "fill_csv": "data/derived/ready_visual_annotation_highres_human_fill_html_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_annotation_highres_human_fill_html_summary_zl3b.csv",
+        "md": "docs/rota_42b_preenchimento_humano_highres_r32.md",
+        "html": "docs/rota_42b_pacote_html_preenchimento_humano_r32.html"
+      },
+      "reading": "The route 42B HTML now works as an ultra-simple local review tool with one active item, quick guide, the question 'Voce achou essas palavrinhas na imagem?', EVA visual word cards for token comparison, line chips, folio ZL3b locus-entry total reference, an audit list showing the source entries behind that total, target line transcription preview, calibrated R42C baselines when available, probable visual block zones when calibration is still pending, and explicit needs-calibration badges instead of proportional ZL3b line-position estimates. It also has direct links to route 42C line calibration and route 42E OpenCV visual-line map. The folio total is a ZL3b transcription entry count, not a direct visual line count. It does not write route 32 automatically or create evidence."
+    },
+    "route_42c_line_baseline_calibration_tool": {
+      "line_calibration_items": 19,
+      "calibration_status_counts": {
+        "pending_calibration": 19
+      },
+      "baseline_points_counts": {
+        "with_baseline_points": 2,
+        "missing_baseline_points": 17
+      },
+      "opencv_prefilled_pending_targets": [
+        "f84r.24,+P0",
+        "f84r.29,+P0"
+      ],
+      "opencv_prefilled_pending_target_details": [
+        {
+          "target_locus": "f84r.24,+P0",
+          "visual_line_number": 6,
+          "baseline_points": "17.00,34.46 80.07,34.46",
+          "opencv_auto_action": "prefill_pending_baseline",
+          "automation_confidence_band": "media"
+        },
+        {
+          "target_locus": "f84r.29,+P0",
+          "visual_line_number": 14,
+          "baseline_points": "14.60,62.84 43.00,62.84",
+          "opencv_auto_action": "prefill_pending_baseline",
+          "automation_confidence_band": "media"
+        }
+      ],
+      "source_csv": "data/derived/ready_visual_annotation_highres_human_fill_html_zl3b.csv",
+      "target_calibration_csv": "data/annotations/ready_visual_line_calibration_zl3b.csv",
+      "manual_fields": [
+        "calibration_status",
+        "baseline_points",
+        "baseline_width_pct",
+        "manual_notes"
+      ],
+      "allowed_calibration_status": [
+        "pending_calibration",
+        "calibrated",
+        "uncertain",
+        "not_calibratable"
+      ],
+      "interaction_model": [
+        "select_target_locus",
+        "show_child_simple_step_guide",
+        "track_mouse_crosshair_and_percent_position",
+        "show_last_click_position",
+        "show_calibration_progress_summary",
+        "scroll_zoomed_image_panel_to_top",
+        "click_line_start",
+        "click_line_end",
+        "fine_tune_existing_baseline_points",
+        "nudge_whole_line_or_endpoint",
+        "mark_calibrated_uncertain_or_not_calibratable",
+        "generate_separate_calibration_csv",
+        "copy_calibration_csv",
+        "download_calibration_csv",
+        "open_route_42b",
+        "open_route_42d_opencv_suggestions",
+        "open_route_42e_opencv_line_map",
+        "require_valid_baseline_for_calibrated_status",
+        "consume_opencv_suggestion_as_dashed_preview",
+        "prefill_pending_baseline_points_from_opencv",
+        "show_opencv_auto_action_and_human_next_step",
+        "copy_opencv_suggestion_without_auto_calibrating",
+        "bind_scan_overlay_to_image_canvas",
+        "store_scan_signature_for_local_draft_guard",
+        "reject_stale_scan_signature_preserve_manual_calibration",
+        "reset_stale_local_scan_draft"
+      ],
+      "original_entry_sheet_mutated": false,
+      "semantic_guardrail": "line_calibration_tool_not_visual_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_line_calibration_tool.py",
+        "test": "tests/test_ready_visual_line_calibration_tool.py",
+        "calibration_csv": "data/annotations/ready_visual_line_calibration_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_line_calibration_summary_zl3b.csv",
+        "md": "docs/rota_42c_calibracao_linhas_baseline_r32.md",
+        "html": "docs/rota_42c_calibrador_linhas_baseline_r32.html"
+      },
+      "reading": "The route 42C HTML separates visual localization from visual annotation. It lets a human calibrate exact-ish baselines for the target loci with a child-simple guide: current step, point count, progress summary, mouse crosshair, percent position, and last-click tracking. The image panel now has extra scroll padding for high browser zoom, uses natural overscroll so upward gestures can bubble back to the page, and includes a Topo da imagem button to return to the upper-left of the image. When route 42D provides an OpenCV suggestion, route 42C records Acao OpenCV: prefill_pending_baseline, shows Computador ja ajudou, and explains the next human step. The reviewer clicks start and end points over the high-resolution image or adjusts the OpenCV draft, then fine-tunes the whole line or one endpoint in small percentage steps before copying or downloading the calibration CSV draft. Existing manual baseline fields are preserved on rerun, but OpenCV-only pending drafts can refresh when the grouped visual-line map improves. The scan overlay is bound to the rendered image canvas, stale local scan drafts are invalidated by draft versioning and per-item deterministic scan_signature checks, and calibrated without at least two valid baseline points normalizes back to pending_calibration. These baselines are operational location aids only; they do not translate, annotate route 32, or create visual evidence."
+    },
+    "route_42d_opencv_initial_line_suggestions": {
+      "suggestion_items": 19,
+      "suggestion_status_counts": {
+        "opencv_suggested_needs_human_confirmation": 2,
+        "opencv_candidates_detected_needs_manual_zone": 13,
+        "no_text_band_detected": 4
+      },
+      "opencv_auto_action_counts": {
+        "prefill_pending_baseline": 2,
+        "needs_manual_zone": 13,
+        "needs_better_scan_or_manual_line": 4
+      },
+      "automation_confidence_band_counts": {
+        "media": 2,
+        "sem_mapeamento": 13,
+        "sem_texto": 4
+      },
+      "ready_to_confirm_targets": [
+        "f84r.24,+P0",
+        "f84r.29,+P0"
+      ],
+      "ready_to_confirm_visual_lines": {
+        "f84r.24,+P0": 6,
+        "f84r.29,+P0": 14
+      },
+      "merged_into_route_42c_pending_baseline_points": 2,
+      "dependency_path": "/private/tmp/voynich-opencv",
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "opencv_initial_line_suggestion_not_visual_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_line_opencv_suggestions.py",
+        "test": "tests/test_ready_visual_line_opencv_suggestions.py",
+        "suggestions_csv": "data/derived/ready_visual_line_opencv_suggestions_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_line_opencv_suggestions_summary_zl3b.csv",
+        "md": "docs/rota_42d_sugestoes_opencv_linhas_r32.md",
+        "html": "docs/rota_42d_sugestoes_opencv_linhas_r32.html"
+      },
+      "reading": "OpenCV can now handle the safe mechanical layer by detecting grouped ink/text lines, numbering visual lines, and pre-filling pending baseline drafts when a manual zone already exists. It still does not solve the final mapping from ZL3b locus to visual line or create visual evidence. Route 42D exposes opencv_auto_action and human_next_step, and route 42C still requires human confirmation before any calibrated baseline is accepted."
+    },
+    "route_42e_opencv_visual_line_map": {
+      "image_items": 8,
+      "visual_line_items": 52,
+      "visual_line_counts_by_folio": {
+        "f84r": 23,
+        "f99r": 6,
+        "f99v": 15,
+        "f67r2": 3,
+        "f67v1": 1,
+        "f1r": 4,
+        "f88v": 0,
+        "f89r2": 0
+      },
+      "dependency_path": "/private/tmp/voynich-opencv",
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "opencv_visual_line_map_not_word_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_line_opencv_map.py",
+        "test": "tests/test_ready_visual_line_opencv_map.py",
+        "line_map_csv": "data/derived/ready_visual_line_opencv_map_zl3b.csv",
+        "image_inventory_csv": "data/derived/ready_visual_line_opencv_map_images_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_line_opencv_map_summary_zl3b.csv",
+        "md": "docs/rota_42e_mapa_opencv_linhas_visuais_r32.md",
+        "html": "docs/rota_42e_mapa_opencv_linhas_visuais_r32.html"
+      },
+      "reading": "Route 42E counts and numbers grouped visual text lines in the high-resolution images. It separates visual-line numbering from ZL3b transcription-entry numbering; for example f84r has 23 grouped visual lines in this filtered OpenCV pass, while the ZL3b reference has 47 entries/loci. The HTML opens in focused R32-zone mode with thin line guides, while preserving the raw map for audit. The map is a calibration aid only, not word evidence or translation."
+    },
+    "route_42f_visual_line_zone_choice": {
+      "zone_choice_items": 13,
+      "zone_status_counts": {
+        "pending_zone_choice": 13
+      },
+      "folio_counts": {
+        "f99v": 5,
+        "f99r": 2,
+        "f67r2": 2,
+        "f67v1": 2,
+        "f1r": 2
+      },
+      "source": {
+        "calibration_csv": "data/annotations/ready_visual_line_calibration_zl3b.csv",
+        "opencv_suggestions_csv": "data/derived/ready_visual_line_opencv_suggestions_zl3b.csv",
+        "opencv_line_map_csv": "data/derived/ready_visual_line_opencv_map_zl3b.csv"
+      },
+      "downstream_contract": "R42D consumes selected_zone_box_pct rows with zone_status=zone_selected_pending_opencv and can turn them into pending baseline suggestions",
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "line_zone_choice_not_visual_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_line_zone_choice_tool.py",
+        "test": "tests/test_ready_visual_line_zone_choice_tool.py",
+        "zone_choice_csv": "data/annotations/ready_visual_line_zone_choice_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_line_zone_choice_summary_zl3b.csv",
+        "md": "docs/rota_42f_escolha_linhas_visuais_sem_zona_r32.md",
+        "html": "docs/rota_42f_escolha_linhas_visuais_sem_zona_r32.html"
+      },
+      "reading": "Route 42F handles the honest gap left by OpenCV: the machine found visual text lines, but it cannot reliably decide which visual line corresponds to each ZL3b locus. The child-simple HTML shows the real visual lines from route 42E and lets a human choose Essa e a linha. The choice is still only an operational zone for route 42D, not visual evidence, translation, or route 32 data."
+    },
+    "route_42g_active_tool_dashboard": {
+      "active_html_tools": 10,
+      "obsolete_html_tools_removed": 8,
+      "active_pages": [
+        "docs/rota_42g_ferramentas_ativas_r32.html",
+        "docs/rota_42k_fila_priorizada_revisao_visual_r32.html",
+        "docs/rota_42l_confirmacao_linhas_sugeridas_r32.html",
+        "docs/rota_42m_captura_fina_linhas_r32.html",
+        "docs/rota_42f_escolha_linhas_visuais_sem_zona_r32.html",
+        "docs/rota_42d_sugestoes_opencv_linhas_r32.html",
+        "docs/rota_42j_fragmentos_visuais_opencv_r32.html",
+        "docs/rota_42c_calibrador_linhas_baseline_r32.html",
+        "docs/rota_42b_pacote_html_preenchimento_humano_r32.html",
+        "docs/rota_42e_mapa_opencv_linhas_visuais_r32.html"
+      ],
+      "removed_pages": [
+        "docs/imagens_preview.html",
+        "docs/rota_9_revisao_manual.html",
+        "docs/rota_19_pacote_visual_direto_p0_p1.html",
+        "docs/rota_23_pacote_html_preenchimento_r21.html",
+        "docs/rota_28_pacote_anotacao_visual_formas_exatas.html",
+        "docs/rota_29_fila_fontes_imagem_formas_exatas.html",
+        "docs/rota_32_pacote_html_anotacao_visual_prontos.html",
+        "docs/rota_42_pacote_html_yale_iiif_highres_r32.html"
+      ],
+      "idempotency": "scripts/prepare_active_tool_dashboard.py can be rerun; already-removed HTML tools are reported as already_absent",
+      "semantic_guardrail": "active_tool_cleanup_not_visual_evidence",
+      "outputs": {
+        "script": "scripts/prepare_active_tool_dashboard.py",
+        "test": "tests/test_active_tool_dashboard.py",
+        "md": "docs/rota_42g_ferramentas_ativas_r32.md",
+        "html": "docs/rota_42g_ferramentas_ativas_r32.html"
+      },
+      "reading": "Route 42G does not change translation, evidence, or annotation data. It narrows the human-facing tool surface to one dashboard plus the current R42B-L workflow."
+    },
+    "route_42h_visual_eva_renderer": {
+      "active_human_tools_updated": [
+        "route_42b_highres_human_fill_html",
+        "route_42c_line_baseline_calibration_tool",
+        "route_42f_visual_line_zone_choice"
+      ],
+      "rendering_contract": "visible EVA reference text is rendered as SVG word cards with eva-visual-line/eva-word; raw EVA remains in CSVs and technical payloads for audit",
+      "target_highlight_class": "is-target",
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "visual_eva_renderer_not_decipherment_evidence",
+      "outputs": {
+        "helper": "scripts/eva_visual.py",
+        "test": "tests/test_eva_visual.py",
+        "r42b_html": "docs/rota_42b_pacote_html_preenchimento_humano_r32.html",
+        "r42c_html": "docs/rota_42c_calibrador_linhas_baseline_r32.html",
+        "r42f_html": "docs/rota_42f_escolha_linhas_visuais_sem_zona_r32.html"
+      },
+      "reading": "Route 42H improves human comparison by turning EVA strings such as okar,y into visual SVG cards in the active interfaces. It does not translate, change transcriptions, create evidence, or fill route 32."
+    },
+    "route_42i_real_image_crop_previews": {
+      "active_tools_updated": [
+        "route_42b_highres_human_fill_html",
+        "route_42c_line_baseline_calibration_tool",
+        "route_42d_opencv_initial_line_suggestions",
+        "route_42e_opencv_visual_line_map",
+        "route_42f_visual_line_zone_choice",
+        "route_42g_active_tool_dashboard"
+      ],
+      "rendering_contract": "visible comparison should prefer real manuscript crop previews whenever a percent zone, OpenCV visual line box, or baseline-derived crop is available",
+      "crop_source": "browser canvas draws from the original high-resolution image and percent boxes; no crop bitmap is persisted",
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "real_image_crop_preview_not_ocr_or_visual_evidence",
+      "outputs": {
+        "helper": "scripts/visual_crop.py",
+        "test": "tests/test_visual_crop.py",
+        "r42b_html": "docs/rota_42b_pacote_html_preenchimento_humano_r32.html",
+        "r42c_html": "docs/rota_42c_calibrador_linhas_baseline_r32.html",
+        "r42d_html": "docs/rota_42d_sugestoes_opencv_linhas_r32.html",
+        "r42e_html": "docs/rota_42e_mapa_opencv_linhas_visuais_r32.html",
+        "r42f_html": "docs/rota_42f_escolha_linhas_visuais_sem_zona_r32.html",
+        "r42g_html": "docs/rota_42g_ferramentas_ativas_r32.html"
+      },
+      "reading": "Route 42I changes the human workflow from comparing code-like references to comparing image against image. It improves usability and repeatability, but it is not OCR, not a translation, not automatic word evidence, and not route 32 data."
+    },
+    "route_42j_opencv_visual_fragment_map": {
+      "source_visual_lines": 52,
+      "visual_fragments": 77,
+      "dependency_path": "/private/tmp/voynich-opencv",
+      "active_html_tools": 10,
+      "original_entry_sheet_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "opencv_visual_fragment_map_not_ocr_or_word_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_word_opencv_map.py",
+        "test": "tests/test_ready_visual_word_opencv_map.py",
+        "word_map_csv": "data/derived/ready_visual_word_opencv_map_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_word_opencv_map_summary_zl3b.csv",
+        "md": "docs/rota_42j_fragmentos_visuais_opencv_r32.md",
+        "html": "docs/rota_42j_fragmentos_visuais_opencv_r32.html"
+      },
+      "reading": "Route 42J is a finer computer-vision inspection layer over the R42E visual lines. It segments ink components into visual fragments and renders real manuscript crop previews for human comparison. It is not OCR, does not read EVA, does not translate, does not confirm a word, and does not fill route 32."
+    },
+    "route_42k_visual_review_priority_queue": {
+      "priority_queue_items": 13,
+      "review_bucket_counts": {
+        "revisar_primeiro": 4,
+        "revisar_depois": 4,
+        "revisao_dificil": 5
+      },
+      "source_pending_zone_choices": 13,
+      "source_visual_fragments": 77,
+      "active_html_tools": 10,
+      "original_entry_sheet_mutated": false,
+      "zone_choice_csv_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "visual_review_priority_not_evidence_or_ocr",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_review_priority_queue.py",
+        "test": "tests/test_ready_visual_review_priority_queue.py",
+        "queue_csv": "data/derived/ready_visual_review_priority_queue_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_review_priority_queue_summary_zl3b.csv",
+        "md": "docs/rota_42k_fila_priorizada_revisao_visual_r32.md",
+        "html": "docs/rota_42k_fila_priorizada_revisao_visual_r32.html"
+      },
+      "reading": "Route 42K is a work queue over the pending R42F choices. It uses candidate counts, R42J visual fragments, confidence, priority level, and image quality to suggest which target to review first. It does not choose the correct line automatically, does not read EVA, does not translate, and does not create visual evidence."
+    },
+    "route_42l_visual_line_choice_confirmation": {
+      "confirmation_items": 13,
+      "confirmation_status_counts": {
+        "pending_human_confirmation": 13
+      },
+      "review_bucket_counts": {
+        "revisar_primeiro": 4,
+        "revisar_depois": 4,
+        "revisao_dificil": 5
+      },
+      "source_priority_queue_items": 13,
+      "active_html_tools": 10,
+      "original_entry_sheet_mutated": false,
+      "zone_choice_csv_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "line_choice_confirmation_not_evidence_or_ocr",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_line_choice_confirmation.py",
+        "test": "tests/test_ready_visual_line_choice_confirmation.py",
+        "confirmation_csv": "data/annotations/ready_visual_line_choice_confirmation_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_line_choice_confirmation_summary_zl3b.csv",
+        "md": "docs/rota_42l_confirmacao_linhas_sugeridas_r32.md",
+        "html": "docs/rota_42l_confirmacao_linhas_sugeridas_r32.html"
+      },
+      "reading": "Route 42L turns the R42K work queue into a human confirmation surface. It shows the suggested visual line, alternatives from R42F, and real crop previews, but keeps selected_visual_line_number and selected_zone_box_pct empty until a person confirms the choice. It does not mutate R42F, R42C, or R32."
+    },
+    "route_42m_fine_visual_line_capture": {
+      "fine_capture_items": 13,
+      "fine_capture_status_counts": {
+        "fine_capture_ready_needs_human_confirmation": 13
+      },
+      "confidence_band_counts": {
+        "media": 11,
+        "baixa": 2
+      },
+      "source_confirmation_items": 13,
+      "active_html_tools": 10,
+      "original_entry_sheet_mutated": false,
+      "zone_choice_csv_mutated": false,
+      "calibration_csv_mutated": false,
+      "semantic_guardrail": "fine_line_capture_not_ocr_or_evidence",
+      "outputs": {
+        "script": "scripts/prepare_ready_visual_fine_line_capture.py",
+        "test": "tests/test_ready_visual_fine_line_capture.py",
+        "fine_capture_csv": "data/derived/ready_visual_fine_line_capture_zl3b.csv",
+        "summary_csv": "data/derived/ready_visual_fine_line_capture_summary_zl3b.csv",
+        "md": "docs/rota_42m_captura_fina_linhas_r32.md",
+        "html": "docs/rota_42m_captura_fina_linhas_r32.html"
+      },
+      "reading": "Route 42M narrows the visual capture around R42L suggestions by intersecting R42J fragment crop boxes with the suggested visual-line zone. It produces refined_capture_box_pct and refined_baseline_points as operational aids only; it does not select a line, mutate R42F/R42C/R32, read EVA, translate, or create evidence."
+    }
+  },
+  "next_experiment": "use route 42M to inspect R42M-001 capture, confirm the line in route 42L, then apply only the human-confirmed selected_zone_box_pct to route 42F and rerun route 42D/R42C"
+}

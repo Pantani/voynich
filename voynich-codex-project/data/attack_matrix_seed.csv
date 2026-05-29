@@ -1,0 +1,8 @@
+token_family,tokens,primary_question,status
+ok matrix,okar|okal|okor|okol,quatro estados ou variação fonética?,mais provável matriz funcional
+ot matrix,otar|otal|otor|otol,paralelo a ok?,operador paralelo provável
+qo matrix,qokar|qokal|qokor|qokol,texto corrido versus rótulo?,a testar
+dy closures,chedy|shedy|qokedy|okedy|otoldy,"fechamento, classe ou plural?",fechamento/classe provável
+aiin family,daiin|aiin|qokaiin|oaiin,token lexical ou bloco funcional?,bloco funcional provável
+labels anchors,doaro|otoldy|otaly|okolshy|otolor,âncoras visuais?,fracas individualmente
+red layer f67r2,ykchey|okar|ykaly|dchetdy,rubrica ou título?,rubrica técnica provável
