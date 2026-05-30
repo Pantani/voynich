@@ -1,0 +1,48 @@
+metric,value
+n_folios_with_hand_and_text,225
+n_tokens_total,35045
+n_hands,5
+hands,1|2|3|4|5
+V_hand_currier_folio,0.9801
+V_hand_section_folio,0.7119
+V_currier_section_folio,0.6649
+V_hand_prefix_all,0.1121
+V_hand_prefix_all_null,0.0297
+V_hand_prefix_all_p,0.000999
+V_hand_length_all,0.0581
+V_hand_length_all_null,0.0249
+V_hand_length_all_p,0.000999
+V_hand_ao_all,0.1834
+V_hand_ao_all_null,0.0361
+V_hand_ao_all_p,0.000999
+within_currier_tested,True
+within_currier_survives,True
+within_section_tested,True
+within_section_survives,True
+within_currier_section_tested,True
+within_currier_section_survives,False
+n_campaign_seams,21
+mean_tv_at_seam,0.1626
+mean_tv_same_hand,0.1201
+verdict,hand_collinear_with_currier
+caveat,measures scribal PRODUCTION habits per hand (the $H tag from R68); says NOTHING about meaning. Distinct hand habits are consistent with BOTH a meaningful text AND a content-free generator.
+guardrail,rota72_hand_campaign_not_decipherment
+control[currier=A],hands=1|3 n_tokens=10285 V=0.0671 null=0.0333 p=0.047952 testable=True survives=True
+control[currier=B],hands=2|3|5 n_tokens=21240 V=0.0699 null=0.0365 p=0.006993 testable=True survives=True
+control[section=astronomical],hands=4 n_tokens=850 V=0.0 null=0.0 p=1.0 testable=False survives=False
+control[section=balneological],hands=2 n_tokens=5897 V=0.0 null=0.0 p=1.0 testable=False survives=False
+control[section=cosmological],hands=1|2|4 n_tokens=1576 V=0.2327 null=0.1452 p=0.00999 testable=True survives=True
+control[section=herbal],hands=1|2|3|5 n_tokens=10153 V=0.0715 null=0.0338 p=0.000999 testable=True survives=True
+control[section=pharmaceutical],hands=1 n_tokens=2385 V=0.0 null=0.0 p=1.0 testable=False survives=False
+control[section=stars_recipes],hands=3 n_tokens=10355 V=0.0 null=0.0 p=1.0 testable=False survives=False
+control[section=text_only],hands=1|2|3|5 n_tokens=2194 V=0.1065 null=0.1289 p=0.76024 testable=True survives=False
+control[section=zodiac],hands=4 n_tokens=1203 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=A,section=herbal]",hands=1 n_tokens=7003 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=A,section=pharmaceutical]",hands=1 n_tokens=2385 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=A,section=stars_recipes]",hands=3 n_tokens=695 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=A,section=text_only]",hands=1 n_tokens=202 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=B,section=balneological]",hands=2 n_tokens=5897 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=B,section=cosmological]",hands=2 n_tokens=587 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=B,section=herbal]",hands=2|3|5 n_tokens=3112 V=0.0826 null=0.0647 p=0.11988 testable=True survives=False
+"control[currier=B,section=stars_recipes]",hands=3 n_tokens=9660 V=0.0 null=0.0 p=1.0 testable=False survives=False
+"control[currier=B,section=text_only]",hands=2|5 n_tokens=1984 V=0.0923 null=0.1293 p=0.592408 testable=True survives=False
