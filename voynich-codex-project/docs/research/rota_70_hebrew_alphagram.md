@@ -1,6 +1,6 @@
-# Rota 71: a tese hebraica (Kondrak & Hauer 2018) — ataque ao alfagrama + abjad
+# Rota 70: a tese hebraica (Kondrak & Hauer 2018) — ataque ao alfagrama + abjad
 
-Guardrail: `rota71_hebrew_alphagram_not_decipherment`.
+Guardrail: `rota70_hebrew_alphagram_not_decipherment`.
 
 **Guardrail global:** este relatório mede ESTRUTURA (ordem dos glifos dentro da
 palavra) e o que a hipótese hebraica algorítmica PREDIZ — não tradução. Nenhuma
@@ -29,7 +29,7 @@ só havia atacado uma:
   O "decode" da primeira linha deles depende de des-alfagramar + repor vogais +
   Google Tradutor.
 
-A Rota 71 isola e ataca o **pilar falsificável** da versão algorítmica: a
+A Rota 70 isola e ataca o **pilar falsificável** da versão algorítmica: a
 **hipótese do alfagrama**. Se cada palavra é um anagrama alfabético, então existe
 **uma ordem total dos glifos** sob a qual *quase todo* token é não-decrescente —
 de forma equivalente, a ordem majoritária par-a-par dos glifos é uma ordem total
@@ -226,15 +226,15 @@ estatística de corpus.
 - **Insumos de grounding:** `docs/research/rota_62_generator.md` (o gerador árbitro),
   `docs/research/rota_66_estado_da_arte_attack_matrix.md` (Tese 13, que esta rota
   refina), `docs/research/rota_58_language_signature.md` (`char_h2`=2,15).
-- **Guardrail:** `rota71_hebrew_alphagram_not_decipherment`.
+- **Guardrail:** `rota70_hebrew_alphagram_not_decipherment`.
 
 ---
 
 ## REGRA DE OURO (reafirmada)
 
-A saída da R71 **enfraquece a hipótese hebraica; NÃO converte estrutura em sentido
+A saída da R70 **enfraquece a hipótese hebraica; NÃO converte estrutura em sentido
 e NÃO produz tradução.** A consistência de ordem medida é morfologia templática
 (reproduzida pelo gerador R62), não reordenação alfabética. Os priores permanecem
 **gerador ~70% / construída ~22% / cifra ~8%**.
 
-Guardrail: `rota71_hebrew_alphagram_not_decipherment`.
+Guardrail: `rota70_hebrew_alphagram_not_decipherment`.

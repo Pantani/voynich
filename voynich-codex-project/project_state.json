@@ -19,9 +19,9 @@
     "Voynich = leitura direita->esquerda escondida (entropia condicional invariante por reversao)",
     "Voynich = paginas espelhadas (refutado: facing reversa < direta, p=0.40)"
   ],
-  "latest_experiment": "Rota 71: ataque à tese hebraica (Kondrak & Hauer 2018) — alfagrama + abjad. Refuta o pilar falsificável (anagrama alfabético) no corpus inteiro, arbitrado contra o gerador R62.",
+  "latest_experiment": "Rotas 69-71 (três ataques a teses populares da internet, times paralelos): R69 'estilo Leonardo'/direcionalidade (degenera no gerador R62, leonardo_operations_degenerate); R70 tese hebraica/alfagrama (Kondrak & Hauer 2018, hebrew_alphagram_refuted); R71 língua construída/lingua ignota (família VIVA, modelo Hildegard ENFRAQUECIDO). Suíte 636 testes; priores INALTERADOS 70/22/8.",
   "latest_result": {
-    "summary": "R71: a forma ALGORÍTMICA da tese hebraica (Kondrak & Hauer 2018: cada palavra = hebraico abjad + letras reordenadas em ordem alfabética) é REFUTADA no seu próprio mecanismo. Sob a melhor ordem total, só 27,3% dos tokens estão ordenados (teto=100%, piso=6,3%; 22,5% do caminho), 35% dos pares de glifos têm ordem estrita (alfagrama exige ~100%) e há 15 ciclos de maioria (prova que NENHUMA ordem total existe). O lift é reproduzido pelo gerador R62 (real 0,273 ≈ gen 0,277) = morfologia templática, não alfabética. Abjad não resgata; frequência não-discrimina (Zipf). Refina a Tese 13 da R66 (forma de decifração pontual já morta por char_h2; forma algorítmica agora morta pelo mecanismo). Priores congelados 70/22/8. [Anterior R67/R68: laafu=layout (head-subtraction 97,6%); códice blocado, 5 mãos, sentido congelado.]",
+    "summary": "R70: a forma ALGORÍTMICA da tese hebraica (Kondrak & Hauer 2018: cada palavra = hebraico abjad + letras reordenadas em ordem alfabética) é REFUTADA no seu próprio mecanismo. Sob a melhor ordem total, só 27,3% dos tokens estão ordenados (teto=100%, piso=6,3%; 22,5% do caminho), 35% dos pares de glifos têm ordem estrita (alfagrama exige ~100%) e há 15 ciclos de maioria (prova que NENHUMA ordem total existe). O lift é reproduzido pelo gerador R62 (real 0,273 ≈ gen 0,277) = morfologia templática, não alfabética. Abjad não resgata; frequência não-discrimina (Zipf). Refina a Tese 13 da R66 (forma de decifração pontual já morta por char_h2; forma algorítmica agora morta pelo mecanismo). Priores congelados 70/22/8. [Anterior R67/R68: laafu=layout (head-subtraction 97,6%); códice blocado, 5 mãos, sentido congelado.]",
     "line_records": 5385,
     "matrix_candidates": 8398,
     "simple_token_count": 41005,
@@ -1020,12 +1020,17 @@
       "data/derived/hebrew_alphagram_summary_zl3b.csv",
       "data/derived/hebrew_alphagram_corpora_zl3b.csv",
       "data/derived/hebrew_alphagram_pairs_zl3b.csv",
-      "docs/research/rota_71_hebrew_alphagram.md",
+      "docs/research/rota_70_hebrew_alphagram.md",
       "scripts/assess_constructed_language.py",
       "tests/test_constructed_language.py",
       "data/derived/constructed_language_scorecard_zl3b.csv",
       "data/derived/constructed_language_summary_zl3b.csv",
-      "docs/research/rota_71_lingua_construida.md"
+      "docs/research/rota_71_lingua_construida.md",
+      "scripts/analyze_directionality_mirror.py",
+      "tests/test_directionality_mirror.py",
+      "data/derived/directionality_summary_zl3b.csv",
+      "data/derived/directionality_corpora_zl3b.csv",
+      "docs/research/rota_69_direcionalidade_espelhamento.md"
     ],
     "route_32_ready_visual_annotation_html": {
       "html_cards": 8,
@@ -1947,7 +1952,7 @@
       "guardrail": "rota69_directionality_mirror_not_decipherment",
       "tests_total": 605
     },
-    "route_71_hebrew_alphagram": {
+    "route_70_hebrew_alphagram": {
       "summary": "Isola e ataca a versão algorítmica da tese hebraica (Kondrak & Hauer 2018), distinta das decifrações pontuais (R66 t13). Pilar falsificável: o ALFAGRAMA (cada palavra é um anagrama alfabético) exige uma ordem TOTAL dos glifos. Três medidas, duas independentes da ordem (decidedness de pares e ciclos de maioria), mais arbitragem contra o gerador R62 e passes glifo-EVA/abjad/frequência.",
       "claim": "Kondrak & Hauer 2018: cada palavra Voynich = palavra hebraica abjad (sem vogais) + letras reordenadas em ordem alfabética (alfagrama)",
       "alphagram_fraction_real": 0.273333,
@@ -1984,14 +1989,14 @@
         "cipher": 0.08
       },
       "test_count": 622,
-      "semantic_guardrail": "rota71_hebrew_alphagram_not_decipherment",
+      "semantic_guardrail": "rota70_hebrew_alphagram_not_decipherment",
       "outputs": {
         "script": "scripts/analyze_hebrew_alphagram.py",
         "test": "tests/test_hebrew_alphagram.py",
         "summary_csv": "data/derived/hebrew_alphagram_summary_zl3b.csv",
         "corpora_csv": "data/derived/hebrew_alphagram_corpora_zl3b.csv",
         "pairs_csv": "data/derived/hebrew_alphagram_pairs_zl3b.csv",
-        "md": "docs/research/rota_71_hebrew_alphagram.md"
+        "md": "docs/research/rota_70_hebrew_alphagram.md"
       },
       "reading": "The Hebrew claim has two forms and the repo had attacked only one. Point decipherments (Cheshire/Bax/Gibbs) are R66 thesis 13, dead by char_h2=2.15. The ALGORITHMIC form (Kondrak & Hauer 2018) was never isolated: they propose each word is a Hebrew word abjad-stripped of vowels and re-sorted into alphabetical order (an alphagram). That mechanism implies a TOTAL glyph order, so it is falsifiable without a key. On the full corpus only 27.3% of tokens are non-decreasing under the best order (a true alphagram ceiling = 100%, shuffle floor = 6.3%), only 34.7% of glyph pairs are strictly ordered (124/190 are ambiguous), and the majority order contains 15 three-cycles, proving no total order can sort every word. The modest order lift is reproduced by the content-free R62 generator (real 0.273 vs gen 0.277), so it is templatic morphology, not alphabetic re-sorting. Stripping candidate vowels (abjad) does not rescue a total order (decided 0.42, still cycles), and the sorted letter-frequency profile ties Hebrew (1.00) with English (0.997) by Zipf, so a frequency match is non-discriminating. The glyph-unit pass (ch/sh as units) refutes identically. Verdict hebrew_alphagram_refuted: this closes the gap in R66 thesis 13 — the algorithmic form dies by its own declared mechanism. Priors frozen 70/22/8. Right-to-left reading is Rota 69's scope, kept separate."
     },
@@ -2028,5 +2033,7 @@
       "tests_total": 636
     }
   },
-  "next_experiment": "Externo: estudo instrumental de tinta por mão/campanha (#4); colação de cadernos (#7); monitorar texto-irmão (#2); manter barra held-out para qualquer decode (#6)"
+  "next_experiment": "PRÓXIMA ROTA LIVRE = R72 (R69/R70/R71 ocupadas; checar 'ls docs/research/rota_*' antes de criar, por causa de sessões paralelas). Linhas de corpus/imagem/teses-internet EXAURIDAS (R43-71). Maior valor = EXTERNO: estudo instrumental de tinta por mão/campanha (#4); colação de cadernos (#7); monitorar texto-irmão (#2). Só chave/crib #1 ou decode held-out #6 move o sentido; priores congelados 70/22/8.",
+  "next_route_number": 72,
+  "suite_test_count": 636
 }

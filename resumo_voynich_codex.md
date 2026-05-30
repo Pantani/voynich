@@ -2320,7 +2320,29 @@ Guardrail: `rota68_codicology_not_decipherment`. Script: `scripts/analyze_codico
 `data/derived/codicology_{currier_runs,alignment,summary}_zl3b.csv`. Doc:
 `docs/research/rota_68_codicologia.md`. Suíte: **593 testes**.
 
-## 89. Rota 70: a tese hebraica (Kondrak & Hauer 2018) — alfagrama REFUTADO
+## 89. Rota 69: hipóteses "estilo Leonardo" — direção/espelhamento DEGENERAM
+
+Pergunta da internet: o Voynich seria de Leonardo da Vinci (escrita espelhada, "palavras de trás
+pra frente", leitura direita→esquerda, páginas espelhadas)? **Autoria refutada pela materialidade**
+(velino ¹⁴C 1404–1438; Leonardo nasceu em 1452). Mas as TÉCNICAS são testáveis independentemente de
+quem segurou a pena, e a R69 as arbitrou contra o gerador R62.
+
+**Veredito `leonardo_operations_degenerate`.** Teorema confirmado no corpus: a entropia condicional
+de uma fonte estacionária é invariante por reversão → `h2_fwd − h2_bwd = −0,00002` (h2=2,153 idêntico
+nas duas direções; h3=1,899 idêntico). **A direção de leitura é invisível no nível da sequência** — a
+famosa h2 NÃO pode favorecer R→L (mata o argumento central do paper de direcionalidade de 2025). O
+único conteúdo direcional de 2ª ordem = `dir_edge = H(1ª letra) − H(última) = +0,676` = morfologia de
+sufixo (fins de palavra mais rígidos que inícios), reproduzida pelo gerador (+0,686, Δ=0,010) e que só
+TROCA DE SINAL ao inverter os tokens (−0,676). Nenhum reverso aproxima h2 da banda natural [2,5–3,6]
+(preso ~2,15). Páginas NÃO espelhadas (facing reverso 0,0045 < direto 0,0059, effect=−0,0014, p=0,40;
+palíndromo p=0,91) — um falso positivo do nulo ingênuo (p=0,0066) foi PEGO pela pré-registração cega.
+Priores inalterados 70/22/8.
+
+Guardrail: `rota69_directionality_mirror_not_decipherment`. Script: `scripts/analyze_directionality_mirror.py`;
+teste: `tests/test_directionality_mirror.py`. Saídas: `data/derived/directionality_{summary,corpora}_zl3b.csv`.
+Doc: `docs/research/rota_69_direcionalidade_espelhamento.md`. Suíte: **605 testes**.
+
+## 90. Rota 70: a tese hebraica (Kondrak & Hauer 2018) — alfagrama REFUTADO
 
 Pergunta trazida de fora: "o Voynich é hebraico?" A afirmação tem DUAS formas e o repo só atacara
 uma. As decifrações pontuais (Cheshire/Bax/Gibbs) são a **Tese 13 da R66**, mortas por `char_h2=2.15`.
@@ -2351,3 +2373,26 @@ Guardrail: `rota70_hebrew_alphagram_not_decipherment`. Script: `scripts/analyze_
 teste: `tests/test_hebrew_alphagram.py` (17). Saídas:
 `data/derived/hebrew_alphagram_{summary,corpora,pairs}_zl3b.csv`. Doc:
 `docs/research/rota_70_hebrew_alphagram.md`. Suíte: **622 testes**.
+
+## 91. Rota 71: hipótese de língua construída (*lingua ignota*) — família VIVA, Hildegard ENFRAQUECIDA
+
+Pergunta do usuário: o manuscrito poderia ser uma "lingua ignota" (língua construída)? Rota de
+**SÍNTESE** — posiciona a hipótese contra o ledger fechado R43–R70, **sem medir corpus novo**
+(scorecard de 10 critérios). Distingue dois sentidos:
+
+- **H_amplo (sistema de signos construído deliberadamente):** VIVA — sustenta 5 / enfraquece 0.
+  Morfologia combinatória desenhada (R43–55), saco-de-palavras sintaxe-fina (R60), prosa não-natural
+  h2=2,15 (R58), morfo-rico/sintaxe-fino (R59) e produção séria multi-escriba (R68: blocado p=0,001,
+  5 mãos, V(mão×Currier)=0,98) todos a sustentam. É o ramo ~22% e a família a que o gerador ~70% pertence.
+- **H_Hildegard (o modelo específico: nomenclator glosado, vocabulário inventado referencial):**
+  ENFRAQUECIDA — enfraquece 4 > sustenta 3. Nomenclator excluído (R57), rótulo↔objeto desacoplado
+  (R63–65), sem glosa/chave paralela (R68), escala/morfologia do léxico ≠ lista de ~1000 substantivos (R59).
+
+Nenhum dos dois é confirmável por estatística: o gerador content-free R62/R67 reproduz 14/14
+assinaturas, logo um sistema construído COM conteúdo é indistinguível de um SEM na escala do token.
+Só chave/crib #1 (que também separa construída de cifra) ou decode held-out #6 move o ponteiro.
+Veredito `constructed_family_alive_hildegard_excluded_frozen`. Priores congelados 70/22/8.
+
+Guardrail: `rota71_constructed_language_not_decipherment`. Script: `scripts/assess_constructed_language.py`;
+teste: `tests/test_constructed_language.py`. Saídas: `data/derived/constructed_language_{scorecard,summary}_zl3b.csv`.
+Doc: `docs/research/rota_71_lingua_construida.md`. Suíte: **636 testes**.

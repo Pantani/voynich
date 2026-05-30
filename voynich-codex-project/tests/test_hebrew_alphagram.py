@@ -1,4 +1,4 @@
-"""Tests for Rota 71 Hebrew alphagram + abjad attack (analyze_hebrew_alphagram.py).
+"""Tests for Rota 70 Hebrew alphagram + abjad attack (analyze_hebrew_alphagram.py).
 
 The decisive structural claim of Kondrak & Hauer (2018) is that every Voynich word
 is an ALPHAGRAM (its letters re-sorted into one fixed alphabetic order). That is a

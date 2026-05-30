@@ -25,4 +25,4 @@ freq_non_discriminating,True
 alphagram_pass_threshold,0.9
 verdict,hebrew_alphagram_refuted
 reasons,"no_total_order_exists: 15 majority 3-cycles (alphagram needs 0) | pairs_not_strictly_ordered: decided=0.347 << 0.9 | tokens_not_sorted: alphagram_fraction=0.273 << ceiling 1.00 | order_lift_reproduced_by_generator: real=0.273 ~ gen=0.277 (delta=0.004 <= 0.03) -> templatic morphology, not alphabetic | abjad_does_not_rescue: vowel-stripped decided=0.416, cycles=3 | letter_frequency_non_discriminating: Hebrew ties English (Zipf) | frac_to_ceiling=0.225"
-guardrail,rota71_hebrew_alphagram_not_decipherment
+guardrail,rota70_hebrew_alphagram_not_decipherment

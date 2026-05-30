@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rota 71: the Hebrew hypothesis (Kondrak & Hauer 2018) -- alphagram + abjad attack.
+"""Rota 70: the Hebrew hypothesis (Kondrak & Hauer 2018) -- alphagram + abjad attack.
 
 The "Voynich is Hebrew" claim has two very different forms and the repo has only
 attacked one of them so far:
@@ -80,7 +80,7 @@ from scripts.analyze_generator import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-GUARDRAIL = "rota71_hebrew_alphagram_not_decipherment"
+GUARDRAIL = "rota70_hebrew_alphagram_not_decipherment"
 DEFAULT_CORPUS = ROOT / "data" / "raw" / "ZL3b-n.txt"
 
 # --- thresholds (pre-registered) ------------------------------------------- #
