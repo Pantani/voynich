@@ -11,14 +11,21 @@ import pytest
 from scripts.analyze_cross_modal import (
     GUARDRAIL,
     GUARDRAIL_COMBINED,
+    GUARDRAIL_REFINED,
     COARSE_MAP,
     COARSE_MAP_COMBINED,
+    COARSE_MAP_REFINED,
     COMBINED_INPUTS,
     NYMPH_FOLIOS,
+    NYMPH_FOLIOS_REFINED,
     PHARMA_FOLIOS_COMBINED,
+    PHARMA_FOLIOS_REFINED,
+    REFINED_INPUT,
+    R64_SUMMARY_INPUT,
     clean_token,
     coarse_class,
     coarse_class_combined,
+    coarse_class_refined,
     cramer_v,
     first_glyph,
     prefix4,
@@ -29,6 +36,7 @@ from scripts.analyze_cross_modal import (
     vowel_present,
     build_elements,
     load_combined,
+    load_refined,
     permutation_pvalues,
     pharma_vessel_vs_organ,
     pharma_object_type_test,
@@ -36,9 +44,12 @@ from scripts.analyze_cross_modal import (
     nymph_profile_divergence,
     decide_verdict,
     decide_verdict_combined,
+    read_r64_summary,
     run_combined,
+    run_refined,
     _global_shuffle,
     _within_folio_shuffle,
+    _r64_per_feature_p_within,
     main,
 )
 
@@ -685,3 +696,242 @@ def test_main_combined_deterministic(tmp_path):
     b_test, b_sum = run(tmp_path / "b")
     assert a_test == b_test
     assert a_sum == b_sum
+
+
+# ==========================================================================
+# Rota 65 Leg B (Round 2) — MODO REFINADO
+# Re-roda o teste cross-modal-controlado-por-fólio sobre a anotação refinada do
+# visual-annotator (rota65b_cross_modal_refined_zl3b.csv). Mesmo conjunto de 171
+# linhas que R63+R64 mas com confidence refinada (n_non_uncertain de 70 -> 108)
+# e uma coluna extra `refinement_note` documentando cada promoção.
+# ==========================================================================
+def _refined_exists():
+    return Path(REFINED_INPUT).exists()
+
+
+def test_refined_guardrail_is_rota65b():
+    assert GUARDRAIL_REFINED == "rota65b_cross_modal_refined_not_decipherment"
+    assert "rota65b" in GUARDRAIL_REFINED
+    assert "refined" in GUARDRAIL_REFINED
+    assert "not" in GUARDRAIL_REFINED and "decipherment" in GUARDRAIL_REFINED
+
+
+def test_refined_constants_match_combined():
+    # MODO REFINADO usa os MESMOS conjuntos de fólios e o MESMO mapa coarse do
+    # R64 (a anotação só mudou confidence; composição folio×object_type idêntica).
+    assert PHARMA_FOLIOS_REFINED == PHARMA_FOLIOS_COMBINED
+    assert NYMPH_FOLIOS_REFINED == NYMPH_FOLIOS
+    assert COARSE_MAP_REFINED == COARSE_MAP_COMBINED
+
+
+def test_load_refined_gives_171_rows_with_refinement_note():
+    # (1) loader devolve as 171 linhas refinadas; (2) coluna nova refinement_note
+    # presente em todas as linhas (mesmo que vazia); (3) guardrail refinado fixado.
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    rows = load_refined()
+    assert len(rows) == 171
+    headers = list(rows[0].keys())
+    assert "refinement_note" in headers, "refined CSV must carry refinement_note column"
+    # guardrail por-linha do refinement
+    guards = {r["semantic_guardrail"] for r in rows}
+    assert GUARDRAIL_REFINED in guards
+
+
+def test_refined_non_uncertain_count_is_108():
+    # Promoções do refinement: 38 uncertain->medium, 15 medium->high, 0
+    # uncertain->high (anotador deliberadamente honesto). n_non_uncertain
+    # cresce de 70 (R64) para 108 (R65b).
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    rows = load_refined()
+    non_unc = [r for r in rows if r["annotation_confidence"].strip().lower() != "uncertain"]
+    assert len(non_unc) == 108
+    conf = collections.Counter(r["annotation_confidence"].strip().lower() for r in rows)
+    assert conf["uncertain"] == 63
+    assert conf["medium"] == 82
+    assert conf["high"] == 26
+
+
+def test_refined_same_composition_as_r64():
+    # Refinement só mexeu em CONFIDENCE; folios e object_types idênticos a R63+R64.
+    if not _refined_exists() or not all(Path(p).exists() for p in COMBINED_INPUTS):
+        pytest.skip("refined or combined CSVs not found")
+    refined_rows = load_refined()
+    combined_rows = load_combined()
+    assert len(refined_rows) == len(combined_rows) == 171
+    assert (
+        collections.Counter(r["object_type"].strip().lower() for r in refined_rows)
+        == collections.Counter(r["object_type"].strip().lower() for r in combined_rows)
+    )
+    assert (
+        {r["folio"].strip() for r in refined_rows}
+        == {r["folio"].strip() for r in combined_rows}
+    )
+
+
+def test_coarse_class_refined_same_as_combined():
+    # alias semântico: refinement reusa o mapa combinado do R64.
+    for t in ("leaf", "root", "container", "nymph", "figure_roundel", "star", "whole_plant"):
+        assert coarse_class_refined(t) == coarse_class_combined(t)
+    assert coarse_class_refined("other") == "other"
+    assert coarse_class_refined("") == "other"
+
+
+def test_build_elements_refined_matches_combined_coarse_counts():
+    # Sem mudar object_type/folio, build_elements (coarse_fn=refined) deve
+    # produzir os MESMOS multisets de coarse que o R64.
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    els = build_elements(load_refined(), coarse_fn=coarse_class_refined)
+    assert len(els) == 171
+    counts = collections.Counter(e["coarse"] for e in els)
+    assert counts["figure"] == 48
+    assert counts["vessel"] == 15
+    assert counts["organ"] == 81
+    assert counts["whole_plant"] == 17
+    assert counts["sky"] == 9
+    assert counts["other"] == 1
+
+
+def test_read_r64_summary_returns_dict():
+    # Lê o summary canônico do R64 e expõe métricas-chave para o delta vs refinement.
+    if not Path(R64_SUMMARY_INPUT).exists():
+        pytest.skip("R64 summary CSV not found")
+    s = read_r64_summary()
+    assert "best_feature" in s
+    assert "best_p_within_folio" in s
+    assert "pharma_test_p_within_folio" in s
+    assert "nymph_p_divergent" in s
+
+
+def test_read_r64_summary_missing_file_returns_empty(tmp_path):
+    # Robustez: arquivo ausente -> dict vazio (testes/synth não devem quebrar).
+    out = read_r64_summary(tmp_path / "no_such.csv")
+    assert out == {}
+
+
+def test_r64_per_feature_p_within_missing_file_returns_empty(tmp_path):
+    assert _r64_per_feature_p_within(tmp_path / "no.csv") == {}
+
+
+def test_main_refined_writes_both_csvs_with_guardrail(tmp_path):
+    # E2E: main(['--refined', ...]) escreve ambos CSVs com o guardrail R65b e o
+    # schema pedido (feature, subset, n, V, p_global, p_within_folio,
+    # R64_p_within_folio, delta, guardrail) no test; summary com chaves do
+    # coordenador. Seed fixa, n_perm baixo (rapidez).
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    out_test = tmp_path / "rtest.csv"
+    out_sum = tmp_path / "rsum.csv"
+    rc = main([
+        "--refined",
+        "--out-test-refined", str(out_test),
+        "--out-summary-refined", str(out_sum),
+        "--n-perm", "300",
+        "--seed", "65",
+    ])
+    assert rc == 0
+    assert out_test.exists() and out_sum.exists()
+
+    test_rows = list(csv.DictReader(out_test.open(encoding="utf-8")))
+    assert len(test_rows) == 14  # 7 features x 2 subsets
+    # schema EXATO do test CSV (inclui R64_p_within_folio + delta).
+    for col in ("feature", "subset", "n", "cramer_v", "p_global",
+                "p_within_folio", "R64_p_within_folio", "delta",
+                "semantic_guardrail"):
+        assert col in test_rows[0], f"missing column {col} in test CSV"
+    subsets = {r["subset"] for r in test_rows}
+    assert subsets == {"all", "non_uncertain"}
+    for r in test_rows:
+        assert r["semantic_guardrail"] == GUARDRAIL_REFINED
+        assert 0.0 <= float(r["p_within_folio"]) <= 1.0
+        assert 0.0 <= float(r["p_global"]) <= 1.0
+    # all-rows feature tests rodam sobre n=171; non_uncertain sobre n=108.
+    n_by_subset = {r["subset"]: int(r["n"]) for r in test_rows}
+    assert n_by_subset["all"] == 171
+    assert n_by_subset["non_uncertain"] == 108
+
+    sum_rows = {r["metric"]: r["value"]
+                for r in csv.DictReader(out_sum.open(encoding="utf-8"))}
+    for key in (
+        "n_total", "n_non_uncertain", "n_uncertain", "pct_uncertain",
+        "best_feature", "best_p_within_folio_allrows",
+        "best_p_within_folio_nonunc", "R64_best_p_within_folio",
+        "pharma_p_within_folio", "R64_pharma_p_within_folio",
+        "nymph_divergence_p", "R64_nymph_divergence_p",
+        "verdict", "semantic_guardrail",
+    ):
+        assert key in sum_rows, f"missing summary metric {key}"
+    assert sum_rows["n_total"] == "171"
+    assert sum_rows["n_non_uncertain"] == "108"
+    assert sum_rows["n_uncertain"] == "63"
+    assert sum_rows["semantic_guardrail"] == GUARDRAIL_REFINED
+    assert sum_rows["verdict"] in (
+        "signal_emerged", "nymph_local_hardens", "decoupled_refined",
+    )
+
+
+def test_run_refined_returns_n_and_verdict(tmp_path):
+    # Idem mas pela API direta de run_refined (chamado tb pelo coordenador).
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    res = run_refined(
+        str(tmp_path / "t.csv"),
+        str(tmp_path / "s.csv"),
+        n_perm=300,
+        seed=65,
+    )
+    assert res["n_total"] == 171
+    assert res["n_non_uncertain"] == 108
+    assert res["n_uncertain"] == 63
+    assert res["n_folios"] == 12
+    assert res["verdict"] in (
+        "signal_emerged", "nymph_local_hardens", "decoupled_refined",
+    )
+    assert res["pharma"]["n_vessel"] == 15
+    assert res["nymph"]["n_nymph"] == 44
+
+
+def test_main_refined_deterministic(tmp_path):
+    # Mesma seed -> mesmos arquivos byte-a-byte (RNG seedado em tudo).
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+
+    def run(d):
+        d.mkdir(parents=True, exist_ok=True)
+        ot = d / "t.csv"
+        os = d / "s.csv"
+        main([
+            "--refined",
+            "--out-test-refined", str(ot),
+            "--out-summary-refined", str(os),
+            "--n-perm", "300",
+            "--seed", "65",
+        ])
+        return ot.read_text(encoding="utf-8"), os.read_text(encoding="utf-8")
+
+    a_test, a_sum = run(tmp_path / "a")
+    b_test, b_sum = run(tmp_path / "b")
+    assert a_test == b_test
+    assert a_sum == b_sum
+
+
+def test_refined_does_not_modify_annotation_csvs():
+    # GUARDRAIL OPERACIONAL: o pipeline NUNCA pode reescrever a anotação refinada.
+    # Roda run_refined (com out paths em tmp) e verifica que o conteúdo bruto da
+    # anotação NÃO mudou.
+    if not _refined_exists():
+        pytest.skip("refined CSV not found")
+    src = Path(REFINED_INPUT)
+    before = src.read_bytes()
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        run_refined(
+            str(Path(td) / "t.csv"),
+            str(Path(td) / "s.csv"),
+            n_perm=200,
+            seed=65,
+        )
+    after = src.read_bytes()
+    assert before == after

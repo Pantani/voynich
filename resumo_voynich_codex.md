@@ -2187,3 +2187,83 @@ Guardrail: `rota64_cross_modal_not_decipherment`. Doc: `docs/research/rota_64_cr
 Script/testes: `analyze_cross_modal.py` / `test_cross_modal.py` (suíte **524**). 12 fólios em
 `images/raw/yale_iiif_r64/`; anotação `data/derived/rota64_cross_modal_labels_zl3b.csv` (112
 elementos); saídas `data/derived/cross_modal_{test,summary}_combined_zl3b.csv`.
+
+## 85. Rota 65: radial≠parágrafo (Perna A) + refino fortalece desacoplamento (Perna B) — frente visual FECHADA
+
+Duas pernas em paralelo no harness; pré-registro cego do cryptanalyst para ambas.
+
+**Perna A — texto radial/circular vs parágrafo (corpus inteiro, `locus_kind` da IVTFF).**
+n_paragraph=34 259, n_radial=2 383, n_label=1 029. Distribuição de prefixo virada decisiva:
+- `qo-`: paragraph **15.1%** → radial 2.3% → label 0.9% (colapsa fora da prosa)
+- `ot-`: paragraph 5.2% → radial **16.0%** → label **17.2%** (triplica)
+- Headline within-folio (10 fólios cosmológicos com ambas as classes): prefix V=**0.217**,
+  p=**0.0005**; nucleus V=0.134, p=0.0005; length nulo. Per-fólio: prefix p<0.05 em 6/10.
+- **f67r2 confirma R50:** label-vs-paragraph V=0.26, p_within=0.027 — o padrão "ot- nos
+  rótulos da lua" reproduz-se em escala de corpus sob controle rigoroso.
+- Veredito: **`radial_paragraph_differ`** — `locus_kind` atua como SELETOR DE REGISTRO sobre
+  o mesmo inventário de operadores. Não é nova camada; firma a casca externa do modelo (R47/R50).
+
+**Perna B — refino dos rótulos uncertain + re-teste cross-modal.** visual-annotator
+re-examinou 101 linhas uncertain de R63/R64; 38 elevadas a medium, 15 medium→high, 0 uncertain
+→high (honestidade). Uncertain caiu 59%→**37%**; n_não-incerto 70→**108** (+54%). Bias check
+do cryptanalyst: mediana de comprimento idêntica entre elevados/mantidos → SEM viés-de-
+confirmação. Sem mudanças de object_type. Limites estruturais irredutíveis documentados
+(ninfas em anel; rótulos chevron f67r2; painel f89v2 ausente da imagem; multi-token).
+
+Re-teste com controle dentro-do-fólio (3000 perms, ambos subconjuntos):
+- gallows (all rows): p_within **0.0560** (R64=0.054, afasta-se de 0.05)
+- gallows (não-incerto n=108): 0.0150 (mas all-rows não corrobora → regra dos dois subconjuntos bloqueia)
+- pharma vessel-vs-organ (comprimento): **0.0073** (R64=0.006, sobrevive <0.01)
+- nymph cross-folio divergence (f71r vs f73r): **0.0130** (R64=0.011, essencialmente igual; fólio-local)
+
+Veredito Perna B: **`decoupled_refined`** — refino FORTALECEU o desacoplamento (cryptanalyst
+pré-registrou ~55% deste cenário).
+
+**Síntese — frente visual ENCERRADA.** Per cryptanalyst: "if Leg B (a) lands → declare visual
+front CLOSED". (a) `decoupled_refined` aterrissou. Os rótulos NÃO nomeiam objetos (com potência
++ dados refinados); o texto radial usa um REGISTRO de prefixo diferente do parágrafo (não
+semântica, layout-licenciado). Priores efetivamente inalterados: gerador ~70% / construída
+~22% / cifra ~8%. **A pergunta "tem sentido?" agora exige proveniência/material — nem corpus,
+nem imagem, nem mais cross-modal vão decidir.**
+
+Guardrails: `rota65a_radial_paragraph_not_decipherment`, `rota65b_cross_modal_refined_not_decipherment`.
+Doc: `docs/research/rota_65_radial_and_refinement.md`. Suíte: **549 testes** (524+11 Perna A +14
+Perna B Round 2). Saídas: `data/derived/radial_paragraph_{distribution,test,summary}_zl3b.csv`,
+`rota65b_cross_modal_refined_zl3b.csv`, `cross_modal_{test,summary}_refined_zl3b.csv`. 4 fólios
+cosmológicos baixados em `images/raw/yale_iiif_r65/`.
+
+## 86. Rota 66: matriz de ataque às teses externas — 1/13 fura o gerador
+
+Primeira rota que vira a arma para FORA: em vez de mais um ataque interno ao corpus, o time
+de harness (linguistics-coordinator + cryptanalyst + corpus-statistician + paleographer +
+visual-annotator) auditou 13 teses modernas do Voynich contra o ESTADO FECHADO do repo (R43–65).
+
+**Método — não-circular e pré-registrado.** Cada especialista emitiu, às cegas, o veredito
+que sua tese mereceria ANTES de ver o resultado dos outros. O script não julga por opinião:
+ele valida cada veredito contra a SAÍDA do próprio gerador R62 (o gerador local e sem conteúdo
+vira o árbitro). Uma tese só "sobrevive" se prevê um sinal que o gerador content-free NÃO produz.
+
+**Manchete — 1/13 bate o gerador.** Só **Parisel** (texto como artefato de layout/scribal)
+prevê um sinal além do gerador, ancorado no único resíduo conhecido: o **LAAFU** (`laafu_I`
+observado **0.471 > 0.303** do gerador). Os outros 12 são mortos ou degenerados pelo estado fechado.
+
+**Placar (13 teses):** refutadas=6 `{1,2,3,5,10,13}` (cada uma derrubada por um instrumento
+nomeado do repo); unsupported=2 `{4,6}`; survives_weakly=3 `{7,8,12}`; actionable=1 `{9}`;
+external_only=1 `{11}`.
+
+**Os 5 baldes, compactos:**
+- **mortas** — 6 refutadas + as degeneradas: 12/13 não sobrevivem ao gerador.
+- **degeneradas** — survives_weakly/unsupported: vivas só por ausência de instrumento, não por sinal.
+- **actionable** → **Rota 67** proposta: discriminador *laafu content-vs-layout*, **pré-registrada
+  como degenerada-provável** (o LAAFU deve ceder a layout, não a conteúdo).
+- **external_only=11 + resíduos** — só decidível por evidência de fora do texto.
+- **próximo ataque = EXTERNO**: proveniência/material; corpus, imagem e cross-modal já se esgotaram.
+
+**Priores inalterados:** gerador ~70% / construída ~22% / cifra ~8%. O ataque externo CONFIRMA
+a casca — não move a agulha de "tem sentido?"; isso agora depende de proveniência/material.
+
+Guardrail: `rota66_external_thesis_attack_not_decipherment`. Script:
+`scripts/analyze_external_thesis_attack_matrix.py`; teste:
+`tests/test_external_thesis_attack_matrix.py` (11). Saídas:
+`data/derived/external_thesis_attack_matrix_{,summary_}zl3b.csv` (matriz de 13 linhas). Doc:
+`docs/research/rota_66_estado_da_arte_attack_matrix.md`. Suíte: **560 testes**.

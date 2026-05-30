@@ -122,6 +122,32 @@ PHARMA_FOLIOS_COMBINED = ("f88r", "f88v", "f89v1", "f89v2", "f99r", "f99v")
 # Os 2 fólios de zodíaco que carregam os ~44 rótulos de nymph quase-tipo-constante.
 NYMPH_FOLIOS = ("f71r", "f73r")
 
+# ==========================================================================
+# Rota 65 Leg B (Round 2) — MODO REFINADO (re-roda em cima do REFINEMENT)
+# ==========================================================================
+# Re-roda o MESMO teste cross-modal-controlado-por-fólio em cima da anotação
+# REFINADA do visual-annotator: o piloto+amplo (R63+R64=171) tinha 101 rótulos
+# uncertain (59%); o refinement promoveu 38 uncertain->medium e 15 medium->high
+# (0 uncertain->high — anotador deliberadamente honesto), levando o subconjunto
+# NÃO-uncertain de 70 -> 108. A pergunta operacional: o veredito 'decoupled' do
+# R64 SE MANTÉM com a amostra mais limpa? O feature-headline do R64
+# (gallows_present, p_within_folio=0.0536, BORDERLINE) cruza ou se afasta de
+# 0.05? A divergência cross-fólio das ninfas (R64 p=0.0113) endurece <0.011?
+GUARDRAIL_REFINED = "rota65b_cross_modal_refined_not_decipherment"
+SEED_REFINED = 65
+N_PERM_REFINED = 3000  # mesmo orçamento de potência do R64 (>=3000 shuffles).
+
+REFINED_INPUT = ROOT / "data" / "derived" / "rota65b_cross_modal_refined_zl3b.csv"
+R64_SUMMARY_INPUT = (
+    ROOT / "data" / "derived" / "cross_modal_summary_combined_zl3b.csv"
+)
+# Pharma e nymph folios: idênticos ao R64 (o refinement só mudou confidence; a
+# composição folio×object_type é a MESMA — ver tests).
+PHARMA_FOLIOS_REFINED = PHARMA_FOLIOS_COMBINED
+NYMPH_FOLIOS_REFINED = NYMPH_FOLIOS
+# Mesmo mapa coarse do R64 (figure inclui nymph + figure_roundel).
+COARSE_MAP_REFINED = COARSE_MAP_COMBINED
+
 GALLOWS = set("ktpf")
 NUCLEI = ("ch", "sh")
 VOWELS = set("ao")
@@ -685,7 +711,65 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--out-summary-combined",
         default=str(ROOT / "data" / "derived" / "cross_modal_summary_combined_zl3b.csv"),
     )
+    # ---- modo refinado R65b (re-roda em cima do refinement) ----
+    p.add_argument(
+        "--refined",
+        action="store_true",
+        help=(
+            "MODO REFINADO R65b: lê rota65b_cross_modal_refined_zl3b.csv (171 "
+            "linhas, mesma composição que R63+R64 com confidence refinada) e "
+            "re-roda o teste com deltas vs R64; ignora input_csv e --combined."
+        ),
+    )
+    p.add_argument(
+        "--refined-input",
+        default=str(REFINED_INPUT),
+    )
+    p.add_argument(
+        "--out-test-refined",
+        default=str(ROOT / "data" / "derived" / "cross_modal_test_refined_zl3b.csv"),
+    )
+    p.add_argument(
+        "--out-summary-refined",
+        default=str(
+            ROOT / "data" / "derived" / "cross_modal_summary_refined_zl3b.csv"
+        ),
+    )
     return p.parse_args(argv)
+
+
+def load_refined(path: Path = REFINED_INPUT) -> list[dict[str, str]]:
+    """Carrega o CSV REFINADO do R65b (171 linhas, schema R63/R64 + refinement_note).
+
+    Substitui R63+R64: contém AS MESMAS 171 linhas com a coluna confidence
+    REFINADA pelo visual-annotator (38 uncertain->medium, 15 medium->high). A
+    coluna extra ``refinement_note`` documenta cada promoção mas NÃO é usada
+    pelo teste.
+    """
+    return read_csv(Path(path))
+
+
+def coarse_class_refined(object_type: str) -> str:
+    """object_type -> coarse class no MODO REFINADO (idêntico ao combinado R64)."""
+    return COARSE_MAP_REFINED.get((object_type or "").strip().lower(), "other")
+
+
+def read_r64_summary(path: Path = R64_SUMMARY_INPUT) -> dict[str, str]:
+    """Lê o summary do R64 (metric->value). Vazio se não existir (testes/synth)."""
+    p = Path(path)
+    if not p.exists():
+        return {}
+    return {r["metric"]: r["value"] for r in read_csv(p)}
+
+
+def _safe_float(s: str | None, default: float = float("nan")) -> float:
+    """Converte string -> float; vazio/None/NaN -> default. Para deltas R64."""
+    if s is None or s == "":
+        return default
+    try:
+        return float(s)
+    except ValueError:
+        return default
 
 
 def run_combined(
@@ -787,8 +871,261 @@ def run_combined(
     }
 
 
+def _r64_per_feature_p_within(r64_test_path: Path) -> dict[tuple[str, str], float]:
+    """Lê cross_modal_test_combined_zl3b.csv -> {(feature, subset): p_within_folio}.
+
+    Subset ∈ {'all','non_uncertain'}. Vazio se o CSV não existir (testes/synth).
+    """
+    p = Path(r64_test_path)
+    if not p.exists():
+        return {}
+    out: dict[tuple[str, str], float] = {}
+    for r in read_csv(p):
+        try:
+            out[(r["feature"], r["subset"])] = float(r["p_within_folio"])
+        except (KeyError, ValueError):
+            continue
+    return out
+
+
+def run_refined(
+    out_test: str,
+    out_summary: str,
+    n_perm: int,
+    seed: int,
+    input_csv: Path | str = REFINED_INPUT,
+    r64_summary_path: Path | str = R64_SUMMARY_INPUT,
+    r64_test_path: Path | str | None = None,
+) -> dict:
+    """MODO REFINADO (R65b Round 2) — re-roda o teste cross-modal sobre a
+    anotação refinada (n=171, n_non_uncertain agora 108 vs 70 no R64).
+
+    Roda exatamente os mesmos 3 testes do MODO COMBINADO (headline em all+nonunc,
+    sub-teste A pharma vessel-vs-organ, sub-teste B nymph cross-fólio) e compara
+    cada métrica com seu valor R64 (lido de cross_modal_summary_combined_zl3b.csv
+    + opcionalmente o per-feature de cross_modal_test_combined_zl3b.csv).
+
+    VEREDITO (mesma lógica do R64 com nome estendido):
+      - 'signal_emerged'      = alguma feature p_within_folio<0.05 em AMBOS all
+                                E non_uncertain (i.e., regra headline do R64
+                                ativa: sinal cross-modal real emerge).
+      - 'nymph_local_hardens' = caso contrário, mas a divergência cross-fólio
+                                das ninfas é MAIS forte (p_divergent menor) que
+                                o R64.
+      - 'decoupled_refined'   = caso contrário (veredito R64 confirmado e/ou
+                                gallows borderline foi mais longe de 0.05).
+    """
+    rows = load_refined(Path(input_csv))
+    elements = build_elements(rows, coarse_fn=coarse_class_refined)
+    nonunc = [el for el in elements if el["confidence"] != "uncertain"]
+
+    n_total = len(elements)
+    n_nonunc = len(nonunc)
+    n_unc = n_total - n_nonunc
+    pct_unc = (n_unc / n_total) if n_total > 0 else 0.0
+    n_folios = len({el["folio"] for el in elements})
+
+    # Re-usa run_feature_tests com o GUARDRAIL REFINADO.
+    all_rows = run_feature_tests(elements, "all", n_perm, seed, GUARDRAIL_REFINED)
+    nonunc_rows = run_feature_tests(
+        nonunc, "non_uncertain", n_perm, seed, GUARDRAIL_REFINED
+    )
+
+    pharma = pharma_object_type_test(
+        elements, PHARMA_FOLIOS_REFINED, n_perm, seed
+    )
+    nymph = nymph_consistency(elements, NYMPH_FOLIOS_REFINED, n_perm, seed)
+
+    # ---- comparação com R64 ----
+    r64_sum = read_r64_summary(Path(r64_summary_path))
+    r64_per_feat = _r64_per_feature_p_within(
+        Path(r64_test_path) if r64_test_path is not None
+        else Path(r64_summary_path).parent / "cross_modal_test_combined_zl3b.csv"
+    )
+    r64_best_feat = r64_sum.get("best_feature", "")
+    r64_best_p = _safe_float(r64_sum.get("best_p_within_folio"))
+    r64_pharma_p = _safe_float(r64_sum.get("pharma_test_p_within_folio"))
+    r64_nymph_p_div = _safe_float(r64_sum.get("nymph_p_divergent"))
+
+    # ---- montar test rows com delta R64 ----
+    def _enrich(rows_, subset_key):
+        for r in rows_:
+            r64_p = r64_per_feat.get((r["feature"], subset_key))
+            r["R64_p_within_folio"] = (
+                f"{r64_p:.4f}" if r64_p is not None else ""
+            )
+            r["delta"] = (
+                f"{r['p_within_folio'] - r64_p:+.4f}"
+                if r64_p is not None
+                else ""
+            )
+        return rows_
+
+    test_rows = _enrich(list(all_rows), "all") + _enrich(
+        list(nonunc_rows), "non_uncertain"
+    )
+
+    # ---- headline / verdict ----
+    best_row_all = min(all_rows, key=lambda r: r["p_within_folio"])
+    best_row_nonunc = min(nonunc_rows, key=lambda r: r["p_within_folio"])
+    best_p_all = best_row_all["p_within_folio"]
+    best_p_nonunc = best_row_nonunc["p_within_folio"]
+
+    # regra signal_emerged: alguma feature <0.05 em AMBOS os subconjuntos
+    nonunc_p_by_feat = {r["feature"]: r["p_within_folio"] for r in nonunc_rows}
+    signal_features = [
+        r["feature"]
+        for r in all_rows
+        if r["p_within_folio"] < 0.05 and nonunc_p_by_feat.get(r["feature"], 1.0) < 0.05
+    ]
+
+    nymph_p_div = nymph.get("p_divergent", float("nan"))
+    # nymph endureceu se p_divergent EXISTE e CAIU vs R64 (estritamente menor)
+    nymph_hardened = (
+        not math.isnan(r64_nymph_p_div)
+        and not math.isnan(nymph_p_div)
+        and nymph_p_div < r64_nymph_p_div - 1e-12
+    )
+
+    if signal_features:
+        verdict = "signal_emerged"
+    elif nymph_hardened:
+        verdict = "nymph_local_hardens"
+    else:
+        verdict = "decoupled_refined"
+
+    # ---- summary rows (schema pedido pelo coordenador) ----
+    summary_rows = [
+        {"metric": "n_total", "value": str(n_total)},
+        {"metric": "n_non_uncertain", "value": str(n_nonunc)},
+        {"metric": "n_uncertain", "value": str(n_unc)},
+        {"metric": "pct_uncertain", "value": f"{pct_unc:.4f}"},
+        {"metric": "n_folios", "value": str(n_folios)},
+        {"metric": "best_feature", "value": best_row_all["feature"]},
+        {"metric": "best_p_within_folio_allrows", "value": f"{best_p_all:.4f}"},
+        {
+            "metric": "best_p_within_folio_nonunc",
+            "value": f"{best_p_nonunc:.4f}",
+        },
+        {"metric": "R64_best_feature", "value": r64_best_feat},
+        {
+            "metric": "R64_best_p_within_folio",
+            "value": f"{r64_best_p:.4f}" if not math.isnan(r64_best_p) else "",
+        },
+        {"metric": "pharma_n", "value": str(pharma["n"])},
+        {"metric": "pharma_best_feature", "value": pharma["best_feature"]},
+        {"metric": "pharma_V", "value": f"{pharma['cramer_v']:.4f}"},
+        {
+            "metric": "pharma_p_within_folio",
+            "value": f"{pharma['p_within_folio']:.4f}",
+        },
+        {
+            "metric": "R64_pharma_p_within_folio",
+            "value": f"{r64_pharma_p:.4f}" if not math.isnan(r64_pharma_p) else "",
+        },
+        {"metric": "nymph_n", "value": str(nymph["n_nymph"])},
+        {
+            "metric": "nymph_struct_feature",
+            "value": nymph.get("struct_feature", ""),
+        },
+        {
+            "metric": "nymph_struct_p",
+            "value": f"{nymph.get('struct_p', float('nan')):.4f}",
+        },
+        {
+            "metric": "nymph_divergence_p",
+            "value": f"{nymph_p_div:.4f}" if not math.isnan(nymph_p_div) else "",
+        },
+        {
+            "metric": "R64_nymph_divergence_p",
+            "value": (
+                f"{r64_nymph_p_div:.4f}"
+                if not math.isnan(r64_nymph_p_div)
+                else ""
+            ),
+        },
+        {
+            "metric": "nymph_consistency_result",
+            "value": nymph.get("result", ""),
+        },
+        {"metric": "verdict", "value": verdict},
+        {"metric": "semantic_guardrail", "value": GUARDRAIL_REFINED},
+    ]
+
+    write_csv(
+        Path(out_test),
+        test_rows,
+        [
+            "feature",
+            "subset",
+            "n",
+            "cramer_v",
+            "p_global",
+            "p_within_folio",
+            "R64_p_within_folio",
+            "delta",
+            "semantic_guardrail",
+        ],
+    )
+    write_csv(Path(out_summary), summary_rows, ["metric", "value"])
+
+    print(
+        f"[refined] n_total={n_total} n_non_uncertain={n_nonunc} "
+        f"n_uncertain={n_unc} pct_unc={pct_unc:.3f} n_folios={n_folios}"
+    )
+    print(
+        f"[refined] best_feature_all={best_row_all['feature']} "
+        f"p_within_all={best_p_all:.4f} (R64 best={r64_best_feat} "
+        f"p={r64_best_p:.4f})"
+    )
+    print(
+        f"[refined] best_feature_nonunc={best_row_nonunc['feature']} "
+        f"p_within_nonunc={best_p_nonunc:.4f}"
+    )
+    print(
+        f"[refined] pharma n={pharma['n']} best={pharma['best_feature']} "
+        f"V={pharma['cramer_v']:.4f} p_within={pharma['p_within_folio']:.4f} "
+        f"(R64 p={r64_pharma_p:.4f})"
+    )
+    print(
+        f"[refined] nymph n={nymph['n_nymph']} divergence_p={nymph_p_div:.4f} "
+        f"(R64 p={r64_nymph_p_div:.4f}) -> {nymph.get('result')}"
+    )
+    print(f"[refined] verdict={verdict}")
+    print(f"test_csv={out_test}")
+    print(f"summary_csv={out_summary}")
+    return {
+        "n_total": n_total,
+        "n_non_uncertain": n_nonunc,
+        "n_uncertain": n_unc,
+        "n_folios": n_folios,
+        "all_rows": all_rows,
+        "nonunc_rows": nonunc_rows,
+        "pharma": pharma,
+        "nymph": nymph,
+        "verdict": verdict,
+        "best_feature_allrows": best_row_all["feature"],
+        "best_p_within_folio_allrows": best_p_all,
+        "best_feature_nonunc": best_row_nonunc["feature"],
+        "best_p_within_folio_nonunc": best_p_nonunc,
+        "R64_best_feature": r64_best_feat,
+        "R64_best_p_within_folio": r64_best_p,
+        "R64_pharma_p_within_folio": r64_pharma_p,
+        "R64_nymph_divergence_p": r64_nymph_p_div,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.refined:
+        run_refined(
+            args.out_test_refined,
+            args.out_summary_refined,
+            args.n_perm if args.n_perm != N_PERM else N_PERM_REFINED,
+            args.seed if args.seed != SEED else SEED_REFINED,
+            input_csv=args.refined_input,
+        )
+        return 0
     if args.combined:
         run_combined(
             args.out_test_combined,

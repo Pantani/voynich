@@ -1,0 +1,22 @@
+metric,value
+n_theses,13
+n_refuted,6
+n_unsupported,2
+n_survives_weakly,3
+n_actionable,1
+n_external_only,1
+n_beats_generator,1
+n_refuted_by_instrument,6
+generator_n_metrics,14
+generator_n_matched,13
+generator_resisting,laafu_I
+laafu_real,0.470864
+laafu_gen,0.303232
+laafu_gap,0.167632
+dead_theses,"1,2,3,5,10,13"
+degenerate_alive_theses,"4,6,7,8,12"
+actionable_theses,9
+external_only_theses,11
+headline,"1 of 13 external theses beats the R62 content-free generator (thesis 9 on laafu_I, real 0.471 > gen 0.303); 6 refuted by the corpus, 1 provably external_only structure"
+verdict,1of13_beats_contentfree_generator
+guardrail,rota66_external_thesis_attack_not_decipherment

@@ -1,0 +1,172 @@
+folio,element_desc,object_type,visual_feature2,label_token,label_locus,annotation_confidence,refinement_note,semantic_guardrail
+f99r,top-left red cylindrical jar (lid label),container,red_pigment,okaradag,f99r.1,high,,rota65b_cross_modal_refined_not_decipherment
+f99r,2nd red cylindrical jar in left column (body label),container,red_pigment,oparal,f99r.19,high,,rota65b_cross_modal_refined_not_decipherment
+f99r,top row plant-part: pale curled root with tendrils,root,tailed,okar.y,f99r.2,high,"elevated: label cleanly above pale curled root, top-row well-spaced",rota65b_cross_modal_refined_not_decipherment
+f99r,top row: dark-red leaf/blade form,leaf,red_pigment,darar,f99r.3,high,"elevated: label ""darar"" cleanly above dark-red leaf/blade",rota65b_cross_modal_refined_not_decipherment
+f99r,top row: small whole root cluster,root,single,oky,f99r.4,medium,,rota65b_cross_modal_refined_not_decipherment
+f99r,top row: bundled twisted stems,stem,multiple,salo,f99r.5,medium,,rota65b_cross_modal_refined_not_decipherment
+f99r,top row: orange root with fine hairs,root,tailed,aro,f99r.6,medium,"elevated: label readable above orange tendril, despite being a 2-word label (aro ain)",rota65b_cross_modal_refined_not_decipherment
+f99r,top row: cluster of cut stem-segments (3 short cylinders),stem,multiple,okor,f99r.8,medium,,rota65b_cross_modal_refined_not_decipherment
+f99r,top row: striped banded root-segment,root,single,ralol,f99r.9,uncertain,"kept uncertain: striped banded element in crowded mid-top-row, label nearest is ambiguous",rota65b_cross_modal_refined_not_decipherment
+f99r,top row: orange spray/flower tuft,flower,multiple,skeeal,f99r.10,uncertain,"kept uncertain: orange spray adjacent to other plants, label assignment ambiguous",rota65b_cross_modal_refined_not_decipherment
+f99r,top row: hooked orange root,root,single,okary,f99r.11,medium,,rota65b_cross_modal_refined_not_decipherment
+f99r,top row: pale fan of fine roots (far right),root,multiple,okolo,f99r.12,medium,"elevated: far-right pale fan of roots well-isolated, label clearly above",rota65b_cross_modal_refined_not_decipherment
+f99r,mid row: orange tendril root,root,tailed,otalam,f99r.13,medium,"elevated: mid-row tendril root with label ""olleos"" type clearly above",rota65b_cross_modal_refined_not_decipherment
+f99r,mid row: orange branched root,root,single,otoldy,f99r.14,medium,elevated: mid-row branched root with label clearly above,rota65b_cross_modal_refined_not_decipherment
+f99r,2nd block top: pale curled root,root,single,oaro,f99r.20,medium,,rota65b_cross_modal_refined_not_decipherment
+f99r,2nd block: small root,root,single,aloly,f99r.21,medium,"elevated: block2 small root with label nearby, row well-spaced",rota65b_cross_modal_refined_not_decipherment
+f99r,large bottom orange hairy root with green leaves,whole_plant,multiple,aora,f99r.22,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,top-left jar (red w/ blue band) lid label,container,red_pigment,okaramy,f99v.1,high,,rota65b_cross_modal_refined_not_decipherment
+f99v,3rd container in left column (red+blue band) body label,container,red_pigment,okoldody,f99v.14,high,,rota65b_cross_modal_refined_not_decipherment
+f99v,top row: red-tinged root with fine tendrils,root,red_pigment,otoldy,f99v.2,high,"elevated: top-row red-tinged tendril root, label clearly above with clear spacing",rota65b_cross_modal_refined_not_decipherment
+f99v,top row: red tendril root,root,red_pigment,otorchy,f99v.3,high,"elevated: top-row red tendril root, label clearly above",rota65b_cross_modal_refined_not_decipherment
+f99v,top row: whole plant green spiky leaf + brown root + red bulb,whole_plant,red_pigment,oldy,f99v.4,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,top row: octopus-like brown root,root,multiple,otaly,f99v.6,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,top row: red-bulb root pair,root,red_pigment,olsy,f99v.7,medium,elevated: label positioned between two elements but vertical alignment with red-bulb pair is plausible,rota65b_cross_modal_refined_not_decipherment
+f99v,top row: paired pale roots,root,multiple,arol,f99v.8,medium,"elevated: paired pale roots with label ""oraos"" pattern above; pairing plausible",rota65b_cross_modal_refined_not_decipherment
+f99v,top row: red striped leaf/frond (far right),leaf,red_pigment,otoky,f99v.9,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,row3: bulb root with vertical stem,root,single,oeeesary,f99v.15,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,row3: curved red-brown tendril root,root,red_pigment,sary,f99v.17,medium,elevated: row3 red-brown tendril root with label clearly above,rota65b_cross_modal_refined_not_decipherment
+f99v,row3: tan fan-shaped frond/leaf,leaf,single,saiino,f99v.18,high,"elevated: tan fan-shaped frond in row3, label cleanly above",rota65b_cross_modal_refined_not_decipherment
+f99v,row3: broad red leaf,leaf,red_pigment,otolsar,f99v.19,medium,,rota65b_cross_modal_refined_not_decipherment
+f99v,row3: reddish bulb/root with stem,root,red_pigment,osary,f99v.20,medium,elevated: row3 red bulb-stem with label cleanly above,rota65b_cross_modal_refined_not_decipherment
+f88v,top-left ornate red/white apothecary jar (upper) lid label,container,red_pigment,okalyd,f88v.1,high,,rota65b_cross_modal_refined_not_decipherment
+f88v,2nd ornate red/white apothecary jar (lower-left) label,container,red_pigment,otoram,f88v.11,high,,rota65b_cross_modal_refined_not_decipherment
+f88v,3rd container (round red flask in mid-left panel),container,red_pigment,daramdal,f88v.27,high,elevated: 3rd container (round red flask) clearly identifiable in lower panel,rota65b_cross_modal_refined_not_decipherment
+f88v,top row: pale carrot-like root with tendrils,root,tailed,cheocthy,f88v.2,high,"elevated: top-row pale carrot tendril root, label cleanly above",rota65b_cross_modal_refined_not_decipherment
+f88v,top row: branched root,root,single,cpheor,f88v.3,high,"elevated: top-row branched root, label cleanly above",rota65b_cross_modal_refined_not_decipherment
+f88v,top row: green leaf + root whole plant,whole_plant,single,otar.arody,f88v.4,high,"elevated: top-row whole-plant (green leaf+root), label above",rota65b_cross_modal_refined_not_decipherment
+f88v,top row: spiky red flower/burst on root,flower,red_pigment,otokol,f88v.5,high,"elevated: top-row spiky red flower-burst, label ""ottar arody"" pattern above",rota65b_cross_modal_refined_not_decipherment
+f88v,2nd row: orange root with green leaves,root,tailed,otydary,f88v.28,uncertain,kept uncertain: 2nd-row plant adjacent to others; specific label-to-plant pairing ambiguous,rota65b_cross_modal_refined_not_decipherment
+f88v,2nd row: red striped root,root,red_pigment,cheosdy,f88v.13,medium,"elevated: 2nd-row red striped root with label ""ccolly"" pattern; alignment readable",rota65b_cross_modal_refined_not_decipherment
+f88v,2nd row: green-leaf root,whole_plant,single,okaiin,f88v.14,medium,"elevated: 2nd-row orange-tendril whole plant, label above readable",rota65b_cross_modal_refined_not_decipherment
+f88v,mid panel root with green foliage,whole_plant,single,otoray,f88v.12,uncertain,"kept uncertain: mid-panel crowded with multiple plants, label assignment between plants ambiguous",rota65b_cross_modal_refined_not_decipherment
+f88v,lower panel: feathery branched root,root,multiple,otdordy,f88v.29,uncertain,kept uncertain: lower panel mixed plants and labels difficult to pair 1-to-1,rota65b_cross_modal_refined_not_decipherment
+f88v,lower panel: large root mass,root,multiple,dararda,f88v.30,uncertain,kept uncertain: lower panel large root mass adjacent to other elements; label assignment uncertain,rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph (8-pointed gold star),star,single,qotoear,f67r2.52,medium,,rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,dchdar,f67r2.53,medium,,rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,ytodal,f67r2.55,medium,,rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,octhys,f67r2.60,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,ytokar,f67r2.61,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,otolor,f67r2.62,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67r2,ring star glyph,star,single,okodar,f67r2.63,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67r2,outer-ring scattered star w/ label,star,single,osar,f67r2.70,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67r2,outer-ring scattered star w/ label,star,single,oran,f67r2.71,uncertain,kept uncertain: outer-ring labels in red script in chevron-bounded segments; no isolated star glyph per label (structural),rota65b_cross_modal_refined_not_decipherment
+f67v1,corner roundel: paired figures/faces joined by bar,figure_roundel,multiple,okal.ary,f67v1.3,medium,,rota65b_cross_modal_refined_not_decipherment
+f67v1,corner roundel: paired figures/faces joined by bar,figure_roundel,multiple,okol.aldy,f67v1.5,medium,,rota65b_cross_modal_refined_not_decipherment
+f67v1,corner roundel figure label,figure_roundel,multiple,ykeodar,f67v1.7,medium,"elevated: corner roundel paired-figures element, label ""ykeodar"" pattern in own corner quadrant",rota65b_cross_modal_refined_not_decipherment
+f67v1,corner roundel figure label,figure_roundel,multiple,ockhosam,f67v1.9,medium,"elevated: corner roundel paired-figures element, label ""ockhosam"" pattern in own corner quadrant",rota65b_cross_modal_refined_not_decipherment
+f67v1,radial arm end: blue-tipped spray/burst,spray,single,kochardy,f67v1.10,medium,"elevated: NW radial arm spray, label written along the arm itself - geometrically unambiguous",rota65b_cross_modal_refined_not_decipherment
+f67v1,radial arm end: spray/burst,spray,single,ochodare,f67v1.11,medium,"elevated: NE radial arm spray, label along the arm itself - geometrically unambiguous",rota65b_cross_modal_refined_not_decipherment
+f88r,top-left ornate green/red goblet jar (lid label),container,gilt_banded,otorchety,f88r.1,high,,rota65b_cross_modal_refined_not_decipherment
+f88r,mid-left ornate red/gilt apothecary jar (label),container,red_pigment,otaldy,f88r.12,high,,rota65b_cross_modal_refined_not_decipherment
+f88r,lower-left tall red/gilt tiered jar (label),container,red_pigment,ofyskydal,f88r.23,high,,rota65b_cross_modal_refined_not_decipherment
+f88r,top band: pale curled root with downward tendrils,root,tailed,osal,f88r.2,high,"elevated: label ""osal"" cleanly above curled root, top-row well-spaced",rota65b_cross_modal_refined_not_decipherment
+f88r,top band: dark reddish-brown carrot/tuber root,root,single,orald,f88r.3,high,"elevated: label ""orald"" cleanly above dark-red carrot",rota65b_cross_modal_refined_not_decipherment
+f88r,top band: pale forked root with fine rootlets,root,multiple,oldar,f88r.4,high,"elevated: label ""oldar"" cleanly above pale forked root",rota65b_cross_modal_refined_not_decipherment
+f88r,top band: large brown stippled spindle/seedpod root,root,single,otoky,f88r.5,high,"elevated: label ""otoky"" cleanly above large spindle root",rota65b_cross_modal_refined_not_decipherment
+f88r,top band: pale octopus root with many curling tendrils,root,multiple,otaly,f88r.6,high,"elevated: label ""otaly"" cleanly above pale octopus root",rota65b_cross_modal_refined_not_decipherment
+f88r,mid band: orange octopus root with many tendrils,root,multiple,oram,f88r.13,medium,,rota65b_cross_modal_refined_not_decipherment
+f88r,mid band: green leaf sprig beside small orange root,leaf,single,dary,f88r.14,medium,"elevated: mid-band leaf sprig + root, label ""dary"" cleanly above",rota65b_cross_modal_refined_not_decipherment
+f88r,mid band: dark green spiky leaf-blade on stem,leaf,single,okol,f88r.15,medium,,rota65b_cross_modal_refined_not_decipherment
+f88r,mid band: pale bulb root with fine tendrils,root,tailed,sorory,f88r.16,medium,"elevated: mid-band pale bulb root, label readable above with reasonable alignment",rota65b_cross_modal_refined_not_decipherment
+f88r,mid band: green leaves with stippled dotted fan structure,other,multiple,otyda,f88r.17,medium,"elevated: mid-band green dotted-fan leaves, label above with reasonable alignment",rota65b_cross_modal_refined_not_decipherment
+f88r,lower band: large central root mass with orange hairy roots and green serrated leaves,whole_plant,multiple,otor.am,f88r.24,medium,,rota65b_cross_modal_refined_not_decipherment
+f88r,lower band: green kidney-shaped leaves on stems,leaf,multiple,ofaldo,f88r.25,uncertain,kept uncertain: lower band has one large root system with multiple leaf-clusters; label assignment ambiguous,rota65b_cross_modal_refined_not_decipherment
+f89v1,upper ornate green lidded goblet jar (label),container,gilt_banded,okoraldy,f89v1.1,high,,rota65b_cross_modal_refined_not_decipherment
+f89v1,top band: brown octopus root with curling tendrils,root,multiple,oto{ikh}y,f89v1.2,medium,"elevated: top-row brown octopus root, label ""olloceay"" pattern cleanly above",rota65b_cross_modal_refined_not_decipherment
+f89v1,top band: green lobed leaf sprig,leaf,single,otchar,f89v1.3,medium,"elevated: top-row green lobed leaf, label ""Holdca"" pattern above",rota65b_cross_modal_refined_not_decipherment
+f89v1,top band: reddish branched root,root,single,darshody,f89v1.4,medium,"elevated: top-row reddish branched root, label ""olloar"" pattern above",rota65b_cross_modal_refined_not_decipherment
+f89v1,lower-left tall blue/green tiered jar (label),container,blue_pigment,koeeorain,f89v1.21,high,,rota65b_cross_modal_refined_not_decipherment
+f89v1,lower band: green leaf cluster,leaf,multiple,otorshos,f89v1.22,medium,"elevated: lower-band green leaf cluster with label BELOW, readable alignment",rota65b_cross_modal_refined_not_decipherment
+f89v1,lower band: pale orange root with tendrils,root,tailed,opol.olaiin,f89v1.23,medium,"elevated: lower-band pale orange root with tendrils, label below readable",rota65b_cross_modal_refined_not_decipherment
+f89v1,lower band: pale forked root,root,multiple,opaldaiin,f89v1.24,medium,"elevated: lower-band pale forked root, label below readable",rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 ornate jar (lid label),container,gilt_banded,choeesy,f89v2.1,medium,cannot re-examine: f89v2 panel not in available Yale IIIF set; confidence held at original medium,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 top band: orange root with tendrils,root,tailed,okam,f89v2.2,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 top band: green leaf sprig,leaf,single,darcheor,f89v2.3,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 top band: reddish root,root,single,chokaro,f89v2.4,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 top band: green frond/leaf,leaf,single,sheol,f89v2.5,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 top band: branched root,root,multiple,chokam,f89v2.6,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 second jar (label),container,red_pigment,otory,f89v2.11,medium,cannot re-examine: f89v2 panel not in available Yale IIIF set; confidence held at original medium,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 mid band: root with foliage,whole_plant,single,otair.chody,f89v2.12,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 mid band: pale root,root,single,dykaran,f89v2.13,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 mid band: green leaf spray,spray,multiple,opcheedey,f89v2.14,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 lower jar/vessel (label),container,red_pigment,opaloiiry,f89v2.23,medium,cannot re-examine: f89v2 panel not in available Yale IIIF set; confidence held at original medium,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 lower band: orange tendril root,root,tailed,otaram,f89v2.24,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 lower band: small root,root,single,chtchy,f89v2.25,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 lower band: pale root cluster,root,multiple,sada,f89v2.27,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f89v2,panel-2 lower band: feathery root spray,root,multiple,daseky,f89v2.28,uncertain,cannot re-examine: f89v2 Pharma panel not present in available Yale IIIF set (f89v_f90r download shows only f89v1 + f90r); confidence held at original value,rota65b_cross_modal_refined_not_decipherment
+f100r,top band: green leafy sprig with rootlets,leaf,multiple,chosaroshol,f100r.1,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,top band: coiled brown stem/tendril spiral,stem,single,sochorcfhy,f100r.2,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,top band: tall upright serrated green leaf/frond,leaf,single,otear,f100r.3,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,top band: small rooted green sprig,leaf,single,chofa[r:n]y,f100r.4,medium,"elevated: top-row small rooted green sprig, label readable above with clear spacing",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: green sprig with red rootlets,whole_plant,single,sar.char.daiindy,f100r.5,uncertain,"kept uncertain: 3-token label ""sar.char.daiindy"" cannot be cleanly mapped to one drawn element",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: green leaf spray with rootlets,spray,multiple,o[r:s]aro,f100r.6,medium,"elevated: top-row green leaf spray with rootlets, label cleanly above",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: green spray/tuft,spray,multiple,chalsain,f100r.7,medium,"elevated: top-row green spray/tuft, label readable above",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: blue-tipped flower bud on stem (far right),flower,blue_pigment,soity,f100r.8,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,top band: small green sprig with blue tip,leaf,blue_pigment,sosam,f100r.9,medium,"elevated: top-row small green sprig with blue tip, label ""oboo"" pattern above",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: green leaf with brown root,whole_plant,single,dakocth,f100r.10,medium,"elevated: top-mid row green leaf with brown root, label above readable",rota65b_cross_modal_refined_not_decipherment
+f100r,top band: small green frond,leaf,single,sofam,f100r.11,medium,"elevated: top-mid row small green frond, label readable above",rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: green strappy blades with root,leaf,multiple,okeeos,f100r.16,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: broccoli-like green floret on stem,flower,single,shockhey,f100r.17,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: large serrated leaf with long curving stem,leaf,tailed,orol,f100r.18,medium,"elevated: lower-band large serrated leaf, label ""ollotry"" pattern above with clear spacing",rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: round bushy green shrub,whole_plant,single,olcheom,f100r.19,medium,,rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: round green leaf tuft,leaf,single,oteol,f100r.20,medium,"elevated: lower-band round green leaf tuft, label above readable",rota65b_cross_modal_refined_not_decipherment
+f100r,lower band: large nettle/oak serrated leaf with orange root,whole_plant,single,okols,f100r.21,medium,,rota65b_cross_modal_refined_not_decipherment
+f100v,top band: green leafy sprig,leaf,multiple,tolchd,f100v.1,uncertain,kept uncertain: top band crowded with small plants and small labels; pairing ambiguous,rota65b_cross_modal_refined_not_decipherment
+f100v,top band: green fern-like frond,leaf,single,chols,f100v.2,uncertain,kept uncertain: top band fern-frond among similar shapes; label assignment ambiguous,rota65b_cross_modal_refined_not_decipherment
+f100v,top band: small green sprig with root,whole_plant,single,opchor,f100v.3,medium,"elevated: small green sprig with root, label ""crooy"" pattern readable above",rota65b_cross_modal_refined_not_decipherment
+f100v,top band: blue-tipped flower/bud on stem,flower,blue_pigment,solsy,f100v.4,medium,,rota65b_cross_modal_refined_not_decipherment
+f100v,top band: round bushy green plant,whole_plant,single,soleesos,f100v.5,medium,"elevated: round bushy green plant, label clearly placed with vertical alignment",rota65b_cross_modal_refined_not_decipherment
+f100v,mid band: feathery green plant with rootlets,whole_plant,multiple,ykchochdy,f100v.6,medium,"elevated: mid-band feathery green plant, label BELOW clearly aligned",rota65b_cross_modal_refined_not_decipherment
+f100v,mid band: green leaf cluster with red root,whole_plant,single,ykchdy,f100v.7,medium,"elevated: mid-band green leaf cluster + red root, label ""aTeoda"" pattern below",rota65b_cross_modal_refined_not_decipherment
+f100v,mid band: green spray with rootlets,spray,multiple,dchdy,f100v.8,medium,"elevated: mid-band green spray with rootlets, label below readable",rota65b_cross_modal_refined_not_decipherment
+f100v,lower band: large dark serrated oak-like leaf with blue tips,leaf,single,dalsy,f100v.9,medium,,rota65b_cross_modal_refined_not_decipherment
+f100v,lower band: large bushy green shrub,whole_plant,single,okcheor,f100v.10,medium,,rota65b_cross_modal_refined_not_decipherment
+f100v,lower band: feathery conifer-like frond,leaf,single,ytchol,f100v.11,medium,,rota65b_cross_modal_refined_not_decipherment
+f100v,lower band: green leaf with root,whole_plant,single,dykchal,f100v.12,medium,"elevated: lower-band green leaf with root, label below readable",rota65b_cross_modal_refined_not_decipherment
+f100v,lower band: green frond spray,spray,multiple,chos.ctharal,f100v.13,uncertain,"kept uncertain: multi-token label ""chos.ctharal"" hard to pair exactly with one element",rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 10:00 holding star,nymph,single,oteos.arar,f71r.2,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 11:00 holding star,nymph,single,okldam,f71r.3,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 00:00 (top) holding star,nymph,single,oteoaldy,f71r.4,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 01:00 holding star,nymph,single,oteolar,f71r.5,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 02:00 holding star,nymph,single,okeoaly,f71r.6,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 03:00 holding star,nymph,single,otaleky,f71r.7,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 04:30 holding star,nymph,single,otalsar,f71r.8,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 05:30 holding star,nymph,single,cheary,f71r.9,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 07:00 holding star,nymph,single,oteotey.rary,f71r.10,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,inner-ring nymph at 08:30 holding star,nymph,single,otalaly,f71r.11,medium,,rota65b_cross_modal_refined_not_decipherment
+f71r,outer-ring nymph at 11:00 holding star,nymph,single,otolchdy,f71r.13,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f71r,outer-ring nymph at 00:30 holding star,nymph,single,otoloaram,f71r.14,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f71r,outer-ring nymph at 03:30 holding star,nymph,single,oteeol,f71r.15,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f71r,outer-ring nymph at 05:30 holding star,nymph,single,otolchd,f71r.16,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f71r,outer-ring nymph at 08:00 holding star,nymph,single,otaldar,f71r.17,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,inner-ring nymph at 11:15 holding star,nymph,single,otaly,f73r.1,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,inner-ring nymph at 11:45 holding star,nymph,single,chockhy,f73r.2,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,inner-ring nymph at 00:30 holding star,nymph,single,otedy,f73r.3,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,inner-ring nymph at 01:00 holding star,nymph,single,yteeody,f73r.4,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 11:00 holding star,nymph,single,otaly,f73r.6,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 11:30 holding star,nymph,single,okeody,f73r.7,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 00:00 (top) holding star,nymph,single,oteedyl,f73r.8,medium,,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 00:30 holding star,nymph,single,[y:o]keedy,f73r.9,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 01:00 holding star,nymph,single,okeey,f73r.10,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 02:00 holding star,nymph,single,okeedy,f73r.11,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 02:30 holding star,nymph,single,ykeeory,f73r.12,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 03:30 holding star,nymph,single,oteeosy,f73r.13,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 04:30 holding star,nymph,single,shekal,f73r.14,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 05:30 holding star,nymph,single,oteedyy,f73r.15,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 06:30 holding star,nymph,single,oked[a:o]l,f73r.16,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 07:00 holding star,nymph,single,chdy,f73r.17,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 08:00 holding star,nymph,single,dalshey,f73r.18,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 08:45 holding star,nymph,single,opaiin,f73r.19,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 09:30 holding star,nymph,single,okeos,f73r.20,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,mid-ring nymph at 10:00 holding star,nymph,single,otey,f73r.21,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 11:30 holding star,nymph,single,okary,f73r.23,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 01:00 holding star,nymph,single,okeeody,f73r.24,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 02:00 holding star,nymph,single,oyteedy,f73r.25,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 03:00 holding star,nymph,single,oky,f73r.26,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 04:30 holding star,nymph,single,chefy,f73r.27,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 06:00 holding star,nymph,single,otal,f73r.28,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 07:00 holding star,nymph,single,chek,f73r.29,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 09:30 holding star,nymph,single,kar,f73r.31,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
+f73r,outer-ring nymph at 10:30 holding star,nymph,single,okeeos,f73r.32,uncertain,kept uncertain (out of scope): zodiac ring nymphs structurally ambiguous at available IIIF resolution,rota65b_cross_modal_refined_not_decipherment
