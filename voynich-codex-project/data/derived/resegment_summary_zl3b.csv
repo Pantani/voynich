@@ -1,0 +1,20 @@
+metric,value
+K,300
+stream_len,228177
+n_lines,5216
+voy_token_order_gain,0.092303
+voy_token_order_gain_note,"same-sign small-positive analog of R60 gain_over_wordunigram(0.034); ID-serialization+exact-permutation null isolates pure token-order, so it runs a few pts higher; both << natural 0.12-0.25"
+revival_voy,0.083362
+revival_markov,0.033591
+revival_bow,0.048529
+differential,0.034833
+cross_boundary_merge_frac,0.493395
+voy_bpe_vocab_size,324
+n_merges_applied,300
+verdict_lzma_only,hidden_structure
+revival_voy_bz2,0.073565
+revival_markov_bz2,0.056572
+revival_bow_bz2,0.068838
+differential_bz2,0.004727
+verdict,lzma_artifact
+guardrail,rota61_resegment_not_decipherment

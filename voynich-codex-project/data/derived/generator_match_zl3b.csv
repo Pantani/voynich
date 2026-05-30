@@ -1,0 +1,15 @@
+metric,real,generator,abs_delta,tolerance,within_tol,key_metric,semantic_guardrail
+h2,2.152535,2.226952,0.074416,0.1,True,True,rota62_generator_not_decipherment
+adjacent_repeat,0.008751,0.008726,2.4e-05,0.003,True,True,rota62_generator_not_decipherment
+laafu_I,0.470864,0.303232,0.167632,0.08,False,True,rota62_generator_not_decipherment
+line_initial_gallows,0.151074,0.191334,0.040261,0.05,True,False,rota62_generator_not_decipherment
+mi_d1,1.719071,1.655123,0.063948,0.15,True,False,rota62_generator_not_decipherment
+mi_d2,0.828792,0.741382,0.087411,0.12,True,False,rota62_generator_not_decipherment
+mi_d5,0.129039,0.081273,0.047766,0.05,True,False,rota62_generator_not_decipherment
+mi_d10,0.020494,0.011203,0.00929,0.02,True,False,rota62_generator_not_decipherment
+mi_d50,0.003659,0.002046,0.001613,0.005,True,False,rota62_generator_not_decipherment
+mi_d100,0.002521,0.002015,0.000506,0.005,True,False,rota62_generator_not_decipherment
+corr_length,15.0,12.0,3.0,5.0,True,True,rota62_generator_not_decipherment
+zipf_slope,-1.079073,-0.994302,0.084771,0.15,True,True,rota62_generator_not_decipherment
+heaps_beta,0.786042,0.741844,0.044198,0.08,True,True,rota62_generator_not_decipherment
+gain_over_wordunigram,0.033982,0.007505,0.026476,0.03,True,True,rota62_generator_not_decipherment

@@ -1,0 +1,11 @@
+model,compressor,compressed_bits,bits_per_char,semantic_guardrail
+real,lzma,527616,2.31231,rota60_compressibility_not_decipherment
+real,bz2,518120,2.270693,rota60_compressibility_not_decipherment
+order0,lzma,919104,4.028031,rota60_compressibility_not_decipherment
+order0,bz2,950440,4.165363,rota60_compressibility_not_decipherment
+markov2_char,lzma,558592,2.448064,rota60_compressibility_not_decipherment
+markov2_char,bz2,540136,2.36718,rota60_compressibility_not_decipherment
+word_unigram,lzma,546176,2.393651,rota60_compressibility_not_decipherment
+word_unigram,bz2,522440,2.289626,rota60_compressibility_not_decipherment
+word_bigram,lzma,463520,2.031405,rota60_compressibility_not_decipherment
+word_bigram,bz2,452496,1.983092,rota60_compressibility_not_decipherment

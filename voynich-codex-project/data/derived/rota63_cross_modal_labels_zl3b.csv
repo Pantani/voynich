@@ -1,0 +1,60 @@
+folio,element_desc,object_type,visual_feature2,label_token,label_locus,annotation_confidence,semantic_guardrail
+f99r,top-left red cylindrical jar (lid label),container,red_pigment,okaradag,f99r.1,high,rota63_cross_modal_not_decipherment
+f99r,2nd red cylindrical jar in left column (body label),container,red_pigment,oparal,f99r.19,high,rota63_cross_modal_not_decipherment
+f99r,top row plant-part: pale curled root with tendrils,root,tailed,okar.y,f99r.2,medium,rota63_cross_modal_not_decipherment
+f99r,top row: dark-red leaf/blade form,leaf,red_pigment,darar,f99r.3,medium,rota63_cross_modal_not_decipherment
+f99r,top row: small whole root cluster,root,single,oky,f99r.4,medium,rota63_cross_modal_not_decipherment
+f99r,top row: bundled twisted stems,stem,multiple,salo,f99r.5,medium,rota63_cross_modal_not_decipherment
+f99r,top row: orange root with fine hairs,root,tailed,aro,f99r.6,uncertain,rota63_cross_modal_not_decipherment
+f99r,top row: cluster of cut stem-segments (3 short cylinders),stem,multiple,okor,f99r.8,medium,rota63_cross_modal_not_decipherment
+f99r,top row: striped banded root-segment,root,single,ralol,f99r.9,uncertain,rota63_cross_modal_not_decipherment
+f99r,top row: orange spray/flower tuft,flower,multiple,skeeal,f99r.10,uncertain,rota63_cross_modal_not_decipherment
+f99r,top row: hooked orange root,root,single,okary,f99r.11,medium,rota63_cross_modal_not_decipherment
+f99r,top row: pale fan of fine roots (far right),root,multiple,okolo,f99r.12,uncertain,rota63_cross_modal_not_decipherment
+f99r,mid row: orange tendril root,root,tailed,otalam,f99r.13,uncertain,rota63_cross_modal_not_decipherment
+f99r,mid row: orange branched root,root,single,otoldy,f99r.14,uncertain,rota63_cross_modal_not_decipherment
+f99r,2nd block top: pale curled root,root,single,oaro,f99r.20,medium,rota63_cross_modal_not_decipherment
+f99r,2nd block: small root,root,single,aloly,f99r.21,uncertain,rota63_cross_modal_not_decipherment
+f99r,large bottom orange hairy root with green leaves,whole_plant,multiple,aora,f99r.22,medium,rota63_cross_modal_not_decipherment
+f99v,top-left jar (red w/ blue band) lid label,container,red_pigment,okaramy,f99v.1,high,rota63_cross_modal_not_decipherment
+f99v,3rd container in left column (red+blue band) body label,container,red_pigment,okoldody,f99v.14,high,rota63_cross_modal_not_decipherment
+f99v,top row: red-tinged root with fine tendrils,root,red_pigment,otoldy,f99v.2,medium,rota63_cross_modal_not_decipherment
+f99v,top row: red tendril root,root,red_pigment,otorchy,f99v.3,medium,rota63_cross_modal_not_decipherment
+f99v,top row: whole plant green spiky leaf + brown root + red bulb,whole_plant,red_pigment,oldy,f99v.4,medium,rota63_cross_modal_not_decipherment
+f99v,top row: octopus-like brown root,root,multiple,otaly,f99v.6,medium,rota63_cross_modal_not_decipherment
+f99v,top row: red-bulb root pair,root,red_pigment,olsy,f99v.7,uncertain,rota63_cross_modal_not_decipherment
+f99v,top row: paired pale roots,root,multiple,arol,f99v.8,uncertain,rota63_cross_modal_not_decipherment
+f99v,top row: red striped leaf/frond (far right),leaf,red_pigment,otoky,f99v.9,medium,rota63_cross_modal_not_decipherment
+f99v,row3: bulb root with vertical stem,root,single,oeeesary,f99v.15,medium,rota63_cross_modal_not_decipherment
+f99v,row3: curved red-brown tendril root,root,red_pigment,sary,f99v.17,uncertain,rota63_cross_modal_not_decipherment
+f99v,row3: tan fan-shaped frond/leaf,leaf,single,saiino,f99v.18,medium,rota63_cross_modal_not_decipherment
+f99v,row3: broad red leaf,leaf,red_pigment,otolsar,f99v.19,medium,rota63_cross_modal_not_decipherment
+f99v,row3: reddish bulb/root with stem,root,red_pigment,osary,f99v.20,uncertain,rota63_cross_modal_not_decipherment
+f88v,top-left ornate red/white apothecary jar (upper) lid label,container,red_pigment,okalyd,f88v.1,high,rota63_cross_modal_not_decipherment
+f88v,2nd ornate red/white apothecary jar (lower-left) label,container,red_pigment,otoram,f88v.11,high,rota63_cross_modal_not_decipherment
+f88v,3rd container (round red flask in mid-left panel),container,red_pigment,daramdal,f88v.27,medium,rota63_cross_modal_not_decipherment
+f88v,top row: pale carrot-like root with tendrils,root,tailed,cheocthy,f88v.2,medium,rota63_cross_modal_not_decipherment
+f88v,top row: branched root,root,single,cpheor,f88v.3,medium,rota63_cross_modal_not_decipherment
+f88v,top row: green leaf + root whole plant,whole_plant,single,otar.arody,f88v.4,medium,rota63_cross_modal_not_decipherment
+f88v,top row: spiky red flower/burst on root,flower,red_pigment,otokol,f88v.5,medium,rota63_cross_modal_not_decipherment
+f88v,2nd row: orange root with green leaves,root,tailed,otydary,f88v.28,uncertain,rota63_cross_modal_not_decipherment
+f88v,2nd row: red striped root,root,red_pigment,cheosdy,f88v.13,uncertain,rota63_cross_modal_not_decipherment
+f88v,2nd row: green-leaf root,whole_plant,single,okaiin,f88v.14,uncertain,rota63_cross_modal_not_decipherment
+f88v,mid panel root with green foliage,whole_plant,single,otoray,f88v.12,uncertain,rota63_cross_modal_not_decipherment
+f88v,lower panel: feathery branched root,root,multiple,otdordy,f88v.29,uncertain,rota63_cross_modal_not_decipherment
+f88v,lower panel: large root mass,root,multiple,dararda,f88v.30,uncertain,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph (8-pointed gold star),star,single,qotoear,f67r2.52,medium,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,dchdar,f67r2.53,medium,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,ytodal,f67r2.55,medium,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,octhys,f67r2.60,uncertain,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,ytokar,f67r2.61,uncertain,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,otolor,f67r2.62,uncertain,rota63_cross_modal_not_decipherment
+f67r2,ring star glyph,star,single,okodar,f67r2.63,uncertain,rota63_cross_modal_not_decipherment
+f67r2,outer-ring scattered star w/ label,star,single,osar,f67r2.70,uncertain,rota63_cross_modal_not_decipherment
+f67r2,outer-ring scattered star w/ label,star,single,oran,f67r2.71,uncertain,rota63_cross_modal_not_decipherment
+f67v1,corner roundel: paired figures/faces joined by bar,figure_roundel,multiple,okal.ary,f67v1.3,medium,rota63_cross_modal_not_decipherment
+f67v1,corner roundel: paired figures/faces joined by bar,figure_roundel,multiple,okol.aldy,f67v1.5,medium,rota63_cross_modal_not_decipherment
+f67v1,corner roundel figure label,figure_roundel,multiple,ykeodar,f67v1.7,uncertain,rota63_cross_modal_not_decipherment
+f67v1,corner roundel figure label,figure_roundel,multiple,ockhosam,f67v1.9,uncertain,rota63_cross_modal_not_decipherment
+f67v1,radial arm end: blue-tipped spray/burst,spray,single,kochardy,f67v1.10,uncertain,rota63_cross_modal_not_decipherment
+f67v1,radial arm end: spray/burst,spray,single,ochodare,f67v1.11,uncertain,rota63_cross_modal_not_decipherment

@@ -1,0 +1,5 @@
+class,n,top_token,top_prefix,prefix_distribution,nucleus_distribution,length_distribution,mean_length,h2_within_class,semantic_guardrail
+paragraph,34259,daiin=767,none,qo=5179;ok=1986;ot=1793;yk=477;yt=416;none=24408,ch=9660;sh=4148;none=20451,short=12455;mid=15118;long=6686,5.067,2.12,rota65a_radial_paragraph_not_decipherment
+radial,2383,ar=54,none,qo=55;ok=256;ot=382;yk=57;yt=27;none=1606,ch=592;sh=177;none=1614,short=998;mid=880;long=505,4.85,2.2071,rota65a_radial_paragraph_not_decipherment
+label,1029,o=14,none,qo=9;ok=172;ot=177;yk=33;yt=26;none=612,ch=176;sh=52;none=801,short=339;mid=433;long=257,5.216,2.4034,rota65a_radial_paragraph_not_decipherment
+other,0,,none,qo=0;ok=0;ot=0;yk=0;yt=0;none=0,ch=0;sh=0;none=0,short=0;mid=0;long=0,0.0,0.0,rota65a_radial_paragraph_not_decipherment

@@ -1,0 +1,7 @@
+edge,glyph,edge_frac,corpus_frac,ratio,semantic_guardrail
+initial,p,0.090649,0.014494,6.2543,rota58_language_signature_not_decipherment
+initial,t,0.093989,0.027023,3.478,rota58_language_signature_not_decipherment
+initial,y,0.1448,0.0498,2.9076,rota58_language_signature_not_decipherment
+final,g,0.022662,0.003637,6.2314,rota58_language_signature_not_decipherment
+final,m,0.155057,0.026439,5.8646,rota58_language_signature_not_decipherment
+final,u,0.001193,0.000212,5.6165,rota58_language_signature_not_decipherment

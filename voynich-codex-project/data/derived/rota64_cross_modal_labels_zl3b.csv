@@ -1,0 +1,113 @@
+folio,element_desc,object_type,visual_feature2,label_token,label_locus,annotation_confidence,semantic_guardrail
+f88r,top-left ornate green/red goblet jar (lid label),container,gilt_banded,otorchety,f88r.1,high,rota64_cross_modal_not_decipherment
+f88r,mid-left ornate red/gilt apothecary jar (label),container,red_pigment,otaldy,f88r.12,high,rota64_cross_modal_not_decipherment
+f88r,lower-left tall red/gilt tiered jar (label),container,red_pigment,ofyskydal,f88r.23,high,rota64_cross_modal_not_decipherment
+f88r,top band: pale curled root with downward tendrils,root,tailed,osal,f88r.2,medium,rota64_cross_modal_not_decipherment
+f88r,top band: dark reddish-brown carrot/tuber root,root,single,orald,f88r.3,medium,rota64_cross_modal_not_decipherment
+f88r,top band: pale forked root with fine rootlets,root,multiple,oldar,f88r.4,medium,rota64_cross_modal_not_decipherment
+f88r,top band: large brown stippled spindle/seedpod root,root,single,otoky,f88r.5,medium,rota64_cross_modal_not_decipherment
+f88r,top band: pale octopus root with many curling tendrils,root,multiple,otaly,f88r.6,medium,rota64_cross_modal_not_decipherment
+f88r,mid band: orange octopus root with many tendrils,root,multiple,oram,f88r.13,medium,rota64_cross_modal_not_decipherment
+f88r,mid band: green leaf sprig beside small orange root,leaf,single,dary,f88r.14,uncertain,rota64_cross_modal_not_decipherment
+f88r,mid band: dark green spiky leaf-blade on stem,leaf,single,okol,f88r.15,medium,rota64_cross_modal_not_decipherment
+f88r,mid band: pale bulb root with fine tendrils,root,tailed,sorory,f88r.16,uncertain,rota64_cross_modal_not_decipherment
+f88r,mid band: green leaves with stippled dotted fan structure,other,multiple,otyda,f88r.17,uncertain,rota64_cross_modal_not_decipherment
+f88r,lower band: large central root mass with orange hairy roots and green serrated leaves,whole_plant,multiple,otor.am,f88r.24,medium,rota64_cross_modal_not_decipherment
+f88r,lower band: green kidney-shaped leaves on stems,leaf,multiple,ofaldo,f88r.25,uncertain,rota64_cross_modal_not_decipherment
+f89v1,upper ornate green lidded goblet jar (label),container,gilt_banded,okoraldy,f89v1.1,high,rota64_cross_modal_not_decipherment
+f89v1,top band: brown octopus root with curling tendrils,root,multiple,oto{ikh}y,f89v1.2,uncertain,rota64_cross_modal_not_decipherment
+f89v1,top band: green lobed leaf sprig,leaf,single,otchar,f89v1.3,uncertain,rota64_cross_modal_not_decipherment
+f89v1,top band: reddish branched root,root,single,darshody,f89v1.4,uncertain,rota64_cross_modal_not_decipherment
+f89v1,lower-left tall blue/green tiered jar (label),container,blue_pigment,koeeorain,f89v1.21,high,rota64_cross_modal_not_decipherment
+f89v1,lower band: green leaf cluster,leaf,multiple,otorshos,f89v1.22,uncertain,rota64_cross_modal_not_decipherment
+f89v1,lower band: pale orange root with tendrils,root,tailed,opol.olaiin,f89v1.23,uncertain,rota64_cross_modal_not_decipherment
+f89v1,lower band: pale forked root,root,multiple,opaldaiin,f89v1.24,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 ornate jar (lid label),container,gilt_banded,choeesy,f89v2.1,medium,rota64_cross_modal_not_decipherment
+f89v2,panel-2 top band: orange root with tendrils,root,tailed,okam,f89v2.2,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 top band: green leaf sprig,leaf,single,darcheor,f89v2.3,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 top band: reddish root,root,single,chokaro,f89v2.4,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 top band: green frond/leaf,leaf,single,sheol,f89v2.5,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 top band: branched root,root,multiple,chokam,f89v2.6,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 second jar (label),container,red_pigment,otory,f89v2.11,medium,rota64_cross_modal_not_decipherment
+f89v2,panel-2 mid band: root with foliage,whole_plant,single,otair.chody,f89v2.12,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 mid band: pale root,root,single,dykaran,f89v2.13,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 mid band: green leaf spray,spray,multiple,opcheedey,f89v2.14,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 lower jar/vessel (label),container,red_pigment,opaloiiry,f89v2.23,medium,rota64_cross_modal_not_decipherment
+f89v2,panel-2 lower band: orange tendril root,root,tailed,otaram,f89v2.24,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 lower band: small root,root,single,chtchy,f89v2.25,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 lower band: pale root cluster,root,multiple,sada,f89v2.27,uncertain,rota64_cross_modal_not_decipherment
+f89v2,panel-2 lower band: feathery root spray,root,multiple,daseky,f89v2.28,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: green leafy sprig with rootlets,leaf,multiple,chosaroshol,f100r.1,medium,rota64_cross_modal_not_decipherment
+f100r,top band: coiled brown stem/tendril spiral,stem,single,sochorcfhy,f100r.2,medium,rota64_cross_modal_not_decipherment
+f100r,top band: tall upright serrated green leaf/frond,leaf,single,otear,f100r.3,medium,rota64_cross_modal_not_decipherment
+f100r,top band: small rooted green sprig,leaf,single,chofa[r:n]y,f100r.4,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: green sprig with red rootlets,whole_plant,single,sar.char.daiindy,f100r.5,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: green leaf spray with rootlets,spray,multiple,o[r:s]aro,f100r.6,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: green spray/tuft,spray,multiple,chalsain,f100r.7,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: blue-tipped flower bud on stem (far right),flower,blue_pigment,soity,f100r.8,medium,rota64_cross_modal_not_decipherment
+f100r,top band: small green sprig with blue tip,leaf,blue_pigment,sosam,f100r.9,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: green leaf with brown root,whole_plant,single,dakocth,f100r.10,uncertain,rota64_cross_modal_not_decipherment
+f100r,top band: small green frond,leaf,single,sofam,f100r.11,uncertain,rota64_cross_modal_not_decipherment
+f100r,lower band: green strappy blades with root,leaf,multiple,okeeos,f100r.16,medium,rota64_cross_modal_not_decipherment
+f100r,lower band: broccoli-like green floret on stem,flower,single,shockhey,f100r.17,medium,rota64_cross_modal_not_decipherment
+f100r,lower band: large serrated leaf with long curving stem,leaf,tailed,orol,f100r.18,uncertain,rota64_cross_modal_not_decipherment
+f100r,lower band: round bushy green shrub,whole_plant,single,olcheom,f100r.19,medium,rota64_cross_modal_not_decipherment
+f100r,lower band: round green leaf tuft,leaf,single,oteol,f100r.20,uncertain,rota64_cross_modal_not_decipherment
+f100r,lower band: large nettle/oak serrated leaf with orange root,whole_plant,single,okols,f100r.21,medium,rota64_cross_modal_not_decipherment
+f100v,top band: green leafy sprig,leaf,multiple,tolchd,f100v.1,uncertain,rota64_cross_modal_not_decipherment
+f100v,top band: green fern-like frond,leaf,single,chols,f100v.2,uncertain,rota64_cross_modal_not_decipherment
+f100v,top band: small green sprig with root,whole_plant,single,opchor,f100v.3,uncertain,rota64_cross_modal_not_decipherment
+f100v,top band: blue-tipped flower/bud on stem,flower,blue_pigment,solsy,f100v.4,medium,rota64_cross_modal_not_decipherment
+f100v,top band: round bushy green plant,whole_plant,single,soleesos,f100v.5,uncertain,rota64_cross_modal_not_decipherment
+f100v,mid band: feathery green plant with rootlets,whole_plant,multiple,ykchochdy,f100v.6,uncertain,rota64_cross_modal_not_decipherment
+f100v,mid band: green leaf cluster with red root,whole_plant,single,ykchdy,f100v.7,uncertain,rota64_cross_modal_not_decipherment
+f100v,mid band: green spray with rootlets,spray,multiple,dchdy,f100v.8,uncertain,rota64_cross_modal_not_decipherment
+f100v,lower band: large dark serrated oak-like leaf with blue tips,leaf,single,dalsy,f100v.9,medium,rota64_cross_modal_not_decipherment
+f100v,lower band: large bushy green shrub,whole_plant,single,okcheor,f100v.10,medium,rota64_cross_modal_not_decipherment
+f100v,lower band: feathery conifer-like frond,leaf,single,ytchol,f100v.11,medium,rota64_cross_modal_not_decipherment
+f100v,lower band: green leaf with root,whole_plant,single,dykchal,f100v.12,uncertain,rota64_cross_modal_not_decipherment
+f100v,lower band: green frond spray,spray,multiple,chos.ctharal,f100v.13,uncertain,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 10:00 holding star,nymph,single,oteos.arar,f71r.2,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 11:00 holding star,nymph,single,okldam,f71r.3,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 00:00 (top) holding star,nymph,single,oteoaldy,f71r.4,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 01:00 holding star,nymph,single,oteolar,f71r.5,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 02:00 holding star,nymph,single,okeoaly,f71r.6,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 03:00 holding star,nymph,single,otaleky,f71r.7,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 04:30 holding star,nymph,single,otalsar,f71r.8,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 05:30 holding star,nymph,single,cheary,f71r.9,uncertain,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 07:00 holding star,nymph,single,oteotey.rary,f71r.10,medium,rota64_cross_modal_not_decipherment
+f71r,inner-ring nymph at 08:30 holding star,nymph,single,otalaly,f71r.11,medium,rota64_cross_modal_not_decipherment
+f71r,outer-ring nymph at 11:00 holding star,nymph,single,otolchdy,f71r.13,uncertain,rota64_cross_modal_not_decipherment
+f71r,outer-ring nymph at 00:30 holding star,nymph,single,otoloaram,f71r.14,uncertain,rota64_cross_modal_not_decipherment
+f71r,outer-ring nymph at 03:30 holding star,nymph,single,oteeol,f71r.15,uncertain,rota64_cross_modal_not_decipherment
+f71r,outer-ring nymph at 05:30 holding star,nymph,single,otolchd,f71r.16,uncertain,rota64_cross_modal_not_decipherment
+f71r,outer-ring nymph at 08:00 holding star,nymph,single,otaldar,f71r.17,uncertain,rota64_cross_modal_not_decipherment
+f73r,inner-ring nymph at 11:15 holding star,nymph,single,otaly,f73r.1,uncertain,rota64_cross_modal_not_decipherment
+f73r,inner-ring nymph at 11:45 holding star,nymph,single,chockhy,f73r.2,uncertain,rota64_cross_modal_not_decipherment
+f73r,inner-ring nymph at 00:30 holding star,nymph,single,otedy,f73r.3,uncertain,rota64_cross_modal_not_decipherment
+f73r,inner-ring nymph at 01:00 holding star,nymph,single,yteeody,f73r.4,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 11:00 holding star,nymph,single,otaly,f73r.6,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 11:30 holding star,nymph,single,okeody,f73r.7,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 00:00 (top) holding star,nymph,single,oteedyl,f73r.8,medium,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 00:30 holding star,nymph,single,[y:o]keedy,f73r.9,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 01:00 holding star,nymph,single,okeey,f73r.10,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 02:00 holding star,nymph,single,okeedy,f73r.11,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 02:30 holding star,nymph,single,ykeeory,f73r.12,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 03:30 holding star,nymph,single,oteeosy,f73r.13,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 04:30 holding star,nymph,single,shekal,f73r.14,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 05:30 holding star,nymph,single,oteedyy,f73r.15,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 06:30 holding star,nymph,single,oked[a:o]l,f73r.16,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 07:00 holding star,nymph,single,chdy,f73r.17,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 08:00 holding star,nymph,single,dalshey,f73r.18,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 08:45 holding star,nymph,single,opaiin,f73r.19,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 09:30 holding star,nymph,single,okeos,f73r.20,uncertain,rota64_cross_modal_not_decipherment
+f73r,mid-ring nymph at 10:00 holding star,nymph,single,otey,f73r.21,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 11:30 holding star,nymph,single,okary,f73r.23,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 01:00 holding star,nymph,single,okeeody,f73r.24,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 02:00 holding star,nymph,single,oyteedy,f73r.25,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 03:00 holding star,nymph,single,oky,f73r.26,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 04:30 holding star,nymph,single,chefy,f73r.27,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 06:00 holding star,nymph,single,otal,f73r.28,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 07:00 holding star,nymph,single,chek,f73r.29,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 09:30 holding star,nymph,single,kar,f73r.31,uncertain,rota64_cross_modal_not_decipherment
+f73r,outer-ring nymph at 10:30 holding star,nymph,single,okeeos,f73r.32,uncertain,rota64_cross_modal_not_decipherment

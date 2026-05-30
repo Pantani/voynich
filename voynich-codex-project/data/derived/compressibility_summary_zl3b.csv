@@ -1,0 +1,17 @@
+metric,value
+stream_len,228177
+bpc_real_lzma,2.31231
+bpc_order0_lzma,4.028031
+bpc_markov2_lzma,2.448064
+bpc_wordunigram_lzma,2.393651
+gain_over_markov2,0.055454
+gain_over_wordunigram,0.033982
+bpc_real_bz2,2.270693
+bpc_order0_bz2,4.165363
+bpc_markov2_bz2,2.36718
+bpc_wordunigram_bz2,2.289626
+gain_over_wordunigram_bz2,0.008269
+bpc_wordbigram_lzma,2.031405
+gain_over_wordbigram,-0.138281
+verdict,word_order_informative
+guardrail,rota60_compressibility_not_decipherment

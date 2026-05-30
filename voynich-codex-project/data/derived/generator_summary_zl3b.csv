@@ -1,0 +1,15 @@
+metric,value
+mechanisms_in_full,base+section_cond+self_citation+line_edge_bias
+n_metrics,14
+n_matched,13
+n_key_metrics,7
+n_key_matched,6
+key_metrics_resisting,laafu_I
+p_rep_used,0.004564
+p_initial_gallows_used,0.151074
+rep_window,1
+real_adjacent_repeat,0.008751
+gen_adjacent_repeat,0.008726
+verdict,generator_insufficient
+caveat,generator_sufficient shows meaning is NOT REQUIRED to explain the statistics; it does NOT prove the text is meaningless (a meaningful text could carry the same stats).
+guardrail,rota62_generator_not_decipherment

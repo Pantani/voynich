@@ -1,0 +1,15 @@
+feature,n,cramer_v,p_global,p_within_folio,subset,semantic_guardrail
+first_glyph,59,0.3793,0.4003,0.7891,all,rota63_cross_modal_not_decipherment
+prefix4,59,0.3938,0.0925,0.2579,all,rota63_cross_modal_not_decipherment
+gallows_present,59,0.2399,0.3678,0.2859,all,rota63_cross_modal_not_decipherment
+gallows_class,59,0.2319,0.4103,0.3078,all,rota63_cross_modal_not_decipherment
+length_bucket,59,0.1941,0.6417,0.3603,all,rota63_cross_modal_not_decipherment
+nucleus,59,0.1936,0.5382,0.5047,all,rota63_cross_modal_not_decipherment
+vowel_present,59,0.0,1.0,1.0,all,rota63_cross_modal_not_decipherment
+first_glyph,32,0.5223,0.1119,0.1824,non_uncertain,rota63_cross_modal_not_decipherment
+prefix4,32,0.4371,0.2759,0.6167,non_uncertain,rota63_cross_modal_not_decipherment
+gallows_present,32,0.3085,0.4528,0.3238,non_uncertain,rota63_cross_modal_not_decipherment
+gallows_class,32,0.2776,0.6487,0.3668,non_uncertain,rota63_cross_modal_not_decipherment
+length_bucket,32,0.3969,0.1104,0.0485,non_uncertain,rota63_cross_modal_not_decipherment
+nucleus,32,0.238,0.6977,0.6062,non_uncertain,rota63_cross_modal_not_decipherment
+vowel_present,32,0.0,1.0,1.0,non_uncertain,rota63_cross_modal_not_decipherment

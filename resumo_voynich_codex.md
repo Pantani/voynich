@@ -1918,12 +1918,272 @@ Guardrail: `rota57_word_grounding_not_decipherment`. Doc: `docs/research/rota_57
 Script: `scripts/analyze_word_grounding.py`; testes: `tests/test_word_grounding.py` (suíte **393**).
 Saídas: `data/derived/word_grounding_{,summary_}zl3b.csv`.
 
-### Rota 58 — bateria real-língua vs baixo-conteúdo (próxima fase decisiva)
+## 77. Rota 58: Voynichês NÃO é prosa de língua natural — mas não é "sem sentido"
 
-Sobre o corpus inteiro, com baselines de língua natural (proposta do cryptanalyst):
-1. **Entropia condicional de caractere h1/h2** — h2 ≪ línguas naturais → baixo-conteúdo;
-   dentro da faixa latim-abreviado → língua real.
-2. **LAAFU (linha como unidade)** — P(palavra|posição-na-linha) ≫ P(palavra) com preferência
-   início/fim → gerador-por-linha; quase invariante → língua real.
-3. **Repetição adjacente da mesma palavra** (`daiin daiin`) — ≫ qualquer língua natural →
-   baixo-conteúdo; comparável a corpora naturais → língua real.
+A rota decisiva. 3 legs do harness (statistician + cryptanalyst pré-registro cego +
+paleographer contra-interpretação). Mede 3 assinaturas estruturais clássicas vs baselines
+de língua natural (literatura).
+
+| Assinatura | Voynich | Âncora natural | Anômalo |
+|------------|---------|----------------|---------|
+| **h2 caractere** | **2.15 bits** | inglês 3.1–3.6; latim 2.5–3.0 | **SIM (decisivo)** |
+| h2 palavra | 4.36 (H1=10.44) | gap grande = templático | leans templático |
+| LAAFU I(palavra;posição) | 0.471, p=0.003 (1.94× nulo) | ≈0 | borderline |
+| Repetição adjacente | 0.875% (2.77× i.i.d.) | <0.25% prosa | ~3.5× prosa |
+
+Validação interna: h2 embaralhado = 3.87 = h1 (cálculo correto). Borda de linha por GLIFO,
+inequívoca: inicial `p` 6.25×, `t` 3.48×; final `g` 6.23×, `m` 5.86× — os gallows iniciais
+são a convenção decorativa documentada do manuscrito. Repetições: `chol`×21, `qokeedy`×18.
+
+**Veredito mecânico `mixed` (1/3); leitura honesta:** as TRÊS assinaturas apontam para longe
+da prosa natural (h2 decisivamente baixo, repetição ~3.5× prosa, borda-de-linha dramática),
+mas os efeitos de LAAFU/repetição são moderados — não grita "ruído aleatório". **Voynichês
+NÃO é prosa de língua natural.**
+
+**CAVEAT crítico (cryptanalyst):** h2-baixo + LAAFU + repetição são produzidos TAMBÉM por
+codificações reais (cifra verbosa, latim abreviado, notação tabular/numérica). Baixo-conteúdo
+≠ sem sentido. A COMBINAÇÃO afasta de cifra-de-substituição-de-prosa-limpa e estreita para
+codificação-acoplada-a-layout OU gerador. **Deflação paleográfica:** borda-de-linha é
+convenção escribal (não significado); abreviação explica h2 baixo mas NÃO `daiin daiin daiin`;
+o códice físico sério argumenta contra fraude casual.
+
+**Veredito integrado:** Voynichês é **altamente estruturado mas decisivamente ≠ prosa
+natural**. Constrange sem decidir: descarta prosa natural simples E ruído puro; sobrevivem
+(a) língua real pesadamente codificada, (b) língua construída, (c) gerador baixo-conteúdo.
+Prior cryptanalyst: real-codificada 0.30 / baixo-conteúdo 0.30 / **híbrido 0.40** (camada
+gerativa de layout + camada fina de conteúdo real — casa com o sinal topical fraco da R56).
+Paleographer: mais parcimonioso = sistema construído OU notação não-linguística com sentido.
+
+Guardrail: `rota58_language_signature_not_decipherment`. Doc: `docs/research/rota_58_language_signature.md`.
+Script/testes: `analyze_language_signature.py` / `test_language_signature.py` (suíte **410**).
+Saídas: `data/derived/language_signature_{summary,lineedge,repeats}_zl3b.csv`.
+
+## 78. Rota 59: morfologicamente RICO, sintaticamente FINO — correlação de longo alcance
+
+O separador único. 2 legs (statistician + cryptanalyst cego). MI de caractere I(d), d=1…150,
+nulo por embaralhamento (piso ínfimo 0.0018 bits) + controle de embaralhamento-de-LINHA.
+
+| d | excess I(d) |
+|---|-------------|
+| 1 | **1.717** |
+| 10 | 0.019 |
+| **15** | 0.0055 (≈piso → **compr. de correlação = 15**) |
+| 50 | 0.0019 |
+| 100 | 0.0007 |
+
+**Dois regimes:** (1) queda local íngreme d=1→15 (lei de potência γ=1.16 R²=0.76 vence exp
+R²=0.35, mas pela dominância de d=1; compr. de correlação curto=15 → veredito mecânico
+`ambiguous`); (2) cauda fraquíssima. **Controle de embaralhamento-de-linha (decisivo):** o
+regime local (d<10) é INTRA-linha (real≈embaralhado = morfologia da palavra); a cauda longa
+(d>15, ratio_d50=17.85) é CROSS-linha e MORRE sob embaralhamento → é tópico/documento (=
+vocabulário R56), NÃO sintaxe. Zipf −1.079 (tipo-língua); Heaps β=0.786 (alto = vocabulário
+muito produtivo, bate com morfologia rígida).
+
+**Leitura integrada — o achado mais coerente do projeto:**
+> Voynichês é **morfologicamente RICO** (dependência intra-token forte, I=1.72 em d=1, decai
+> a ~15 caracteres = escala do token = a gramática qo-+ok/ot+ch/sh+vogal+cons das R43–55, a
+> fonte do h2 baixo) e **sintaticamente FINO** (sem dependência de médio alcance d≈20–100 que
+> a prosa natural possui; só uma cauda de tópico fraca e cross-linha).
+
+**Descarta:** prosa de língua natural rica (compr. correlação curto demais; nuance vs
+Lin&Tegmark — o embaralhamento-de-linha revela que a cauda longa é documento/tópico, não
+sequencial). **Desfavorece** Markov local simples (fraco — a cauda de tópico existe). **Mais
+consistente com:** formação rígida de palavra + deriva fraca de vocabulário por tópico, SEM
+sintaxe de sentença → construído/codificado/gerador templático com camada fina de conteúdo
+(hipótese híbrida).
+
+Guardrail: `rota59_long_range_not_decipherment`. Doc: `docs/research/rota_59_long_range.md`.
+Script/testes: `analyze_long_range.py` / `test_long_range.py` (suíte **430**).
+Saídas: `data/derived/long_range_{mi,summary}_zl3b.csv`.
+
+## 79. Rota 60: Voynichês comprime como seu PRÓPRIO saco-de-palavras — textura, não sintaxe
+
+Teste final. 2 legs (statistician + cryptanalyst cego). Escada de compressão (lzma/bz2):
+
+| stream | lzma bpc | preserva |
+|--------|----------|----------|
+| markov2_char | 2.45 | trigrama de char |
+| **word_unigram (saco-de-palavras)** | **2.39** | identidade de palavra, ORDEM destruída |
+| **real** | **2.31** | tudo |
+
+- gain_over_markov2 = 0.055 (estrutura além de trigramas).
+- **gain_over_wordunigram = 0.034 (lzma) / 0.008 (bz2)** — ordem-de-palavra. Faca de gume:
+  compressores discordam. Decomposição: IDENTIDADE-de-palavra (0.061 bpc) ~4× a ORDEM (0.015).
+- Âncora natural (cryptanalyst): prosa real perde 12–25% ao embaralhar palavras; Voynich ~1–3%,
+  ~10× mais fraco. Predição cega (~2%, dominado por identidade) acertou.
+
+**Veredito integrado: Voynichês comprime essencialmente como seu próprio saco-de-palavras.**
+A ordem das palavras carrega no máximo um traço — confirma "sintaticamente fino" (R59) por
+método independente. A compressibilidade vem da MORFOLOGIA, não de sintaxe. (Veredito mecânico
+`word_order_informative` é artefato de limiar — lzma mal cruzou 0.03, bz2 não.)
+
+**Caveat:** "fino na escala do token" ≠ sem sentido. Sobrevive **cifra verbosa** (1 palavra→n
+tokens; sintaxe abaixo do token, invisível ao embaralhamento). A escada não separa
+cifra-verbosa-com-sentido de gerador.
+
+---
+
+### SÍNTESE CUMULATIVA — linha R43–60 (essencialmente fechada)
+
+> **Voynichês é um sistema de tokens morfologicamente RICO e sintaticamente FINO:** processo
+> gerativo restrito (operadores templáticos qo-/ok-/ot- + bordas de matriz) com camada fraca
+> de tópico de prosa, TEXTO desacoplado das IMAGENS.
+
+**Robustamente EXCLUÍDO:** substituição simples; prosa de língua natural direta; ruído puro;
+nomenclator. **NÃO distinguido:** cifra-verbosa-com-sentido vs gerador-de-baixo-conteúdo
+(ambos finos na escala do token). "É prosa de língua natural?" → **NÃO.** "Tem sentido?" →
+não resolvível por estatística na escala do token. Prior: construído/gerador ~45–50%,
+real-codificada(cifra-verbosa) ~30–35%, baixo-conteúdo-puro ~20%. **Nenhuma tradução afirmada
+em nenhum ponto — guardrails em todas as 18 rotas.**
+
+Guardrail: `rota60_compressibility_not_decipherment`. Doc: `docs/research/rota_60_compressibility.md`.
+Script/testes: `analyze_compressibility.py` / `test_compressibility.py` (suíte **442**).
+
+## 80. Rota 61: re-segmentação NÃO revela sintaxe escondida — linha R43–61 FECHADA
+
+A última falsificação. A única hipótese "com sentido" sobrevivente era a cifra verbosa
+(1 palavra→n tokens, sintaxe abaixo do token). Teste: BPE re-segmenta o fluxo de char, mede
+ganho de ordem nas novas unidades, **diferencialmente** vs substitutos (Markov-2, saco-de-
+palavras). 2 legs (statistician + cryptanalyst cego).
+
+| compressor | revival_voy | saco-de-palavras | diferencial | ratio |
+|------------|-------------|------------------|-------------|-------|
+| lzma | 0.083 | 0.049 | **0.035** | 1.72× |
+| **bz2** | 0.074 | 0.069 | **0.005** | **1.07×** |
+
+O ganho lzma (0.035) PARECIA estrutura escondida — mas **colapsa no bz2 (0.005)**, exatamente
+o padrão da R60 (lzma 0.034→bz2 0.008): **artefato de compressor**. Veredito robusto (ambos
+compressores): **`lzma_artifact` → `no_hidden_structure`**. A re-segmentação não recupera
+ordem além do que a morfologia produz mecanicamente; a grade de tokens é a unidade natural; a
+fineza sintática é fundamental. (cross_boundary_merge_frac=0.49 é descritivo, não evidência —
+morfologia rígida; os substitutos fazem os mesmos merges cruzados.)
+
+**O método foi o herói:** o statistician retornou `hidden_structure` pelo critério lzma-only;
+o cryptanalyst pré-registrou CEGO o oposto ("a R60 me queimou; exigir bz2 também") e o
+cross-check de bz2 **virou um falso positivo de sentido escondido.** Capstone da disciplina
+"sempre rodar os controles flagueados".
+
+Guardrail: `rota61_resegment_not_decipherment`. Doc: `docs/research/rota_61_resegment.md`.
+Script/testes: `analyze_resegment.py` / `test_resegment.py` (suíte **466**).
+
+---
+
+### 🏁 VEREDITO FINAL — linha "o que é o Voynichês" (R43–61) FECHADA
+
+> **O Voynichês é um sistema de tokens morfologicamente RICO e sintaticamente FINO, sem
+> estrutura de ordem re-segmentável escondida:** processo gerativo restrito (operadores
+> templáticos qo-/ok-/ot- + bordas de matriz `ar/al/or/ol`) + camada fraca de tópico de prosa,
+> texto desacoplado das imagens.
+
+- **EXCLUÍDO (robusto):** substituição simples · prosa de língua natural direta · ruído puro ·
+  nomenclator · cifra verbosa com sintaxe sub-token recuperável.
+- **Sobrevive sem apoio positivo (minoritário):** cifra/língua construída que não deixa
+  assinatura estatística na escala observável.
+- *"É prosa de língua natural?"* → **NÃO** (decisivo). *"Tem sentido proposicional?"* → **não
+  resolvível por estatística** (a R61 era o último instrumento). Prior: ~55% gerador, ~30%
+  construída, ~15% cifra. **Nenhuma tradução afirmada em 19 rotas — guardrail em tudo.**
+
+### Próximo passo recomendado — CONSOLIDAR
+
+Ambos especialistas endossam: a linha está fechada à resolução dos dados; mais falsificação na
+escala do token rende pouco. Próximo de maior valor: **consolidar R43–61 num relatório
+coerente** (a incerteza restante é proveniência/chave, não estatística).
+
+## 81. Relatório consolidado (R43–61) — ENTREGUE
+
+A linha investigativa foi consolidada num relatório único e coerente, montado pelo time
+(coordenador escreve a espinha; cryptanalyst e paleographer redigem suas seções de domínio):
+**`docs/summaries/relatorio_R43_R61_natureza_do_voyniches.md`**. Seções: (1) sumário
+executivo, (2) modelo estrutural em 3 níveis, (3) ledger de falsificação de 11 hipóteses,
+(4) contexto físico do manuscrito [paleographer], (5) espaço de hipóteses + priores finais
+[cryptanalyst], (6) metodologia (pré-registro cego + os falsos positivos pegos), (7) a
+fronteira "estatística não decide sentido", (8) trabalho futuro, (9) índice de rotas. É o
+artefato de fechamento da pergunta "o que é o Voynichês".
+
+## 82. Rota 62 (capstone): gerador local sem conteúdo reproduz QUASE tudo
+
+Teste de adequação de modelo (item nº 1 do trabalho futuro). Um gerador LOCAL e SEM CONTEÚDO
+(bag-of-real-words + tabela de vocabulário por seção + auto-citação p_rep=0.0046 + viés de
+borda-de-linha) foi medido contra a bateria completa:
+
+| métrica | real | gerador | casa? |
+|---------|------|---------|-------|
+| h2 caractere | 2.153 | 2.227 | ✅ |
+| repetição adjacente | 0.875% | 0.873% | ✅ |
+| **LAAFU I(palavra;posição)** | **0.471** | **0.303** | **❌** |
+| compr. correlação I(d) | 15 | 12 | ✅ |
+| Zipf / Heaps | −1.08 / 0.79 | −0.99 / 0.74 | ✅ |
+| gain_over_wordunigram | 0.034 | 0.008 | ✅ |
+
+**13/14 casam (6/7 principais); só o LAAFU resiste** (o corpus liga tokens ESPECÍFICOS à
+posição de linha mais que um viés de glifo — uma regra de layout mais rica, ainda
+não-semântica). Veredito `generator_insufficient`, mas por uma só assinatura.
+
+**Leitura:** **sentido NÃO é NECESSÁRIO para explicar as estatísticas** (prova de existência,
+não de unicidade; ≠ texto sem sentido). Priores: gerador ~55%→**~70%**, construída ~22%,
+cifra ~8%. **A linha estatística está EXAURIDA** — qualquer teste na escala do token é
+degenerado (não separa "sem conteúdo" de "conteúdo invisível a estes testes"). A incerteza
+restante é proveniência/material. Ambos especialistas: PARAR a linha estatística aqui.
+
+Guardrail: `rota62_generator_not_decipherment`. Doc: `docs/research/rota_62_generator.md`.
+Script/testes: `analyze_generator.py` / `test_generator.py` (suíte **479**). Relatório
+consolidado atualizado com o capstone R62.
+
+## 83. Rota 63 (FRENTE VISUAL): os rótulos também são desacoplados da imagem (piloto)
+
+Pivô de domínio para as imagens. A R57 mostrou desacoplamento texto↔imagem no nível da
+PALAVRA; a R63 testa o regime de RÓTULO (tokens curtos sobre objetos desenhados, onde a
+nomeação seria mais provável). Pipeline do harness: visual-annotator leu 6 fólios IIIF
+(farmacêuticos f88v/f89r2/f99r/f99v + astro f67r2/f67v1) e codificou **59 elementos** (tipo
+visual do objeto, independente do token, + token-rótulo da transcrição; 46% incertos);
+cryptanalyst pré-registrou cego (prior 65% B); statistician testou V(feature×objeto) com nulo.
+
+**Confundidor crítico (pré-registrado):** tipo-de-objeto ≈ determinado pelo fólio → V global
+re-mede vocabulário de seção. Sinal real precisa sobreviver ao embaralhamento **DENTRO do
+fólio** (análogo ao controle de Currier).
+
+**Resultado:** nenhuma feature (prefix4, first_glyph, gallows, length, nucleus) bate o nulo
+dentro-do-fólio (nem nas 59 linhas, nem nas 32 não-incertas). Contraste mais limpo (jarro vs
+órgão dentro do farmacêutico, n=39): gallows V=0.42 mas **p_within_folio=0.10** — não
+sobrevive. Sinais globais modestos = confundidores de fólio, como pré-registrado. **Veredito
+`decoupled_pilot`:** rótulos também desacoplados do tipo de objeto, estendendo a R57 ao regime
+de rótulo. **Ressalva: PILOTO subpotente** (n=59, 46% incerto) — nulo não prova B, só falha em
+achar A. Firma levemente o prior geral (texto não descreve as imagens; gerador ~70%).
+
+**Próximo passo:** baixar mais fólios IIIF rotulados (farmacêuticos/herbais) para sair do
+nível-piloto e repetir com n adequado + controle dentro-do-fólio.
+
+Guardrail: `rota63_cross_modal_not_decipherment`. Doc: `docs/research/rota_63_cross_modal.md`.
+Script/testes: `analyze_cross_modal.py` / `test_cross_modal.py` (suíte **506**). Anotação:
+`data/derived/rota63_cross_modal_labels_zl3b.csv` (59 elementos cross-modais).
+
+## 84. Rota 64: cobertura ampliada (n=171) — desacoplamento HOLDS com potência
+
+Ampliei a cobertura: baixei **12 novos fólios IIIF** de alta-res da Beinecke (rede OK; manifesto
+cached `yale_iiif_manifest_2002046.json`) → `images/raw/yale_iiif_r64/`. Correção honesta: só 7
+carregam rótulos (f93–96 são herbais de parágrafo). visual-annotator codificou +112 elementos
+→ **combinado n=171 across 12 fólios** (~3× o piloto; 59% incertos). Re-rodei o teste
+controlado-por-fólio.
+
+- **Headline:** nenhuma feature (gallows, prefix4, length, nucleus…) sobrevive ao controle
+  dentro-do-fólio nos DOIS subconjuntos (melhor gallows p_within=0.054, quase). Os V globais
+  grandes (gallows p_global=0.0003) **colapsam sob o controle** → confirmados como artefatos de
+  vocabulário de seção/fólio, agora com potência.
+- **Sub-teste A (jarro vs órgão no farmacêutico, n=74):** `length_bucket` p_within=**0.0063**
+  sobrevive — rótulos de jarro nunca são curtos (assimetria de COMPRIMENTO, estrutura não nome).
+- **Sub-teste B (ninfas, 2 fólios de zodíaco, n=44):** ninfas são estruturadas (is_nymph→prefix4,
+  p=0.0067) MAS o perfil de rótulo **DIVERGE entre fólios** (f71r=ot/t/longo; f73r=ok/k;
+  divergência p=0.0113) → **rótulo é FÓLIO-LOCAL, não nome do objeto.** Mesmo objeto, rótulos
+  diferentes por fólio → o rótulo segue o escriba, não o referente.
+
+**Veredito `decoupled` (com potência):** os rótulos NÃO nomeiam os objetos; a imagem e o texto
+são sistemas desacoplados — confirmado no nível da palavra (R57) E do rótulo (R63→R64). O único
+correlato cross-modal real é a assimetria de comprimento jarro-vs-órgão. Evidência positiva
+limpa para o modelo escriba/gerador (até os rótulos são condicionados ao escriba). Firma
+gerador ~70%. A pergunta "o texto tem sentido?" agora exige proveniência/material, não mais
+correlação corpus↔imagem.
+
+Guardrail: `rota64_cross_modal_not_decipherment`. Doc: `docs/research/rota_64_cross_modal_powered.md`.
+Script/testes: `analyze_cross_modal.py` / `test_cross_modal.py` (suíte **524**). 12 fólios em
+`images/raw/yale_iiif_r64/`; anotação `data/derived/rota64_cross_modal_labels_zl3b.csv` (112
+elementos); saídas `data/derived/cross_modal_{test,summary}_combined_zl3b.csv`.

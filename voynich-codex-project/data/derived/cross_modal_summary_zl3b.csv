@@ -1,0 +1,11 @@
+metric,value
+n_total,59
+n_non_uncertain,32
+best_feature,prefix4
+best_p_within_folio,0.2579
+pharma_vessel_vs_organ_best_feature,gallows_class
+pharma_vessel_vs_organ_n,39
+pharma_vessel_vs_organ_V,0.4159
+pharma_vessel_vs_organ_p_within_folio,0.1000
+verdict,decoupled_pilot
+semantic_guardrail,rota63_cross_modal_not_decipherment

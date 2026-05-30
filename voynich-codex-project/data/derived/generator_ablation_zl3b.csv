@@ -1,0 +1,5 @@
+mechanism_set,h2,adjacent_repeat,laafu_I,line_initial_gallows,corr_length,zipf_slope,heaps_beta,gain_over_wordunigram,semantic_guardrail
+base,2.153,0.002812,0.198398,0.0414,13,-1.0553,0.7413,-0.01191,rota62_generator_not_decipherment
+base+section_cond,2.1834,0.004048,0.205142,0.0389,12,-1.0292,0.7306,0.013643,rota62_generator_not_decipherment
+base+section_cond+self_citation,2.1843,0.009569,0.204888,0.0426,13,-1.0275,0.7348,0.01804,rota62_generator_not_decipherment
+full,2.227,0.008726,0.303232,0.1913,12,-0.9943,0.7418,0.007505,rota62_generator_not_decipherment

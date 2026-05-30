@@ -1,0 +1,5 @@
+stream,segmentation,n_units,vocab_size,order_gain_lzma,semantic_guardrail
+voynich,token,37671,8214,0.092303,rota61_resegment_not_decipherment
+voynich,bpe_k300,65173,324,0.083362,rota61_resegment_not_decipherment
+markov2_surrogate,bpe_k300,67543,326,0.033591,rota61_resegment_not_decipherment
+bagofwords_surrogate,bpe_k300,66512,326,0.048529,rota61_resegment_not_decipherment
