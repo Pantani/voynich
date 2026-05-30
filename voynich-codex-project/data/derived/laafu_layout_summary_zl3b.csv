@@ -1,0 +1,16 @@
+metric,value
+laafu_real,0.470864
+laafu_r62_baseline,0.303
+laafu_miller_madow,0.439471
+laafu_headless,0.307036
+head_gap_explained_frac,0.975975
+closure_k50,1015
+closure_k70,2116
+closure_k90,3733
+section_top_overlap,0.020188
+section_js_p_vs_null,0.017964
+laafu_I_currierA,0.589018
+laafu_I_currierB,0.486662
+verdict,laafu_mixed
+caveat,"'laafu_is_layout' means the residual is a richer CONTENT-FREE layout rule, not syntax; NOT a decipherment"
+guardrail,rota67_laafu_layout_not_decipherment

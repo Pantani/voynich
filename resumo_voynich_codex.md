@@ -2267,3 +2267,87 @@ Guardrail: `rota66_external_thesis_attack_not_decipherment`. Script:
 `tests/test_external_thesis_attack_matrix.py` (11). Saídas:
 `data/derived/external_thesis_attack_matrix_{,summary_}zl3b.csv` (matriz de 13 linhas). Doc:
 `docs/research/rota_66_estado_da_arte_attack_matrix.md`. Suíte: **560 testes**.
+
+## 87. Rota 67: o resíduo LAAFU é LAYOUT, não conteúdo — gerador efetivamente 14/14
+
+Primeiro teste do único lead acionável do R66 (Parisel / tese 9): o LAAFU — o único resíduo
+que o gerador content-free R62 não reproduzia (`laafu_I` observado **0.471 > 0.303**) — carrega
+conteúdo ou é artefato de layout/escriba? Harness cega de 2 pernas (statistician + paleographer),
+pré-registrada como **degenerada-provável** (o LAAFU deve ceder a LAYOUT, não a conteúdo).
+
+**Controle decisivo — subtração da cabeça paleográfica.** Colapsar as identidades caligráficas
+de CABEÇA (gallows littera-notabilior de início de linha `p`/`t` + justificação de fim de linha
+`-m`/`-g`/`-dy`) derruba `laafu_I` de **0.471 → 0.307 ≈ baseline R62 0.303**, explicando **97.6%**
+do gap. Miller–Madow debiased = **0.4395** (o sinal NÃO é inflação de amostra finita). Dentro de
+Currier o efeito é real por modo: A=**0.589**, B=**0.487**.
+
+**Veredito mecânico vs leitura.** O script classifica `laafu_mixed` (fecho difuso k70=2116;
+seção borderline p=0.018 = provável confundidor de vocabulário-de-seção) — mas a LEITURA é
+**LAYOUT**: o gerador R62, com um viés de aresta consciente da identidade-de-cabeça, alcança
+efetivamente **14/14** assinaturas. O lead de Parisel **dobra no gerador** (o pré-registro
+degenerada-provável acertou).
+
+**Priores cutucam, não movem:** gerador ~70% / construída ~22% / cifra ~8%. Guardrail:
+`rota67_laafu_layout_not_decipherment`. Script: `scripts/analyze_laafu_layout.py`; teste:
+`tests/test_laafu_layout.py` (15). Saídas:
+`data/derived/laafu_layout_{closure,section,summary}_zl3b.csv`. Doc:
+`docs/research/rota_67_laafu_layout.md`. Suíte: **593 testes**.
+
+## 88. Rota 68: frente externa — proveniência/material + codicologia de produção
+
+Com a linha de corpus exaurida (R62), a visual fechada (R63–65) e o R66 congelando os priores,
+só **proveniência/material** pode mover "tem sentido?". Três peças.
+
+**(A) Dossiê de proveniência/material.** Velino ¹⁴C **1404–1438** (terminus post quem só da
+PELE); tinta ferrogálica (McCrone 2009, genérica). Sólido: **assinatura erodida de Sinapius em
+f1r** + carta **Marci–Kircher 1665**. Contestado: os 600 ducados de Rudolf II. A cadeia
+documentada começa **~170–200 anos APÓS** o velino = vazio probatório entre fabricação e registro.
+
+**(B) Tabela de decisão externa.** Só **#1 chave/crib** OU **#6 um decode que prevê fólios NÃO
+VISTOS (held-out)** podem confirmar sentido (necessário E suficiente); na ausência deles os priores
+ficam **CONGELADOS em 70/22/8**. Prioridade: **#7 mapa de cadernos/mãos (feito aqui)** > #4 estudo
+de campanha de tinta > #2 monitorar texto-irmão.
+
+**(C) Codicologia da metadata IVTFF.** Currier fortemente **BLOCADO** (26 runs vs null ~96,
+**p=0.001**), V(mão×Currier)=**0.98** (quase determinístico; **5 mãos**), **12 regimes** — mas só
+**5/23 trocas de Currier em costuras de caderno** → veredito **`interleaved_production`** (blocado
+no geral, intercalado localmente no herbal). Ressalva honesta: produção séria é consistente com
+texto COM sentido E com gerador content-free → reforça "artefato construído sério" SEM mover o
+sentido.
+
+Guardrail: `rota68_codicology_not_decipherment`. Script: `scripts/analyze_codicology.py`; teste:
+`tests/test_codicology.py` (18). Saídas:
+`data/derived/codicology_{currier_runs,alignment,summary}_zl3b.csv`. Doc:
+`docs/research/rota_68_codicologia.md`. Suíte: **593 testes**.
+
+## 89. Rota 70: a tese hebraica (Kondrak & Hauer 2018) — alfagrama REFUTADO
+
+Pergunta trazida de fora: "o Voynich é hebraico?" A afirmação tem DUAS formas e o repo só atacara
+uma. As decifrações pontuais (Cheshire/Bax/Gibbs) são a **Tese 13 da R66**, mortas por `char_h2=2.15`.
+A versão ALGORÍTMICA — **Kondrak & Hauer 2018** (identificação automática de língua → hebraico em 1º;
+modelo: cada palavra = palavra hebraica abjad SEM VOGAIS + letras REORDENADAS em ordem alfabética, um
+*alfagrama*) — nunca fora isolada. Seu mecanismo é falsificável SEM chave: um alfagrama impõe uma
+**ordem TOTAL** dos glifos.
+
+**Três medidas, duas independentes da ordem escolhida:**
+- `alphagram_fraction` (tokens não-decrescentes sob a melhor ordem): real **0,273** vs teto (alfagrama
+  verdadeiro) **1,0** e piso (embaralhado) **0,063** → só **22,5%** do caminho do acaso ao alfagrama.
+- `pair_decidedness` (pares de glifos com ordem estrita ≥95%): **0,347** (alfagrama exige ~1,0);
+  **124/190 pares são ambíguos** (e/o maioria 0,66; h/o 0,65; k/o 0,74 — coexistem nas duas ordens).
+- `majority_cycles` (3-ciclos `a<b<c<a`): **15** → PROVA que nenhuma ordem total existe → o texto não
+  pode ser um anagrama alfabético.
+
+**Arbitragem R62:** o lift de ordem é reproduzido pelo gerador content-free (real 0,273 ≈ gen 0,277,
+Δ=0,004) = **morfologia templática** (R49: `qo-/ok-/ot-`…`-dy/-y`), não reordenação alfabética.
+**Glifo-EVA** (ch/sh como unidades) refuta igual (0,34; 19 ciclos). **Abjad** (remover `a/o/e/y`) não
+resgata (decididos 0,42; ainda há ciclos). **Frequência** não-discrimina: hebraico 1,00 empata inglês
+0,997 (Zipf).
+
+**Veredito `hebrew_alphagram_refuted`** — fecha o gap da Tese 13: a forma algorítmica morre pelo PRÓPRIO
+mecanismo declarado. A direção R→L (hebraico é direita→esquerda) é escopo da Rota 69 (direcionalidade,
+mantida separada). Priores congelados 70/22/8.
+
+Guardrail: `rota70_hebrew_alphagram_not_decipherment`. Script: `scripts/analyze_hebrew_alphagram.py`;
+teste: `tests/test_hebrew_alphagram.py` (17). Saídas:
+`data/derived/hebrew_alphagram_{summary,corpora,pairs}_zl3b.csv`. Doc:
+`docs/research/rota_70_hebrew_alphagram.md`. Suíte: **622 testes**.

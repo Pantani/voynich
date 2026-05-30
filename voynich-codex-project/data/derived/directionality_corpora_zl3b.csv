@@ -1,0 +1,6 @@
+corpus,n_chars,n_tokens,h1,h2_fwd,h2_bwd,h3_fwd,h3_bwd,h_first,h_last,dir_edge,h_start_inward,h_end_inward,semantic_guardrail
+real,228177,37671,3.8716,2.1525,2.1526,1.8988,1.8989,3.2061,2.5297,0.6764,1.6071,1.6055,rota69_directionality_mirror_not_decipherment
+real_reversed_tokens,228177,37671,3.8716,2.1525,2.1525,1.9238,1.9238,2.5297,3.2061,-0.6764,1.6055,1.6071,rota69_directionality_mirror_not_decipherment
+word_shuffle,228177,37671,3.8716,2.1526,2.1526,1.9256,1.9256,3.2061,2.5297,0.6764,1.6071,1.6055,rota69_directionality_mirror_not_decipherment
+generator_base,227867,37714,3.8692,2.1492,2.1492,1.9178,1.9178,3.2082,2.5219,0.6863,1.6022,1.6007,rota69_directionality_mirror_not_decipherment
+generator_full,227284,37401,3.8814,2.217,2.217,1.9877,1.9877,3.2443,2.5872,0.6572,1.696,1.6801,rota69_directionality_mirror_not_decipherment

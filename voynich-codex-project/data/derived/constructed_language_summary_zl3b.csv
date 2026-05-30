@@ -1,0 +1,18 @@
+metric,value
+route_type,synthesis_positioning_not_new_measurement
+n_criteria,10
+broad_supports,5
+broad_weakens,0
+broad_neutral,5
+hildegard_supports,3
+hildegard_weakens,4
+hildegard_neutral,3
+family_alive,True
+hildegard_weakened,True
+confirmable_by_corpus_statistics,False
+verdict,constructed_family_alive_hildegard_excluded_frozen
+confirmation_requires,#1 documented key/crib (a key => cipher; a grammar+lexicon => constructed language) | #6 reproducible decode that predicts held-out (unseen) folios
+prior_frozen,generator ~70% / constructed ~22% / cipher ~8%
+codicology_anchor_verdict,interleaved_production
+caveat,positions the constructed-language hypothesis against the closed ledger; encodes prior-route verdicts; computes NO new corpus statistic; assigns NO meaning to any token
+guardrail,rota71_constructed_language_not_decipherment

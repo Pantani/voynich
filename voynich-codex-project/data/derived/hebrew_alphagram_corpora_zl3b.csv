@@ -1,0 +1,8 @@
+corpus,alphagram_fraction,pair_decided_frac,weighted_majority,majority_cycles,n_pairs,mean_units,guardrail
+real,0.273333,0.347368,0.845132,15,190,5.0571,rota71_hebrew_alphagram_not_decipherment
+floor_shuffle,0.062642,0.004211,0.506975,191,190,5.0571,rota71_hebrew_alphagram_not_decipherment
+ceiling_sorted,1.000000,1.000000,1.000000,0,190,5.0571,rota71_hebrew_alphagram_not_decipherment
+generator_base,0.276934,0.386598,0.845196,12,194,5.0448,rota71_hebrew_alphagram_not_decipherment
+generator_full,0.267614,0.355000,0.835606,18,200,5.0354,rota71_hebrew_alphagram_not_decipherment
+glyph_unit_real,0.333269,0.340164,0.859039,19,244,4.5396,rota71_hebrew_alphagram_not_decipherment
+abjad_vowel_stripped,0.472871,0.415929,0.841811,3,113,3.0477,rota71_hebrew_alphagram_not_decipherment

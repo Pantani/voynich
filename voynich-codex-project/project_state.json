@@ -13,10 +13,15 @@
     "simple substitution",
     "okal=Sun",
     "labels=direct object names",
-    "pure random noise"
+    "pure random noise",
+    "Voynich = obra de Leonardo da Vinci (refutada por C14: velino 1404-1438 vs nascimento 1452)",
+    "Voynich = texto espelhado / palavras de tras pra frente (reverso e involucao; nao gera sinal)",
+    "Voynich = leitura direita->esquerda escondida (entropia condicional invariante por reversao)",
+    "Voynich = paginas espelhadas (refutado: facing reversa < direta, p=0.40)"
   ],
-  "latest_experiment": "route 66 external-thesis attack matrix: 13 modern Voynich theses audited against the closed repo state (R43-65), with the content-free R62 generator as the non-circular arbiter (a thesis survives only if it predicts a signal the generator does not produce); blind pre-registered verdicts from the harness team",
+  "latest_experiment": "Rota 71: ataque à tese hebraica (Kondrak & Hauer 2018) — alfagrama + abjad. Refuta o pilar falsificável (anagrama alfabético) no corpus inteiro, arbitrado contra o gerador R62.",
   "latest_result": {
+    "summary": "R71: a forma ALGORÍTMICA da tese hebraica (Kondrak & Hauer 2018: cada palavra = hebraico abjad + letras reordenadas em ordem alfabética) é REFUTADA no seu próprio mecanismo. Sob a melhor ordem total, só 27,3% dos tokens estão ordenados (teto=100%, piso=6,3%; 22,5% do caminho), 35% dos pares de glifos têm ordem estrita (alfagrama exige ~100%) e há 15 ciclos de maioria (prova que NENHUMA ordem total existe). O lift é reproduzido pelo gerador R62 (real 0,273 ≈ gen 0,277) = morfologia templática, não alfabética. Abjad não resgata; frequência não-discrimina (Zipf). Refina a Tese 13 da R66 (forma de decifração pontual já morta por char_h2; forma algorítmica agora morta pelo mecanismo). Priores congelados 70/22/8. [Anterior R67/R68: laafu=layout (head-subtraction 97,6%); códice blocado, 5 mãos, sentido congelado.]",
     "line_records": 5385,
     "matrix_candidates": 8398,
     "simple_token_count": 41005,
@@ -997,7 +1002,30 @@
       "tests/test_external_thesis_attack_matrix.py",
       "data/derived/external_thesis_attack_matrix_zl3b.csv",
       "data/derived/external_thesis_attack_matrix_summary_zl3b.csv",
-      "docs/research/rota_66_estado_da_arte_attack_matrix.md"
+      "docs/research/rota_66_estado_da_arte_attack_matrix.md",
+      "scripts/analyze_laafu_layout.py",
+      "tests/test_laafu_layout.py",
+      "data/derived/laafu_layout_closure_zl3b.csv",
+      "data/derived/laafu_layout_section_zl3b.csv",
+      "data/derived/laafu_layout_summary_zl3b.csv",
+      "docs/research/rota_67_laafu_layout.md",
+      "scripts/analyze_codicology.py",
+      "tests/test_codicology.py",
+      "data/derived/codicology_currier_runs_zl3b.csv",
+      "data/derived/codicology_alignment_zl3b.csv",
+      "data/derived/codicology_summary_zl3b.csv",
+      "docs/research/rota_68_codicologia.md",
+      "scripts/analyze_hebrew_alphagram.py",
+      "tests/test_hebrew_alphagram.py",
+      "data/derived/hebrew_alphagram_summary_zl3b.csv",
+      "data/derived/hebrew_alphagram_corpora_zl3b.csv",
+      "data/derived/hebrew_alphagram_pairs_zl3b.csv",
+      "docs/research/rota_71_hebrew_alphagram.md",
+      "scripts/assess_constructed_language.py",
+      "tests/test_constructed_language.py",
+      "data/derived/constructed_language_scorecard_zl3b.csv",
+      "data/derived/constructed_language_summary_zl3b.csv",
+      "docs/research/rota_71_lingua_construida.md"
     ],
     "route_32_ready_visual_annotation_html": {
       "html_cards": 8,
@@ -1756,11 +1784,29 @@
         "external_only": 1
       },
       "verdict_thesis_ids": {
-        "refuted": [1, 2, 3, 5, 10, 13],
-        "unsupported": [4, 6],
-        "survives_weakly": [7, 8, 12],
-        "actionable": [9],
-        "external_only": [11]
+        "refuted": [
+          1,
+          2,
+          3,
+          5,
+          10,
+          13
+        ],
+        "unsupported": [
+          4,
+          6
+        ],
+        "survives_weakly": [
+          7,
+          8,
+          12
+        ],
+        "actionable": [
+          9
+        ],
+        "external_only": [
+          11
+        ]
       },
       "laafu_signal": {
         "observed_laafu_I": 0.471,
@@ -1768,7 +1814,7 @@
         "surviving_thesis": "Parisel"
       },
       "priors_unchanged": {
-        "generator": 0.70,
+        "generator": 0.7,
         "constructed": 0.22,
         "cipher": 0.08
       },
@@ -1783,7 +1829,204 @@
         "md": "docs/research/rota_66_estado_da_arte_attack_matrix.md"
       },
       "reading": "First route that turns the attack outward: 13 modern theses are audited against the closed repo state with the R62 content-free generator as arbiter. Only 1/13 (Parisel, on laafu_I) predicts a signal the generator does not produce; 6 are refuted by a named repo instrument and 12/13 are dead-or-degenerate. The external attack confirms the shell and leaves the priors unchanged; deciding whether the text means anything now requires provenance/material, not more corpus, image, or cross-modal analysis. The single actionable item (thesis 9) feeds the proposed Rota 67 laafu content-vs-layout discriminator, pre-registered as degenerate-likely."
+    },
+    "route_67_laafu_layout": {
+      "summary": "Tests the one actionable R66 lead (Parisel / thesis 9): is the LAAFU residue content or layout? Blind 2-leg harness (statistician + paleographer), pre-registered as degenerate-likely (LAAFU should yield to LAYOUT, not content). The decisive control is paleographic-head subtraction: collapsing calligraphic HEAD identities (line-initial gallows littera notabilior p/t + line-final justification -m/-g/-dy) drops laafu_I from 0.471 to 0.307, near the R62 baseline 0.303, explaining 97.6% of the gap. Miller-Madow debiased = 0.4395 (the signal is not finite-sample inflation). Within-Currier the effect is real per mode: A=0.589, B=0.487.",
+      "laafu_I_observed": 0.471,
+      "laafu_I_head_subtracted": 0.307,
+      "r62_baseline": 0.303,
+      "gap_explained_pct": 97.6,
+      "miller_madow_debiased": 0.4395,
+      "within_currier_laafu_I": {
+        "A": 0.589,
+        "B": 0.487
+      },
+      "head_identities": {
+        "line_initial_gallows_littera_notabilior": [
+          "p",
+          "t"
+        ],
+        "line_final_justification": [
+          "-m",
+          "-g",
+          "-dy"
+        ]
+      },
+      "mechanical_verdict": "laafu_mixed",
+      "closure_diffuse_k70": 2116,
+      "section_borderline_p": 0.018,
+      "reading_verdict": "LAYOUT",
+      "generator_effective_signatures": "14/14",
+      "parisel_lead": "folds_into_the_generator_with_head-identity-aware_edge_bias (pre-registered degenerate-likely landed)",
+      "priors_nudged_not_moved": {
+        "generator": 0.7,
+        "constructed": 0.22,
+        "cipher": 0.08
+      },
+      "test_count": 593,
+      "semantic_guardrail": "rota67_laafu_layout_not_decipherment",
+      "outputs": {
+        "script": "scripts/analyze_laafu_layout.py",
+        "test": "tests/test_laafu_layout.py",
+        "closure_csv": "data/derived/laafu_layout_closure_zl3b.csv",
+        "section_csv": "data/derived/laafu_layout_section_zl3b.csv",
+        "summary_csv": "data/derived/laafu_layout_summary_zl3b.csv",
+        "md": "docs/research/rota_67_laafu_layout.md"
+      },
+      "reading": "The LAAFU residue is calligraphic LAYOUT, not content: subtracting line-initial gallows littera-notabilior and line-final justification heads explains 97.6% of the gap over the R62 generator (0.471 to 0.307 ~ baseline 0.303), and the debiased estimate rules out finite-sample inflation. The mechanical label is laafu_mixed (diffuse closure; borderline section likely a section-vocabulary confound), but the reading is LAYOUT, so a head-identity-aware edge bias lets the content-free generator reach effectively 14/14 signatures. Parisel's lead folds into the generator; priors are nudged not moved (70/22/8)."
+    },
+    "route_68_codicology": {
+      "summary": "External front. With the corpus line exhausted (R62), the visual front closed (R63-65), and R66 freezing the priors, only provenance/material can move 'does it mean anything?'. Three pieces: (A) a provenance/material dossier, (B) an external decision table, and (C) production codicology from IVTFF metadata.",
+      "provenance_dossier": {
+        "vellum_radiocarbon": "1404-1438 (terminus post quem of the skin only)",
+        "ink": "iron-gall (McCrone 2009, generic)",
+        "solid_chain": [
+          "f1r Sinapius erased signature",
+          "Marci-Kircher 1665 letter"
+        ],
+        "contested": "Rudolf II 600 ducats",
+        "evidential_void": "documented chain begins ~170-200 years after the vellum"
+      },
+      "external_decision_table": {
+        "confirms_meaning_necessary_and_sufficient": [
+          "#1 key/crib",
+          "#6 a decode that predicts UNSEEN (held-out) folios"
+        ],
+        "absent_them_priors": "FROZEN at 70/22/8",
+        "priority_order": [
+          "#7 quire/hand map (done here)",
+          "#4 ink-campaign study",
+          "#2 sibling-text monitoring"
+        ]
+      },
+      "codicology": {
+        "source": "IVTFF metadata",
+        "currier_blocking": "strongly BLOCKED",
+        "currier_runs_observed": 26,
+        "currier_runs_null_expected": 96,
+        "currier_runs_p": 0.001,
+        "hand_currier_cramers_v": 0.98,
+        "hands": 5,
+        "regimes": 12,
+        "currier_changes_on_quire_seams": "5/23",
+        "verdict": "interleaved_production"
+      },
+      "honest_caveat": "serious production is consistent with BOTH meaningful text AND a content-free generator, so it strengthens 'serious constructed artifact' WITHOUT moving meaning",
+      "priors_frozen": {
+        "generator": 0.7,
+        "constructed": 0.22,
+        "cipher": 0.08
+      },
+      "test_count": 593,
+      "semantic_guardrail": "rota68_codicology_not_decipherment",
+      "outputs": {
+        "script": "scripts/analyze_codicology.py",
+        "test": "tests/test_codicology.py",
+        "currier_runs_csv": "data/derived/codicology_currier_runs_zl3b.csv",
+        "alignment_csv": "data/derived/codicology_alignment_zl3b.csv",
+        "summary_csv": "data/derived/codicology_summary_zl3b.csv",
+        "md": "docs/research/rota_68_codicologia.md"
+      },
+      "reading": "The external front: a provenance/material dossier (vellum 14C 1404-1438 is a terminus post quem of the skin only; documented chain begins ~170-200 yr later = evidential void) plus an external decision table (only a key/crib #1 or a decode that predicts held-out folios #6 can confirm meaning; absent them priors stay frozen at 70/22/8) plus production codicology from IVTFF metadata (Currier strongly blocked: 26 runs vs null ~96, p=0.001; V(hand x Currier)=0.98, 5 hands, 12 regimes; only 5/23 Currier changes on quire seams -> interleaved_production). Serious production is consistent with both meaningful text and a content-free generator, so it strengthens the 'serious constructed artifact' reading without moving meaning."
+    },
+    "route_69": {
+      "verdict": "leonardo_operations_degenerate",
+      "reversal_invariance": "h2_fwd - h2_bwd = -0.00002 (h2=2.153 identico nas duas direcoes; h3=1.899 identico) => entropia condicional invariante por reversao (teorema p/ fonte estacionaria); direcao de leitura INVISIVEL no nivel da sequencia; a h2 nao pode favorecer R->L.",
+      "dir_edge": "unico conteudo direcional de 2a ordem = H(1a letra)-H(ultima)=+0.676 (fins de palavra mais rigidos). Gerador reproduz (+0.686, delta 0.010); inverter tokens troca o sinal exato (-0.676) e preserva magnitude => morfologia de sufixo, nao direcao de leitura.",
+      "reversal_lift": "nenhum reverso aproxima h2 da banda natural [2.5,3.6]; h2 preso ~2.15.",
+      "mirror_pages": "falso positivo inicial (nulo ingenuo, p=0.0066) PEGO pela pre-registracao cega (confound de seccao). Adjudicacao correta: facing reversa=0.0045 < direta=0.0059, effect=-0.0014 p=0.40; palindromo p=0.91 => paginas NAO espelhadas.",
+      "priors": "INALTERADOS gerador ~70% / construida ~22% / cifra ~8%. R69 confirma a casca.",
+      "internet_survey": "14 hipoteses externas mapeadas vs ledger R43-68 (tabela na doc). Convergencias: Wikipedia h2~2/prefixo-raiz-sufixo = nossos R58/R43; Timm-Schinner auto-citacao ~ gerador R62; Naibbe 2025 (cifra verbosa) = benchmark, cai na fatia residual, coerente com R61.",
+      "outputs": [
+        "scripts/analyze_directionality_mirror.py",
+        "tests/test_directionality_mirror.py",
+        "data/derived/directionality_summary_zl3b.csv",
+        "data/derived/directionality_corpora_zl3b.csv",
+        "docs/research/rota_69_direcionalidade_espelhamento.md"
+      ],
+      "guardrail": "rota69_directionality_mirror_not_decipherment",
+      "tests_total": 605
+    },
+    "route_71_hebrew_alphagram": {
+      "summary": "Isola e ataca a versão algorítmica da tese hebraica (Kondrak & Hauer 2018), distinta das decifrações pontuais (R66 t13). Pilar falsificável: o ALFAGRAMA (cada palavra é um anagrama alfabético) exige uma ordem TOTAL dos glifos. Três medidas, duas independentes da ordem (decidedness de pares e ciclos de maioria), mais arbitragem contra o gerador R62 e passes glifo-EVA/abjad/frequência.",
+      "claim": "Kondrak & Hauer 2018: cada palavra Voynich = palavra hebraica abjad (sem vogais) + letras reordenadas em ordem alfabética (alfagrama)",
+      "alphagram_fraction_real": 0.273333,
+      "alphagram_fraction_floor": 0.062642,
+      "alphagram_fraction_ceiling": 1.0,
+      "alphagram_fraction_generator": 0.276934,
+      "frac_to_ceiling": 0.224771,
+      "pair_decided_frac_real": 0.347368,
+      "pair_decided_frac_generator": 0.386598,
+      "weighted_majority_real": 0.845132,
+      "majority_cycles_real": 15,
+      "n_pairs_real": 190,
+      "ambiguous_pairs": 124,
+      "glyph_unit": {
+        "alphagram_fraction": 0.333269,
+        "pair_decided_frac": 0.340164,
+        "majority_cycles": 19
+      },
+      "abjad_vowel_stripped": {
+        "decided_frac": 0.415929,
+        "majority_cycles": 3,
+        "mean_units": 3.0477
+      },
+      "frequency": {
+        "spearman_hebrew": 1.0,
+        "spearman_english": 0.9966,
+        "non_discriminating": true
+      },
+      "refines_r66_thesis": 13,
+      "verdict": "hebrew_alphagram_refuted",
+      "priors_unchanged": {
+        "generator": 0.7,
+        "constructed": 0.22,
+        "cipher": 0.08
+      },
+      "test_count": 622,
+      "semantic_guardrail": "rota71_hebrew_alphagram_not_decipherment",
+      "outputs": {
+        "script": "scripts/analyze_hebrew_alphagram.py",
+        "test": "tests/test_hebrew_alphagram.py",
+        "summary_csv": "data/derived/hebrew_alphagram_summary_zl3b.csv",
+        "corpora_csv": "data/derived/hebrew_alphagram_corpora_zl3b.csv",
+        "pairs_csv": "data/derived/hebrew_alphagram_pairs_zl3b.csv",
+        "md": "docs/research/rota_71_hebrew_alphagram.md"
+      },
+      "reading": "The Hebrew claim has two forms and the repo had attacked only one. Point decipherments (Cheshire/Bax/Gibbs) are R66 thesis 13, dead by char_h2=2.15. The ALGORITHMIC form (Kondrak & Hauer 2018) was never isolated: they propose each word is a Hebrew word abjad-stripped of vowels and re-sorted into alphabetical order (an alphagram). That mechanism implies a TOTAL glyph order, so it is falsifiable without a key. On the full corpus only 27.3% of tokens are non-decreasing under the best order (a true alphagram ceiling = 100%, shuffle floor = 6.3%), only 34.7% of glyph pairs are strictly ordered (124/190 are ambiguous), and the majority order contains 15 three-cycles, proving no total order can sort every word. The modest order lift is reproduced by the content-free R62 generator (real 0.273 vs gen 0.277), so it is templatic morphology, not alphabetic re-sorting. Stripping candidate vowels (abjad) does not rescue a total order (decided 0.42, still cycles), and the sorted letter-frequency profile ties Hebrew (1.00) with English (0.997) by Zipf, so a frequency match is non-discriminating. The glyph-unit pass (ch/sh as units) refutes identically. Verdict hebrew_alphagram_refuted: this closes the gap in R66 thesis 13 — the algorithmic form dies by its own declared mechanism. Priors frozen 70/22/8. Right-to-left reading is Rota 69's scope, kept separate."
+    },
+    "route_71_constructed_language": {
+      "route_type": "synthesis_positioning_not_new_measurement",
+      "question": "Could the manuscript be a 'lingua ignota' (constructed language)? Asked by the user; answered by positioning the hypothesis against the closed ledger R43-R70, not by new measurement.",
+      "verdict": "constructed_family_alive_hildegard_excluded_frozen",
+      "two_hypotheses": "H_broad = a constructed sign system deliberately designed (the prior's ~22% 'construida' branch, and the family the ~70% content-free generator belongs to); H_hildegard = the specific Hildegard von Bingen Lingua Ignota model (a glossed, noun-dominated, referential invented vocabulary).",
+      "scorecard": {
+        "n_criteria": 10,
+        "broad": {
+          "supports": 5,
+          "weakens": 0,
+          "neutral": 5
+        },
+        "hildegard": {
+          "supports": 3,
+          "weakens": 4,
+          "neutral": 3
+        },
+        "family_alive": true,
+        "hildegard_weakened": true,
+        "confirmable_by_corpus_statistics": false
+      },
+      "reading": "H_broad (a constructed SYSTEM) is unrefuted: designed combinatorial morphology (R43-55), syntax-thin bag-of-words (R60), non-natural prose h2=2.15 (R58), morph-rich/syntax-fine (R59) and serious deliberate multi-scribe production (R68: blocked p=0.001, 5 hands, V(hand x Currier)=0.98) all support it; nothing weakens it -- it is the surviving ~22% branch. H_hildegard (the glossed nomenclator model) is WEAKENED (weakens 4 > supports 3): nomenclator excluded (R57), label<->object decoupled (R63-65), no gloss/parallel key (R68), lexicon scale/morphology unlike a ~1000-item noun list (R59). Neither is confirmable by statistics because the R62/R67 content-free generator reproduces 14/14 signatures, so a constructed system WITH content is indistinguishable from one WITHOUT on the token scale. Only a documented key/crib (#1, which also separates constructed-language from cipher) or a decode predicting held-out folios (#6) can move it. Priors frozen 70/22/8. No new corpus statistic; assigns no meaning to any token.",
+      "outputs": [
+        "scripts/assess_constructed_language.py",
+        "tests/test_constructed_language.py",
+        "data/derived/constructed_language_scorecard_zl3b.csv",
+        "data/derived/constructed_language_summary_zl3b.csv",
+        "docs/research/rota_71_lingua_construida.md"
+      ],
+      "guardrail": "rota71_constructed_language_not_decipherment",
+      "tests_total": 636
     }
   },
-  "next_experiment": "Rota 67 laafu content-vs-layout discriminator (pre-registered degenerate-likely) OR external provenance/material; corpus, image, and cross-modal lines are all exhausted"
+  "next_experiment": "Externo: estudo instrumental de tinta por mão/campanha (#4); colação de cadernos (#7); monitorar texto-irmão (#2); manter barra held-out para qualquer decode (#6)"
 }
